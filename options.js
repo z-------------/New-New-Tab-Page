@@ -234,7 +234,7 @@ window.onload = function(){
         window.parent.location = "customicons.html";
     }
     setTimeout(function(){
-        document.body.innerHTML = document.body.innerHTML + "<img src=https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png alt=\"Fork me on GitHub\" id=forkme>";
+        document.getElementById("forkcont").innerHTML = document.getElementById("forkcont").innerHTML + "<img src=https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png alt=\"Fork me on GitHub\" id=forkme>";
         document.getElementById("forkme").onclick = function(){
             window.top.location = "https://github.com/z-------------/New-New-Tab-Page";
         }
