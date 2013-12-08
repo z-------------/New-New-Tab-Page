@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+        <meta name="description" content="A minimal weather app. Data from Weather Underground. Icons by Roy Soetantio.">
+        <script src="weather.js"></script>
+        <style>
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-style: normal;
+                font-weight: 200;
+                src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v6/toadOcfmlt9b38dHJxOBGC-IiwWNzQT_LXAtr-Ee9Pw.woff) format('woff');
+            }
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(http://themes.googleusercontent.com/static/fonts/sourcesanspro/v6/ODelI1aHBYDBqgeIAH2zlNHq-FFgoDNV3GTKpHwuvtI.woff) format('woff');
+            }
+            * {
+                font-family:"Source Sans Pro",Roboto,sans-serif;
+                color:#fff;
+                text-align:center;
+            }
+            body {
+                margin:0;
+                height:100%;
+                width:100%;
+            }
+            #weather {
+                position:absolute;
+                top:50%;
+                left:50%;
+                width:490px;
+                height:245px;
+                margin:-122.5px 0 0 -245px;
+                z-index:3;
+                cursor:pointer;
+            }
+            #temp {
+                font-size:120px;
+                position:absolute;
+                top:50%;
+                margin:-83px 0 0 0;
+                right:0;
+                width:245px;
+            }
+            #icon {
+                position:absolute;
+                left:0;
+                top:0;
+                background-size:80% 80%;
+                background-repeat:no-repeat;
+                background-position:center;
+                width:245px;
+                height:245px;
+            }
+            ::selection {
+                background:rgba(0,0,0,.3);
+                color:#fff;
+            }
+            #dark {
+                position:absolute;
+                top:0;
+                left:0;
+                height:100%;
+                width:100%;
+                z-index:2;
+                background:rgba(0,0,0,.70);
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dark"></div>
+        <div id="weather">
+            <div id="icon"></div>
+            <div id="temp"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NNTP Options</title>
+        <style>
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 100;
+                src: local('Roboto Thin'), local('Roboto-Thin'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+            }
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Roboto Regular'), local('Roboto-Regular'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/2UX7WLTfW3W8TclTUvlFyQ.woff) format('woff');
+            }
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Roboto Bold'), local('Roboto-Bold'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+            }
+            * {
+                font-family:Roboto;
+            }
+            body,html {
+                padding:0;
+                margin:0;
+                width:100%;
+                height:100%;
+                background:#fff;
+                text-align:center;
+            }
+            #title {
+                font-size:50px;
+                font-weight:100;
+                color:#111;
+                position:fixed;
+                top:20px;
+                width:100%;
+                background:rgba(255,255,255,.7);
+                z-index:2;
+            }
+            form {
+                font-size:20px;
+                font-weight:400;
+                color:#000;
+                position:absolute;
+                top:50%;
+                left:50%;
+                margin:-130px 0 0 -360px;
+                width:720px;
+            }
+            .label {
+                font-size:13px;
+                padding-left:5px;
+            }
+            input[type=button] {
+                cursor:pointer;
+                text-align:center;
+                transition:all .2s;
+            }
+            #vno {
+                color:rgba(0,0,0,.5);
+                font-size:15px;
+                font-style:italic;
+            }
+            #bottomright {
+                position:fixed;
+                bottom:10px;
+                right:10px;
+                text-align:right;
+            }
+            #topsitecount {
+                width:50px;
+                text-align:center;
+            }
+            #save {
+                font-weight:700;
+            }
+        </style>
+        <script src="options.js"></script>
+    </head>
+    <body>
+        <div id="title">New New Tab Page<span id="vno">v3.4</span></div>
+        <form>
+            <span class="label">1</span>
+            <select id="slot1-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select>
+            <span class="label">2</span>
+            <select id="slot2-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select>
+            <span class="label">3</span>
+            <select id="slot3-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select>
+            <br>
+            <span class="label">4</span>
+            <select id="slot4-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select>
+            <span class="label">5</span>
+            <select id="slot5-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select>
+            <span class="label">6</span>
+            <select id="slot6-i">
+                <option value="ng">9GAG</option>
+                <option value="dg">Digg</option>
+                <option value="fb">Facebook</option>
+                <option value="gm">Gmail</option>
+                <option value="gg">Google</option>
+                <option value="gp">Google+</option>
+                <option value="gd">Google Drive</option>
+                <option value="gk">Google Keep</option>
+                <option value="pk">Pocket</option>
+                <option value="rd">Reddit</option>
+                <option value="tw">Twitter</option>
+                <option value="vg">The Verge</option>
+                <option value="yh">Yahoo</option>
+                <option value="yt">YouTube</option>
+            </select><br>
+            <span class="label">No. of Apps</span>
+            <select id="slotcount">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><input type="button" value="Custom app icons" id="custiconslink"><br>
+            <span class="label">Preset Backgrounds</span>
+            <select id="bgopt">
+                <option value="bg">KitKat Mountains Wallpaper</option>
+                <option value="bg2">KitKat "5" Abstract Wallpaper</option>
+            </select><br>
+            <span class="label">Use custom background?</span>
+            <select id="usecustombg" value="false">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <span class="label">Custom background url</span>
+            <input type="text" id="custombg" placeholder="Don't use file:// urls!"><br>
+            <span class="label">Blur background?</span>
+            <select id="bgblur">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select><br>
+            <span class="label">Show weather icon?</span>
+            <select id="showWeather">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <span class="label">City</span><input type="text" id="weathercity" placeholder="Example: London, UK"><br>
+            <span class="label">Show Facebook Messenger icon?</span>
+            <select id="showfb">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>&nbsp;&nbsp;
+            <span class="label">Show Facebook Notifications icon?</span>
+            <select id="shownotif">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select><br>
+            <span class="label">Show StumbleUpon icon?</span>
+            <select id="showstumble">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select><br>
+            <span class="label">Show app drawer?</span>
+            <select id="showappdrawer">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <span class="label">No. of top sites to show</span>
+            <input type="number" id="topsitecount">
+            <span class="label">Show bookmarks?</span>
+            <select id="showbookmarks">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </form>
+        <div id="bottomright">
+            <input type="button" id="save" value="Save">
+            <input type="button" value="Reset to defaults" id="resetdefaults">
+            <input type="button" value="Suggest a feature" id="reqfea">
+        </div>
+    </body>
+</html>
