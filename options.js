@@ -27,7 +27,11 @@ window.onload = function(){
         localStorage.slotcount = document.getElementById("slotcount").value;
         localStorage.bgopt = document.getElementById("bgopt").value;
         localStorage.usecustombg = document.getElementById("usecustombg").value;
-        localStorage.custombg = document.getElementById("custombg").value;
+        if (document.getElementById("custombg").value.indexOf("://") == -1) {
+            localStorage.custombg = "http://" + document.getElementById("custombg").value;
+        } else {
+            localStorage.custombg = document.getElementById("custombg").value;
+        }
         localStorage.bgblur = document.getElementById("bgblur").value;
         //set urls
         //someday find a way to do this with a function instead of typing out every possibility
