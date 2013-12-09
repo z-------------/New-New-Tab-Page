@@ -23,4 +23,6 @@ A simple app launcher containing all your installed apps
 Quick and easy access to all your bookmarks
 
 ## Install
-#####[Download from the Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
+[Download from the Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
+
+[Download .zip from GitHub](https://github.com/z-------------/New-New-Tab-Page/releases)
