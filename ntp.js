@@ -50,7 +50,13 @@ var slot1i = localStorage.slot1i || "fb",
     slotcount = localStorage.slotcount || "3";
     bgopt = localStorage.bgopt || "bg";
     showAppsDrawer = localStorage.showappdrawer || "true";
-    topsitecount = parseInt(localStorage.topsitecount) || 6;
+    if (localStorage.topsitecount == null) {
+        var topsitecount = 6;
+    } else if (localStorage.topsitecount == "0"){
+        var topsitecount = 0;
+    } else {
+        var topsitecount = parseInt(localStorage.topsitecount);
+    }
     showBookmarks = localStorage.showbookmarks || "false";
 window.onload = function(){
     if (localStorage.usecustombg !== "true") {
@@ -67,15 +73,12 @@ window.onload = function(){
     } else if (slotcount == 4) {
         document.getElementById("container").style.width = "600px";
         document.getElementById("container").style.marginLeft = "-300px";
-        console.log("resized container to fit 4");
     } else if (slotcount == 5) {
         document.getElementById("container").style.width = "750px";
         document.getElementById("container").style.marginLeft = "-375px";
-        console.log("resized container to fit 5");
     } else if (slotcount == 6) {
         document.getElementById("container").style.width = "900px";
         document.getElementById("container").style.marginLeft = "-450px";
-        console.log("resized container to fit 6");
     }
     if (localStorage.showWeather == "true") {
         document.getElementById("weatherprvw").style.display = "inline-block";
@@ -265,9 +268,13 @@ window.onload = function(){
         }
     }
     function getTopSites(res) {
-        for (var i=0;i<topsitecount;i++) {
-            document.getElementById("topsites").innerHTML = document.getElementById("topsites").innerHTML + "<a href="+res[i].url+"><div class=\"draweritem topsite\"id=l"+i+">"+res[i].title+"</div></a>";
-            document.getElementById("l"+i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0,res[i].url.indexOf("/",9)) + ")";
+        if (topsitecount >= 1) {
+            for (var i=0;i<topsitecount;i++) {
+                document.getElementById("topsites").innerHTML = document.getElementById("topsites").innerHTML + "<a href="+res[i].url+"><div class=\"draweritem topsite\"id=l"+i+">"+res[i].title+"</div></a>";
+                document.getElementById("l"+i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0,res[i].url.indexOf("/",9)) + ")";
+            }
+        } else {
+            document.getElementById("mostvis").style.display = "none";
         }
     }
     function getApps(res) {
