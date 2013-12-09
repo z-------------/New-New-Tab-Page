@@ -214,6 +214,7 @@ window.onload = function(){
         document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:0;");
         document.getElementById("appsicon").setAttribute("style",document.getElementById("appsicon").getAttribute("style")+"opacity:0;");
         document.getElementById("drawerarrow").setAttribute("style","opacity:0;");
+        document.getElementById("bmarrow").setAttribute("style",document.getElementById("bmarrow").getAttribute("style")+"opacity:0;");
         setTimeout(function(){document.getElementById("search").focus()},200);
     }
     document.getElementById("close").onclick = function(){
@@ -223,7 +224,8 @@ window.onload = function(){
         document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:1;");
         document.getElementById("appsicon").setAttribute("style",document.getElementById("appsicon").getAttribute("style")+"opacity:1;");
         document.getElementById("optionbutton").setAttribute("style","opacity:1;");
-        document.getElementById("drawerarrow").setAttribute("style","opacity:1;")
+        document.getElementById("drawerarrow").setAttribute("style","opacity:1;");
+        document.getElementById("bmarrow").setAttribute("style",document.getElementById("bmarrow").getAttribute("style")+"opacity:1;");
         document.getElementById("search").value = "";
     }
     document.getElementById("search").onkeydown = function(e){
