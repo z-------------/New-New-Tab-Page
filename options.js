@@ -241,4 +241,7 @@ window.onload = function(){
             window.top.location = "https://github.com/z-------------/New-New-Tab-Page";
         }
     },1000);
+    document.getElementById("credlink").onclick = function(){
+        window.parent.location = "http://zacharyguard.co.nf";
+    }
 }

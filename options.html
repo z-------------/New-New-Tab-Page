@@ -87,11 +87,31 @@
                 cursor:pointer;
             }
             #forkcont {
-                position:absolute;
+                position:fixed;
                 top:0;
                 left:0;
                 border:0;
                 z-index:3;
+            }
+            #credits {
+                color:rgba(0,0,0,.5);
+                font-style:italic;
+                position:fixed;
+                bottom:10px;
+                width:100%;
+                text-align:center;
+                font-size:13px;
+            }
+            #credlink {
+                cursor:pointer;
+                transition:color .2s;
+            }
+            #credlink:hover {
+                color:rgba(0,0,0,.7);
+            }
+            ::selection {
+                color:#fff;
+                background:rgba(0,0,0,.2);
             }
         </style>
         <script src="options.js"></script>
@@ -261,5 +281,6 @@
             <input type="button" value="Reset to defaults" id="resetdefaults">
             <input type="button" value="Suggest a feature" id="reqfea">
         </div>
+        <div id="credits">Made by <span id="credlink">Zachary Guard</span></div>
     </body>
 </html>
