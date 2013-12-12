@@ -263,7 +263,7 @@ window.onload = function(){
         } else if (localStorage.slot7usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot7ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[0].onclick = function(){
+                document.getElementsByClassName("app")[6].onclick = function(){
                     window.location = localStorage.slot7uc;
                     white();
                 }
@@ -282,7 +282,7 @@ window.onload = function(){
         } else if (localStorage.slot8usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot8ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[1].onclick = function(){
+                document.getElementsByClassName("app")[7].onclick = function(){
                     window.location = localStorage.slot8uc;
                     white();
                 }
@@ -301,7 +301,7 @@ window.onload = function(){
         } else if (localStorage.slot9usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot9ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[2].onclick = function(){
+                document.getElementsByClassName("app")[8].onclick = function(){
                     window.location = localStorage.slot9uc;
                     white();
                 }
@@ -320,7 +320,7 @@ window.onload = function(){
         } else if (localStorage.slot10usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot10ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[3].onclick = function(){
+                document.getElementsByClassName("app")[9].onclick = function(){
                     window.location = localStorage.slot10uc;
                     white();
                 }
@@ -339,7 +339,7 @@ window.onload = function(){
         } else if (localStorage.slot11usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot11ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[4].onclick = function(){
+                document.getElementsByClassName("app")[10].onclick = function(){
                     window.location = localStorage.slot11uc;
                     white();
                 }
@@ -358,7 +358,7 @@ window.onload = function(){
         } else if (localStorage.slot12usec == "true") {
             document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot12ic+");></div>";
             setTimeout(function(){
-                document.getElementsByClassName("app")[5].onclick = function(){
+                document.getElementsByClassName("app")[11].onclick = function(){
                     window.location = localStorage.slot12uc;
                     white();
                 }
