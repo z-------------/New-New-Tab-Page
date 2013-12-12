@@ -2,7 +2,7 @@
    "chrome_url_overrides": {
       "newtab": "newtab.html"
    },
-   "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.wunderground.com; object-src 'self'",
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.wunderground.com https://api.github.com; object-src 'self'",
    "description": "A minimal new tab page replacement",
    "icons": {
       "128": "icon128.png"
@@ -10,7 +10,7 @@
    "manifest_version": 2,
    "name": "New New Tab Page",
    "options_page": "options.html",
-   "version": "3.5.3",
+   "version": "3.5.4",
    "short_name": "NNTP",
    "permissions": [
       "topSites",

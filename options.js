@@ -1,3 +1,15 @@
+function getReleases(res) {
+    var current = document.getElementById("vno").innerHTML,
+        latest = res.data.name;
+    if (current != latest) {
+        document.getElementById("check").value = "Update now";
+        document.getElementById("check").onclick = function(){
+            alert("An update for New New Tab Page is available.\nGo to chrome://extensions and click \"Update extensions now\". You may need to enable Developer Mode if you haven't yet done so.");
+        }
+    } else if (current == latest) {
+        document.getElementById("check").value = "No update available";
+    }
+}
 window.onload = function(){
     document.getElementById("slot1-i").value = localStorage.slot1i || "fb";
     document.getElementById("slot2-i").value = localStorage.slot2i || "ng";
@@ -429,5 +441,10 @@ window.onload = function(){
     },1000);
     document.getElementById("credlink").onclick = function(){
         window.parent.location = "http://zacharyguard.co.nf";
+    }
+    document.getElementById("check").onclick = function(){
+        var script = document.createElement("script");
+        script.src = "https://api.github.com/repos/z-------------/New-New-Tab-Page/releases?callback=getReleases";
+        document.getElementsByTagName("head")[0].appendChild(script);
     }
 }
