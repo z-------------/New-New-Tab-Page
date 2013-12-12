@@ -42,11 +42,23 @@ var slot1i = localStorage.slot1i || "fb",
     slot3i = localStorage.slot3i || "yt",
     slot3u = localStorage.slot3u || "http://www.youtube.com",
     slot4i = localStorage.slot4i || "rd",
-    slot4u = localStorage.slot4u || "http://www.reddit.com";
+    slot4u = localStorage.slot4u || "http://www.reddit.com",
     slot5i = localStorage.slot5i || "gp",
-    slot5u = localStorage.slot5u || "https://plus.google.com";
+    slot5u = localStorage.slot5u || "https://plus.google.com",
     slot6i = localStorage.slot6i || "gg",
-    slot6u = localStorage.slot6u || "https://www.google.com";
+    slot6u = localStorage.slot6u || "https://www.google.com",
+    slot7i = localStorage.slot7i || "yh",
+    slot7u = localStorage.slot7u || "http://www.yahoo.com",
+    slot8i = localStorage.slot8i || "pk",
+    slot8u = localStorage.slot8u || "http://getpocket.com/a/queue/",
+    slot9i = localStorage.slot9i || "tw",
+    slot9u = localStorage.slot9u || "https://twitter.com",
+    slot10i = localStorage.slot10i || "gd",
+    slot10u = localStorage.slot10u || "https://drive.google.com";
+    slot11i = localStorage.slot11i || "gk",
+    slot11u = localStorage.slot11u || "https://drive.google.com/keep";
+    slot12i = localStorage.slot12i || "vg",
+    slot12u = localStorage.slot12u || "http://www.theverge.com";
     slotcount = localStorage.slotcount || "3";
     bgopt = localStorage.bgopt || "bg";
     showAppsDrawer = localStorage.showappdrawer || "true";
@@ -79,6 +91,36 @@ window.onload = function(){
     } else if (slotcount == 6) {
         document.getElementById("container").style.width = "900px";
         document.getElementById("container").style.marginLeft = "-450px";
+    } else if (slotcount == 7) {
+        document.getElementById("container").style.width = "600px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-300px";
+        document.getElementById("container").style.marginTop = "-150px";
+    } else if (slotcount == 8) {
+        document.getElementById("container").style.width = "600px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-300px";
+        document.getElementById("container").style.marginTop = "-150px";
+    } else if (slotcount == 9) {
+        document.getElementById("container").style.width = "750px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-375px";
+        document.getElementById("container").style.marginTop = "-150px";
+    } else if (slotcount == 10) {
+        document.getElementById("container").style.width = "750px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-375px";
+        document.getElementById("container").style.marginTop = "-150px";
+    } else if (slotcount == 11) {
+        document.getElementById("container").style.width = "900px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-450px";
+        document.getElementById("container").style.marginTop = "-150px";
+    } else if (slotcount == 12) {
+        document.getElementById("container").style.width = "900px";
+        document.getElementById("container").style.height = "300px";
+        document.getElementById("container").style.marginLeft = "-450px";
+        document.getElementById("container").style.marginTop = "-150px";
     }
     if (localStorage.showWeather == "true") {
         document.getElementById("weatherprvw").style.display = "inline-block";
@@ -204,6 +246,120 @@ window.onload = function(){
             setTimeout(function(){
                 document.getElementsByClassName("app")[5].onclick = function(){
                     window.location = localStorage.slot6uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 7) {
+        if (localStorage.slot7usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot7i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot7i).onclick = function(){
+                    window.location = slot7u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot7usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot7ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[0].onclick = function(){
+                    window.location = localStorage.slot7uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 8) {
+        if (localStorage.slot8usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot8i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot8i).onclick = function(){
+                    window.location = slot8u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot8usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot8ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[1].onclick = function(){
+                    window.location = localStorage.slot8uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 9) {
+        if (localStorage.slot9usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot9i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot9i).onclick = function(){
+                    window.location = slot9u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot9usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot9ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[2].onclick = function(){
+                    window.location = localStorage.slot9uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 10) {
+        if (localStorage.slot10usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot10i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot10i).onclick = function(){
+                    window.location = slot10u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot10usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot10ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[3].onclick = function(){
+                    window.location = localStorage.slot10uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 11) {
+        if (localStorage.slot11usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot11i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot11i).onclick = function(){
+                    window.location = slot11u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot11usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot11ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[4].onclick = function(){
+                    window.location = localStorage.slot11uc;
+                    white();
+                }
+            },200);
+        }
+    }
+    if (slotcount >= 12) {
+        if (localStorage.slot12usec != "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot12i+" class=app></div>";
+            setTimeout(function(){
+                document.getElementById(slot12i).onclick = function(){
+                    window.location = slot12u;
+                    white();
+                }
+            },200);
+        } else if (localStorage.slot12usec == "true") {
+            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot12ic+");></div>";
+            setTimeout(function(){
+                document.getElementsByClassName("app")[5].onclick = function(){
+                    window.location = localStorage.slot12uc;
                     white();
                 }
             },200);
