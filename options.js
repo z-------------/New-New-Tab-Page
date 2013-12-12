@@ -47,34 +47,34 @@ window.onload = function(){
         localStorage.bgblur = document.getElementById("bgblur").value;
         //set urls
         //someday find a way to do this with a function instead of typing out every possibility
-        if (localStorage.slot7i == "fb") {
-            localStorage.slot7u = "http://www.facebook.com";
-        } else if (localStorage.slot7i == "gp") {
-            localStorage.slot7u = "https://plus.google.com";
-        } else if (localStorage.slot7i == "yt") {
-            localStorage.slot7u = "http://www.youtube.com";
-        } else if (localStorage.slot7i == "ng") {
-            localStorage.slot7u = "http://9gag.com";
-        } else if (localStorage.slot7i == "gm") {
-            localStorage.slot7u = "https://mail.google.com";
-        } else if (localStorage.slot7i == "rd") {
-            localStorage.slot7u = "http://www.reddit.com";
-        } else if (localStorage.slot7i == "gg") {
-            localStorage.slot7u = "https://www.google.com";
-        } else if (localStorage.slot7i == "yh") {
-            localStorage.slot7u = "http://www.yahoo.com";
-        } else if (localStorage.slot7i == "gd") {
-            localStorage.slot7u = "https://drive.google.com";
-        } else if (localStorage.slot7i == "dg") {
-            localStorage.slot7u = "http://digg.com";
-        } else if (localStorage.slot7i == "vg") {
-            localStorage.slot7u = "http://www.theverge.com"
-        } else if (localStorage.slot7i == "tw") {
-            localStorage.slot7u = "https://twitter.com"
-        } else if (localStorage.slot7i == "pk") {
-            localStorage.slot7u = "http://getpocket.com/a/queue/"
-        } else if (localStorage.slot7i == "gk") {
-            localStorage.slot7u = "https://drive.google.com/keep/"
+        if (localStorage.slot1i == "fb") {
+            localStorage.slot1u = "http://www.facebook.com";
+        } else if (localStorage.slot1i == "gp") {
+            localStorage.slot1u = "https://plus.google.com";
+        } else if (localStorage.slot1i == "yt") {
+            localStorage.slot1u = "http://www.youtube.com";
+        } else if (localStorage.slot1i == "ng") {
+            localStorage.slot1u = "http://9gag.com";
+        } else if (localStorage.slot1i == "gm") {
+            localStorage.slot1u = "https://mail.google.com";
+        } else if (localStorage.slot1i == "rd") {
+            localStorage.slot1u = "http://www.reddit.com";
+        } else if (localStorage.slot1i == "gg") {
+            localStorage.slot1u = "https://www.google.com";
+        } else if (localStorage.slot1i == "yh") {
+            localStorage.slot1u = "http://www.yahoo.com";
+        } else if (localStorage.slot1i == "gd") {
+            localStorage.slot1u = "https://drive.google.com";
+        } else if (localStorage.slot1i == "dg") {
+            localStorage.slot1u = "http://digg.com";
+        } else if (localStorage.slot1i == "vg") {
+            localStorage.slot1u = "http://www.theverge.com"
+        } else if (localStorage.slot1i == "tw") {
+            localStorage.slot1u = "https://twitter.com"
+        } else if (localStorage.slot1i == "pk") {
+            localStorage.slot1u = "http://getpocket.com/a/queue/"
+        } else if (localStorage.slot1i == "gk") {
+            localStorage.slot1u = "https://drive.google.com/keep/"
         }
         if (localStorage.slot2i == "fb") {
             localStorage.slot2u = "http://www.facebook.com";
