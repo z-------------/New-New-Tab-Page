@@ -1,14 +1,21 @@
 function getReleases(res) {
     var current = document.getElementById("vno").innerHTML,
-        latest = res.data.name;
+        latest = res.data[0].name;
+    console.log("Current: "+current+" Latest: "+latest);
     if (current != latest) {
         document.getElementById("check").value = "Update now";
         document.getElementById("check").onclick = function(){
-            alert("An update for New New Tab Page is available.\nGo to chrome://extensions and click \"Update extensions now\". You may need to enable Developer Mode if you haven't yet done so.");
+            alert("An update for New New Tab Page is available.\nGo to chrome://extensions and click \"Update extensions now\".\nYou may need to enable Developer Mode if you haven't yet done so.");
         }
+        window.top.showUpdateMsg();
     } else if (current == latest) {
         document.getElementById("check").value = "No update available";
     }
+}
+function checkUpdates() {
+    var script = document.createElement("script");
+    script.src = "https://api.github.com/repos/z-------------/New-New-Tab-Page/releases?callback=getReleases";
+    document.getElementsByTagName("head")[0].appendChild(script);
 }
 window.onload = function(){
     document.getElementById("slot1-i").value = localStorage.slot1i || "fb";
@@ -442,9 +449,6 @@ window.onload = function(){
     document.getElementById("credlink").onclick = function(){
         window.parent.location = "http://zacharyguard.co.nf";
     }
-    document.getElementById("check").onclick = function(){
-        var script = document.createElement("script");
-        script.src = "https://api.github.com/repos/z-------------/New-New-Tab-Page/releases?callback=getReleases";
-        document.getElementsByTagName("head")[0].appendChild(script);
-    }
+    document.getElementById("check").onclick = checkUpdates;
+    setTimeout(checkUpdates,5000);
 }

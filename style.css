@@ -531,3 +531,28 @@ a {
 #applist {
 	padding:0 0 10px 0;
 }
+#updatemsg {
+	height:24px;
+	position:fixed;
+	left:90px;
+	bottom:20px;
+	background:rgba(0,0,0,.5);
+	border-radius:10px;
+	opacity:0;
+	z-index:3;
+	transition:all 1s;
+	padding:13px 10px 13px 10px;
+}
+#updatearrow {
+	position:fixed;
+	left:80px;
+	bottom:35px;
+	z-index:3;
+	opacity:0;
+	width:0; 
+	height:0; 
+	border-top:10px solid transparent;
+	border-bottom:10px solid transparent; 
+	border-right:10px solid rgba(0,0,0,.5);
+	transition:all 1s;
+}

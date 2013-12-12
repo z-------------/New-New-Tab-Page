@@ -510,4 +510,8 @@ window.onload = function(){
 window.onerror = function(){
     alert("Something went wrong. Refresh the page and if that doesn't work, reset to default settings");
 }
+function showUpdateMsg() {
+    document.getElementById("updatemsg").setAttribute("style","opacity:1");
+    document.getElementById("updatearrow").setAttribute("style","opacity:1");
+}
 console.log("New New Tab Page (C) 2013 Zachary Guard");
