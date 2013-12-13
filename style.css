@@ -119,7 +119,7 @@ body,html {
 }
 #white {
 	background:#fff;
-	display:hidden;
+	opacity:0;
 	height:0;
 	left:50%;
 	position:absolute;
@@ -532,7 +532,7 @@ a {
 	padding:0 0 10px 0;
 }
 #updatemsg {
-	height:24px;
+	height:22px;
 	position:fixed;
 	left:90px;
 	bottom:20px;
@@ -541,7 +541,7 @@ a {
 	opacity:0;
 	z-index:3;
 	transition:all 1s;
-	padding:13px 10px 13px 10px;
+	padding:15px 10px 13px 10px;
 }
 #updatearrow {
 	position:fixed;

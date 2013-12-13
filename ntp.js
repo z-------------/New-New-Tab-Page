@@ -1,9 +1,5 @@
 function white() {
-    document.getElementById("white").style.top = 0;
-    document.getElementById("white").style.left = 0;
-    document.getElementById("white").style.width = "100%";
-    document.getElementById("white").style.height = "100%";
-    document.getElementById("white").style.visibility = "visible";
+    document.getElementById("white").setAttribute("style","top:0;left:0;height:100%;width:100%;opacity:1;");
 }
 var weatheropened = 0,
     time = new Date(),

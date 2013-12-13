@@ -5,7 +5,7 @@ function getReleases(res) {
     if (current != latest) {
         document.getElementById("check").value = "Update now";
         document.getElementById("check").onclick = function(){
-            alert("An update for New New Tab Page is available.\nGo to chrome://extensions and click \"Update extensions now\".\nYou may need to enable Developer Mode if you haven't yet done so.");
+            alert("An update for New New Tab Page is available:\n\n"+res.data[0].body+"\n\nGo to chrome://extensions and click \"Update extensions now\".\nYou may need to enable Developer Mode if you haven't yet done so.");
         }
         window.top.showUpdateMsg();
     } else if (current == latest) {
