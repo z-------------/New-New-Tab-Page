@@ -490,7 +490,7 @@ window.onload = function(){
             }
         }
         document.getElementById("bmsearch").onkeydown = function(e){
-            if (e.which == 13) {
+            if (document.getElementById("bmsearch").value.length >= 3 || e.which == 13) {
                 document.getElementById("bookmarkslist").scrollTop = 0;
                 chrome.bookmarks.search(this.value,getBookmarks);
             }
