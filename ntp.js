@@ -4,7 +4,8 @@ function white() {
 var weatheropened = 0,
     time = new Date(),
     appsopened = 0,
-    bmopened = 0;
+    bmopened = 0,
+    optsopened = 0;
 function getWeather(response) {
     if(response) {
         var weather = window.top.iconWea;
@@ -65,15 +66,12 @@ var slot1i = localStorage.slot1i || "fb",
     } else {
         var topsitecount = parseInt(localStorage.topsitecount);
     }
-    showBookmarks = localStorage.showbookmarks || "false";
+    showBookmarks = localStorage.showbookmarks || "true";
 window.onload = function(){
     if (localStorage.usecustombg !== "true") {
         document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
     } else {
         document.getElementById("bg").style.backgroundImage = "url("+localStorage.custombg+")";
-    }
-    if (localStorage.bgblur == "true") {
-        document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
     }
     if (slotcount == 3) {
         document.getElementById("container").style.width = "450px";
@@ -389,15 +387,21 @@ window.onload = function(){
         }
     }
     document.getElementById("optionbutton").onclick = function(){
-        document.getElementById("options").style.top = "0";
-        setTimeout(function(){
-            document.getElementById("closeopts").setAttribute("style","display:block");
-        },200);
-    }
-    document.getElementById("closeopts").onclick = function(){
-        document.getElementById("options").style.top = "110%";
-        location.hash = "#main";
-        document.getElementById("closeopts").setAttribute("style","display:none;");
+        if (!optsopened) {
+            document.getElementById("options").style.opacity = "1";
+            document.getElementById("options").style.top = "50%";
+            for (var i=0;i<document.querySelectorAll(".app").length;i++) {
+                document.querySelectorAll(".app")[i].style.opacity = "0";
+            }
+            optsopened = 1;
+        } else {
+            document.getElementById("options").style.opacity = "0";
+            document.getElementById("options").style.top = "150%";
+            for (var i=0;i<document.querySelectorAll(".app").length;i++) {
+                document.querySelectorAll(".app")[i].style.opacity = "1";
+            }
+            optsopened = 0;
+        }
     }
     if (localStorage.showFb == "true") {
         document.getElementById("fbmsg").style.display = "inline-block";

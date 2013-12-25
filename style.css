@@ -212,13 +212,17 @@ body,html {
 }
 #options {
 	position:absolute;
-	top:110%;
-	width:100%;
-	height:100%;
+	top:150%;
+	left:50%;
+	width:700px;
+	height:550px;
 	z-index:6;
 	border:none;
 	-webkit-filter:opacity(.9);
 	transition:all .2s;
+	margin:-275px 0 0 -350px;
+	border-radius:10px;
+	opacity:0;
 }
 #closeopts {
         position:fixed;
