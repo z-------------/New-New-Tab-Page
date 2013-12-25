@@ -2,6 +2,8 @@
 
 A minimal new tab page for Chrome
 
+![NNTP screenshot](http://i.imgur.com/XJZRpBR.png)
+
 ## Features
 
 ### [Choose your apps](https://github.com/z-------------/New-New-Tab-Page/wiki/Choose-Apps)
