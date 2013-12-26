@@ -7,6 +7,7 @@
    "icons": {
       "128": "icon128.png"
    },
+   "author": "Zachary Guard",
    "manifest_version": 2,
    "name": "New New Tab Page",
    "options_page": "options.html",
