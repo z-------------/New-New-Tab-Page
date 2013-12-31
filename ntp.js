@@ -475,6 +475,18 @@ window.onload = function(){
             document.getElementById("bookmarkslist").innerHTML = "<div id=bmsearchtip>No search results :(</div>";
         }
     }
+    function getAllBookmarks(res){
+        document.getElementById("bookmarkslist").innerHTML = "";
+        if (res.length > 0) {
+            for (var i=0;i<res.length;i++){
+                if (res[i].url.indexOf("javascript:") == -1) {
+                    document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href="+res[i].url+"><div class=bmsite style=background-image:url(http://www.google.com/s2/favicons?domain="+res[i].url.substring(0,res[i].url.indexOf("/",9))+")>"+res[i].title+"</div></a>";
+                }
+            }
+        } else {
+            document.getElementById("bookmarkslist").innerHTML = "<div id=bmsearchtip>No bookmarks :(</div>";
+        }
+    }
     if (showBookmarks == "true") {
         document.getElementById("bookmarks").style.display = "block";
         document.getElementById("bookmarks").onclick = function(){
@@ -498,6 +510,11 @@ window.onload = function(){
                 document.getElementById("bookmarkslist").scrollTop = 0;
                 chrome.bookmarks.search(this.value,getBookmarks);
             }
+        }
+        if (localStorage.showAllBookmarks == "true") {
+            setTimeout(function(){
+                chrome.bookmarks.search("http",getAllBookmarks);
+            },500);
         }
     }
     window.onkeydown = function(e){
