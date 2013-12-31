@@ -144,5 +144,8 @@ window.onload = function(){
                 document.querySelectorAll("input[type=checkbox]")[i].style.backgroundColor = "transparent";
             }
         }
-    },100)
+    },100);
+    if (navigator.userAgent.indexOf("Mac") == -1) {
+        document.querySelector("style").innerHTML = document.querySelector("style").innerHTML + "select:focus {color:#000;}"
+    }
 }
