@@ -386,6 +386,9 @@ window.onload = function(){
             window.location = "https://www.google.com/search?q="+encodeURI(this.value)+"&btnI";
         }
     }
+    document.getElementById("search").onwebkitspeechchange = function(){
+        window.location = "https://www.google.com/search?q="+encodeURI(this.value)+"&btnI";
+    }
     document.getElementById("optionbutton").onclick = function(){
         if (!optsopened) {
             document.getElementById("options").style.opacity = "1";
@@ -510,6 +513,9 @@ window.onload = function(){
                 document.getElementById("bookmarkslist").scrollTop = 0;
                 chrome.bookmarks.search(this.value,getBookmarks);
             }
+        }
+        document.querySelector("#bmsearch").onwebkitspeechchange = function(){
+            chrome.bookmarks.search(this.value,getBookmarks);
         }
         if (localStorage.showAllBookmarks == "true") {
             setTimeout(function(){
