@@ -437,11 +437,30 @@ window.onload = function(){
         }
     }
     function getApps(res) {
+        appsObject = {};
         for (var i=0;i<res.length;i++){
-            if (res[i].type == "hosted_app") {
-                document.getElementById("applist").innerHTML = document.getElementById("applist").innerHTML + "<a href="+res[i].appLaunchUrl+"><div class=draweritem id="+i+">"+res[i].name+"</div></a>";
-                document.getElementById(i).style.backgroundImage = "url(chrome://extension-icon/"+res[i].id+"/128/0)";
+            if (res[i].type == "hosted_app" || res[i].type == "packaged_app") {
+                appsObject[res[i].name] = {name:res[i].name,id:res[i].id,url:res[i].appLaunchUrl}
             }
+        }
+        keys = Object.keys(appsObject).sort();
+        window.onclick = function(){
+            setTimeout(function(){
+                if (window.location.hash.length > 1) {
+                    var appid = window.location.hash.substring(1,window.location.hash.length);
+                    chrome.management.launchApp(appid);
+                    window.location.hash = "";
+                }
+            },1)
+        }
+        for (i=0;i<keys.length;i++) {
+            var drawer = document.querySelector("#applist"),
+                thisapplink = document.createElement("a");
+            thisapplink.style.backgroundImage = "url(chrome://extension-icon/"+appsObject[keys[i]].id+"/128/0)";
+            thisapplink.setAttribute("class","draweritem drawerapp");
+            thisapplink.innerHTML = appsObject[keys[i]].name;
+            thisapplink.href = "#"+appsObject[keys[i]].id;
+            drawer.appendChild(thisapplink);
         }
     }
     if (showAppsDrawer == "true") {
