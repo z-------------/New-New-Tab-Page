@@ -51,13 +51,14 @@ var slot1i = localStorage.slot1i || "fb",
     slot9i = localStorage.slot9i || "tw",
     slot9u = localStorage.slot9u || "https://twitter.com",
     slot10i = localStorage.slot10i || "gd",
-    slot10u = localStorage.slot10u || "https://drive.google.com";
+    slot10u = localStorage.slot10u || "https://drive.google.com",
     slot11i = localStorage.slot11i || "gk",
-    slot11u = localStorage.slot11u || "https://drive.google.com/keep";
+    slot11u = localStorage.slot11u || "https://drive.google.com/keep",
     slot12i = localStorage.slot12i || "vg",
-    slot12u = localStorage.slot12u || "http://www.theverge.com";
-    slotcount = localStorage.slotcount || "3";
-    bgopt = localStorage.bgopt || "bg";
+    slot12u = localStorage.slot12u || "http://www.theverge.com",
+    slotcount = localStorage.slotcount || "3",
+    bgopt = localStorage.bgopt || "bg",
+    bgblur = localStorage.bgblur || "false",
     showAppsDrawer = localStorage.showappdrawer || "true";
     if (localStorage.topsitecount == null) {
         var topsitecount = 6;
@@ -72,6 +73,9 @@ window.onload = function(){
         document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
     } else {
         document.getElementById("bg").style.backgroundImage = "url("+localStorage.custombg+")";
+    }
+    if (localStorage.bgblur == "true") {
+        document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
     }
     if (slotcount == 3) {
         document.getElementById("container").style.width = "450px";

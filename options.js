@@ -77,6 +77,7 @@ window.onload = function(){
     document.getElementById("showstumble").checked = eval(localStorage.showStumble) || false;
     document.getElementById("topsitecount").value = localStorage.topsitecount || 6;
     document.getElementById("showallbookmarks").checked = eval(localStorage.showAllBookmarks) || false;
+    document.getElementById("bgblur").checked = eval(localStorage.bgblur) || false
     document.getElementById("save").onclick = function(){
         localStorage.slot1i = document.getElementById("slot1-i").value;
         localStorage.slot2i = document.getElementById("slot2-i").value;
@@ -109,6 +110,7 @@ window.onload = function(){
         localStorage.topsitecount = document.getElementById("topsitecount").value;
         localStorage.showStumble = document.getElementById("showstumble").checked;
         localStorage.showAllBookmarks = document.getElementById("showallbookmarks").checked;
+        localStorage.bgblur = document.getElementById("bgblur").checked;
         console.log("Saved options");
         window.top.location.reload();
     }
