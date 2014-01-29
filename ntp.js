@@ -69,6 +69,10 @@ var slot1i = localStorage.slot1i || "fb",
     }
     showBookmarks = localStorage.showbookmarks || "true";
 window.onload = function(){
+    if (localStorage.firstRun != "false") {
+        console.log("First run. Welcome to NNTP!");
+        localStorage.firstRun = "false";
+    }
     if (localStorage.usecustombg !== "true") {
         document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
     } else {
@@ -493,7 +497,7 @@ window.onload = function(){
             document.getElementById("bookmarkslist").innerHTML = "<div id=bmsearchtip>You're doing it wrong... type something in the search box</div>";
         } else if (res.length > 0) {
             for (var i=0;i<res.length;i++){
-                if (res[i].url.indexOf("javascript:") == -1) {
+                if (res[i].url.indexOf("javascript:") == -1 && res[i].url.indexOf("chrome://") == -1) {
                     document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href="+res[i].url+"><div class=bmsite style=background-image:url(http://www.google.com/s2/favicons?domain="+res[i].url.substring(0,res[i].url.indexOf("/",9))+")>"+res[i].title+"</div></a>";
                 }
             }

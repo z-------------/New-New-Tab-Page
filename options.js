@@ -125,14 +125,6 @@ window.onload = function(){
     document.getElementById("custiconslink").onclick = function(){
         window.parent.location = "customicons.html";
     }
-    if (navigator.onLine == true) {
-        setTimeout(function(){
-            document.getElementById("forkcont").innerHTML = document.getElementById("forkcont").innerHTML + "<img src=https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png alt=\"Fork me on GitHub\" id=forkme>";
-            document.getElementById("forkme").onclick = function(){
-                window.top.location = "https://github.com/z-------------/New-New-Tab-Page";
-            }
-        },1000);
-    }
     document.getElementById("check").onclick = checkUpdates;
     if (navigator.onLine == true) {
         setTimeout(checkUpdates,5000);
