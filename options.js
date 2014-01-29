@@ -119,6 +119,7 @@ window.onload = function(){
         this.value = "Are you sure?";
         this.onclick = function(){
             localStorage.clear();
+            localStorage.firstRun = "false";
             window.top.location.reload();
         }
     }

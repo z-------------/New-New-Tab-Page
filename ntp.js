@@ -69,10 +69,10 @@ var slot1i = localStorage.slot1i || "fb",
     }
     showBookmarks = localStorage.showbookmarks || "true";
 window.onload = function(){
-    if (localStorage.firstRun != "false") {
-        console.log("First run. Welcome to NNTP!");
-        localStorage.firstRun = "false";
-    }
+    localStorage.firstRun = "false";
+    /*if (localStorage.firstRun != "false") {
+        window.location = "welcome.html";
+    }*/
     if (localStorage.usecustombg !== "true") {
         document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
     } else {
