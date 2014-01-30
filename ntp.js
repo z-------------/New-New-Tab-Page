@@ -69,10 +69,9 @@ var slot1i = localStorage.slot1i || "fb",
     }
     showBookmarks = localStorage.showbookmarks || "true";
 window.onload = function(){
-    localStorage.firstRun = "false";
-    /*if (localStorage.firstRun != "false") {
+    if (localStorage.firstRun != "false") {
         window.location = "welcome.html";
-    }*/
+    }
     if (localStorage.usecustombg !== "true") {
         document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
     } else {
