@@ -67,7 +67,7 @@ var slot1i = localStorage.slot1i || "fb",
     } else {
         var topsitecount = parseInt(localStorage.topsitecount);
     }
-    showBookmarks = localStorage.showbookmarks || "true";
+    showBookmarks = localStorage.showbookmarks || "false";
 window.onload = function(){
     if (localStorage.firstRun != "false") {
         window.location = "welcome.html";
