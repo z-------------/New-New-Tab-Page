@@ -142,7 +142,4 @@ window.onload = function(){
             }
         }
     },100);
-    if (navigator.userAgent.indexOf("Mac") == -1) {
-        document.querySelector("style").innerHTML = document.querySelector("style").innerHTML + "select:focus {color:#000;}"
-    }
 }
