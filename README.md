@@ -27,4 +27,4 @@ Quick and easy access to all your bookmarks
 ## Get
 ####[Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
-####[.zip](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+####[master.zip](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)

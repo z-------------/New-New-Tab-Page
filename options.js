@@ -1,28 +1,3 @@
-function getReleases(res) {
-    var current = document.getElementById("vno").innerHTML,
-        latest = res.data[0].name;
-    checked = 1;
-    console.log("Current: "+current+" Latest: "+latest);
-    if (current != latest) {
-        document.getElementById("check").value = "Update now";
-        document.getElementById("check").onclick = function(){
-            alert("An update for New New Tab Page is available:\n\n"+res.data[0].body+"\n\nGo to chrome://extensions and click \"Update extensions now\".\nYou may need to enable Developer Mode if you haven't yet done so.");
-        }
-        window.top.showUpdateMsg();
-    } else if (current == latest) {
-        document.getElementById("check").value = "No update available";
-    }
-}
-function checkUpdates() {
-    if (navigator.onLine == true) {
-        var script = document.createElement("script");
-        script.src = "https://api.github.com/repos/z-------------/New-New-Tab-Page/releases?callback=getReleases";
-        document.getElementsByTagName("head")[0].appendChild(script);
-        document.getElementById("check").value = "Checking...";
-    } else {
-        document.getElementById("check").value = "You're offline, styupid";
-    }
-}
 function recalcSelectsStyle() {
     var scount = parseInt(document.getElementById("slotcount").value);
     for (var i=scount;i<12;i++){
@@ -126,20 +101,5 @@ window.onload = function(){
     document.getElementById("custiconslink").onclick = function(){
         window.parent.location = "customicons.html";
     }
-    document.getElementById("check").onclick = checkUpdates;
-    if (navigator.onLine == true) {
-        setTimeout(checkUpdates,5000);
-    }
     document.getElementById("slotcount").onchange = recalcSelectsStyle;
-    setInterval(function(){
-        for (var i=0;i<document.querySelectorAll("input[type=checkbox]").length;i++) {
-            if (document.querySelectorAll("input[type=checkbox]")[i].checked == true) {
-                document.querySelectorAll("input[type=checkbox]")[i].style.boxShadow = "inset 0 0 0 2px rgba(255,255,255,.5)";
-                document.querySelectorAll("input[type=checkbox]")[i].style.backgroundColor = "rgba(255,255,255,.3)";
-            } else {
-                document.querySelectorAll("input[type=checkbox]")[i].style.boxShadow = "inset 0 0 0 2px rgba(255,255,255,.2)";
-                document.querySelectorAll("input[type=checkbox]")[i].style.backgroundColor = "transparent";
-            }
-        }
-    },100);
 }

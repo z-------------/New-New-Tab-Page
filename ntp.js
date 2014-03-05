@@ -9,7 +9,6 @@ var weatheropened = 0,
 function getWeather(response) {
     if(response) {
         var weather = window.top.iconWea;
-        console.log(weather);
         if (weather == "Clear" && time.getHours() < 18 && time.getHours() >= 6) {
             icon = "sunny";
         } else if (weather == "Clear") {
@@ -25,7 +24,6 @@ function getWeather(response) {
         } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
             icon = "snow";
         } else {
-            console.log("Not sure which weather icon to use so defaulting to clear.png");
             icon = "sunny";
         }
         document.getElementById("weatherprvw").style.backgroundImage = "url(img/weather/"+icon+".png)";
@@ -559,8 +557,4 @@ window.onload = function(){
 window.onerror = function(){
     alert("Something went wrong. Refresh the page and if that doesn't work, reset to default settings");
 }
-function showUpdateMsg() {
-    document.getElementById("updatemsg").setAttribute("style","opacity:1");
-    document.getElementById("updatearrow").setAttribute("style","opacity:1");
-}
-console.log("New New Tab Page (C) 2013 Zachary Guard");
+console.log("%cNew New Tab Page (C) 2013 Zachary Guard","background-color:rgba(0,0,0,.6);color:white;border-radius:5px;padding:0 5px;");
