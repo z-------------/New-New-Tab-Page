@@ -24,7 +24,7 @@ A simple app launcher containing all your installed apps
 ### [Bookmarks search](https://github.com/z-------------/New-New-Tab-Page/wiki/Bookmarks-search)
 Quick and easy access to all your bookmarks
 
-## Install
-####[Download from the Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
+## Get
+####[Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
-####[Download .zip from GitHub](https://github.com/z-------------/New-New-Tab-Page/releases)
+####[.zip](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
