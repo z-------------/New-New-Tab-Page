@@ -452,9 +452,9 @@ window.onload = function(){
         window.onclick = function(){
             setTimeout(function(){
                 if (window.location.hash.length > 1) {
-                    var appid = window.location.hash.substring(1,window.location.hash.length);
+                    var appid = location.hash.substring(1,location.hash.length);
                     chrome.management.launchApp(appid);
-                    window.location.hash = "";
+                    location.hash = "";
                 }
             },1)
         }
@@ -557,4 +557,4 @@ window.onload = function(){
 window.onerror = function(){
     alert("Something went wrong. Refresh the page and if that doesn't work, reset to default settings");
 }
-console.log("%cNew New Tab Page (C) 2013 Zachary Guard","background-color:rgba(0,0,0,.6);color:white;border-radius:5px;padding:0 5px;");
+console.log("%cNew New Tab Page (C) 2014 Zachary Guard\nContribute to the NNTP open source project at http://2shrt.co.nf/?nntp-github","font-size:17px");
