@@ -136,234 +136,29 @@ window.onload = function(){
             }
         }
     }
-    if (slotcount >= 1) {
-        if (localStorage.slot1usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot1i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot1i).onclick = function(){
-                    window.location = slot1u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot1usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot1ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[0].onclick = function(){
-                    window.location = localStorage.slot1uc;
-                    white();
-                }
-            },200);
-        }
+    
+    function openIconURL(iconElement) {
+        window.location = iconElement.getAttribute("data-url");
+        white();
     }
-    if (slotcount >= 2) {
-        if (localStorage.slot2usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot2i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot2i).onclick = function(){
-                    window.location = slot2u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot2usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot2ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[1].onclick = function(){
-                    window.location = localStorage.slot2uc;
-                    white();
-                }
-            },200);
+    
+    for (i=0;i<slotcount;i++) {
+        var _thisApp = document.createElement("div");
+        _thisApp.classList.add("app");
+        _thisApp.addEventListener("click",function(){
+            openIconURL(this);
+        })
+        if (localStorage["slot"+(i+1)+"usec"] == "true") {
+            _thisApp.style.backgroundImage = "url("+localStorage["slot"+(i+1)+"ic"]+")";
+            _thisApp.classList.add("cust");
+            _thisApp.setAttribute("data-url",localStorage["slot"+(i+1)+"uc"]);
+        } else {
+            _thisApp.setAttribute("id",window["slot"+(i+1)+"i"]);
+            _thisApp.setAttribute("data-url",localStorage["slot"+(i+1)+"u"]);
         }
+        document.querySelector("#container").appendChild(_thisApp);
     }
-    if (slotcount >= 3) {
-        if (localStorage.slot3usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot3i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot3i).onclick = function(){
-                    window.location = slot3u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot3usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot3ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[2].onclick = function(){
-                    window.location = localStorage.slot3uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 4) {
-        if (localStorage.slot4usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot4i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot4i).onclick = function(){
-                    window.location = slot4u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot4usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot4ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[3].onclick = function(){
-                    window.location = localStorage.slot4uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 5) {
-        if (localStorage.slot5usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot5i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot5i).onclick = function(){
-                    window.location = slot5u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot5usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot5ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[4].onclick = function(){
-                    window.location = localStorage.slot5uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 6) {
-        if (localStorage.slot6usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot6i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot6i).onclick = function(){
-                    window.location = slot6u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot6usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot6ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[5].onclick = function(){
-                    window.location = localStorage.slot6uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 7) {
-        if (localStorage.slot7usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot7i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot7i).onclick = function(){
-                    window.location = slot7u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot7usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot7ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[6].onclick = function(){
-                    window.location = localStorage.slot7uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 8) {
-        if (localStorage.slot8usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot8i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot8i).onclick = function(){
-                    window.location = slot8u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot8usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot8ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[7].onclick = function(){
-                    window.location = localStorage.slot8uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 9) {
-        if (localStorage.slot9usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot9i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot9i).onclick = function(){
-                    window.location = slot9u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot9usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot9ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[8].onclick = function(){
-                    window.location = localStorage.slot9uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 10) {
-        if (localStorage.slot10usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot10i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot10i).onclick = function(){
-                    window.location = slot10u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot10usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot10ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[9].onclick = function(){
-                    window.location = localStorage.slot10uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 11) {
-        if (localStorage.slot11usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot11i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot11i).onclick = function(){
-                    window.location = slot11u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot11usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot11ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[10].onclick = function(){
-                    window.location = localStorage.slot11uc;
-                    white();
-                }
-            },200);
-        }
-    }
-    if (slotcount >= 12) {
-        if (localStorage.slot12usec != "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div id="+slot12i+" class=app></div>";
-            setTimeout(function(){
-                document.getElementById(slot12i).onclick = function(){
-                    window.location = slot12u;
-                    white();
-                }
-            },200);
-        } else if (localStorage.slot12usec == "true") {
-            document.getElementById("container").innerHTML = document.getElementById("container").innerHTML + "<div class=\"app cust\" style=background-image:url("+localStorage.slot12ic+");></div>";
-            setTimeout(function(){
-                document.getElementsByClassName("app")[11].onclick = function(){
-                    window.location = localStorage.slot12uc;
-                    white();
-                }
-            },200);
-        }
-    }
+    
     document.getElementById("appbutton").onclick = function(){
         document.getElementById("search").style.display = "block";
         document.getElementById("drawer").style.bottom = "0";
