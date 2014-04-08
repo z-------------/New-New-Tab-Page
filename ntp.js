@@ -66,7 +66,7 @@ var slot1i = localStorage.slot1i || "fb",
         var topsitecount = parseInt(localStorage.topsitecount);
     }
     showBookmarks = localStorage.showbookmarks || "false";
-window.onload = function(){
+document.addEventListener("DOMContentLoaded",function(){
     if (localStorage.firstRun != "false") {
         window.location = "welcome.html";
     }
@@ -348,7 +348,7 @@ window.onload = function(){
         }
     }
     setInterval(function(){window.scrollTo(0,0)},500);
-}
+});
 window.onerror = function(){
     alert("Something went wrong. Refresh the page and if that doesn't work, reset to default settings");
 }
