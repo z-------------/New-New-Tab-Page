@@ -102,4 +102,6 @@ window.onload = function(){
         window.parent.location = "customicons.html";
     }
     document.getElementById("slotcount").onchange = recalcSelectsStyle;
+    // version label next to title
+    document.querySelector("#vno").innerHTML = "v" + chrome.app.getDetails().version;
 }
