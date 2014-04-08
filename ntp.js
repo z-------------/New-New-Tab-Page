@@ -350,6 +350,6 @@ document.addEventListener("DOMContentLoaded",function(){
     setInterval(function(){window.scrollTo(0,0)},500);
 });
 window.onerror = function(){
-    alert("Something went wrong. Refresh the page and if that doesn't work, reset to default settings");
+    alert("Something went wrong. Please refresh the page and report this error to the developer.");
 }
 console.log("%cNew New Tab Page (C) 2014 Zachary Guard\nContribute to the NNTP open source project at http://2shrt.co.nf/?nntp-github","font-size:17px");
