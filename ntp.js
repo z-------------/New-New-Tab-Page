@@ -139,7 +139,9 @@ document.addEventListener("DOMContentLoaded",function(){
     
     function openIconURL(iconElement) {
         window.location = iconElement.getAttribute("data-url");
-        white();
+        if (eval(localStorage.disableanimation) != true) {
+            white();
+        }
     }
     
     for (i=0;i<slotcount;i++) {

@@ -54,6 +54,7 @@ window.onload = function(){
     document.getElementById("showallbookmarks").checked = eval(localStorage.showAllBookmarks) || false;
     document.getElementById("bgblur").checked = eval(localStorage.bgblur) || false;
     document.getElementById("usefahrenheit").checked = eval(localStorage.usefahrenheit) || false;
+    document.getElementById("disableanimation").checked = eval(localStorage.disableanimation) || false;
     document.getElementById("save").onclick = function(){
         localStorage.slot1i = document.getElementById("slot1-i").value;
         localStorage.slot2i = document.getElementById("slot2-i").value;
@@ -88,6 +89,7 @@ window.onload = function(){
         localStorage.showAllBookmarks = document.getElementById("showallbookmarks").checked;
         localStorage.bgblur = document.getElementById("bgblur").checked;
         localStorage.usefahrenheit = document.getElementById("usefahrenheit").checked;
+        localStorage.disableanimation = document.getElementById("disableanimation").checked;
         console.log("Saved options");
         window.top.location.reload();
     }
