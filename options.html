@@ -63,7 +63,7 @@
             input[type=text] {
                 transition:all .2s;
                 width:140px;
-                padding:1px 5px 1px 5px;
+                padding:1px 5px;
             }
             #vno {
                 color:rgba(255,255,255,.5);
@@ -80,21 +80,6 @@
             }
             #save {
                 font-weight:700;
-            }
-            #forkme {
-                position:absolute;
-                top:0;
-                left:0;
-                border:0;
-                z-index:3;
-                cursor:pointer;
-            }
-            #forkcont {
-                position:fixed;
-                top:0;
-                left:0;
-                border:0;
-                z-index:3;
             }
             ::selection {
                 color:#fff;
@@ -400,10 +385,13 @@
             <input type="checkbox" id="bgblur"><br>
             <span class="label">Weather</span>
             <input type="checkbox" id="showWeather">
-            <input type="text" id="weathercity" placeholder="City"><br>
+            <input type="text" id="weathercity" placeholder="City">
+            <span class="label">Use Fahrenheit</span>
+            <input type="checkbox" id="usefahrenheit">
+            <br>
             <span class="label">Facebook Messenger</span>
             <input type="checkbox" id="showfb">
-            <span class="label">Notifications</span>
+            <span class="label">FB Notifications</span>
             <input type="checkbox" id="shownotif">
             <span class="label">StumbleUpon icon</span>
             <input type="checkbox" id="showstumble">

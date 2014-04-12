@@ -14,10 +14,16 @@ icons = {
     snow: "img/weather/snow.png",
     fog: "img/weather/fog.png"
 }
+
+var useF = eval(localStorage.usefahrenheit);
 function getWeather(response) {
     if (response) {
-        var weather = response.current_observation.weather,
+        var weather = response.current_observation.weather, temp;
+        if (useF == true) {
+            temp = response.current_observation.temp_f;
+        } else {
             temp = response.current_observation.temp_c;
+        }
         window.top.iconWea = weather;
         window.onload = function () {
             document.getElementById("temp").innerHTML = "&nbsp;" + temp + "&#176;";
