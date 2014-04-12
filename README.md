@@ -1,4 +1,4 @@
-# New New Tab Page
+# ![NNTP Icon](http://i.imgur.com/MuaXyc8.png) New New Tab Page
 
 A minimal new tab page for Chrome
 
@@ -24,7 +24,7 @@ A simple app launcher containing all your installed apps
 ### [Bookmarks search](https://github.com/z-------------/New-New-Tab-Page/wiki/Bookmarks-search)
 Quick and easy access to all your bookmarks
 
-## Get
+## Download
 ####[Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
-####[master.zip](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+####[Source (.zip)](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
