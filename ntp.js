@@ -161,6 +161,10 @@ document.addEventListener("DOMContentLoaded",function(){
         document.querySelector("#container").appendChild(_thisApp);
     }
     
+    if (localStorage.titletext) {
+        document.querySelector("#title").innerHTML = localStorage.titletext;
+    }
+    
     document.getElementById("appbutton").onclick = function(){
         document.getElementById("search").style.display = "block";
         document.getElementById("drawer").style.bottom = "0";
@@ -349,9 +353,8 @@ document.addEventListener("DOMContentLoaded",function(){
             document.getElementById("appbutton").click();
         }
     }
-    setInterval(function(){window.scrollTo(0,0)},500);
 });
 window.onerror = function(){
-    alert("Something went wrong. Please refresh the page and report this error to the developer.");
+    alert("Something went wrong. Please refresh the page and report this error to the developer - zacharyguard@gmail.com");
 }
 console.log("%cNew New Tab Page (C) 2014 Zachary Guard\nContribute to the NNTP open source project at http://2shrt.co.nf/?nntp-github","font-size:17px");

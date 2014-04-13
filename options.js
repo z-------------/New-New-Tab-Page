@@ -55,6 +55,7 @@ window.onload = function(){
     document.getElementById("bgblur").checked = eval(localStorage.bgblur) || false;
     document.getElementById("usefahrenheit").checked = eval(localStorage.usefahrenheit) || false;
     document.getElementById("disableanimation").checked = eval(localStorage.disableanimation) || false;
+    document.getElementById("titletext").value = localStorage.titletext || "New Tab";
     document.getElementById("save").onclick = function(){
         localStorage.slot1i = document.getElementById("slot1-i").value;
         localStorage.slot2i = document.getElementById("slot2-i").value;
@@ -71,6 +72,7 @@ window.onload = function(){
         localStorage.slotcount = document.getElementById("slotcount").value;
         localStorage.bgopt = document.getElementById("bgopt").value;
         localStorage.usecustombg = document.getElementById("usecustombg").checked;
+        localStorage.titletext = document.getElementById("titletext").value;
         if (document.getElementById("custombg").value.indexOf("://") == -7) {
             localStorage.custombg = "http://" + document.getElementById("custombg").value;
         } else {
