@@ -90,32 +90,17 @@ document.addEventListener("DOMContentLoaded",function(){
     } else if (slotcount == 6) {
         document.getElementById("container").style.width = "900px";
         document.getElementById("container").style.marginLeft = "-450px";
-    } else if (slotcount == 7) {
+    } else if (slotcount == 7 || slotcount == 8) {
         document.getElementById("container").style.width = "600px";
         document.getElementById("container").style.height = "300px";
         document.getElementById("container").style.marginLeft = "-300px";
         document.getElementById("container").style.marginTop = "-150px";
-    } else if (slotcount == 8) {
-        document.getElementById("container").style.width = "600px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-300px";
-        document.getElementById("container").style.marginTop = "-150px";
-    } else if (slotcount == 9) {
+    } else if (slotcount == 9 || slotcount == 10) {
         document.getElementById("container").style.width = "750px";
         document.getElementById("container").style.height = "300px";
         document.getElementById("container").style.marginLeft = "-375px";
         document.getElementById("container").style.marginTop = "-150px";
-    } else if (slotcount == 10) {
-        document.getElementById("container").style.width = "750px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-375px";
-        document.getElementById("container").style.marginTop = "-150px";
-    } else if (slotcount == 11) {
-        document.getElementById("container").style.width = "900px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-450px";
-        document.getElementById("container").style.marginTop = "-150px";
-    } else if (slotcount == 12) {
+    } else if (slotcount == 11 || slotcount == 12) {
         document.getElementById("container").style.width = "900px";
         document.getElementById("container").style.height = "300px";
         document.getElementById("container").style.marginLeft = "-450px";
