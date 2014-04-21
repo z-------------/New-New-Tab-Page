@@ -341,6 +341,6 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 });
 window.onerror = function(){
-    alert("Something went wrong. Please refresh the page and report this error to the developer - zacharyguard@gmail.com");
+    alert("Something went wrong. Please refresh the page and report this error to the developer");
 }
-console.log("%cNew New Tab Page (C) 2014 Zachary Guard\nContribute to the NNTP open source project at http://2shrt.co.nf/?nntp-github","font-size:17px");
+console.log("%cNew New Tab Page (C) 2014 Zachary Guard","font-size:15px","\nContribute to the open source project at https://github.com/z-------------/New-New-Tab-Page");
