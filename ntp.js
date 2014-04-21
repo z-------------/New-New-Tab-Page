@@ -144,11 +144,11 @@ document.addEventListener("DOMContentLoaded",function(){
             _thisApp.setAttribute("id",window["slot"+(i+1)+"i"]);
             _thisApp.setAttribute("data-url",localStorage["slot"+(i+1)+"u"]);
         }
-        document.querySelector("#container").appendChild(_thisApp);
+        document.getElementById("container").appendChild(_thisApp);
     }
     
     if (localStorage.titletext) {
-        document.querySelector("#title").innerHTML = localStorage.titletext;
+        document.getElementById("title").innerHTML = localStorage.titletext;
     }
     
     document.getElementById("appbutton").onclick = function(){
@@ -185,15 +185,15 @@ document.addEventListener("DOMContentLoaded",function(){
         if (!optsopened) {
             document.getElementById("options").style.opacity = "1";
             document.getElementById("options").style.top = "50%";
-            for (var i=0;i<document.querySelectorAll(".app").length;i++) {
-                document.querySelectorAll(".app")[i].style.opacity = "0";
+            for (var i=0;i<document.getElementsByClassName("app").length;i++) {
+                document.getElementsByClassName("app")[i].style.opacity = "0";
             }
             optsopened = 1;
         } else {
             document.getElementById("options").style.opacity = "0";
             document.getElementById("options").style.top = "150%";
-            for (var i=0;i<document.querySelectorAll(".app").length;i++) {
-                document.querySelectorAll(".app")[i].style.opacity = "1";
+            for (var i=0;i<document.getElementsByClassName("app").length;i++) {
+                document.getElementsByClassName("app")[i].style.opacity = "1";
             }
             optsopened = 0;
         }
@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded",function(){
             },1)
         }
         for (i=0;i<keys.length;i++) {
-            var drawer = document.querySelector("#applist"),
+            var drawer = document.getElementById("applist"),
                 thisapplink = document.createElement("a");
             thisapplink.style.backgroundImage = "url(chrome://extension-icon/"+appsObject[keys[i]].id+"/128/0)";
             thisapplink.setAttribute("class","draweritem drawerapp");
@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded",function(){
                 chrome.bookmarks.search(this.value,getBookmarks);
             }
         }
-        document.querySelector("#bmsearch").onwebkitspeechchange = function(){
+        document.getElementById("bmsearch").onwebkitspeechchange = function(){
             chrome.bookmarks.search(this.value,getBookmarks);
         }
         if (localStorage.showAllBookmarks == "true") {
