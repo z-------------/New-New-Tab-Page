@@ -4,32 +4,32 @@
         <title>NNTP Options</title>
         <style>
             @font-face {
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 font-style: normal;
                 font-weight: 100;
-                src: local('Roboto Thin'), local('Roboto-Thin'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff) format('woff');
+                src: local("Roboto Thin"), local("Roboto-Thin"), url("fonts/roboto-thin.woff") format("woff");
             }
             @font-face {
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 font-style: normal;
                 font-weight: 400;
-                src: local('Roboto Regular'), local('Roboto-Regular'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/2UX7WLTfW3W8TclTUvlFyQ.woff) format('woff');
+                src: local("Roboto Regular"), local("Roboto-Regular"), url("fonts/roboto-regular.woff") format("woff");
             }
             @font-face {
-                font-family: 'Roboto';
+                font-family: "Roboto";
                 font-style: normal;
                 font-weight: 700;
-                src: local('Roboto Bold'), local('Roboto-Bold'), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+                src: local("Roboto Bold"), local("Roboto-Bold"), url("fonts/roboto-regular.woff") format("woff");
             }
             * {
-                font-family:Roboto;
+                font-family:"Roboto",sans-serif;
             }
             body,html {
                 padding:0;
                 margin:0;
                 width:100%;
                 height:100%;
-                background:rgba(0,0,0,.5);
+                background-color:rgba(0,0,0,.5);
                 text-align:left;
             }
             #title {
@@ -49,7 +49,7 @@
                 position:absolute;
                 top:50%;
                 left:50%;
-                margin:-130px 0 0 -216px;
+                margin:-140px 0 0 -216px;
                 width:432px;
             }
             .label {
@@ -61,7 +61,7 @@
                 text-align:center;
             }
             input[type=text] {
-                transition:all .2s;
+                transition:.2s;
                 width:140px;
                 padding:1px 5px;
             }
@@ -83,14 +83,14 @@
             }
             ::selection {
                 color:#fff;
-                background:rgba(0,0,0,.2);
+                background-color:rgba(0,0,0,.2);
             }
             input,select {
                 height:25px;
                 border:none;
-                background:rgba(255,255,255,.2);
+                background-color:rgba(255,255,255,.2);
                 box-shadow:none;
-                transition:all .2s;
+                transition:.2s;
                 font-size:12px;
                 margin:4px;
                 -webkit-appearance:none;
@@ -98,7 +98,7 @@
                 color:rgba(255,255,255,.6);
             }
             input:hover,select:hover,input:focus {
-                background:rgba(255,255,255,.3);
+                background-color:rgba(255,255,255,.3);
                 color:rgba(255,255,255,.7);
             }
             input:focus,select:focus {
@@ -123,7 +123,7 @@
                 height:15px;
                 width:15px;
                 border-radius:4px;
-                transition:all .2s;
+                transition:.2s;
                 cursor:pointer;
                 display:inline-block;
                 vertical-align:middle;

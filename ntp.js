@@ -78,33 +78,34 @@ document.addEventListener("DOMContentLoaded",function(){
     if (localStorage.bgblur == "true") {
         document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
     }
+    var container = document.getElementById("container");
     if (slotcount == 3) {
-        document.getElementById("container").style.width = "450px";
-        document.getElementById("container").style.marginLeft = "-225px";
+        container.style.width = "450px";
+        container.style.marginLeft = "-225px";
     } else if (slotcount == 4) {
-        document.getElementById("container").style.width = "600px";
-        document.getElementById("container").style.marginLeft = "-300px";
+        container.style.width = "600px";
+        container.style.marginLeft = "-300px";
     } else if (slotcount == 5) {
-        document.getElementById("container").style.width = "750px";
-        document.getElementById("container").style.marginLeft = "-375px";
+        container.style.width = "750px";
+        container.style.marginLeft = "-375px";
     } else if (slotcount == 6) {
-        document.getElementById("container").style.width = "900px";
-        document.getElementById("container").style.marginLeft = "-450px";
+        container.style.width = "900px";
+        container.style.marginLeft = "-450px";
     } else if (slotcount == 7 || slotcount == 8) {
-        document.getElementById("container").style.width = "600px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-300px";
-        document.getElementById("container").style.marginTop = "-150px";
+        container.style.width = "600px";
+        container.style.height = "300px";
+        container.style.marginLeft = "-300px";
+        container.style.marginTop = "-150px";
     } else if (slotcount == 9 || slotcount == 10) {
-        document.getElementById("container").style.width = "750px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-375px";
-        document.getElementById("container").style.marginTop = "-150px";
+        container.style.width = "750px";
+        container.style.height = "300px";
+        container.style.marginLeft = "-375px";
+        container.style.marginTop = "-150px";
     } else if (slotcount == 11 || slotcount == 12) {
-        document.getElementById("container").style.width = "900px";
-        document.getElementById("container").style.height = "300px";
-        document.getElementById("container").style.marginLeft = "-450px";
-        document.getElementById("container").style.marginTop = "-150px";
+        container.style.width = "900px";
+        container.style.height = "300px";
+        container.style.marginLeft = "-450px";
+        container.style.marginTop = "-150px";
     }
     if (localStorage.showWeather == "true") {
         document.getElementById("weatherprvw").style.display = "inline-block";

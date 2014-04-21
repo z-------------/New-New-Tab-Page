@@ -1,16 +1,16 @@
 @font-face {
-	font-family:Roboto;
+	font-family:"Roboto";
 	font-style:normal;
 	font-weight:100;
-	src:local('Roboto Thin'), local(Roboto-Thin), url(http://themes.googleusercontent.com/static/fonts/roboto/v9/vzIUHo9z-oJ4WgkpPOtg1_esZW2xOQ-xsNqO47m55DA.woff) format(woff);
+	src:local("Roboto Thin"), local("Roboto-Thin"), url("fonts/roboto-thin.woff") format("woff");
 }
 * {
 	color:#fff;
-	font-family:Roboto;
+	font-family:"Roboto",sans-serif;
 	overflow:hidden;
 }
 body,html {
-	background:#fff;
+	background-color:#fff;
 	height:100%;
 	margin:0;
 	overflow:hidden;
@@ -64,49 +64,49 @@ body,html {
 	-webkit-filter:brightness(.8);
 }
 #fb {
-	background:#3B559F url(img/fb.png) 0 -3px no-repeat;
+	background:#3B559F url("img/fb.png") 0 -3px no-repeat;
 }
 #gp {
-	background:#D64136 url(img/gp.png) 0 -3px no-repeat;
+	background:#D64136 url("img/gp.png") 0 -3px no-repeat;
 }
 #yt {
-	background:#E14D42 url(img/yt.png) 0 -3px no-repeat;
+	background:#E14D42 url("img/yt.png") 0 -3px no-repeat;
 }
 #ng {
-	background:#000 url(img/ng.png) 0 -3px no-repeat;
+	background:#000 url("img/ng.png") 0 -3px no-repeat;
 }
 #gm {
-	background:#E04C40 url(img/gm.png) 0 -3px no-repeat;
+	background:#E04C40 url("img/gm.png") 0 -3px no-repeat;
 }
 #rd {
-	background:#DEDEDE url(img/rd.png) 0 -3px no-repeat;
+	background:#DEDEDE url("img/rd.png") 0 -3px no-repeat;
 }
 #gg {
-	background:#4178EC url(img/gg.png) 0 -3px no-repeat;
+	background:#4178EC url("img/gg.png") 0 -3px no-repeat;
 }
 #yh {
-	background:#44019c url(img/yh.png) 0 -3px no-repeat;
+	background:#44019c url("img/yh.png") 0 -3px no-repeat;
 }
 #mt {
-	background:#000 url(img/mt.png) 0 -3px no-repeat;
+	background:#000 url("img/mt.png") 0 -3px no-repeat;
 }
 #gd {
-	background:#C4C4C4 url(img/gd.png) 0 -3px no-repeat;
+	background:#C4C4C4 url("img/gd.png") 0 -3px no-repeat;
 }
 #dg {
-	background:#fff url(img/dg.png) 0 -3px no-repeat;
+	background:#fff url("img/dg.png") 0 -3px no-repeat;
 }
 #vg {
-	background:#c4c4c4 url(img/vg.png) 0 -3px no-repeat;
+	background:#c4c4c4 url("img/vg.png") 0 -3px no-repeat;
 }
 #tw {
-	background:#1ab2e8 url(img/tw.png) 0 -3px no-repeat;
+	background:#1ab2e8 url("img/tw.png") 0 -3px no-repeat;
 }
 #pk {
-	background:#EE4055 url(img/pk.png) 0 -3px no-repeat;
+	background:#EE4055 url("img/pk.png") 0 -3px no-repeat;
 }
 #gk {
-	background:#f4b400 url(img/gk.png) 0 -3px no-repeat;
+	background:#f4b400 url("img/gk.png") 0 -3px no-repeat;
 }
 .cust {
 	background-position:center;
@@ -130,7 +130,7 @@ body,html {
 }
 #appbutton {
 	-webkit-filter:opacity(.7);
-	background:url(img/search.png);
+	background:url("img/search.png");
 	background-size:50px 50px;
 	bottom:20px;
 	cursor:pointer;
@@ -169,6 +169,7 @@ body,html {
 	transition:all .2s;
 	width:720px;
 	display:none;
+	line-height:1.15;
 }
 #search:focus {
 	background:rgba(255,255,255,.9);
@@ -176,7 +177,7 @@ body,html {
 }
 #close {
 	-webkit-filter:opacity(.7);
-	background:url(img/cross.png) center no-repeat;
+	background:url("img/cross.png") center no-repeat;
 	background-size:40px 40px;
 	cursor:pointer;
 	height:50px;
@@ -196,7 +197,7 @@ body,html {
 }
 #optionbutton {
 	-webkit-filter:opacity(.7);
-	background:url(img/options.png);
+	background:url("img/options.png");
 	background-size:50px 50px;
 	bottom:20px;
 	cursor:pointer;
@@ -225,21 +226,21 @@ body,html {
 	opacity:0;
 }
 #closeopts {
-        position:fixed;
-        top:20px;
-        right:20px;
-        height:35px;
-        width:35px;
+    position:fixed;
+    top:20px;
+    right:20px;
+    height:35px;
+    width:35px;
 	display:none;
-        background:url(img/cross.png) center no-repeat;
+    background:url("img/cross.png") center no-repeat;
 	background-size:35px 35px;
-        -webkit-filter:brightness(.7);
-        transition:all .2s;
+    -webkit-filter:brightness(.7);
+    transition:all .2s;
 	z-index:7;
 	cursor:pointer;
 }
 #closeopts:hover {
-        -webkit-filter:brightness(.5);
+    -webkit-filter:brightness(.5);
 }
 #weatherprvw {
 	-webkit-filter:opacity(.7);
@@ -284,7 +285,7 @@ body,html {
 }
 #fbmsg {
 	-webkit-filter:opacity(.7);
-	background:url(img/messenger.png) center no-repeat;
+	background:url("img/messenger.png") center no-repeat;
 	background-size:contain;
 	cursor:pointer;
 	height:50px;
@@ -298,7 +299,7 @@ body,html {
 }
 #fbnotif {
 	-webkit-filter:opacity(.7);
-	background:url(img/notifs.png) center no-repeat;
+	background:url("img/notifs.png") center no-repeat;
 	background-size:contain;
 	cursor:pointer;
 	height:50px;
@@ -342,7 +343,7 @@ body,html {
 }
 #appsicon {
 	-webkit-filter:opacity(.7);
-	background:url(img/apps.png) center no-repeat;
+	background:url("img/apps.png") center no-repeat;
 	cursor:pointer;
 	height:50px;
 	width:50px;
@@ -413,7 +414,7 @@ a {
 }
 #stumble {
 	-webkit-filter:opacity(.7);
-	background:url(img/stumble.png) center no-repeat;
+	background:url("img/stumble.png") center no-repeat;
 	background-size:contain;
 	cursor:pointer;
 	height:50px;
@@ -438,7 +439,7 @@ a {
 }
 #bookmarks {
 	-webkit-filter:opacity(.7);
-	background:url(img/bookmarks.png) center no-repeat;
+	background:url("img/bookmarks.png") center no-repeat;
 	cursor:pointer;
 	height:50px;
 	width:50px;
@@ -565,7 +566,7 @@ a {
 	cursor:pointer;
 	width:50px;
 	height:50px;
-	background-image:url(img/mic.png);
+	background-image:url("img/mic.png");
 	background-size:40px 40px;
 	background-position:center;
 	background-repeat:no-repeat;
