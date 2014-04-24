@@ -30,31 +30,23 @@ function getWeather(response) {
         document.getElementById("weatherprvw").setAttribute("style",document.getElementById("weatherprvw").getAttribute("style")+"opacity:1;");
     }
 }
-var slot1i = localStorage.slot1i || "fb",
-    slot1u = localStorage.slot1u || "http://www.facebook.com",
-    slot2i = localStorage.slot2i || "ng",
-    slot2u = localStorage.slot2u || "http://9gag.com",
-    slot3i = localStorage.slot3i || "yt",
-    slot3u = localStorage.slot3u || "http://www.youtube.com",
-    slot4i = localStorage.slot4i || "rd",
-    slot4u = localStorage.slot4u || "http://www.reddit.com",
-    slot5i = localStorage.slot5i || "gp",
-    slot5u = localStorage.slot5u || "https://plus.google.com",
-    slot6i = localStorage.slot6i || "gg",
-    slot6u = localStorage.slot6u || "https://www.google.com",
-    slot7i = localStorage.slot7i || "yh",
-    slot7u = localStorage.slot7u || "http://www.yahoo.com",
-    slot8i = localStorage.slot8i || "pk",
-    slot8u = localStorage.slot8u || "http://getpocket.com/a/queue/",
-    slot9i = localStorage.slot9i || "tw",
-    slot9u = localStorage.slot9u || "https://twitter.com",
-    slot10i = localStorage.slot10i || "gd",
-    slot10u = localStorage.slot10u || "https://drive.google.com",
-    slot11i = localStorage.slot11i || "gk",
-    slot11u = localStorage.slot11u || "https://drive.google.com/keep",
-    slot12i = localStorage.slot12i || "vg",
-    slot12u = localStorage.slot12u || "http://www.theverge.com",
-    slotcount = localStorage.slotcount || "3",
+
+var defaultSlots = [
+    ["fb","http://www.facebook.com"],
+    ["ng","http://9gag.com"],
+    ["yt","http://www.youtube.com"],
+    ["rd","http://www.reddit.com"],
+    ["gp","https://plus.google.com"],
+    ["gg","https://www.google.com"],
+    ["yh","http://www.yahoo.com"],
+    ["pk","http://getpocket.com/a/queue/"],
+    ["tw","https://twitter.com"],
+    ["gd","https://drive.google.com"],
+    ["gk","https://drive.google.com/keep"],
+    ["vg","http://www.theverge.com"]
+]
+
+var slotcount = localStorage.slotcount || "3",
     bgopt = localStorage.bgopt || "bg",
     bgblur = localStorage.bgblur || "false",
     showAppsDrawer = localStorage.showappdrawer || "true";
@@ -136,12 +128,15 @@ document.addEventListener("DOMContentLoaded",function(){
         _thisApp.addEventListener("click",function(){
             openIconURL(this);
         })
-        if (localStorage["slot"+(i+1)+"usec"] == "true") {
+        if (localStorage["slot"+(i+1)+"usec"] == "true") { // if custom app
             _thisApp.style.backgroundImage = "url("+localStorage["slot"+(i+1)+"ic"]+")";
             _thisApp.classList.add("cust");
             _thisApp.setAttribute("data-url",localStorage["slot"+(i+1)+"uc"]);
-        } else {
-            _thisApp.setAttribute("id",window["slot"+(i+1)+"i"]);
+        } else if (!localStorage["slot"+(i+1)+"i"]) { // not defined, go to defaults
+            _thisApp.setAttribute("id",defaultSlots[i][0]);
+            _thisApp.setAttribute("data-url",defaultSlots[i][1]);
+        } else { // normal app
+            _thisApp.setAttribute("id",localStorage["slot"+(i+1)+"i"]);
             _thisApp.setAttribute("data-url",localStorage["slot"+(i+1)+"u"]);
         }
         document.getElementById("container").appendChild(_thisApp);

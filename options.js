@@ -97,7 +97,7 @@ window.onload = function(){
     }
     recalcSelectsStyle();
     document.getElementById("resetdefaults").onclick = function(){
-        this.value = "Are you sure?";
+        this.value = "Click again to confirm";
         this.onclick = function(){
             localStorage.clear();
             localStorage.firstRun = "false";
