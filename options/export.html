@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Export/Import settings - NNTP</title>
+        <style>
+            * {
+                font-family:Roboto, sans-serif;
+            }
+            
+            body {
+                padding:20px 0 50px 50px;
+            }
+            
+            h2 {
+                margin-bottom:30px;
+            }
+            
+            textarea {
+                height:500px;
+                width:500px;
+                font-family:monospace;
+            }
+            
+            hr {
+                margin:30px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>New New Tab Page -  import/export settings</h2>
+        
+        <h3>Export</h3>
+        <textarea id="export" readonly></textarea>
+        <p>Copy and paste this text into the other computer's import box, which is below.</p>
+        
+        <hr>
+        
+        <h3>Import</h3>
+        <textarea id="import"></textarea>
+        <br>
+        <input type="button" value="Import" id="importb">
+        
+        <script src="export.js"></script>
+    </body>
+</html>

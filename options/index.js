@@ -104,8 +104,11 @@ window.onload = function(){
             window.top.location.reload();
         }
     }
+    document.getElementById("exportsettings").onclick = function(){
+        window.top.location = "export.html";
+    }
     document.getElementById("custiconslink").onclick = function(){
-        window.parent.location = "customicons.html";
+        window.top.location = "customicons.html";
     }
     document.getElementById("slotcount").onchange = recalcSelectsStyle;
     // version label next to title
