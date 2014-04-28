@@ -223,23 +223,45 @@ document.addEventListener("DOMContentLoaded",function(){
             document.getElementById("mostvis").style.display = "none";
         }
     }
+    
+    Array.prototype.vSort = function(sortKey,sortFunction) {
+        var array = this;
+        switch (sortFunction) {
+            case "number-asc":
+                return array.sort(function(a, b){
+                    return a[sortKey]-b[sortKey];
+                });
+                break;
+            case "number-desc":
+                return array.sort(function(a, b){
+                    return b[sortKey]-a[sortKey];
+                });
+                break;
+            case "alpha-desc":
+                return array.sort(function(a,b){
+                    if(a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) return 1;
+                    if(a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) return -1;
+                    return 0;
+                });
+                break;
+            default:
+                return array.sort(function(a,b){
+                    if(a[sortKey].toLowerCase() < b[sortKey].toLowerCase()) return -1;
+                    if(a[sortKey].toLowerCase() > b[sortKey].toLowerCase()) return 1;
+                    return 0;
+                });
+                break;
+        }
+    }
+    
     function getApps(res) {
-        appsObject = {};
+        /*appsObject = {};
         for (var i=0;i<res.length;i++){
-            if (res[i].type == "hosted_app" || res[i].type == "packaged_app") {
+            if (res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") {
                 appsObject[res[i].name] = {name:res[i].name,id:res[i].id,url:res[i].appLaunchUrl}
             }
         }
         keys = Object.keys(appsObject).sort();
-        window.onclick = function(){
-            setTimeout(function(){
-                if (window.location.hash.length > 1) {
-                    var appid = location.hash.substring(1,location.hash.length);
-                    chrome.management.launchApp(appid);
-                    location.hash = "";
-                }
-            },1)
-        }
         for (i=0;i<keys.length;i++) {
             var drawer = document.getElementById("applist"),
                 thisapplink = document.createElement("a");
@@ -248,6 +270,38 @@ document.addEventListener("DOMContentLoaded",function(){
             thisapplink.innerHTML = appsObject[keys[i]].name;
             thisapplink.href = "#"+appsObject[keys[i]].id;
             drawer.appendChild(thisapplink);
+        }*/
+        var appsArray = [];
+        for (i in res) {
+            if (res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") {
+                var appObject = {};
+                appObject.name = res[i].name;
+                appObject.id = res[i].id;
+                appObject.icon = "chrome://extension-icon/"+appObject.id+"/128/0";
+                appObject.clicks = parseInt(localStorage["app_clicks_"+appObject.id]) || 0;
+                
+                appsArray.push(appObject);
+            }
+        }
+        appsArray.vSort("clicks","number-desc");
+        
+        for (i=0;i<appsArray.length-1;i++) {
+            var drawer = document.getElementById("applist");
+            var _app = document.createElement("a");
+            _app.style.backgroundImage = "url("+appsArray[i].icon+")";
+            _app.classList.add("draweritem");
+            _app.classList.add("drawerapp");
+            _app.innerHTML = appsArray[i].name;
+            _app.setAttribute("data-app-id",appsArray[i].id);
+            _app.onclick = function(){
+                if (localStorage["app_clicks_"+this.getAttribute("data-app-id")]) {
+                    localStorage["app_clicks_"+this.getAttribute("data-app-id")]++;
+                } else {
+                    localStorage["app_clicks_"+this.getAttribute("data-app-id")] = 1;
+                }
+                chrome.management.launchApp(this.getAttribute("data-app-id"));
+            }
+            drawer.appendChild(_app);
         }
     }
     if (showAppsDrawer == "true") {
