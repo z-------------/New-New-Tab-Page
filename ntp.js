@@ -255,22 +255,6 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     
     function getApps(res) {
-        /*appsObject = {};
-        for (var i=0;i<res.length;i++){
-            if (res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") {
-                appsObject[res[i].name] = {name:res[i].name,id:res[i].id,url:res[i].appLaunchUrl}
-            }
-        }
-        keys = Object.keys(appsObject).sort();
-        for (i=0;i<keys.length;i++) {
-            var drawer = document.getElementById("applist"),
-                thisapplink = document.createElement("a");
-            thisapplink.style.backgroundImage = "url(chrome://extension-icon/"+appsObject[keys[i]].id+"/128/0)";
-            thisapplink.setAttribute("class","draweritem drawerapp");
-            thisapplink.innerHTML = appsObject[keys[i]].name;
-            thisapplink.href = "#"+appsObject[keys[i]].id;
-            drawer.appendChild(thisapplink);
-        }*/
         var appsArray = [];
         for (i in res) {
             if (res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") {
@@ -387,6 +371,43 @@ document.addEventListener("DOMContentLoaded",function(){
     window.onkeydown = function(e){
         if (e.which == 70 && !bmopened) {
             document.getElementById("appbutton").click();
+        }
+    }
+    var showNews = eval(localStorage.shownews) || false;
+    
+    if (showNews && navigator.onLine) {
+        var newsButton = document.getElementById("bbcnews");
+        newsButton.style.display = "inline-block";
+        var newsOpened = false;
+        
+        window.loadNews = function(res) {
+            var newsEntries = res.responseData.feed.entries;
+            for (i=0;i<newsEntries.length;i++) {
+                var newsItem = document.createElement("a");
+                newsItem.innerHTML = newsEntries[i].title;
+                newsItem.classList.add("news");
+                newsItem.href = newsEntries[i].link;
+                document.getElementById("newslist").appendChild(newsItem);
+            }
+        }
+        
+        // load bbc feed
+        var bbcjson = document.createElement("script");
+        bbcjson.src = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=loadNews&q=http://feeds.bbci.co.uk/news/rss.xml";
+        document.getElementsByTagName("head")[0].appendChild(bbcjson);
+        
+        newsButton.onclick = function(){
+            if (newsOpened) {
+                newsOpened = false;
+                
+                document.getElementById("newsdrawerframe").setAttribute("style","opacity:0;height:0;");
+                document.getElementById("newsarrow").setAttribute("style","opacity:0;");
+            } else {
+                newsOpened = true;
+                
+                document.getElementById("newsdrawerframe").setAttribute("style","opacity:1;height:450px;");
+                document.getElementById("newsarrow").setAttribute("style","opacity:1;");
+            }
         }
     }
 });
