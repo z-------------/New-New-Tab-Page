@@ -57,6 +57,7 @@ window.onload = function(){
     document.getElementById("disableanimation").checked = eval(localStorage.disableanimation) || false;
     document.getElementById("shownews").checked = eval(localStorage.shownews) || false;
     document.getElementById("titletext").value = localStorage.titletext || "New Tab";
+    document.getElementById("showtum").checked = eval(localStorage.showtum) || false;
     document.getElementById("save").onclick = function(){
         localStorage.slot1i = document.getElementById("slot1-i").value;
         localStorage.slot2i = document.getElementById("slot2-i").value;
@@ -94,6 +95,7 @@ window.onload = function(){
         localStorage.usefahrenheit = document.getElementById("usefahrenheit").checked;
         localStorage.disableanimation = document.getElementById("disableanimation").checked;
         localStorage.shownews = document.getElementById("shownews").checked;
+        localStorage.showtum = document.getElementById("showtum").checked;
         console.log("Saved options");
         window.top.location.reload();
     }

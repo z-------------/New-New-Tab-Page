@@ -652,3 +652,19 @@ a {
 	overflow:scroll;
 	height:calc(100% - 70px);
 }
+
+#tumpost {
+	-webkit-filter:opacity(.7);
+	background:url("img/tumpost.png") center no-repeat;
+	background-size:contain;
+	cursor:pointer;
+	height:50px;
+	transition:all .2s;
+	width:50px;
+	display:none;
+	margin:20px 10px 0 10px;
+}
+
+#tumpost:hover {
+	-webkit-filter:opacity(1);
+}

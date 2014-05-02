@@ -410,6 +410,18 @@ document.addEventListener("DOMContentLoaded",function(){
             }
         }
     }
+    
+    var showTum = eval(localStorage.showtum) || false;
+    
+    if (showTum) {
+        var tumbutton = document.getElementById("tumpost");
+        
+        tumbutton.style.display = "inline-block";
+        
+        tumbutton.onclick = function(){
+            chrome.windows.create({url:"https://www.tumblr.com/share/text",focused:true,type:"panel"});
+        }
+    }
 });
 window.onerror = function(){
     alert("Something went wrong. Please refresh the page and report this error to the developer");
