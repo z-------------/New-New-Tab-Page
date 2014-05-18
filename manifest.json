@@ -19,6 +19,7 @@
       "bookmarks"
    ],
    "background": {
-      "page": "newtab.html"
+      "page": "newtab.html",
+      "persistent": true
    }
 }

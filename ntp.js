@@ -178,18 +178,10 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     document.getElementById("optionbutton").onclick = function(){
         if (!optsopened) {
-            document.getElementById("options").style.opacity = "1";
-            document.getElementById("options").style.top = "50%";
-            for (var i=0;i<document.getElementsByClassName("app").length;i++) {
-                document.getElementsByClassName("app")[i].style.opacity = "0";
-            }
+            document.body.classList.add("optsopened");
             optsopened = 1;
         } else {
-            document.getElementById("options").style.opacity = "0";
-            document.getElementById("options").style.top = "150%";
-            for (var i=0;i<document.getElementsByClassName("app").length;i++) {
-                document.getElementsByClassName("app")[i].style.opacity = "1";
-            }
+            document.body.classList.remove("optsopened");
             optsopened = 0;
         }
     }
