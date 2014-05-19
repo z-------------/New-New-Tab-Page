@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded",function(){
         
         setTimeout(function(){
             document.getElementById("search").focus();
-        },500);
+        },200);
     }
     document.getElementById("close").onclick = function(){
         setTimeout(function(){
@@ -340,8 +340,10 @@ document.addEventListener("DOMContentLoaded",function(){
         document.getElementById("bookmarks").style.display = "block";
         document.getElementById("bookmarks").onclick = function(){
             if (!bmopened) {
-                document.getElementById("bmdrawerframe").setAttribute("style","opacity:1;height:450px;");
-                document.getElementById("bmarrow").setAttribute("style","opacity:1;");
+                document.getElementById("bmdrawerframe").style.opacity = "1";
+                document.getElementById("bmdrawerframe").style.height = "450px";
+                document.getElementById("bmarrow").style.opacity = "1";
+                
                 bmopened = 1;
                 if (appsopened) {
                     document.getElementById("appsicon").click();
@@ -349,8 +351,10 @@ document.addEventListener("DOMContentLoaded",function(){
                 }
                 setTimeout(function(){document.getElementById("bmsearch").focus()},200);
             } else if (bmopened) {
-                document.getElementById("bmdrawerframe").setAttribute("style","opacity:0;height:0;");
-                document.getElementById("bmarrow").setAttribute("style","opacity:0;");
+                document.getElementById("bmdrawerframe").style.opacity = "0";
+                document.getElementById("bmdrawerframe").style.height = "0";
+                document.getElementById("bmarrow").style.opacity = "0";
+                
                 bmopened = 0;
             }
         }
@@ -401,13 +405,15 @@ document.addEventListener("DOMContentLoaded",function(){
             if (newsOpened) {
                 newsOpened = false;
                 
-                document.getElementById("newsdrawerframe").setAttribute("style","opacity:0;height:0;");
-                document.getElementById("newsarrow").setAttribute("style","opacity:0;");
+                document.getElementById("newsdrawerframe").style.opacity = "0";
+                document.getElementById("newsdrawerframe").style.height = "0";
+                document.getElementById("newsarrow").style.opacity = "0";
             } else {
                 newsOpened = true;
                 
-                document.getElementById("newsdrawerframe").setAttribute("style","opacity:1;height:450px;");
-                document.getElementById("newsarrow").setAttribute("style","opacity:1;");
+                document.getElementById("newsdrawerframe").style.opacity = "1";
+                document.getElementById("newsdrawerframe").style.height = "450px";
+                document.getElementById("newsarrow").style.opacity = "1";
             }
         }
     }

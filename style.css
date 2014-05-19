@@ -9,8 +9,8 @@
     color: #fff;
     font-family: "Roboto",sans-serif;
     overflow: hidden;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1) !important;
-    transition-duration:.5s !important;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+    transition-duration:.2s !important;
 }
 
 body,html {
