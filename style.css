@@ -179,8 +179,8 @@ body,html {
     background: rgba(0,0,0,.5);
     height: 70px;
     left: 0;
-	top:100%;
     position: absolute;
+    top: 100%;
     transition: all .2s;
     width: 100%;
     z-index: 4;
@@ -708,16 +708,16 @@ a {
 }
 
 .optsopened *:not(#bg) {
-	opacity: 0;
+	opacity: 0 !important;
 }
 
 .optsopened #options {
-	opacity: 1;
+	opacity: 1 !important;
 	top: 0;
 }
 
 .optsopened #optionbutton {
-	opacity: 1;
+	opacity: 1 !important;
 	-webkit-transform: rotate(-180deg);
 }
 

@@ -86,4 +86,7 @@ document.getElementById("save").onclick = function(){
         localStorage["slot"+(i+1)+"usec"] = document.querySelectorAll("[type=checkbox]")[i].checked;
     }
     this.value = "Saved";
+    setTimeout(function(){
+        document.getElementById("save").value = "Save";
+    },1000);
 }

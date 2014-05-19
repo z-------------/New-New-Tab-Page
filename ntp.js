@@ -151,23 +151,30 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("appbutton").onclick = function(){
         document.getElementById("search").style.display = "block";
         document.getElementById("drawer").style.top = "calc(100% - 70px)";
-        this.setAttribute("style","opacity:0");
-        document.getElementById("optionbutton").setAttribute("style","opacity:0;");
-        document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:0;");
-        document.getElementById("appsicon").setAttribute("style",document.getElementById("appsicon").getAttribute("style")+"opacity:0;");
-        document.getElementById("drawerarrow").setAttribute("style","opacity:0;");
-        document.getElementById("bmarrow").setAttribute("style",document.getElementById("bmarrow").getAttribute("style")+"opacity:0;");
-        setTimeout(function(){document.getElementById("search").focus()},200);
+        
+        this.style.opacity = "0";
+        document.getElementById("optionbutton").style.opacity = "0";
+        document.getElementById("bookmarks").style.opacity = "0";
+        document.getElementById("appsicon").style.opacity = "0";
+        document.getElementById("drawerarrow").style.opacity = "0";
+        document.getElementById("bmarrow").style.opacity = "0";
+        
+        setTimeout(function(){
+            document.getElementById("search").focus();
+        },500);
     }
     document.getElementById("close").onclick = function(){
-        setTimeout(function(){document.getElementById("search").style.display = "none"},200);
+        setTimeout(function(){
+            document.getElementById("search").style.display = "none";
+        },500);
         document.getElementById("drawer").style.top = "100%";
-        document.getElementById("appbutton").setAttribute("style","opacity:1;");
-        document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:1;");
-        document.getElementById("appsicon").setAttribute("style",document.getElementById("appsicon").getAttribute("style")+"opacity:1;");
-        document.getElementById("optionbutton").setAttribute("style","opacity:1;");
-        document.getElementById("drawerarrow").setAttribute("style","opacity:1;");
-        document.getElementById("bmarrow").setAttribute("style",document.getElementById("bmarrow").getAttribute("style")+"opacity:1;");
+        document.getElementById("appbutton").style.opacity = "1";
+        document.getElementById("bookmarks").style.opacity = "1";
+        document.getElementById("appsicon").style.opacity = "1";
+        
+        document.getElementById("optionbutton").style.opacity = "1";
+        document.getElementById("drawerarrow").style.opacity = "1";
+        document.getElementById("bmarrow").style.opacity = "1";
         document.getElementById("search").value = "";
     }
     document.getElementById("search").onkeydown = function(e){
@@ -416,6 +423,10 @@ document.addEventListener("DOMContentLoaded",function(){
             chrome.windows.create({url:"https://www.tumblr.com/share/text",focused:true,type:"panel"});
         }
     }
+    
+    setInterval(function(){
+        window.scrollTo(0,0);
+    },100);
 });
 window.onerror = function(){
     alert("Something went wrong. Please refresh the page and report this error to the developer");
