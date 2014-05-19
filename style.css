@@ -179,8 +179,8 @@ body,html {
     background: rgba(0,0,0,.5);
     height: 70px;
     left: 0;
+	top:100%;
     position: absolute;
-    bottom: -70px;
     transition: all .2s;
     width: 100%;
     z-index: 4;
@@ -257,7 +257,6 @@ body,html {
     height: 100%;
     z-index: 6;
     border: none;
-    -webkit-filter: opacity(.9);
     transition: all .2s;
     margin: 0;
     opacity: 0;
@@ -629,50 +628,6 @@ a {
     padding: 0 0 10px 0;
 }
 
-#updatemsg {
-    height: 22px;
-    position: fixed;
-    left: 90px;
-    bottom: 20px;
-    background: rgba(0,0,0,.5);
-    border-radius: 10px;
-    opacity: 0;
-    z-index: 3;
-    transition: all 1s;
-    padding: 15px 10px 13px 10px;
-}
-
-#updatearrow {
-    position: fixed;
-    left: 80px;
-    bottom: 35px;
-    z-index: 3;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 10px solid rgba(0,0,0,.5);
-    transition: all 1s;
-}
-
-#search::-webkit-input-speech-button {
-    -webkit-appearance: none;
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    background-image: url("img/mic.png");
-    background-size: 40px 40px;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all .2s;
-    opacity: .4;
-}
-
-#search::-webkit-input-speech-button:hover {
-    opacity: .7;
-}
-
 .drawerapp {
     display: inline-block;
     margin: 0 15px 0 15px;
@@ -719,10 +674,8 @@ a {
     text-align: left;
     transition: all .1s;
     cursor: pointer;
-	/*white-space:nowrap;*/
     padding: 7px !important;
     width: calc(100% - 44px) !important;
-	/*height:20px !important;*/
     background-size: 16px 16px;
     background-position: 4px;
     display: block;
@@ -766,4 +719,8 @@ a {
 .optsopened #optionbutton {
 	opacity: 1;
 	-webkit-transform: rotate(-180deg);
+}
+
+.optsopened #bg {
+	-webkit-filter: brightness(0.5);
 }

@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>Custom app tiles - NNTP</title>
-        <script src="customicons.js"></script>
         <style>
             * {
                 font-family:Roboto, sans-serif;
+            }
+            *:focus {
+                outline:none;
             }
             body {
                 padding:20px 0 0 50px;
@@ -23,95 +25,111 @@
             input[type=button] {
                 cursor:pointer;
             }
+            
+            strong {
+                margin-left:15px;
+            }
+            
+            .move {
+                -webkit-appearance:none;
+                border:solid 1px lightgrey;
+                background:transparent;
+                margin:0;
+                padding:0;
+            }
         </style>
     </head>
     <body>
         <h2>New New Tab Page -  custom icons</h2>
         <form>
             <!-- 1 -->
-            <strong>1.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot1usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>1.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot1usec"><br>
+            
             <!-- 2 -->
-            <strong>2.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot2usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>2.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot2usec"><br>
+            
             <!-- 3 -->
-            <strong>3.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot3usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>3.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot3usec"><br>
+            
             <!-- 4 -->
-            <strong>4.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot4usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>4.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot4usec"><br>
+            
             <!-- 5 -->
-            <strong>5.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot5usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>5.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot5usec"><br>
+            
             <!-- 6 -->
-            <strong>6.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot6usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>6.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot6usec"><br>
+            
             <!-- 7 -->
-            <strong>7.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot7usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>7.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot7usec"><br>
+            
             <!-- 8 -->
-            <strong>8.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot8usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>8.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot8usec"><br>
+            
             <!-- 9 -->
-            <strong>9.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot9usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>9.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot9usec"><br>
+            
             <!-- 10 -->
-            <strong>10.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot10usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>10.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot10usec"><br>
+            
             <!-- 11 -->
-            <strong>11.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot11usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>11.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot11usec"><br>
+            
             <!-- 12 -->
-            <strong>12.</strong>Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
-            <select id="slot12usec">
-                <option value="true">Use</option>
-                <option value="false">Don't use</option>
-            </select>
-            <input type="button" class="save" value="Save"><br>
+            <input type="button" value="&#x25B2;" class="move up">
+            <input type="button" value="&#x25BC;" class="move down">
+            <strong>12.</strong>
+            Url<input type="text" class="url" placeholder="http://">Icon<input type="text" class="ico" placeholder="http://">
+            <input type="checkbox" id="slot12usec"><br>
+                
+            <input type="button" id="save" value="Save">
+            
         </form>
+        
+        <script src="customicons.js"></script>
     </body>
 </html>

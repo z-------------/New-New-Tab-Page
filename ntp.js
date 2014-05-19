@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded",function(){
         document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
     }
     var container = document.getElementById("container");
+    
     if (slotcount == 3) {
         container.style.width = "450px";
         container.style.marginLeft = "-225px";
@@ -99,6 +100,7 @@ document.addEventListener("DOMContentLoaded",function(){
         container.style.marginLeft = "-450px";
         container.style.marginTop = "-150px";
     }
+    
     if (localStorage.showWeather == "true") {
         document.getElementById("weatherprvw").style.display = "inline-block";
         document.body.innerHTML = document.body.innerHTML + "<iframe id=weatherframe src=weather.html></iframe>";
@@ -148,7 +150,7 @@ document.addEventListener("DOMContentLoaded",function(){
     
     document.getElementById("appbutton").onclick = function(){
         document.getElementById("search").style.display = "block";
-        document.getElementById("drawer").style.bottom = "0";
+        document.getElementById("drawer").style.top = "calc(100% - 70px)";
         this.setAttribute("style","opacity:0");
         document.getElementById("optionbutton").setAttribute("style","opacity:0;");
         document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:0;");
@@ -159,7 +161,7 @@ document.addEventListener("DOMContentLoaded",function(){
     }
     document.getElementById("close").onclick = function(){
         setTimeout(function(){document.getElementById("search").style.display = "none"},200);
-        document.getElementById("drawer").style.bottom = "-70px";
+        document.getElementById("drawer").style.top = "100%";
         document.getElementById("appbutton").setAttribute("style","opacity:1;");
         document.getElementById("bookmarks").setAttribute("style",document.getElementById("bookmarks").getAttribute("style")+"opacity:1;");
         document.getElementById("appsicon").setAttribute("style",document.getElementById("appsicon").getAttribute("style")+"opacity:1;");
