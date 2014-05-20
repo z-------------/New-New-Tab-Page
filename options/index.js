@@ -61,7 +61,7 @@ document.getElementById("shownews").checked = eval(localStorage.shownews) || fal
 document.getElementById("titletext").value = localStorage.titletext || "New Tab";
 document.getElementById("showtum").checked = eval(localStorage.showtum) || false;
 
-bgPreview.style.backgroundImage = localStorage.backgroundURL || "url(chrome-extension://jkfeepbgiccmoeolpnmlhehlflellidk/img/bg.png)";
+bgPreview.style.backgroundImage = localStorage.backgroundURL || "url(/img/bg.png)";
 
 document.getElementById("save").onclick = function(){
     localStorage.slot1i = document.getElementById("slot1-i").value;
@@ -123,9 +123,9 @@ document.querySelector("#vno").innerHTML = "v" + chrome.app.getDetails().version
 // background preview
 bgPresetsSelect.onclick = bgPresetsSelect.onchange = function(){
     if (this.value == "bg") {
-        bgPreview.style.backgroundImage = "url(chrome-extension://jkfeepbgiccmoeolpnmlhehlflellidk/img/bg.png)";
+        bgPreview.style.backgroundImage = "url(/img/bg.png)";
     } else if (this.value == "bg2") {
-        bgPreview.style.backgroundImage = "url(chrome-extension://jkfeepbgiccmoeolpnmlhehlflellidk/img/bg2.png)";
+        bgPreview.style.backgroundImage = "url(/img/bg2.png)";
     }
 }
 

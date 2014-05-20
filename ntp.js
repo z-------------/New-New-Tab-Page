@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded",function(){
         window.location = "welcome.html";
     }
     
-    document.getElementById("bg").style.backgroundImage = localStorage.backgroundURL || "url(chrome-extension://jkfeepbgiccmoeolpnmlhehlflellidk/img/bg.png)";
+    document.getElementById("bg").style.backgroundImage = localStorage.backgroundURL || "url(/img/bg.png)";
     
     if (localStorage.bgblur == "true") {
         document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
