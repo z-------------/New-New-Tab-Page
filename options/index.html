@@ -77,7 +77,10 @@
                 z-index:2;
             }
             #save {
-                font-weight:700;
+                font-weight:100;
+                font-size:17px;
+                padding:15px 20px;
+                height:auto;
             }
             ::selection {
                 color:#fff;
@@ -436,11 +439,13 @@
             <input type="checkbox" id="shownews">
             <span class="label">Tumblr</span>
             <input type="checkbox" id="showtum">
+                
+            <h2>Advanced</h2>
+            <input type="button" value="Export/Import settings" id="exportsettings">
+            <input type="button" value="Reset to defaults" id="resetdefaults" style="background-color:rgb(200,50,50)">
         </form>
         <div id="bottomright">
             <input type="button" id="save" value="Save" style="background-color:rgb(0,120,50)">
-            <input type="button" value="Export/Import settings" id="exportsettings">
-            <input type="button" value="Reset to defaults" id="resetdefaults">
         </div>
         
         <script src="index.js"></script>
