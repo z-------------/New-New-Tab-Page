@@ -720,7 +720,3 @@ a {
 	opacity: 1 !important;
 	-webkit-transform: rotate(-180deg);
 }
-
-.optsopened #bg {
-	-webkit-filter: brightness(0.5);
-}

@@ -21,35 +21,25 @@
                 font-weight: 700;
                 src: local("Roboto Bold"), local("Roboto-Bold"), url("/fonts/roboto-regular.woff") format("woff");
             }
-            * {
+            *,input[type=file]::-webkit-file-upload-button {
                 font-family:"Roboto",sans-serif;
             }
             body,html {
                 padding:0;
                 margin:0;
                 width:100%;
-                height:100%;
                 background-color:transparent;
                 text-align:left;
             }
-            #title {
-                font-size:50px;
+            h2 {
                 font-weight:100;
-                color:#eee;
-                position:fixed;
-                top:20px;
-                width:100%;
-                z-index:2;
-                text-align:center;
+                margin-bottom:10px;
             }
             form {
                 font-size:20px;
                 font-weight:400;
                 color:rgba(255,255,255,.5);
-                position:absolute;
-                top:50%;
-                left:50%;
-                margin:-140px 0 0 -216px;
+                margin:100px auto;
                 width:432px;
             }
             .label {
@@ -69,6 +59,11 @@
                 color:rgba(255,255,255,.5);
                 font-size:15px;
                 font-style:italic;
+                font-weight:100;
+                position:fixed;
+                top:0;
+                left:0;
+                margin:20px;
             }
             #bottomright {
                 position:fixed;
@@ -85,7 +80,7 @@
                 color:#fff;
                 background-color:rgba(0,0,0,.2);
             }
-            input,select {
+            input,select,input[type=file]::-webkit-file-upload-button {
                 height:25px;
                 border:none;
                 background-color:rgba(255,255,255,.2);
@@ -97,11 +92,11 @@
                 border-radius:4px;
                 color:rgba(255,255,255,.6);
             }
-            input:hover,select:hover,input:focus {
+            input:hover,select:hover,input:focus,input[type=file]::-webkit-file-upload-button:focus {
                 background-color:rgba(255,255,255,.3);
                 color:rgba(255,255,255,.7);
             }
-            input:focus,select:focus {
+            input:focus,select:focus,input[type=file]::-webkit-file-upload-button:focus {
                 outline:none;
             }
             select {
@@ -158,12 +153,27 @@
             input[type=checkbox]:hover {
                 box-shadow:inset 0 0 0 2px rgba(255,255,255,.4);
             }
+            
+            #bgpreview {
+                height:200px;
+                width:300px;
+                margin:10px;
+                border-radius:4px;
+                
+                background-color:rgba(255,255,255,.5);
+                background-size:cover;
+                background-position:center;
+            }
+            
+            input[type=file] {
+                background:transparent;
+            }
         </style>
-        <script src="index.js"></script>
     </head>
     <body>
-        <div id="title">New New Tab Page<span id="vno"></span></div>
+        <span id="vno"></span>
         <form>
+            <h2>Apps</h2>
             <div id="slotselects">
                 <span class="label">1</span>
                 <select id="slot1-i">
@@ -372,20 +382,33 @@
             </div>
             <span class="label">No. of Apps</span>
             <input id="slotcount" type="number" min="3" max="12">
-            <input type="button" value="Custom icons" id="custiconslink">
+            <input type="button" value="Custom apps" id="custiconslink">
             <span class="label">Disable animation</span>
             <input type="checkbox" id="disableanimation">
-            <br>
+                
+            <!-- background section -->    
+                
+            <h2>Background</h2>
             <span class="label">Preset backgrounds</span>
             <select id="bgopt">
                 <option value="bg">KitKat Mountains</option>
                 <option value="bg2">KitKat Abstract</option>
             </select><br>
-            <span class="label">Custom background</span>
-            <input type="checkbox" id="usecustombg">
-            <input type="text" id="custombg" placeholder="URL" class="longinput">
+            
+            <span class="label">URL</span>
+            <input type="text" id="custombg" placeholder="http://"><br>
+                
+            <span class="label">Local file</span>
+            <input type="file" id="bglocal">
+                
+            <div id="bgpreview"></div>
+            
             <span class="label">Blur</span>
-            <input type="checkbox" id="bgblur"><br>
+            <input type="checkbox" id="bgblur">
+                
+            <!-- end background section -->
+                
+            <h2>Widgets</h2>
             <span class="label">Weather</span>
             <input type="checkbox" id="showWeather">
             <input type="text" id="weathercity" placeholder="City">
@@ -416,5 +439,7 @@
             <input type="button" value="Export/Import settings" id="exportsettings">
             <input type="button" value="Reset to defaults" id="resetdefaults">
         </div>
+        
+        <script src="index.js"></script>
     </body>
 </html>

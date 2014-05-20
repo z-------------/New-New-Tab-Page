@@ -47,7 +47,6 @@ var defaultSlots = [
 ]
 
 var slotcount = localStorage.slotcount || "3",
-    bgopt = localStorage.bgopt || "bg",
     bgblur = localStorage.bgblur || "false",
     showAppsDrawer = localStorage.showappdrawer || "true";
     if (localStorage.topsitecount == null) {
@@ -62,11 +61,9 @@ document.addEventListener("DOMContentLoaded",function(){
     if (localStorage.firstRun != "false") {
         window.location = "welcome.html";
     }
-    if (localStorage.usecustombg !== "true") {
-        document.getElementById("bg").style.backgroundImage = "url(img/"+bgopt+".png)";
-    } else {
-        document.getElementById("bg").style.backgroundImage = "url("+localStorage.custombg+")";
-    }
+    
+    document.getElementById("bg").style.backgroundImage = localStorage.backgroundURL || "url(chrome-extension://jkfeepbgiccmoeolpnmlhehlflellidk/img/bg.png)";
+    
     if (localStorage.bgblur == "true") {
         document.getElementById("bg").setAttribute("style",document.getElementById("bg").getAttribute("style")+"-webkit-filter:blur(20px)");
     }
