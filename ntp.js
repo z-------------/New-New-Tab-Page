@@ -282,7 +282,9 @@ document.addEventListener("DOMContentLoaded",function(){
                     localStorage["app_clicks_"+this.getAttribute("data-app-id")] = 1;
                 }
                 chrome.management.launchApp(this.getAttribute("data-app-id"));
-                window.close();
+                if (localStorage.autoclose != "false") {
+                    window.close();
+                }
             }
             drawer.appendChild(_app);
         }

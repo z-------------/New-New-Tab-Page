@@ -413,8 +413,18 @@
             <input type="checkbox" id="bgblur">
                 
             <!-- end background section -->
+            
+            <h2>Bookmarks & App Drawer</h2>
+            <span class="label">No. of top sites</span>
+            <input type="number" id="topsitecount" min="0" max="20">
+            <span class="label">Close tab after launching app</span>
+            <input type="checkbox" id="autoclose"><br>
+            <span class="label">Enable bookmarks</span>
+            <input type="checkbox" id="showbookmarks">
+            <span class="label">List all bookmarks</span>
+            <input type="checkbox" id="showallbookmarks"><br>
                 
-            <h2>Widgets</h2>
+            <h2>Other</h2>
             <span class="label">Weather</span>
             <input type="checkbox" id="showWeather">
             <input type="text" id="weathercity" placeholder="City">
@@ -427,12 +437,6 @@
             <input type="checkbox" id="shownotif">
             <span class="label">StumbleUpon icon</span>
             <input type="checkbox" id="showstumble">
-            <span class="label">No. of top sites</span>
-            <input type="number" id="topsitecount" min="0" max="20">
-            <span class="label">Bookmarks</span>
-            <input type="checkbox" id="showbookmarks">
-            <span class="label">List all bookmarks</span>
-            <input type="checkbox" id="showallbookmarks"><br>
             <span class="label">New Tab title text</span>
             <input type="text" id="titletext" value="New Tab" placeholder="New Tab">
             <span class="label">News</span>
@@ -441,13 +445,14 @@
             <input type="checkbox" id="showtum">
                 
             <h2>Advanced</h2>
-            <input type="button" value="Export/Import settings" id="exportsettings">
+            <input type="button" value="Settings export/import" id="exportsettings">
             <input type="button" value="Reset to defaults" id="resetdefaults" style="background-color:rgb(200,50,50)">
+                
         </form>
         <div id="bottomright">
             <input type="button" id="save" value="Save" style="background-color:rgb(0,120,50)">
         </div>
         
-        <script src="index.js"></script>
+        <script src="index.js" async></script>
     </body>
 </html>

@@ -61,6 +61,8 @@ document.getElementById("shownews").checked = eval(localStorage.shownews) || fal
 document.getElementById("titletext").value = localStorage.titletext || "New Tab";
 document.getElementById("showtum").checked = eval(localStorage.showtum) || false;
 
+eval(localStorage.autoclose) == false ? document.getElementById("autoclose").checked = false : document.getElementById("autoclose").checked = true;
+
 bgPreview.style.backgroundImage = localStorage.backgroundURL || "url(/img/bg.png)";
 
 document.getElementById("save").onclick = function(){
@@ -94,6 +96,7 @@ document.getElementById("save").onclick = function(){
     localStorage.disableanimation = document.getElementById("disableanimation").checked;
     localStorage.shownews = document.getElementById("shownews").checked;
     localStorage.showtum = document.getElementById("showtum").checked;
+    localStorage.autoclose = document.getElementById("autoclose").checked;
     
     localStorage.backgroundURL = bgPreview.style.backgroundImage;
     
