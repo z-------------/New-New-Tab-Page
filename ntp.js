@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded",function(){
     function getApps(res) {
         var appsArray = [];
         for (i in res) {
-            if (res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") {
+            if ((res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") && res[i].enabled == true) {
                 var appObject = {};
                 appObject.name = res[i].name;
                 appObject.id = res[i].id;
@@ -436,4 +436,10 @@ document.addEventListener("DOMContentLoaded",function(){
 window.onerror = function(){
     alert("Something went wrong. Please refresh the page and report this error to the developer");
 }
-console.log("%cNew New Tab Page (C) 2014 Zachary Guard","font-size:15px","\nContribute to the open source project at https://github.com/z-------------/New-New-Tab-Page");
+console.log("\n\
+8b  8                     8b  8                     88888      8       888b.                 \n\
+8Ybm8 .d88b Yb  db  dP    8Ybm8 .d88b Yb  db  dP      8   .d88 88b.    8  .8 .d88 .d88 .d88b \n\
+8  \"8 8.dP'  YbdPYbdP     8  \"8 8.dP'  YbdPYbdP       8   8  8 8  8    8wwP' 8  8 8  8 8.dP' \n\
+8   8 `Y88P   YP  YP      8   8 `Y88P   YP  YP        8   `Y88 88P'    8     `Y88 `Y88 `Y88P \n\
+                                                                                  wwdP       ",
+"\n(C) 2014 Zachary Guard","\nContribute to the open source project at https://github.com/z-------------/New-New-Tab-Page");
