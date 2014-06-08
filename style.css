@@ -13,6 +13,12 @@
     transition-duration:.2s !important;
 }
 
+@-webkit-keyframes weatherFlash {
+	0% {opacity:.5}
+	50% {opacity:1}
+	100% {opacity:.5}
+}
+
 body,html {
     background-color: #fff;
     height: 100%;
@@ -158,7 +164,7 @@ body,html {
 }
 
 #appbutton {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/search.png");
     background-size: 50px 50px;
     bottom: 20px;
@@ -172,7 +178,7 @@ body,html {
 }
 
 #appbutton:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #drawer {
@@ -210,7 +216,7 @@ body,html {
 }
 
 #close {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/cross.png") center no-repeat;
     background-size: 40px 40px;
     cursor: pointer;
@@ -225,7 +231,7 @@ body,html {
 }
 
 #close:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 ::-webkit-input-placeholder {
@@ -233,7 +239,7 @@ body,html {
 }
 
 #optionbutton {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/options.png");
     background-size: 50px 50px;
     bottom: 20px;
@@ -247,7 +253,7 @@ body,html {
 }
 
 #optionbutton:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #options {
@@ -283,7 +289,7 @@ body,html {
 }
 
 #weatherprvw {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -298,7 +304,7 @@ body,html {
 }
 
 #weatherprvw:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #weatherframe {
@@ -328,7 +334,7 @@ body,html {
 }
 
 #fbmsg {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/messenger.png") center no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -340,11 +346,11 @@ body,html {
 }
 
 #fbmsg:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #fbnotif {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/notifs.png") center no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -356,11 +362,11 @@ body,html {
 }
 
 #fbnotif:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #bbcnews {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/news.png") center no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -372,7 +378,7 @@ body,html {
 }
 
 #bbcnews:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #appdrawerframe {
@@ -409,7 +415,7 @@ body,html {
 }
 
 #appsicon {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/apps.png") center no-repeat;
     cursor: pointer;
     height: 50px;
@@ -423,7 +429,7 @@ body,html {
 }
 
 #appsicon:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 .drawerti {
@@ -490,7 +496,7 @@ a {
 }
 
 #stumble {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/stumble.png") center no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -502,7 +508,7 @@ a {
 }
 
 #stumble:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #sidewipe {
@@ -518,7 +524,7 @@ a {
 }
 
 #bookmarks {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/bookmarks.png") center no-repeat;
     cursor: pointer;
     height: 50px;
@@ -532,7 +538,7 @@ a {
 }
 
 #bookmarks:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 #bmdrawerframe {
@@ -692,7 +698,7 @@ a {
 }
 
 #tumpost {
-    -webkit-filter: opacity(.7);
+    opacity: .7;
     background: url("img/tumpost.png") center no-repeat;
     background-size: contain;
     cursor: pointer;
@@ -704,7 +710,7 @@ a {
 }
 
 #tumpost:hover {
-    -webkit-filter: opacity(1);
+    opacity: 1;
 }
 
 .optsopened *:not(#bg) {
@@ -712,12 +718,12 @@ a {
 }
 
 .optsopened #options {
-	opacity: 1 !important;
+	opacity: .7 !important;
 	top: 0;
 }
 
 .optsopened #optionbutton {
-	opacity: 1 !important;
+	opacity: .7 !important;
 	-webkit-transform: rotate(-180deg);
 }
 

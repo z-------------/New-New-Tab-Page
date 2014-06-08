@@ -38,8 +38,6 @@ var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fse
 
 var weatherCity = localStorage.weather_city.toLowerCase();
 
-var imgElement = document.querySelector("#hk_warning");
-
 if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
     xhr(url,function(r){ // load the url thru my xhr function
         r = JSON.parse(r); // turn string into object so we can read it
@@ -48,8 +46,14 @@ if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
             var title = entries[i].title.toLowerCase(); // shortcut to title
             title = title.substring(0,title.indexOf(" issued"));
             if (title in textIconMap) {
+                var imgElement = document.createElement("img");
+                imgElement.classList.add("hk_warning");
                 imgElement.src = "/img/hko/" + textIconMap[title];
-                imgE.style.display = "block";
+                imgElement.onclick = function(){
+                    window.top.location = "http://www.hko.gov.hk/contente.htm";
+                }
+                document.querySelector("#warning_container").appendChild(imgElement);
+                window.top.startFlashing();
             }
         }
     })

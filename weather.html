@@ -70,14 +70,21 @@
                 display:none;
             }
             
-            #hk_warning {
-                position:absolute;
-                left:0;
-                top:0;
+            .hk_warning {
                 margin:20px;
+                margin-right:0;
                 height:50px;
                 width:50px;
-                display:none;
+                cursor:pointer;
+                float:left;
+                display:inline-block;
+            }
+            
+            #warning_container {
+                position:absolute;
+                top:0;
+                left:0;
+                z-index:3;
             }
         </style>
     </head>
@@ -87,7 +94,7 @@
             <div id="icon"></div>
             <div id="temp"></div>
         </div>
-        <img id="hk_warning">
+        <div id="warning_container"></div>
             
         <script src="hk-warnings.js"></script>
     </body>
