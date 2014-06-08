@@ -15,9 +15,12 @@ icons = {
     fog: "img/weather/fog.png"
 }
 
+var lastChecked = 0;
+
 var useF = eval(localStorage.usefahrenheit);
 function getWeather(response) {
     if (response) {
+        localStorage.last_weather = JSON.stringify(response);
         var weather = response.current_observation.weather, temp;
         if (useF == true) {
             temp = response.current_observation.temp_f;
@@ -63,12 +66,21 @@ function getWeather(response) {
                 window.location = "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=" + encodeURI(city);
             }
         }
-        window.parent.getWeather("haha");
+        window.parent.getWeather();
     }
 }
 if (localStorage.weather_city) {
     var city = localStorage.weather_city;
 }
-var script = document.createElement("script");
-script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/q/" + city + ".json?callback=getWeather";
-document.getElementsByTagName("head")[0].appendChild(script);
+if (localStorage.last_checked) {
+    lastChecked = localStorage.last_checked;
+}
+
+if (new Date().getTime() - lastChecked >= 900000) { // 15 minutes
+    var script = document.createElement("script");
+    script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/q/" + city + ".json?callback=getWeather";
+    document.getElementsByTagName("head")[0].appendChild(script);
+    localStorage.last_checked = new Date().getTime();
+} else {
+    getWeather(JSON.parse(localStorage.last_weather));
+}

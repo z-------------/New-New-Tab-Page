@@ -6,29 +6,28 @@ var weatheropened = 0,
     appsopened = 0,
     bmopened = 0,
     optsopened = 0;
+    
 function getWeather(response) {
-    if(response) {
-        var weather = window.top.iconWea;
-        if (weather == "Clear" && time.getHours() < 18 && time.getHours() >= 6) {
-            icon = "sunny";
-        } else if (weather == "Clear") {
-            icon = "moon";
-        } else if (weather.indexOf("Storm") > -1 || weather.indexOf("storm") > -1) {
-            icon = "storm";
-        } else if (weather.indexOf("Rain") > -1 || weather.indexOf("Shower") > -1 || weather.indexOf("Drizzle") > -1){
-            icon = "rain";
-        } else if (weather.indexOf("Fog") > -1 || weather.indexOf("Haz") > -1 || weather.indexOf("Part") > -1) {
-            icon = "fog";
-        } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
-            icon = "cloudy";
-        } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
-            icon = "snow";
-        } else {
-            icon = "sunny";
-        }
-        document.getElementById("weatherprvw").style.backgroundImage = "url(img/weather/"+icon+".png)";
-        document.getElementById("weatherprvw").setAttribute("style",document.getElementById("weatherprvw").getAttribute("style")+"opacity:1;");
+    var weather = window.top.iconWea;
+    if (weather == "Clear" && time.getHours() < 18 && time.getHours() >= 6) {
+        icon = "sunny";
+    } else if (weather == "Clear") {
+        icon = "moon";
+    } else if (weather.indexOf("Storm") > -1 || weather.indexOf("storm") > -1) {
+        icon = "storm";
+    } else if (weather.indexOf("Rain") > -1 || weather.indexOf("Shower") > -1 || weather.indexOf("Drizzle") > -1){
+        icon = "rain";
+    } else if (weather.indexOf("Fog") > -1 || weather.indexOf("Haz") > -1 || weather.indexOf("Part") > -1) {
+        icon = "fog";
+    } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
+        icon = "cloudy";
+    } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
+        icon = "snow";
+    } else {
+        icon = "sunny";
     }
+    document.getElementById("weatherprvw").style.backgroundImage = "url(img/weather/"+icon+".png)";
+    document.getElementById("weatherprvw").setAttribute("style",document.getElementById("weatherprvw").getAttribute("style")+"opacity:1;");
 }
 
 var defaultSlots = [
