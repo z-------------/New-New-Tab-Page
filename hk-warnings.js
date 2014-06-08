@@ -46,10 +46,10 @@ if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
         var entries = r.responseData.feed.entries; // shortcut to entries array
         for(i=0; i<entries.length; i++) { // for each element of entries
             var title = entries[i].title.toLowerCase(); // shortcut to title
-            //title = title.substring(0,title.indexOf(" issued"));
-            title = "thunderstorm warning";
+            title = title.substring(0,title.indexOf(" issued"));
             if (title in textIconMap) {
                 imgElement.src = "/img/hko/" + textIconMap[title];
+                imgE.style.display = "block";
             }
         }
     })
