@@ -103,11 +103,13 @@ document.addEventListener("DOMContentLoaded",function(){
         document.getElementById("weatherprvw").onclick = function(){
             if (!weatheropened) {
                 document.getElementById("weatherframe").style.left = "50%";
-                document.getElementById("weatherframe").setAttribute("style",document.getElementById("weatherframe").getAttribute("style")+"opacity:1;");
+                document.getElementById("weatherframe").style.opacity = "1";
+                document.body.classList.add("weatheropened");
                 weatheropened = 1;
             } else if (weatheropened) {
                 document.getElementById("weatherframe").style.left = "150%";
-                setTimeout(function(){document.getElementById("weatherframe").setAttribute("style",document.getElementById("weatherframe").getAttribute("style")+"opacity:0;")},200);
+                document.getElementById("weatherframe").style.opacity = "0"
+                document.body.classList.remove("weatheropened");
                 weatheropened = 0;
             }
         }

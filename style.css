@@ -313,8 +313,8 @@ body,html {
     box-shadow: 0 0 100px rgba(0,0,0,.5);
     z-index: 4;
     border: none;
-    transition: left .2s;
     opacity: 0;
+	transition:left .2s, opacity .2s;
 }
 
 #topright {
@@ -719,4 +719,8 @@ a {
 .optsopened #optionbutton {
 	opacity: 1 !important;
 	-webkit-transform: rotate(-180deg);
+}
+
+.weatheropened .app {
+	opacity:0;
 }
