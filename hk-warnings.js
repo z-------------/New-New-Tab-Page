@@ -34,8 +34,8 @@ var textIconMap = {
 
 // this is kinda urlception
 // the hko rss goes thru the google feed api and then thru jsonproxy to allow it to work with xhr()
-//var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
-var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Fweb.archive.org%2Fweb%2F20131216053423%2Fhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
+var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
+//var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Fweb.archive.org%2Fweb%2F20131216053423%2Fhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
 
 var weatherCity = localStorage.weather_city.toLowerCase();
 
