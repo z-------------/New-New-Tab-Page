@@ -11,6 +11,10 @@ function getWeather(icon) {
     document.getElementById("weatherprvw").style.backgroundImage = "url("+icon+")";
     document.getElementById("weatherprvw").style.display = "inline-block";
     document.getElementById("weatherprvw").onclick = function(){
+        if (weatherFlashInterval) {
+            clearInterval(weatherFlashInterval);
+            this.style.backgroundImage = "url("+icon+")";
+        }
         if (!weatheropened) {
             document.getElementById("weatherframe").style.left = "50%";
             document.getElementById("weatherframe").style.opacity = "1";
@@ -25,10 +29,12 @@ function getWeather(icon) {
     }
 }
 
+var weatherFlashInterval;
+
 function startFlashing(urls) {
     //document.getElementById("weatherprvw").style.webkitAnimation = "weatherFlash 1s infinite";
     var index = 0;
-    setInterval(function(){
+    weatherFlashInterval = setInterval(function(){
         document.getElementById("weatherprvw").style.backgroundImage = "url("+urls[index]+")";
         index++;
         if (index == urls.length) {
@@ -432,7 +438,7 @@ document.addEventListener("DOMContentLoaded",function(){
     },100);
 });
 window.onerror = function(){
-    alert("Something went wrong. Please refresh the page and report this error to the developer");
+    alert("Something went wrong. Please refresh the page and report this error to the developer at http://2shrt.co.nf/?nntp-bugreport");
 }
 console.log("\n\
 8b  8                     8b  8                     88888      8       888b.                 \n\
