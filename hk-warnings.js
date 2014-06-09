@@ -57,6 +57,8 @@ if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
                 document.querySelector("#warning_container").appendChild(imgElement);
             }
         }
-        window.top.startFlashing(titles);
+        if (titles.length > 0) {
+            window.top.startFlashing(titles);
+        }
     })
 }
