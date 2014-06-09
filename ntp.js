@@ -7,29 +7,8 @@ var weatheropened = 0,
     bmopened = 0,
     optsopened = 0;
     
-function getWeather() {
-    var weather = window.top.iconWea;
-    var isDay = (time.getHours() < 18 && time.getHours() >= 6);
-    if (isDay) {
-        if (weather == "Clear" && time.getHours() < 18 && time.getHours() >= 6) {
-            icon = "sunny";
-        } else if (weather.indexOf("Storm") > -1 || weather.indexOf("storm") > -1) {
-            icon = "storm";
-        } else if (weather.indexOf("Rain") > -1 || weather.indexOf("Shower") > -1 || weather.indexOf("Drizzle") > -1){
-            icon = "rain";
-        } else if (weather.indexOf("Fog") > -1 || weather.indexOf("Haz") > -1 || weather.indexOf("Part") > -1) {
-            icon = "fog";
-        } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
-            icon = "cloudy";
-        } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
-            icon = "snow";
-        } else {
-            icon = "sunny";
-        }
-    } else {
-        icon = "moon";
-    }
-    document.getElementById("weatherprvw").style.backgroundImage = "url(img/weather/"+icon+".png)";
+function getWeather(icon) {
+    document.getElementById("weatherprvw").style.backgroundImage = "url("+icon+")";
     document.getElementById("weatherprvw").style.display = "inline-block";
     document.getElementById("weatherprvw").onclick = function(){
         if (!weatheropened) {
@@ -46,8 +25,16 @@ function getWeather() {
     }
 }
 
-function startFlashing() {
-    document.getElementById("weatherprvw").style.webkitAnimation = "weatherFlash 1s infinite";
+function startFlashing(urls) {
+    //document.getElementById("weatherprvw").style.webkitAnimation = "weatherFlash 1s infinite";
+    var index = 0;
+    setInterval(function(){
+        document.getElementById("weatherprvw").style.backgroundImage = "url("+urls[index]+")";
+        index++;
+        if (index == urls.length) {
+            index = 0;
+        }
+    },2000);
 }
 
 var defaultSlots = [
