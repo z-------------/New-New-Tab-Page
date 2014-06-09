@@ -7,7 +7,7 @@ var weatheropened = 0,
     bmopened = 0,
     optsopened = 0;
     
-function getWeather(response) {
+function getWeather() {
     var weather = window.top.iconWea;
     var isDay = (time.getHours() < 18 && time.getHours() >= 6);
     if (isDay) {
@@ -31,6 +31,19 @@ function getWeather(response) {
     }
     document.getElementById("weatherprvw").style.backgroundImage = "url(img/weather/"+icon+".png)";
     document.getElementById("weatherprvw").style.display = "inline-block";
+    document.getElementById("weatherprvw").onclick = function(){
+        if (!weatheropened) {
+            document.getElementById("weatherframe").style.left = "50%";
+            document.getElementById("weatherframe").style.opacity = "1";
+            document.body.classList.add("weatheropened");
+            weatheropened = 1;
+        } else if (weatheropened) {
+            document.getElementById("weatherframe").style.left = "150%";
+            document.getElementById("weatherframe").style.opacity = "0"
+            document.body.classList.remove("weatheropened");
+            weatheropened = 0;
+        }
+    }
 }
 
 function startFlashing() {
@@ -104,24 +117,6 @@ document.addEventListener("DOMContentLoaded",function(){
         container.style.marginTop = "-150px";
     }
     
-    if (localStorage.showWeather == "true") {
-        document.getElementById("weatherprvw").style.display = "inline-block";
-        document.body.innerHTML = document.body.innerHTML + "<iframe id=weatherframe src=weather.html></iframe>";
-        document.getElementById("weatherprvw").onclick = function(){
-            if (!weatheropened) {
-                document.getElementById("weatherframe").style.left = "50%";
-                document.getElementById("weatherframe").style.opacity = "1";
-                document.body.classList.add("weatheropened");
-                weatheropened = 1;
-            } else if (weatheropened) {
-                document.getElementById("weatherframe").style.left = "150%";
-                document.getElementById("weatherframe").style.opacity = "0"
-                document.body.classList.remove("weatheropened");
-                weatheropened = 0;
-            }
-        }
-    }
-    
     function openIconURL(iconElement) {
         window.location = iconElement.getAttribute("data-url");
         if (eval(localStorage.disableanimation) != true) {
@@ -191,14 +186,22 @@ document.addEventListener("DOMContentLoaded",function(){
         window.location = "https://www.google.com/search?q="+encodeURI(this.value)+"&btnI";
     }
     document.getElementById("optionbutton").onclick = function(){
-        if (!optsopened) {
-            document.body.classList.add("optsopened");
-            optsopened = 1;
-        } else {
+        if (optsopened) {
             document.body.classList.remove("optsopened");
             optsopened = 0;
+        } else {
+            document.body.classList.add("optsopened");
+            optsopened = 1;
         }
     }
+    
+    if (localStorage.showWeather == "true") {
+        var weatherIframe = document.createElement("iframe");
+        weatherIframe.src = "weather.html";
+        weatherIframe.setAttribute("id","weatherframe");
+        document.body.appendChild(weatherIframe);
+    }
+    
     if (localStorage.showFb == "true") {
         document.getElementById("fbmsg").style.display = "inline-block";
         document.getElementById("fbmsg").onclick = function(){

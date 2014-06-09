@@ -299,7 +299,6 @@ body,html {
     width: 50px;
     z-index: 3;
     display: none;
-    opacity: 0;
     margin: 20px 10px 0 10px;
 }
 

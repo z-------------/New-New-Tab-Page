@@ -19,7 +19,7 @@ var lastChecked = 0;
 
 var useF = eval(localStorage.usefahrenheit);
 function getWeather(response) {
-    if (response) {
+    if (response.current_observation) {
         localStorage.last_weather = JSON.stringify(response);
         var weather = response.current_observation.weather, temp;
         if (useF == true) {
