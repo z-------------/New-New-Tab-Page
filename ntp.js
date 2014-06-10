@@ -40,7 +40,7 @@ function startFlashing(urls) {
         if (index == urls.length) {
             index = 0;
         }
-    },2000);
+    },3000);
 }
 
 var defaultSlots = [

@@ -43,6 +43,13 @@ if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
     xhr(url,function(r){ // load the url thru my xhr function
         r = JSON.parse(r); // turn string into object so we can read it
         var entries = r.responseData.feed.entries; // shortcut to entries array
+        /*var entries = [{
+            title:"Tsunami warning issued"
+        },{
+            title:"Cold weather warning issued"
+        },{
+            title:"Hurricane signal, no. 10 issued"
+        }]*/
         var titles = [];
         for(i=0; i<entries.length; i++) { // for each element of entries
             var title = entries[i].title.toLowerCase(); // shortcut to title

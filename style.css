@@ -295,7 +295,7 @@ body,html {
     background-size: contain;
     cursor: pointer;
     height: 50px;
-    transition: all .2s;
+    transition:opacity .2s, background-image 1s !important;
     width: 50px;
     z-index: 3;
     display: none;
