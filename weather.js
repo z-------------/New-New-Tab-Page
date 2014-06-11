@@ -47,7 +47,7 @@ function getWeather(response) {
                     iconURL = icons.fog;
                     document.body.style.background = colors.cloudy;
                 } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
-                    iconURL = icon.cloudy;
+                    iconURL = icons.cloudy;
                     document.body.style.background = colors.cloudy;
                 } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
                     iconURL = icons.snow;
