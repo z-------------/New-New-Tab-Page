@@ -37,19 +37,12 @@ var textIconMap = {
 var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
 //var url = "http://jsonp.jit.su/?url=http%3A%2F%2Fajax.googleapis.com%2Fajax%2Fservices%2Ffeed%2Fload%3Fv%3D1.0%26num%3D10%26q%3Dhttp%3A%2F%2Fweb.archive.org%2Fweb%2F20131216053423%2Fhttp%3A%2F%2Frss.weather.gov.hk%2Frss%2FWeatherWarningSummaryv2.xml";
 
-var weatherCity = localStorage.weather_city.toLowerCase();
+var weatherCity = localStorage.weather_city.toLowerCase(), entries;
 
 if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
     xhr(url,function(r){ // load the url thru my xhr function
         r = JSON.parse(r); // turn string into object so we can read it
-        var entries = r.responseData.feed.entries; // shortcut to entries array
-        /*var entries = [{
-            title:"Tsunami warning issued"
-        },{
-            title:"Cold weather warning issued"
-        },{
-            title:"Hurricane signal, no. 10 issued"
-        }]*/
+        entries = r.responseData.feed.entries; // shortcut to entries array
         var titles = [];
         for(i=0; i<entries.length; i++) { // for each element of entries
             var title = entries[i].title.toLowerCase(); // shortcut to title
@@ -57,7 +50,7 @@ if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
             if (title in textIconMap) {
                 var imgElement = document.createElement("img");
                 imgElement.classList.add("hk_warning");
-                titles[i] = imgElement.src = "/img/hko/" + textIconMap[title];
+                titles.push(imgElement.src = "/img/hko/" + textIconMap[title]);
                 imgElement.onclick = function(){
                     window.top.location = "http://www.hko.gov.hk/contente.htm";
                 }
