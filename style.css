@@ -327,18 +327,19 @@ body, html {
 
 #weatherframe {
     position: absolute;
-    left: calc(100% + 350px);
+    left: calc(200%);
     top: 50%;
-    height: 350px;
-    width: 700px;
+    height: calc(100% - 150px);
+    width: calc(100% - 150px);
     border-radius: 20px;
-    margin: -175px 0 0 -350px;
+	-webkit-transform: translateX(-50%) translateY(-50%);
     background: #fff;
     box-shadow: 0 0 100px rgba(0,0,0,.5);
     z-index: 4;
     border: none;
     opacity: 0;
 	transition:left .2s, opacity .2s;
+	overflow: hidden;
 }
 
 #topright {

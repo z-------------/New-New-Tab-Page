@@ -86,6 +86,7 @@ function getWeather(icon) {
 			this.style.backgroundImage = "url(" + icon + ")";
 		}
 		if (!weatheropened) {
+			document.getElementById("weatherframe").src = "weather/weather.html";
 			document.getElementById("weatherframe").style.left = "50%";
 			document.getElementById("weatherframe").style.opacity = "1";
 			document.body.classList.add("weatheropened");

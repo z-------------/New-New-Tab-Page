@@ -4,12 +4,22 @@
 	text-align: center;
 	font-weight: 300;
 	box-sizing: border-box;
+	text-align: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	border-bottom: solid 2px rgba(255, 255, 255, .3);
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
 }
 
 body {
-	margin: 0;
-	height: 100%;
-	width: 100%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	padding-bottom: 20px;
@@ -33,22 +43,23 @@ body {
 
 #weather {
 	width: 450px;
-	height: 245px;
-	cursor: pointer;
+	height: 300px;
 	position: relative;
 	z-index: 3;
-	margin: 100px auto;
+	margin: 0 auto;
 	background-size: 196px;
 	background-repeat: no-repeat;
 	background-position: 20px 50%;
+	min-height: 200px;
 }
 
 #temp {
 	position: absolute;
 	top: 50%;
-	margin: -95px 0 0 0;
+	margin: -95px -20px 0 0;
 	right: 0;
 	width: 245px;
+	text-align: left;
 }
 
 #temp h1 {
@@ -161,4 +172,19 @@ td, th {
 	display: block;
 	font-size: 1.5em;
 	margin-bottom: 5px;
+}
+
+footer {
+	color: rgba(255, 255, 255, .5);
+	position: relative;
+	z-index: 3;
+	margin: 50px 0 20px 0;
+	text-align: center;
+	font-size: 13px;
+}
+
+.map {
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
 }

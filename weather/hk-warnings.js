@@ -81,19 +81,16 @@ function loadWarnings(r) {
 			imgElement.style.backgroundImage = "url(" + icon + ")";
 			
 			imgElement.innerHTML = "<h2>" + title.capitalize() + "</h2><span>" + new Date(date).toString() + "</span>";
-			document.querySelector("#warning_preview").appendChild(imgElement);
 		} else {
 			console.log("received unknown warning, ignoring");
 		}
 	}
 
 	if (titles.length > 0) {
-		// window.top.startFlashing(titles);
-
-		warnContainer.style.display = "block";
-		warnContainer.onclick = function(){
-			this.classList.toggle("opened");
-		};
+		if (window.top.startFlashing) {
+			window.top.startFlashing(titles);
+		}
+		console.log(titles);
 	}
 }
 
@@ -110,6 +107,6 @@ chrome.storage.sync.get("weatherCity", function(r){
 	if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
 		var script = document.createElement("script");
 		script.src = url;
-		//document.head.appendChild(script);
+		document.head.appendChild(script);
 	}
 });

@@ -23,6 +23,8 @@ var city = "";
 function getWeather(response) {
 	if (response.current_observation) {
 		localStorage.last_weather = JSON.stringify(response);
+		console.log(response);
+		
 		var time = new Date();
 		
 		var weather = response.current_observation.weather;
@@ -69,11 +71,8 @@ function getWeather(response) {
 		
 		document.getElementById("temp").innerHTML = "<h1>" + temp + "&#176;</h1><div>" + weather + "</div>";
 		document.getElementById("weather").style.backgroundImage = "url("+iconURL+")";
-		document.getElementById("weather").onclick = function () {
-			window.location = "http://www.wunderground.com/cgi-bin/findweather/hdfForecast?query=" + encodeURI(city);
-		};
 		
-		loadInfos(response.current_observation);
+		loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite);
 		
 		window.top.getWeather(iconURL);
 	}
@@ -94,7 +93,7 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 
 	if ((new Date().getTime() - lastChecked >= 900000) && navigator.onLine) { // weather last checked > 15 min ago and user is online
 		var script = document.createElement("script");
-		script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/q/" + city + ".json?callback=getWeather";
+		script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/forecast/satellite/q/" + city + ".json?callback=getWeather";
 		document.getElementsByTagName("head")[0].appendChild(script);
 		localStorage.last_checked = new Date().getTime();
 	} else if (localStorage.last_weather) {
@@ -117,6 +116,16 @@ String.prototype.subs = function(map) {
 	
 	return str;
 };
+
+function avg(nums) {
+	var args = arguments;
+	var sum = 0;
+	var i;
+	for (i=0; i<args.length; i++) {
+		sum += args[i];
+	}
+	return sum / args.length;
+}
 
 var infosTemplate = "\
 <li id='forecast'>\
@@ -146,7 +155,7 @@ var infosTemplate = "\
 \
 <li id='map'>\
 <h2>Map</h2>\
-<div style='height:250px;width:100%;background:lightgrey;' class='map'></div>\
+<a href='http://www.wunderground.com/wundermap'><div class='map' style='background-image:url(%map_url%)'></div></a>\
 </li>\
 \
 <li id='details'>\
@@ -181,7 +190,7 @@ var infosTemplate = "\
 
 var infosUl = document.querySelector("#infos");
 
-function loadInfos(data) {
+function loadInfos(data, forecast, satellite) {
 	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	var tomorrow = weekdays[new Date().getDay() + 1];
 	var oxtday = weekdays[new Date().getDay() + 2];
@@ -189,16 +198,25 @@ function loadInfos(data) {
 	
 	// show imperial units for the superior people of the USA, greatest country in the world
 	var windSpeed, visibility, dewPoint, feelsLike;
+	var tomTemp, oxtTemp, aoxtTemp;
 	if (useImperial) {
 		windSpeed = data.wind_mph + " mph";
 		visibility = data.visibility_mi + " mi";
 		dewPoint = data.dewpoint_f + "&deg;F";
 		feelsLike = data.feelslike_f + "&deg;F";
+		
+		tomTemp = avg(Number(forecast[1].high.fahrenheit), Number(forecast[1].low.fahrenheit)) + "&deg;F";
+		oxtTemp = avg(Number(forecast[2].high.fahrenheit), Number(forecast[2].low.fahrenheit)) + "&deg;F";
+		aoxtTemp = avg(Number(forecast[3].high.fahrenheit), Number(forecast[3].low.fahrenheit)) + "&deg;F";
 	} else {
 		windSpeed = data.wind_kph + " km/h";
-		visibility = data.visibility_km + " km/h";
+		visibility = data.visibility_km + " km";
 		dewPoint = data.dewpoint_c + "&deg;C";
 		feelsLike = data.feelslike_c + "&deg;C";
+		
+		tomTemp = avg(Number(forecast[1].high.celsius), Number(forecast[1].low.celsius)) + "&deg;C";
+		oxtTemp = avg(Number(forecast[2].high.celsius), Number(forecast[2].low.celsius)) + "&deg;C";
+		aoxtTemp = avg(Number(forecast[3].high.celsius), Number(forecast[3].low.celsius)) + "&deg;C";
 	}
 	
 	infosUl.innerHTML = infosTemplate.subs({
@@ -209,18 +227,19 @@ function loadInfos(data) {
 		uv: data.UV,
 		dew_point: dewPoint,
 		rel_humid: data.relative_humidity,
-		pressure: data.pressure_mb,
+		pressure: data.pressure_mb + " mbar",
 		feels_like: feelsLike,
 		tom: tomorrow,
 		oxt: oxtday,
 		aoxt: afterOxtday,
+		map_url: satellite.image_url,
 		
-		tom_temp: "24&deg;",
-		tom_cond: "Light showers",
-		oxt_temp: "27&deg;",
-		oxt_cond: "Overcast",
-		aoxt_temp: "25&deg;",
-		aoxt_cond: "Thunderstorms"
+		tom_temp: tomTemp,
+		tom_cond: forecast[1].conditions,
+		oxt_temp: oxtTemp,
+		oxt_cond: forecast[2].conditions,
+		aoxt_temp: aoxtTemp,
+		aoxt_cond: forecast[3].conditions
 	});
 	
 	/* make map width:height = 1:1 */
