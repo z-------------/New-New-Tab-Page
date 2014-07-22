@@ -19,7 +19,7 @@ Choose from a list of preset backgrounds or use your own
 Includes a weather widget, Facebook notifications and more
 
 ### [App launcher](https://github.com/z-------------/New-New-Tab-Page/wiki/App-launcher)
-A simple app launcher containing all your installed apps
+A simple app launcher containing all your installed apps. It even comes with a search bar!
 
 ### [Bookmarks search](https://github.com/z-------------/New-New-Tab-Page/wiki/Bookmarks-search)
 Quick and easy access to all your bookmarks
