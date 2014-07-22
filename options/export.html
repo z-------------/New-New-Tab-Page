@@ -1,45 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Export/Import settings - NNTP</title>
-        <style>
-            * {
-                font-family:Roboto, sans-serif;
-            }
-            
-            body {
-                padding:20px 0 50px 50px;
-            }
-            
-            h2 {
-                margin-bottom:30px;
-            }
-            
-            textarea {
-                height:500px;
-                width:500px;
-                font-family:monospace;
-            }
-            
-            hr {
-                margin:30px 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h2>New New Tab Page -  import/export settings</h2>
-        
-        <h3>Export</h3>
-        <textarea id="export" readonly></textarea>
-        <p>Copy and paste this text into the other computer's import box, which is below.</p>
-        
-        <hr>
-        
-        <h3>Import</h3>
-        <textarea id="import"></textarea>
-        <br>
-        <input type="button" value="Import" id="importb">
-        
-        <script src="export.js"></script>
-    </body>
+	<head>
+		<title>Import / Export options - New New Tab Page</title>
+		<link rel="stylesheet" href="/fonts/roboto.css">
+		<style>
+			* {
+				box-sizing: border-box;
+				font-family: Roboto, sans-serif;
+				margin: 0;
+				padding: 0;
+				color: white;
+				font-weight: 300;
+			}
+			
+			:focus {
+				outline: none;
+			}
+			
+			body {
+				background-color: #666;
+			}
+			
+			header, section {
+				padding: 20px;
+			}
+			
+			section {
+				width: 50%;
+				float: left;
+			}
+			
+			textarea {
+				background-color: rgba(255, 255, 255, .3);
+				border-radius: 4px;
+				border: solid 2px rgba(255, 255, 255, .7);
+				resize: vertical;
+				width: 100%;
+				height: 400px;
+				margin: 10px 0;
+				padding: 10px;
+				font-size: 15px;
+				font-family: Menlo, Consolas, "Courier New", Courier, monospace;
+			}
+			
+			textarea:focus {
+				border-color: white;
+			}
+			
+			button {
+				border: none;
+				background: rgba(255, 255, 255, .3);
+				border-radius: 4px;
+				padding: 5px;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Import / Export options - New New Tab Page</h1>
+			<a href="#" id="backbtn">&lt; Back</a>
+		</header>
+		
+		<section id="export">
+			<h2>Export</h2>
+			<textarea></textarea>
+		</section>
+		
+		<section id="import">
+			<h2>Import</h2>
+			<textarea></textarea>
+			<button>Import</button>
+		</section>
+		
+		<script src="export.js"></script>
+	</body>
 </html>

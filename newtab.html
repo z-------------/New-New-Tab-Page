@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <title>New Tab</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="ntp.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="fonts/roboto.css">
     </head>
     <body>
         <div id="white"></div>
@@ -31,12 +31,17 @@
         <div id="appdrawerframe">
             <div id="actualdrawer">
                 <div class="drawersection" id="topsites">
-                    <div class="drawerti" id="mostvis">Most Visited</div>
+                    <div class="drawerti" id="mostvis">Top Sites</div>
                 </div>
                 <div class="drawersection" id="applist">
                     <div class="drawerti">
-                        Installed Apps
-                        <a href="https://chrome.google.com/webstore/"><div class="storelink" id="bmedit">Store</div></a>
+                        Chrome Apps
+                        <div class="drawerbtns">
+							<a href="https://chrome.google.com/webstore"><img src="img/cws2.png"></a>
+							<img src="img/search.png" id="appsearchbtn">
+						</div>
+						
+						<input type="text" id="appsearch" placeholder="Search">
                     </div>
                 </div>
             </div>
@@ -65,6 +70,8 @@
                 <div id="newslist"></div>
             </div>
         </div>
-        <iframe id="options" src="options/index.html"></iframe>
+        <iframe id="options"></iframe>
+        
+        <script src="ntp.js"></script>
     </body>
 </html>

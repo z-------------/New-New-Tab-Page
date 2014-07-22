@@ -1,0 +1,319 @@
+*, input[type=file]::-webkit-file-upload-button {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding-bottom: 100px;
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 75px;
+	margin: 0;
+	text-align: center;
+	cursor: default;
+	transition: -webkit-transform 1s;
+}
+
+h1::selection {
+	background: transparent;
+	color: inherit;
+}
+
+h1:hover {
+	-webkit-transform: rotateY(1turn);
+}
+
+h1:active {
+	font-family: "Comic Sans MS", Chalkboard, sans-serif;
+}
+
+h2 {
+    font-weight: 100;
+    margin-bottom: 10px;
+	margin-left: 3px;
+}
+
+form {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, .7);
+    margin-top: 100px;
+    width: 100%;
+    padding: 0 16%;
+	-webkit-perspective: 1000;
+}
+
+label {
+    font-size: 13px;
+    padding-left: 5px;
+    clear: both;
+    display: inline-block;
+}
+
+input {
+	margin-left: 10px;
+}
+
+input[type=button] {
+    cursor: pointer;
+    text-align: center;
+}
+
+input[type=text], input[type=url] {
+    transition: .2s;
+    width: 140px;
+    padding: 1px 5px;
+}
+
+#vno {
+    color: rgba(255, 255, 255, .5);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 20px;
+}
+
+#bottomright {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    text-align: right;
+    width: 680px;
+    z-index: 2;
+}
+
+#save {
+    font-weight: 100;
+    font-size: 17px;
+    padding: 15px 20px;
+    height: auto;
+}
+
+#save:hover {
+    color: white;
+}
+
+::selection {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+input, select, input[type=file]::-webkit-file-upload-button {
+    height: 25px;
+    border: none;
+    background-color: rgba(255, 255, 255, .2);
+    box-shadow: none;
+    transition: .2s;
+    font-size: 12px;
+    margin: 4px;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, .6);
+}
+
+input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus {
+    background-color: rgba(255, 255, 255, .3);
+    color: rgba(255, 255, 255, .7);
+}
+
+input:focus, select:focus, input[type=file]::-webkit-file-upload-button:focus {
+    outline: none;
+}
+
+select {
+    padding: 0 25px 0 5px;
+    cursor: pointer;
+	background-image: url(/img/select-arrow.png);
+	background-repeat: no-repeat;
+	background-size: 10px;
+	background-position: calc(100% - 7px);
+}
+
+#slotselects {
+    width: 432px;
+    margin: 0 auto 0 auto;
+    transition: height .2s;
+    text-align: center;
+}
+
+.longinput:focus {
+    width: 200px;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    background-color: transparent;
+    height: 15px;
+    width: 15px;
+    border-radius: 4px;
+    transition: .2s;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 4px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type=number] {
+    padding: 0;
+    width: 50px;
+    text-align: center;
+}
+
+#slotselects select {
+    width: 79px;
+}
+
+#check {
+    float: left;
+}
+
+option {
+    color: #000;
+    background-color: #fff;
+}
+
+input[type=checkbox]:checked {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .3);
+}
+
+input[type=checkbox] {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .2);
+    background-color: transparent;
+}
+
+input[type=checkbox]:hover {
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .4);
+}
+
+#bgpreview {
+    height: 200px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, .5);
+    background-size: cover;
+    background-position: center;
+}
+
+input[type=file] {
+    background: transparent;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, .3);
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+#appopts li {
+    padding-left: 75px;
+    background-size: 55px;
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+    overflow: hidden;
+    height: 66px;
+    transition-duration: .2s;
+    transition-property: opacity;
+    display: inline-block;
+    margin: 0 25px;
+    position: relative;
+}
+
+#appopts li:after {
+    content: "Hello";
+    content: attr(data-slotno);
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(255, 255, 255, .9);
+    text-shadow: 0 0 10px rgba(0, 0, 0, .7);
+}
+
+#appopts li select {
+    display: block;
+    opacity: 0;
+}
+
+#appopts li:hover select {
+    opacity: 1;
+}
+
+#appopts li.hidden {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    float: left;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section:not(#apps) {
+    width: 50%;
+    float: left;
+}
+
+h1 pre {
+	white-space: normal;
+	font-size: .9em;
+	font-family: Menlo, Consolas, "Courier New", Courier, monospace;
+}
+
+h1 span {
+	font-size: .5em;
+	display: block;
+}
+
+#bglocal {
+	display: none;
+}
+
+p {
+	font-size: 13px;
+	margin: 5px;
+	color: rgba(255, 255, 255, .5);
+}
+
+@media only screen and (max-width: 1030px) {
+    section {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 1252px) {
+	#appopts li input {
+		display: block;
+	}
+	
+	#appopts li {
+		height: 90px;
+	}
+}

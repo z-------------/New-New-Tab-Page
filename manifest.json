@@ -1,25 +1,26 @@
 {
-   "chrome_url_overrides": {
-      "newtab": "newtab.html"
-   },
-   "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.wunderground.com https://ajax.googleapis.com; object-src 'self'",
-   "description": "A minimal new tab page replacement",
-   "icons": {
-      "128": "icon128.png"
-   },
-   "author": "Zachary Guard",
-   "manifest_version": 2,
-   "name": "New New Tab Page",
-   "options_page": "options/index.html",
-   "version": "3.9.1.5",
-   "short_name": "NNTP",
-   "permissions": [
-      "topSites",
-      "management",
-      "bookmarks"
-   ],
-   "background": {
-      "page": "newtab.html",
-      "persistent": true
-   }
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://api.wunderground.com https://ajax.googleapis.com; object-src 'self'",
+    "description": "A minimal new tab page replacement",
+    "icons": {
+        "128": "img/icon128.png"
+    },
+    "author": "Zachary Guard",
+    "manifest_version": 2,
+    "name": "New New Tab Page",
+    "options_page": "options/options.html",
+    "version": "4.0.0",
+    "short_name": "NNTP",
+    "permissions": [
+        "topSites",
+        "management",
+        "bookmarks",
+        "storage"
+    ],
+    "background": {
+        "page": "newtab.html",
+        "persistent": true
+    }
 }

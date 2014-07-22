@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Options - New New Tab Page</title>
+        <link rel="stylesheet" href="/fonts/roboto.css">
+        <link rel="stylesheet" href="options.css">
+    </head>
+    <body>
+        <span id="vno"></span>
+        <form>
+			<h1>New New Tab Page</h1>
+			
+            <section id="apps">
+                <h2>Apps</h2>
+                <div id="appopts">
+                    <ol>
+                        <!-- li's inserted by javascript -->
+                    </ol>
+
+                    <label>No. of apps <input type="number" min="3" max="12" id="slotcount"></label>
+                </div>
+            </section>
+                
+            <section>
+                <h2>Background</h2>
+                <select id="bgopt">
+                    <option>Preset backgrounds</option>
+                    <option value="bg">KitKat Mountains</option>
+                    <option value="bg2">KitKat Abstract</option>
+                </select><br>
+
+                <label>URL <input type="text" id="custombg" placeholder="http://"></label><br>
+                <label>Local <input type="button" value="Choose file" id="bglocalfacade"><input type="file" id="bglocal" accept="image/*"></label>
+
+                <div id="bgpreview"></div>
+
+                <label>Blur <input type="checkbox" id="bgblur"></label>
+				<p><strong>Note</strong>: Enabling blur is likely to slow down your new tab page.<br>Strange things might happen.</p>
+            </section>
+            
+            <section>
+                <h2>Bookmarks & App Drawer</h2>
+                <label>No. of top sites <input type="number" id="topsitecount" min="0" max="20"></label>
+                <label>Close tab after launching app <input type="checkbox" id="autoclose"></label><br>
+                <label>Show bookmarks <input type="checkbox" id="showbookmarks"></label>
+                <label>List all bookmarks <input type="checkbox" id="showallbookmarks"></label>
+            </section>
+                
+            <section>
+                <h2>Other</h2>
+                <label>New Tab title text <input type="text" id="titletext"></label><br>
+
+                <label>Disable animations <input type="checkbox" id="disableanimation"></label><br>
+
+                <label>Weather <input type="checkbox" id="showWeather"></label>
+				<input type="text" id="weathercity" placeholder="City">
+
+                <label>Use imperial units <input type="checkbox" id="usefahrenheit"></label><br>
+                <label>Facebook messages <input type="checkbox" id="showfb"></label>
+				<label>Facebook notifications <input type="checkbox" id="shownotif"></label>
+                <label>StumbleUpon <input type="checkbox" id="showstumble"></label>
+                <label>News <input type="checkbox" id="shownews"></label>
+                <label>Tumblr <input type="checkbox" id="showtum"></label>
+            </section>
+                
+            <section>
+                <!--<h2>DangerZone&trade;</h2>-->
+				<h2>Advanced</h2>
+				<input type="button" value="Import / export options" id="exportopts">
+                <input type="button" value="Reset to defaults" id="resetdefaults" style="background-color:rgb(200,50,50)">
+            </section>
+                
+        </form>
+        <div id="bottomright">
+            <input type="button" id="save" value="Save" style="background-color:rgb(0,120,50)">
+        </div>
+        
+        <script src="options.js"></script>
+    </body>
+</html>

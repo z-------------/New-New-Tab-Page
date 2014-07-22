@@ -1,17 +1,21 @@
-var exportbox = document.getElementById("export");
-var importbox = document.getElementById("import");
-var importbutton = document.getElementById("importb");
+var exportBox = document.querySelector("#export textarea");
+var importBox = document.querySelector("#import textarea");
+var importButton = document.querySelector("#import button");
 
-exportbox.value = JSON.stringify(localStorage);
+chrome.storage.sync.get(null, function(r){
+	exportBox.value = JSON.stringify(r);
+});
 
-importbutton.onclick = function(){
-    var confBool = confirm("Are you sure you want to overwrite your current settings?");
-    if (confBool) {
-        var newls = JSON.parse(importbox.value);
-        var lskeys = Object.keys(newls);
-        for (i in lskeys) {
-            localStorage[lskeys[i]] = newls[lskeys[i]];
-        }
-        alert("Done importing :D");
-    }
-}
+importButton.onclick = function(){
+	if (confirm("Are you sure you want to overwrite your current options?")) {
+		chrome.storage.sync.set(JSON.parse(importBox.value), function(){
+			alert("Finished importing :D");
+			window.top.location.reload();
+		});
+	}
+};
+
+document.querySelector("#backbtn").onclick = function(e){
+	e.preventDefault();
+	history.back();
+};

@@ -1,0 +1,164 @@
+* {
+	font-family: Roboto, sans-serif;
+	color: #fff;
+	text-align: center;
+	font-weight: 300;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-bottom: 20px;
+}
+
+::selection {
+	background: transparent;
+	color: inherit;
+}
+
+#dark {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	background: rgba(0, 0, 0, .7);
+	display: none;
+}
+
+#weather {
+	width: 450px;
+	height: 245px;
+	cursor: pointer;
+	position: relative;
+	z-index: 3;
+	margin: 100px auto;
+	background-size: 196px;
+	background-repeat: no-repeat;
+	background-position: 20px 50%;
+}
+
+#temp {
+	position: absolute;
+	top: 50%;
+	margin: -95px 0 0 0;
+	right: 0;
+	width: 245px;
+}
+
+#temp h1 {
+	font-size: 120px;
+	margin: 0;
+}
+
+#temp div {
+	font-size: 30px;
+	font-weight: 100;
+	color: rgba(255, 255, 255, .7);
+}
+
+#main {
+	position: relative;
+	z-index: 3;
+}
+
+#main ul {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+#infos {
+	-webkit-column-count: 4;
+	-webkit-column-gap: 0;
+	-webkit-column-width: 400px;
+	padding: 0 20px !important;
+}
+
+#infos > li {
+	text-align: left;
+	background-color: rgba(0, 0, 0, .3);
+	margin: 20px 10px;
+	margin-top: 0;
+	padding: 20px;
+	break-inside: avoid-column;
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	display: block;
+	color: rgba(255, 255, 255, .7);
+	border-radius: 10px;
+}
+
+#main li * {
+	text-align: inherit;
+	color: inherit;
+}
+
+#main h2 {
+	font-weight: 100;
+	margin-top: 0;
+	color: white;
+}
+
+td, th {
+	vertical-align: top;
+}
+
+#infos table {
+	width: 100%;
+}
+
+#infos table:not(.incog) tr {
+	background-color: rgba(0, 0, 0, .3);
+}
+
+#infos table:not(.incog) tr:first-child {
+	background-color: rgba(255, 255, 255, .1);
+}
+
+#infos table th, #infos table td {
+	padding: 10px;
+}
+
+#forecast table th, #forecast table td {
+	width: 50%;
+}
+
+#wind {
+	height: 150px;
+}
+
+#wind .arrow {
+	font-size: 50px;
+	display: block;
+	margin: 0 10px;
+	float: left;
+	color: white;
+}
+
+#wind .details {
+	display: block;
+	font-size: 20px;
+	margin: 0;
+	float: left;
+	margin-left: 10px;
+}
+
+#wind p {
+	margin: 0;
+}
+
+#details table td, #details table th {
+	padding: 5px;
+}
+
+#forecast table span {
+	display: block;
+	font-size: 1.5em;
+	margin-bottom: 5px;
+}
