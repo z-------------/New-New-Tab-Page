@@ -65,7 +65,7 @@ function getWeather(response) {
 			}
 		} else {
 			iconURL = icons.moon;
-			document.body.style.background = colors.clear;
+			document.body.style.backgroundColor = colors.clear;
 			document.getElementById("dark").style.display = "block";
 		}
 		
@@ -88,12 +88,14 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 	}
 
 	if (localStorage.last_checked) {
-		lastChecked = localStorage.last_checked;
+		lastChecked = Number(localStorage.last_checked);
 	}
 
-	if ((new Date().getTime() - lastChecked >= 900000) && navigator.onLine) { // weather last checked > 15 min ago and user is online
+	if (/*(new Date().getTime() - lastChecked >= 900000 && */navigator.onLine) {
 		var script = document.createElement("script");
 		script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/forecast/satellite/q/" + city + ".json?callback=getWeather";
+        // please don't use my key
+        // i'm on a free account anyway
 		document.getElementsByTagName("head")[0].appendChild(script);
 		localStorage.last_checked = new Date().getTime();
 	} else if (localStorage.last_weather) {
@@ -101,7 +103,6 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 	}
 });
 
-/* new detailed info part */
 String.prototype.subs = function(map) {
 	var str = this;
 	
@@ -191,11 +192,6 @@ var infosTemplate = "\
 var infosUl = document.querySelector("#infos");
 
 function loadInfos(data, forecast, satellite) {
-	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	var tomorrow = weekdays[new Date().getDay() + 1];
-	var oxtday = weekdays[new Date().getDay() + 2];
-	var afterOxtday = weekdays[new Date().getDay() + 3];
-	
 	// show imperial units for the superior people of the USA, greatest country in the world
 	var windSpeed, visibility, dewPoint, feelsLike;
 	var tomTemp, oxtTemp, aoxtTemp;
@@ -229,9 +225,9 @@ function loadInfos(data, forecast, satellite) {
 		rel_humid: data.relative_humidity,
 		pressure: data.pressure_mb + " mbar",
 		feels_like: feelsLike,
-		tom: tomorrow,
-		oxt: oxtday,
-		aoxt: afterOxtday,
+		tom: forecast[1].date.weekday,
+		oxt: forecast[2].date.weekday,
+		aoxt: forecast[3].date.weekday,
 		map_url: satellite.image_url_ir4 + "&width=500&height=500", // force it to show a 500x500 image
 		
 		tom_temp: tomTemp,

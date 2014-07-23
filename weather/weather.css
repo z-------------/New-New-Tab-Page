@@ -131,7 +131,7 @@ td, th {
 }
 
 #forecast table th, #forecast table td {
-	width: 50%;
+	width: calc(100% / 3);
 }
 
 #wind {
