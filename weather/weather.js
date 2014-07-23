@@ -232,7 +232,7 @@ function loadInfos(data, forecast, satellite) {
 		tom: tomorrow,
 		oxt: oxtday,
 		aoxt: afterOxtday,
-		map_url: satellite.image_url,
+		map_url: satellite.image_url_ir4 + "&width=500&height=500", // force it to show a 500x500 image
 		
 		tom_temp: tomTemp,
 		tom_cond: forecast[1].conditions,
