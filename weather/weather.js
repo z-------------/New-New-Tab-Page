@@ -102,6 +102,10 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 });
 
 /* new detailed info part */
+function rtn(n, roundTo) {
+    return Math.round(n / roundTo) * roundTo;
+}
+
 String.prototype.subs = function(map) {
 	var str = this;
 	
@@ -155,7 +159,7 @@ var infosTemplate = "\
 \
 <li id='map'>\
 <h2>Map</h2>\
-<a href='http://www.wunderground.com/wundermap'><div class='map' style='background-image:url(%map_url%)'></div></a>\
+<a href='http://www.wunderground.com/wundermap'><img class='map' src='%map_url%'></a>\
 </li>\
 \
 <li id='details'>\
@@ -241,8 +245,4 @@ function loadInfos(data, forecast, satellite) {
 		aoxt_temp: aoxtTemp,
 		aoxt_cond: forecast[3].conditions
 	});
-	
-	/* make map width:height = 1:1 */
-	var mapElem = document.querySelector("#map .map");
-	mapElem.style.height = mapElem.offsetWidth + "px";
 }

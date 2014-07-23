@@ -265,19 +265,25 @@ body, html {
 
 #weatherframe {
     position: absolute;
-    left: calc(200%);
-    top: 50%;
+    left: 200%;
+    top: 100px;
     height: calc(100% - 200px);
     width: calc(100% - 200px);
-    border-radius: 20px;
-	-webkit-transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
     background: #fff;
-    box-shadow: 0 0 100px rgba(0,0,0,.5);
     z-index: 4;
+	transition: left .2s;
     border: none;
-    opacity: 0;
-	transition:left .2s, opacity .2s;
 	overflow: hidden;
+}
+
+.weatheropened #weatherframe {
+    left: 100px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .2);
+}
+
+#weatherframe::-webkit-scrollbar {
+    display: none;
 }
 
 #topright {
@@ -685,9 +691,9 @@ a {
 	-webkit-transform: rotate(-180deg);
 }
 
-.weatheropened .app {
+/*.weatheropened .app {
 	opacity:0;
-}
+}*/
 
 .optsopened #bg {
     opacity: .2 !important;

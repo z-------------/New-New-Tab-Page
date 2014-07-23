@@ -85,18 +85,8 @@ function getWeather(icon) {
 			clearInterval(weatherFlashInterval);
 			this.style.backgroundImage = "url(" + icon + ")";
 		}
-		if (!weatheropened) {
-			document.getElementById("weatherframe").src = "weather/weather.html";
-			document.getElementById("weatherframe").style.left = "50%";
-			document.getElementById("weatherframe").style.opacity = "1";
-			document.body.classList.add("weatheropened");
-			weatheropened = 1;
-		} else if (weatheropened) {
-			document.getElementById("weatherframe").style.left = null;
-			document.getElementById("weatherframe").style.opacity = null;
-			document.body.classList.remove("weatheropened");
-			weatheropened = 0;
-		}
+		
+        document.body.classList.toggle("weatheropened");
 	}
 }
 
@@ -186,10 +176,6 @@ function main() {
 	bgElem.style.backgroundImage = backgroundURL || "url(/img/bg.png)";
 	if (bgBlur) {
 		bgElem.style.webkitFilter = "blur(20px)";
-	}
-
-	if (firstRun) {
-		window.location = "welcome/welcome.html";
 	}
 
 	if (slotCount < 7) {
