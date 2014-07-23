@@ -165,7 +165,7 @@ var infosTemplate = "\
 <td>%feels_like%</td>\
 </tr>\
 <tr>\
-<th>Visiblity</th>\
+<th>Visibility</th>\
 <td>%visib%</td>\
 </tr>\
 <tr>\
