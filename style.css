@@ -9,9 +9,9 @@
 }
 
 @-webkit-keyframes weatherFlash {
-	0% {opacity:.5}
-	50% {opacity:1}
-	100% {opacity:.5}
+	0% { opacity: .5 }
+	50% { opacity: 1 }
+	100% { opacity: .5 }
 }
 
 :focus {
@@ -89,68 +89,6 @@ body, html {
 .app:active {
     -webkit-filter: brightness(1);
 }
-
-/*
-#fb {
-    background: #3B559F url("img/fb.png") 0 -3px no-repeat;
-}
-
-#gp {
-    background: #D64136 url("img/gp.png") 0 -3px no-repeat;
-}
-
-#yt {
-    background: #E14D42 url("img/yt.png") 0 -3px no-repeat;
-}
-
-#ng {
-    background: #000 url("img/ng.png") 0 -3px no-repeat;
-}
-
-#gm {
-    background: #E04C40 url("img/gm.png") 0 -3px no-repeat;
-}
-
-#rd {
-    background: #DEDEDE url("img/rd.png") 0 -3px no-repeat;
-}
-
-#gg {
-    background: #4178EC url("img/gg.png") 0 -3px no-repeat;
-}
-
-#yh {
-    background: #44019c url("img/yh.png") 0 -3px no-repeat;
-}
-
-#mt {
-    background: #000 url("img/mt.png") 0 -3px no-repeat;
-}
-
-#gd {
-    background: #C4C4C4 url("img/gd.png") 0 -3px no-repeat;
-}
-
-#dg {
-    background: #fff url("img/dg.png") 0 -3px no-repeat;
-}
-
-#vg {
-    background: #c4c4c4 url("img/vg.png") 0 -3px no-repeat;
-}
-
-#tw {
-    background: #1ab2e8 url("img/tw.png") 0 -3px no-repeat;
-}
-
-#pk {
-    background: #EE4055 url("img/pk.png") 0 -3px no-repeat;
-}
-
-#gk {
-    background: #f4b400 url("img/gk.png") 0 -3px no-repeat;
-}
-*/
 
 .cust {
     background-position: center;
@@ -329,8 +267,8 @@ body, html {
     position: absolute;
     left: calc(200%);
     top: 50%;
-    height: calc(100% - 150px);
-    width: calc(100% - 150px);
+    height: calc(100% - 200px);
+    width: calc(100% - 200px);
     border-radius: 20px;
 	-webkit-transform: translateX(-50%) translateY(-50%);
     background: #fff;
