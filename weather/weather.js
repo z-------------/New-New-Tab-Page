@@ -102,10 +102,6 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 });
 
 /* new detailed info part */
-function rtn(n, roundTo) {
-    return Math.round(n / roundTo) * roundTo;
-}
-
 String.prototype.subs = function(map) {
 	var str = this;
 	
