@@ -91,7 +91,7 @@ chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function(r){
 		lastChecked = Number(localStorage.last_checked);
 	}
 
-	if (/*(new Date().getTime() - lastChecked >= 900000 && */navigator.onLine) {
+	if (new Date().getTime() - lastChecked >= 900000 && navigator.onLine) {
 		var script = document.createElement("script");
 		script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/forecast/satellite/q/" + city + ".json?callback=getWeather";
         // please don't use my key
