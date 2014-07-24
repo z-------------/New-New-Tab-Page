@@ -81,9 +81,7 @@ function loadWarnings(r) {
 			imgElement.style.backgroundImage = "url(" + icon + ")";
 			
 			imgElement.innerHTML = "<h2>" + title.capitalize() + "</h2><span>" + new Date(date).toString() + "</span>";
-		} else {
-			console.log("received unknown warning, ignoring");
-		}
+        }
 	}
 
 	if (titles.length > 0) {

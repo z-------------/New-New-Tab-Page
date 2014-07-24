@@ -23,7 +23,6 @@ var city = "";
 function getWeather(response) {
 	if (response.current_observation) {
 		localStorage.last_weather = JSON.stringify(response);
-		console.log(response);
 		
 		var time = new Date();
 		
