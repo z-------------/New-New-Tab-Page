@@ -146,7 +146,7 @@ var infosTemplate = "\
 \
 <li id='wind'>\
 <h2>Wind</h2>\
-<div class='arrow' style='-webkit-transform:rotate(%wind_deg%deg)'>&uarr;</div>\
+<div class='arrow' style='-webkit-transform:rotate(%arrow_deg%deg)'>&uarr;</div>\
 <div class='details'>\
 <p>%wind_dir% (%wind_deg%&deg;)</p>\
 <p>%wind_speed%</p>\
@@ -217,6 +217,7 @@ function loadInfos(data, forecast, satellite) {
 	infosUl.innerHTML = infosTemplate.subs({
 		wind_deg: data.wind_degrees,
 		wind_dir: data.wind_dir,
+        arrow_deg: data.wind_degrees + 180,
 		wind_speed: windSpeed,
 		visib: visibility,
 		uv: data.UV,
@@ -227,7 +228,7 @@ function loadInfos(data, forecast, satellite) {
 		tom: forecast[1].date.weekday,
 		oxt: forecast[2].date.weekday,
 		aoxt: forecast[3].date.weekday,
-		map_url: satellite.image_url_ir4 + "&width=500&height=500", // force it to show a 500x500 image
+		map_url: satellite.image_url + "&width=500&height=500", // force it to show a 500x500 image
 		
 		tom_temp: tomTemp,
 		tom_cond: forecast[1].conditions,
