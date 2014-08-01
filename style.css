@@ -584,7 +584,10 @@ a {
 #bookmarkslist {
     overflow-y: auto;
     height: 315px;
-	-webkit-mask-image: linear-gradient(transparent, black 5px, black calc(100% - 5px), transparent);
+}
+
+#bookmarkslist, #newslist {
+    -webkit-mask-image: linear-gradient(transparent, black 7px, black calc(100% - 7px), transparent);
 }
 
 #bmsearchtip {
