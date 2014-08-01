@@ -36,23 +36,20 @@ body {
 }
 
 #weather {
-	width: 450px;
-	height: 300px;
+	width: 100%;
+	min-height: 300px;
 	position: relative;
 	z-index: 3;
 	margin: 0 auto;
 	background-size: 196px;
 	background-repeat: no-repeat;
-	background-position: 20px 50%;
-	min-height: 200px;
+	background-position: calc(50% - 120px) 50%;
 }
 
 #temp {
-	position: absolute;
-	top: 50%;
-	margin: -95px -20px 0 0;
-	right: 0;
-	width: 245px;
+	float: right;
+    margin-top: 55px;
+	width: 50%;
 	text-align: left;
 }
 
