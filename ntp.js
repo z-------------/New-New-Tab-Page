@@ -77,11 +77,13 @@ var weatheropened = 0,
     optsopened = 0;
 
 /* weather stuff */
+var weatherFlashInterval;
+
 function getWeather(icon) {
     document.getElementById("weatherprvw").style.backgroundImage = "url(" + icon + ")";
     document.getElementById("weatherprvw").style.display = "inline-block";
     document.getElementById("weatherprvw").onclick = function () {
-        if (weatherFlashInterval) {
+        if (window.weatherFlashInterval) {
             clearInterval(weatherFlashInterval);
             this.style.backgroundImage = "url(" + icon + ")";
         }
@@ -100,8 +102,6 @@ function startFlashing(urls) {
         }
     }, 3000);
 }
-
-var weatherFlashInterval;
 
 /* end weather stuff */
 
@@ -194,21 +194,21 @@ function main() {
     }
 
     for (i = 0; i < slotCount; i++) {
-        var _thisApp = document.createElement("div");
-        _thisApp.classList.add("app");
-        _thisApp.addEventListener("click", function () {
+        var thisApp = document.createElement("div");
+        thisApp.classList.add("app");
+        thisApp.addEventListener("click", function () {
             openIconURL(this);
-        })
+        });
 
         if (apps[i]) {
-            _thisApp.style.backgroundImage = "url(" + apps[i].icon + ")";
-            _thisApp.dataset.url = apps[i].url;
+            thisApp.style.backgroundImage = "url(" + apps[i].icon + ")";
+            thisApp.dataset.url = apps[i].url;
         } else { // not defined, go to defaults
-            _thisApp.style.backgroundImage = "url(" + defaultSlots[i].icon + ")";
-            _thisApp.dataset.url = defaultSlots[i].url;
+            thisApp.style.backgroundImage = "url(" + defaultSlots[i].icon + ")";
+            thisApp.dataset.url = defaultSlots[i].url;
         }
 
-        document.getElementById("container").appendChild(_thisApp);
+        document.getElementById("container").appendChild(thisApp);
     }
 
     document.getElementById("title").innerHTML = titleText;
@@ -229,7 +229,8 @@ function main() {
         searchFocusTimeout = setTimeout(function () {
             document.getElementById("search").focus();
         }, 200);
-    }
+    };
+    
     document.getElementById("close").onclick = function () {
         clearTimeout(searchFocusTimeout);
 
@@ -241,12 +242,13 @@ function main() {
         document.getElementById("optionbutton").style.opacity = null;
         document.getElementById("drawerarrow").style.opacity = null;
         document.getElementById("bmarrow").style.opacity = null;
-    }
+    };
+    
     document.getElementById("search").onkeydown = function (e) {
-        if (e.which == 13) {
+        if (e.which === 13) {
             window.location = "https://www.google.com/search?q=" + encodeURI(this.value) + "&btnI";
         }
-    }
+    };
 
     document.getElementById("optionbutton").onclick = function () {
         if (!options.src) { // it's the first time
@@ -267,7 +269,7 @@ function main() {
             options.contentWindow.scrollTo(0, 0);
             optsopened = 1;
         }
-    }
+    };
 
     if (showWeather) {
         var weatherIframe = document.createElement("iframe");
@@ -286,7 +288,7 @@ function main() {
                 focused: true,
                 type: "panel"
             });
-        }
+        };
     }
 
     if (showFBNotif) {
@@ -299,7 +301,7 @@ function main() {
                 focused: true,
                 type: "panel"
             });
-        }
+        };
     }
 
     if (showStumble) {
@@ -308,12 +310,12 @@ function main() {
         document.getElementById("stumble").onclick = function () {
             window.location = "http://www.stumbleupon.com/to/stumble/go";
             document.getElementById("sidewipe").style.width = "100%";
-        }
+        };
     }
 
     function getTopSites(res) {
         if (topSiteCount >= 1) {
-            for (var i = 0; i < topSiteCount; i++) {
+            for (i = 0; i < topSiteCount; i++) {
                 document.getElementById("topsites").innerHTML = document.getElementById("topsites").innerHTML + "<a href=" + res[i].url + "><div class=\"draweritem topsite\"id=l" + i + ">" + res[i].title + "</div></a>";
                 document.getElementById("l" + i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.getDomain() + ")";
             }
@@ -326,7 +328,7 @@ function main() {
         var appsArray = [];
 
         for (i = 0; i < res.length; i++) {
-            if ((res[i].type == "hosted_app" || res[i].type == "packaged_app" || res[i].type == "legacy_packaged_app") && res[i].enabled == true) {
+            if ((res[i].type === "hosted_app" || res[i].type === "packaged_app" || res[i].type === "legacy_packaged_app") && res[i].enabled === true) {
                 var appObject = {};
                 appObject.name = res[i].name;
                 appObject.id = res[i].id;
@@ -339,21 +341,25 @@ function main() {
 
         appsArray.sort(function (a, b) {
             if (a.clicks === b.clicks) {
-                if (a.name > b.name) return 1;
-                if (a.name < b.name) return -1;
-                return 0;
+                if (a.name > b.name) {
+                    return 1;
+                } else if (a.name < b.name) {
+                    return -1;
+                } else {
+                    return 0;
+                }
             }
             return b.clicks - a.clicks;
         });
 
         for (i = 0; i < appsArray.length - 1; i++) {
-            var _app = document.createElement("a");
-            _app.style.backgroundImage = "url(" + appsArray[i].icon + ")";
-            _app.classList.add("draweritem");
-            _app.classList.add("drawerapp");
-            _app.innerHTML = appsArray[i].name;
-            _app.dataset.id = appsArray[i].id;
-            _app.onclick = function () {
+            var app = document.createElement("a");
+            app.style.backgroundImage = "url(" + appsArray[i].icon + ")";
+            app.classList.add("draweritem");
+            app.classList.add("drawerapp");
+            app.innerHTML = appsArray[i].name;
+            app.dataset.id = appsArray[i].id;
+            app.onclick = function () {
                 if (localStorage["app_clicks_" + this.dataset.id]) {
                     localStorage["app_clicks_" + this.dataset.id] = Number(localStorage["app_clicks_" + this.dataset.id]) + 1;
                 } else {
@@ -364,7 +370,7 @@ function main() {
                     window.close();
                 }
             }
-            drawer.appendChild(_app);
+            drawer.appendChild(app);
         }
     }
 
