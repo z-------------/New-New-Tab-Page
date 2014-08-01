@@ -65,17 +65,17 @@ function loadWarnings(r) {
 	entries = r.responseData.feed.entries;
 
 	var titles = [];
+    
+    var warningsLI = document.createElement("li");
+    warningsLI.setAttribute("id", "warnings");
+
+    infosUl.insertBefore(warningsLI, infosUl.children[0]);
 
 	for(i=0; i<entries.length; i++) {
 		var title = entries[i].title.toLowerCase();
 		title = title.substring(0,title.indexOf(" issued"));
 
 		var date = new Date(entries[i].publishedDate).getTime();
-        
-        var warningsLI = document.createElement("li");
-        warningsLI.setAttribute("id", "warnings");
-        
-        infosUl.insertBefore(warningsLI, infosUl.children[0]);
 
 		if (title in textIconMap) {
 			var imgElement = document.createElement("div");

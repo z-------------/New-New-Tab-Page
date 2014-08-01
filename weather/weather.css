@@ -193,6 +193,10 @@ footer a {
     display: none;
 }
 
+#warnings div:last-child {
+    margin-bottom: 0;
+}
+
 h3 {
     color: white !important;
     font-size: 1.2em;
@@ -203,4 +207,6 @@ h3 {
 .hk_warning {
     background-repeat: no-repeat;
     padding-left: 70px;
+    margin-bottom: 15px;
+    background-position: left;
 }
