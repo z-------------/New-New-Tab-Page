@@ -188,3 +188,19 @@ footer a {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
+#warnings {
+    display: none;
+}
+
+h3 {
+    color: white !important;
+    font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.hk_warning {
+    background-repeat: no-repeat;
+    padding-left: 70px;
+}

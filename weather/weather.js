@@ -237,4 +237,12 @@ function loadInfos(data, forecast, satellite) {
 		aoxt_temp: aoxtTemp,
 		aoxt_cond: forecast[3].conditions
 	});
+    
+    initWarnings();
+}
+
+function initWarnings() {
+    var warningsScript = document.createElement("script");
+    warningsScript.src = "hk-warnings.js";
+    document.head.appendChild(warningsScript);
 }

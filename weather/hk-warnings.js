@@ -53,7 +53,7 @@ for (i=0; i<allWarnings.length; i++) {
 	})
 }
 
-var debugFeed = {
+var debugFeed = { // pass this to loadWarnings function to debug
 	responseData: {
 		feed: {
 			entries: debugWarnings
@@ -71,6 +71,11 @@ function loadWarnings(r) {
 		title = title.substring(0,title.indexOf(" issued"));
 
 		var date = new Date(entries[i].publishedDate).getTime();
+        
+        var warningsLI = document.createElement("li");
+        warningsLI.setAttribute("id", "warnings");
+        
+        infosUl.insertBefore(warningsLI, infosUl.children[0]);
 
 		if (title in textIconMap) {
 			var imgElement = document.createElement("div");
@@ -80,7 +85,9 @@ function loadWarnings(r) {
 			titles.push(icon);
 			imgElement.style.backgroundImage = "url(" + icon + ")";
 			
-			imgElement.innerHTML = "<h2>" + title.capitalize() + "</h2><span>" + new Date(date).toString() + "</span>";
+			imgElement.innerHTML = "<h3>" + title.capitalize() + "</h3><span>" + new Date(date).toString() + "</span>";
+            
+            warningsLI.appendChild(imgElement);
         }
 	}
 
@@ -88,7 +95,8 @@ function loadWarnings(r) {
 		if (window.top.startFlashing) {
 			window.top.startFlashing(titles);
 		}
-		console.log(titles);
+        
+        warningsLI.style.display = "block";
 	}
 }
 
