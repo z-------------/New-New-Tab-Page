@@ -187,7 +187,7 @@ footer a {
 }
 
 #warnings {
-    display: none;
+    display: none !important;
 }
 
 #warnings div:last-child {
