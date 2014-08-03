@@ -193,7 +193,7 @@ var infosUl = document.querySelector("#infos");
 function loadInfos(data, forecast, satellite) {
     // show imperial units for the superior people of the USA, greatest country in the world
     var windSpeed, visibility, dewPoint, feelsLike;
-    var tomTemp, oxtTemp, aoxtTemp;
+    var tomTemp, oxtTemp, aoxtTemp; // "oxt" - an invented word meaning "not this coming one but the one after that"
     if (useImperial) {
         windSpeed = data.wind_mph + " mph";
         visibility = data.visibility_mi + " mi";
