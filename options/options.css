@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+:focus {
+    outline: none;
+}
+
 body, html {
     padding: 0;
     margin: 0;
@@ -13,6 +17,11 @@ body, html {
 
 body {
     background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 h1 {
@@ -60,13 +69,14 @@ label {
     display: inline-block;
 }
 
-input {
+input, button {
 	margin-left: 10px;
 }
 
-input[type=button] {
+button {
     cursor: pointer;
     text-align: center;
+    padding: 1px 6px;
 }
 
 input[type=text], input[type=url] {
@@ -111,7 +121,7 @@ input[type=text], input[type=url] {
     background-color: rgba(0, 0, 0, .2);
 }
 
-input, select, input[type=file]::-webkit-file-upload-button {
+input, select, input[type=file]::-webkit-file-upload-button, button {
     height: 25px;
     border: none;
     background-color: rgba(255, 255, 255, .2);
@@ -124,13 +134,9 @@ input, select, input[type=file]::-webkit-file-upload-button {
     color: rgba(255, 255, 255, .6);
 }
 
-input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus {
+input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus, button:hover, button:focus {
     background-color: rgba(255, 255, 255, .3);
     color: rgba(255, 255, 255, .7);
-}
-
-input:focus, select:focus, input[type=file]::-webkit-file-upload-button:focus {
-    outline: none;
 }
 
 select {
@@ -164,10 +170,6 @@ input[type=checkbox] {
     display: inline-block;
     vertical-align: middle;
     margin: 4px;
-}
-
-input:focus {
-    outline: none;
 }
 
 input[type=number] {
@@ -300,6 +302,10 @@ p {
 	font-size: 13px;
 	margin: 5px;
 	color: rgba(255, 255, 255, .5);
+}
+
+.notitle {
+    padding-top: 50px;
 }
 
 @media only screen and (max-width: 1030px) {

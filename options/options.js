@@ -33,7 +33,7 @@ var bgURL = document.getElementById("custombg");
 var bgLocal = document.getElementById("bglocal");
 
 document.getElementById("resetdefaults").onclick = function () {
-    this.value = "Click again to confirm";
+    this.textContent = "Click again to confirm";
     this.onclick = function () {
         chrome.storage.sync.clear(function () {
             chrome.storage.local.clear();
@@ -447,3 +447,7 @@ function easterEgg() {
         eggIndex += 1;
     }
 }
+
+document.forms[0].onsubmit = function(e){
+    e.preventDefault();
+};
