@@ -77,14 +77,14 @@ function loadWarnings(r) {
 
         var date = new Date(entries[i].publishedDate).getTime();
 
-        if (title in textIconMap) {
+        if (textIconMap.hasOwnProperty(title)) {
             var imgElement = document.createElement("div");
             imgElement.classList.add("hk_warning");
 
             var icon = "/img/hko/" + textIconMap[title];
             titles.push(icon);
+            
             imgElement.style.backgroundImage = "url(" + icon + ")";
-
             imgElement.innerHTML = "<h3>" + title.capitalize() + "</h3><span>" + new Date(date).toString() + "</span>";
 
             warningsLI.appendChild(imgElement);
