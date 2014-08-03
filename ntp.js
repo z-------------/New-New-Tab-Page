@@ -589,9 +589,9 @@ console.log("\n\
 8Ybm8 .d88b Yb  db  dP    8Ybm8 .d88b Yb  db  dP      8   .d88 88b.    8  .8 .d88 .d88 .d88b \n\
 8  \"8 8.dP'  YbdPYbdP     8  \"8 8.dP'  YbdPYbdP       8   8  8 8  8    8wwP' 8  8 8  8 8.dP' \n\
 8   8 `Y88P   YP  YP      8   8 `Y88P   YP  YP        8   `Y88 88P'    8     `Y88 `Y88 `Y88P \n\
-                          wwdP       \n\
+                                                                                  wwdP       \n\
 \n(C) 2013-2014 Zachary Guard\n\
 \nif (you.isDeveloper()) {\n\
-goto('http://github.com/z-------------/New-New-Tab-Page');\n\
-contribute();\n\
+    goto('http://github.com/z-------------/New-New-Tab-Page');\n\
+    contribute();\n\
 }\n");
