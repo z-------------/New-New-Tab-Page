@@ -43,7 +43,7 @@ h1:hover {
 }
 
 h1:active {
-	font-family: "Comic Sans MS", Chalkboard, sans-serif;
+    -webkit-transform: translateZ(-100px);
 }
 
 h2 {
