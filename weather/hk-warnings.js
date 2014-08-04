@@ -8,6 +8,10 @@ var xhr = function (url, callback) {
     oReq.send();
 };
 
+var hkBounds = [ // top left, bottom right
+    [22.6, 113.8], [22.2, 114.4]
+]
+
 var textIconMap = {
     "yellow fire danger warning": "warning_firey.png",
     "red fire danger warning": "warning_firer.png",
@@ -102,16 +106,19 @@ function loadWarnings(r) {
 
 var url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=loadWarnings&q=http://rss.weather.gov.hk/rss/WeatherWarningSummaryv2.xml";
 
-var weatherCity = "",
-    entries;
+var entries;
 
 var warnContainer = document.querySelector("#warning_container");
 
-chrome.storage.sync.get("weatherCity", function (r) {
-    if (r.weatherCity !== undefined) {
-        weatherCity = r.weatherCity.toLowerCase();
+chrome.storage.sync.get("weatherCity", function(r){
+    coords = r.weatherCity.split(",");
+    console.log(coords);
+    if (Number(coords[0]) && Number(coords[1])) {
+        coords[0] = Number(coords[0]);
+        coords[1] = Number(coords[1]);
     }
-    if (weatherCity.indexOf("hk") != -1 || weatherCity.indexOf("hong kong") != -1) {
+
+    if ((coords[0] <= hkBounds[0][0] && coords[0] >= hkBounds[1][0] && coords[1] >= hkBounds[0][1] && coords[0] <= hkBounds[1][1]) || coords.join().toLowerCase().indexOf("hong kong") !== -1) {
         var script = document.createElement("script");
         script.src = url;
         document.head.appendChild(script);
