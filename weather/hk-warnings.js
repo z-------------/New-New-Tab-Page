@@ -96,7 +96,7 @@ function loadWarnings(r) {
             window.top.startFlashing(titles);
         }
 
-        warningsLI.style.display = "block";
+        warningsLI.classList.add("visible");
     }
 }
 
