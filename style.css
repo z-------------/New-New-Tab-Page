@@ -56,8 +56,8 @@ body, html {
     display: inline-block;
     font-size: 60px;
     font-weight: 100;
-    margin-top: 20px;
-    margin-left: 30px;
+    margin-top: 15px;
+    margin-left: 25px;
 }
 
 #container {
@@ -265,21 +265,22 @@ body, html {
 
 #weatherframe {
     position: absolute;
-    left: 200%;
+    left: 100%;
     top: 100px;
-    height: calc(100% - 200px);
-    width: calc(100% - 200px);
-    border-radius: 10px;
+    height: calc(100% - 100px);
+    width: 100%;
     background: #fff;
     z-index: 4;
-	transition: left .2s;
     border: none;
 	overflow: hidden;
 }
 
 .weatheropened #weatherframe {
-    left: 100px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, .2);
+    left: 0;
+}
+
+.weatheropened #bg {
+    opacity: .7;
 }
 
 #weatherframe::-webkit-scrollbar {
