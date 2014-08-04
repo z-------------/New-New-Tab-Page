@@ -67,6 +67,7 @@ label {
     padding-left: 5px;
     clear: both;
     display: inline-block;
+    transition: opacity .3s;
 }
 
 input, button {
@@ -306,6 +307,19 @@ p {
 
 .notitle {
     padding-top: 50px;
+}
+
+#apps h2 {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#apps:hover label {
+    opacity: 1;
+}
+
+#apps label {
+    opacity: 0;
 }
 
 @media only screen and (max-width: 1030px) {
