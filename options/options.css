@@ -322,6 +322,12 @@ p {
     opacity: 0;
 }
 
+#wx-coords-map {
+    height: 200px;
+    width: 100%;
+    margin: 10px;
+}
+
 @media only screen and (max-width: 1030px) {
     section {
         width: 100% !important;

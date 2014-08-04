@@ -67,6 +67,20 @@
                     <input type="checkbox" id="showallbookmarks">
                 </label>
             </section>
+            
+            <section>
+                <h2>Weather</h2>
+                
+                <label>Enable
+                    <input type="checkbox" id="showWeather">
+                </label>
+                
+                <div id="wx-coords-map"></div>
+
+                <label>Use imperial units
+                    <input type="checkbox" id="usefahrenheit">
+                </label>
+            </section>
 
             <section>
                 <h2>Other</h2>
@@ -80,21 +94,13 @@
                 </label>
                 <br>
 
-                <label>Weather
-                    <input type="checkbox" id="showWeather">
-                </label>
-                <input type="text" id="weathercity" placeholder="City">
-
-                <label>Use imperial units
-                    <input type="checkbox" id="usefahrenheit">
-                </label>
-                <br>
                 <label>Facebook messages
                     <input type="checkbox" id="showfb">
                 </label>
                 <label>Facebook notifications
                     <input type="checkbox" id="shownotif">
-                </label>
+                </label><br>
+                
                 <label>StumbleUpon
                     <input type="checkbox" id="showstumble">
                 </label>
@@ -103,9 +109,9 @@
                 </label>
                 <label>Tumblr
                     <input type="checkbox" id="showtum">
-                </label>
+                </label><br>
             </section>
-
+            
             <section class="notitle">
                 <button id="exportopts">Import / export options</button>
                 <button id="resetdefaults" style="background-color:rgb(200,50,50)">Reset to defaults</button><br>

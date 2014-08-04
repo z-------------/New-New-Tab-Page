@@ -1,3 +1,10 @@
+function round(n, unit) {
+    if (unit === null || typeof unit === "undefined") {
+        unit = 1;
+    }
+    return Math.round(n/unit) * unit;
+}
+
 if (location.hash === "#iframe") {
     document.body.style.backgroundColor = "transparent";
 }
@@ -24,8 +31,11 @@ var defaultSettings = {
     apps: [],
     noAnimation: false,
     weatherCity: "",
-    useFahrenheit: false
+    useFahrenheit: false,
+    weatherCity: "22.4,114.2"
 };
+
+var weatherCoords;
 
 var bgPreview = document.getElementById("bgpreview");
 var bgPresetsSelect = document.getElementById("bgopt");
@@ -304,20 +314,24 @@ chrome.storage.sync.get(null, function (sr) {
             this.oninput();
         };
 
-        // dayum! a hundred lines of code just to figure out the Apps section
-        // to be fair, 60 of those lines were spent on defining the default apps...
-        // there. moved the default apps out of the storage.get callback
-        // why am i talking to myself?
-        // more importantly, why am i wasting valuable kb's?
-
-        // here goes the rest of it
-        // should be wrapped in less than 50 lines
-
         readOption("showWeather", function (val) {
             document.getElementById("showWeather").checked = val;
         });
         readOption("weatherCity", function (val) {
-            document.getElementById("weathercity").value = val;
+            // 22.4,114.2
+            val = val.split(",");
+            if (Number(val[0]) && Number(val[1])) {
+                weatherCoords = {
+                    lat: Number(val[0]),
+                    lon: Number(val[1])
+                }
+            } else {
+                var defaultCoords = defaultSettings.weatherCity.split(",");
+                weatherCoords = {
+                    lat: Number(defaultCoords[0]),
+                    lon: Number(defaultCoords[1])
+                }
+            }
         });
         readOption("showFB", function (val) {
             document.getElementById("showfb").checked = val;
@@ -361,10 +375,11 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("autoClose", function (val) {
             document.getElementById("autoclose").checked = val;
         });
-
-        // meh... close enough
-        // i could have reduced it by 66.6...% if i hadn't put the callback on a new line...
     });
+    
+    var gmapsScript = document.createElement("script");
+    gmapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBbIDkSh9Ywe6WYtzHs7MaWjpcz9Q3usMs&callback=initWxMap";
+    document.head.appendChild(gmapsScript);
 });
 
 document.getElementById("save").onclick = function () {
@@ -375,7 +390,6 @@ document.getElementById("save").onclick = function () {
     newSettings.slotCount = Number(document.getElementById("slotcount").value);
     newSettings.titleText = document.getElementById("titletext").value;
     newSettings.showWeather = document.getElementById("showWeather").checked;
-    newSettings.weatherCity = document.getElementById("weathercity").value;
     newSettings.showFB = document.getElementById("showfb").checked;
     newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
@@ -388,6 +402,8 @@ document.getElementById("save").onclick = function () {
     newSettings.showNews = document.getElementById("shownews").checked;
     newSettings.showTumblr = document.getElementById("showtum").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
+    
+    newSettings.weatherCity = round(gmapMarker.position.k, 0.1) + "," + round(gmapMarker.position.B, 0.1);
 
     newSettings.apps = defaultSettings.apps;
 
@@ -451,3 +467,33 @@ function easterEgg() {
 document.forms[0].onsubmit = function(e){
     e.preventDefault();
 };
+
+/* weather lat/long map stuff */
+var gmapMarker;
+
+function initWxMap() {
+    var mapOptions = {
+        center: new google.maps.LatLng(weatherCoords.lat, weatherCoords.lon),
+        zoom: 7,
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    
+    var map = new google.maps.Map(document.getElementById("wx-coords-map"), mapOptions);
+    
+    google.maps.event.addListener(map, "click", function(e) {
+        if (typeof gmapMarker !== "undefined") {
+            gmapMarker.setMap(null);
+        }
+        
+        gmapMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(e.latLng.k, e.latLng.B),
+            map: map
+        });
+    });
+    
+    gmapMarker = new google.maps.Marker({
+        position: new google.maps.LatLng(weatherCoords.lat, weatherCoords.lon),
+        map: map
+    });
+}
