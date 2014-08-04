@@ -309,17 +309,9 @@ p {
     padding-top: 50px;
 }
 
-#apps h2 {
+#apps h2, #weather h2 {
     display: inline-block;
     margin-right: 10px;
-}
-
-#apps:hover label {
-    opacity: 1;
-}
-
-#apps label {
-    opacity: 0;
 }
 
 #wx-coords-map {

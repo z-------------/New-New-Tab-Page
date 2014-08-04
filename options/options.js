@@ -5,6 +5,16 @@ function round(n, unit) {
     return Math.round(n/unit) * unit;
 }
 
+var xhr = function(url,callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = function(){
+        var response = this.responseText;
+        callback(response);
+    };
+    oReq.open("get", url, true);
+    oReq.send();
+};
+
 if (location.hash === "#iframe") {
     document.body.style.backgroundColor = "transparent";
 }
@@ -471,6 +481,17 @@ document.forms[0].onsubmit = function(e){
 /* weather lat/long map stuff */
 var gmapMarker;
 
+function addMarker(marker, coords, map) {
+    if (window[marker] !== undefined) {
+        window[marker].setMap(null);
+    }
+    
+    window[marker] = new google.maps.Marker({
+        position: new google.maps.LatLng(coords[0], coords[1]),
+        map: map
+    });
+}
+
 function initWxMap() {
     var mapOptions = {
         center: new google.maps.LatLng(weatherCoords.lat, weatherCoords.lon),
@@ -482,18 +503,22 @@ function initWxMap() {
     var map = new google.maps.Map(document.getElementById("wx-coords-map"), mapOptions);
     
     google.maps.event.addListener(map, "click", function(e) {
-        if (typeof gmapMarker !== "undefined") {
-            gmapMarker.setMap(null);
-        }
-        
-        gmapMarker = new google.maps.Marker({
-            position: new google.maps.LatLng(e.latLng.k, e.latLng.B),
-            map: map
-        });
+        addMarker("gmapMarker", [e.latLng.k, e.latLng.B], map);
     });
     
-    gmapMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(weatherCoords.lat, weatherCoords.lon),
-        map: map
-    });
+    addMarker("gmapMarker", [weatherCoords.lat, weatherCoords.lon], map);
+    
+    var mapSearch = document.querySelector(".map-search");
+    mapSearch.onkeydown = function(e){
+        if (e.which === 13) {
+            e.preventDefault();
+            xhr("https://maps.googleapis.com/maps/api/geocode/json?address=" + this.value + "&key=AIzaSyBbIDkSh9Ywe6WYtzHs7MaWjpcz9Q3usMs", function(r) {
+                r = JSON.parse(r);
+                var coords = r.results[0].geometry.location;
+                
+                addMarker("gmapMarker", [coords.lat, coords.lng], map);
+                map.panTo(new google.maps.LatLng(coords.lat, coords.lng));
+            });
+        }
+    }
 }
