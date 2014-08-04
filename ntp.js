@@ -256,7 +256,6 @@ function main() {
             options.contentWindow.onload = function () {
                 this.easterEgg(); // this being the contentWindow
             };
-            document.body.style.backgroundColor = "black";
         } else if (!optsopened && options.contentWindow.location.href.indexOf("options/options.html#iframe") !== -1) {
             options.contentWindow.easterEgg();
         }
@@ -574,6 +573,14 @@ function main() {
     if (noAnimation) {
         document.body.classList.add("noanimation");
     }
+    
+    (function(){
+        var image = document.createElement("img");
+        image.src = window.backgroundURL.substring(4, backgroundURL.lastIndexOf(")")); // grab "image.png" from "url(image.png)"
+        image.onload = function(){ // if we do this before the background is loaded user will see a flash of black
+            document.body.style.backgroundColor = "black";
+        };
+    })();
 }
 
 window.onerror = function (e) {
