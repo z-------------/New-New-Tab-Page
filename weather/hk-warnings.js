@@ -110,7 +110,7 @@ var warnContainer = document.querySelector("#warning_container");
 
 chrome.storage.sync.get("weatherCity", function(r){
     coords = r.weatherCity.split(",");
-    console.log(coords);
+    
     if (Number(coords[0]) && Number(coords[1])) {
         coords[0] = Number(coords[0]);
         coords[1] = Number(coords[1]);
