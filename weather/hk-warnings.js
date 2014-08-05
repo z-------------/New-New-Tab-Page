@@ -79,8 +79,6 @@ function loadWarnings(r) {
         var title = entries[i].title.toLowerCase();
         title = title.substring(0, title.indexOf(" issued"));
 
-        var date = new Date(entries[i].publishedDate).getTime();
-
         if (textIconMap.hasOwnProperty(title)) {
             var imgElement = document.createElement("div");
             imgElement.classList.add("hk_warning");
@@ -89,7 +87,7 @@ function loadWarnings(r) {
             titles.push(icon);
             
             imgElement.style.backgroundImage = "url(" + icon + ")";
-            imgElement.innerHTML = "<h3>" + title.capitalize() + "</h3><span>" + new Date(date).toString() + "</span>";
+            imgElement.innerHTML = "<h3>" + title.capitalize() + "</h3><span>" + new Date(entries[i].publishedDate).toLocaleString("ca") + "</span>";
 
             warningsLI.appendChild(imgElement);
         }
