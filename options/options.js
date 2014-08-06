@@ -42,7 +42,7 @@ var defaultSettings = {
     noAnimation: false,
     weatherCity: "",
     useFahrenheit: false,
-    weatherCity: "22.4,114.2"
+    weatherCity: "22.3,113.9"
 };
 
 var weatherCoords;
