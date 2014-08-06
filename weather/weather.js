@@ -69,9 +69,10 @@ function getWeather(response) {
         }
 
         document.getElementById("temp").innerHTML = "<h1>" + temp + "&#176;</h1><div>" + weather + "</div>";
-        document.getElementById("weather").style.backgroundImage = "url(" + iconURL + ")";
+        document.getElementById("temp").style.backgroundImage = "url(" + iconURL + ")";
 
         loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite);
+        initHeaderBG(weather);
 
         window.top.getWeather(iconURL);
     }
@@ -255,3 +256,23 @@ function initWarnings() {
     warningsScript.src = "hk-warnings.js";
     document.head.appendChild(warningsScript);
 }
+
+var headerBG = document.querySelector("#header-bg");
+
+function initHeaderBG(cond) {
+    var hbgScript = document.createElement("script");
+    // again, i'm using a free account so please don't use my api key
+    hbgScript.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a2652c3d44892a2e206e08a9f27af05d&tags=" + cond + "&per_page=1&format=json";
+    // hbgScript's callback is jsonFlickrApi
+    document.head.appendChild(hbgScript);
+}
+
+function jsonFlickrApi(data) {
+    var photo = data.photos.photo[0];
+    var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b.jpg";
+    headerBG.style.backgroundImage = "url(" + url + ")";
+}
+
+window.addEventListener("scroll", function(){
+    headerBG.style.backgroundPositionY = "calc(50% + " + window.scrollY/3 + "px)";
+});
