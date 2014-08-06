@@ -36,43 +36,51 @@ function getWeather(response) {
         }
 
         var iconURL;
+        var condCanon;
 
         var isDay = (time.getHours() < 18 && time.getHours() >= 6);
         if (isDay) {
             if (weather == "Clear") {
                 iconURL = icons.clear;
                 document.body.style.background = colors.clear;
+                condCanon = "clear";
             } else if (weather.indexOf("Storm") > -1 || weather.indexOf("storm") > -1) {
                 iconURL = icons.storm;
                 document.body.style.background = colors.storm;
+                condCanon = "storm";
             } else if (weather.indexOf("Rain") > -1 || weather.indexOf("Shower") > -1 || weather.indexOf("Drizzle") > -1) {
                 iconURL = icons.rainy;
                 document.body.style.background = colors.rainy;
+                condCanon = "rain";
             } else if (weather.indexOf("Fog") > -1 || weather.indexOf("Haz") > -1 || weather.indexOf("Part") > -1) {
                 iconURL = icons.fog;
                 document.body.style.background = colors.cloudy;
+                condCanon = "fog";
             } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
                 iconURL = icons.cloudy;
                 document.body.style.background = colors.cloudy;
+                condCanon = "cloud";
             } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
                 iconURL = icons.snow;
                 document.body.style.background = colors.snow;
+                condCanon = "snow";
             } else {
                 console.log("Not sure which weather icon to use so defaulting to Clear");
                 iconURL = icons.clear;
                 document.body.style.background = colors.clear;
+                condCanon = "clear";
             }
         } else {
             iconURL = icons.moon;
             document.body.style.backgroundColor = colors.clear;
             document.getElementById("dark").style.display = "block";
+            condCanon = "night";
         }
-
+        
         document.getElementById("temp").innerHTML = "<h1>" + temp + "&#176;</h1><div>" + weather + "</div>";
         document.getElementById("temp").style.backgroundImage = "url(" + iconURL + ")";
 
-        loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite);
-        initHeaderBG(weather);
+        loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite, condCanon);
 
         window.top.getWeather(iconURL);
     }
@@ -196,7 +204,7 @@ var infosTemplate = "\
 
 var infosUl = document.querySelector("#infos");
 
-function loadInfos(data, forecast, satellite) {
+function loadInfos(data, forecast, satellite, condCanon) {
     // show imperial units for the superior people of the USA, greatest country in the world
     var windSpeed, visibility, dewPoint, feelsLike;
     var tomTemp, oxtTemp, aoxtTemp; // "oxt" - an invented word meaning "not this coming one but the one after that"
@@ -247,6 +255,7 @@ function loadInfos(data, forecast, satellite) {
     });
 
     initWarnings();
+    initHeaderBG(condCanon);
     
     document.querySelector(".map").style.height = document.querySelector(".map").offsetWidth + "px";
 }
@@ -260,17 +269,47 @@ function initWarnings() {
 var headerBG = document.querySelector("#header-bg");
 
 function initHeaderBG(cond) {
-    var hbgScript = document.createElement("script");
-    // again, i'm using a free account so please don't use my api key
-    hbgScript.src = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=a2652c3d44892a2e206e08a9f27af05d&tags=" + cond + "&per_page=1&format=json";
-    // hbgScript's callback is jsonFlickrApi
-    document.head.appendChild(hbgScript);
-}
-
-function jsonFlickrApi(data) {
-    var photo = data.photos.photo[0];
-    var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_b.jpg";
-    headerBG.style.backgroundImage = "url(" + url + ")";
+    var wxPhotos = {
+        clear: {
+            url: "https://farm2.staticflickr.com/1327/576282764_995bbb4b2b_b.jpg",
+            author: "Honou",
+            link: "https://www.flickr.com/photos/honou/576282764"
+        },
+        rain: {
+            url: "https://farm3.staticflickr.com/2671/4023111353_fb446deeac_b.jpg",
+            author: "Moyan Brenn",
+            link: "https://www.flickr.com/photos/aigle_dore/4023111353"
+        },
+        cloud: {
+            url: "https://farm8.staticflickr.com/7222/7339637786_80ca18ac80_b.jpg",
+            author: "Michael Taggart",
+            link: "https://www.flickr.com/photos/michael_harold/7339637786"
+        },
+        storm: {
+            url: "https://farm4.staticflickr.com/3882/14503085829_af8c3d36cc_b.jpg",
+            author: "Brian Tomlinson",
+            link: "https://www.flickr.com/photos/brian_tomlinson/14503085829"
+        },
+        fog: {
+            url: "https://farm6.staticflickr.com/5577/14777909183_b119ca6982_b.jpg",
+            author: "jblaha",
+            link: "https://www.flickr.com/photos/blahafotos/14777909183"
+        },
+        snow: {
+            url: "https://farm8.staticflickr.com/7154/6770916105_4081e531a4_b.jpg",
+            author: "Rachel Kramer",
+            link: "https://www.flickr.com/photos/rkramer62/6770916105"
+        },
+        night: {
+            url: "https://farm8.staticflickr.com/7324/14100149394_96f56ce781_b.jpg",
+            author: "Matthew Savage",
+            link: "https://www.flickr.com/photos/msavagephotography/14100149394"
+        }
+    };
+    
+    headerBG.style.backgroundImage = "url(" + wxPhotos[cond].url + ")";
+    
+    document.querySelector("footer").innerHTML += "&bull; Photo by <a href='" + wxPhotos[cond].link + "'>" + wxPhotos[cond].author + "</a>";
 }
 
 window.addEventListener("scroll", function(){
