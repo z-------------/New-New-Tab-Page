@@ -155,7 +155,12 @@ var infosTemplate = "\
 \
 <li id='map'>\
 <h2>Map</h2>\
-<a href='http://www.wunderground.com/wundermap'><img class='map' src='%map_url%'></a>\
+<a href='http://www.wunderground.com/wundermap'>\
+<div class='map'>\
+<img class='base' src='%map_base%'>\
+<img class='overlay' src='%map_overlay%'>\
+</div>\
+</a>\
 </li>\
 \
 <li id='details'>\
@@ -228,17 +233,21 @@ function loadInfos(data, forecast, satellite) {
         tom: forecast[1].date.weekday,
         oxt: forecast[2].date.weekday,
         aoxt: forecast[3].date.weekday,
-        map_url: satellite.image_url + "&width=500&height=500", // force it to show a 500x500 image
 
         tom_temp: tomTemp,
         tom_cond: forecast[1].conditions,
         oxt_temp: oxtTemp,
         oxt_cond: forecast[2].conditions,
         aoxt_temp: aoxtTemp,
-        aoxt_cond: forecast[3].conditions
+        aoxt_cond: forecast[3].conditions,
+        
+        map_overlay: satellite.image_url_ir4 + "&width=500&height=500&borders=0&basemap=0",
+        map_base: "http://maps.googleapis.com/maps/api/staticmap?center=" + city +"&zoom=8&size=500x500&maptype=hybrid"
     });
 
     initWarnings();
+    
+    document.querySelector(".map").style.height = document.querySelector(".map").offsetWidth + "px";
 }
 
 function initWarnings() {
