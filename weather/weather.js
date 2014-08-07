@@ -27,6 +27,7 @@ function getWeather(response) {
         var time = new Date();
 
         var weather = response.current_observation.weather;
+        var lowerWeather = weather.toLowerCase();
 
         var temp;
         if (useF === true) {
@@ -40,32 +41,31 @@ function getWeather(response) {
 
         var isDay = (time.getHours() < 18 && time.getHours() >= 6);
         if (isDay) {
-            if (weather == "Clear") {
+            if (lowerWeather === "clear") {
                 iconURL = icons.clear;
                 document.body.style.background = colors.clear;
                 condCanon = "clear";
-            } else if (weather.indexOf("Storm") > -1 || weather.indexOf("storm") > -1) {
+            } else if (lowerWeather.indexOf("storm") !== -1) {
                 iconURL = icons.storm;
                 document.body.style.background = colors.storm;
                 condCanon = "storm";
-            } else if (weather.indexOf("Rain") > -1 || weather.indexOf("Shower") > -1 || weather.indexOf("Drizzle") > -1) {
+            } else if (lowerWeather.indexOf("rain") !== -1 || lowerWeather.indexOf("shower") !== -1 || lowerWeather.indexOf("drizzle") !== -1) {
                 iconURL = icons.rainy;
                 document.body.style.background = colors.rainy;
                 condCanon = "rain";
-            } else if (weather.indexOf("Fog") > -1 || weather.indexOf("Haz") > -1 || weather.indexOf("Part") > -1) {
+            } else if (lowerWeather.indexOf("fog") !== -1 || lowerWeather.indexOf("haz") !== -1) {
                 iconURL = icons.fog;
                 document.body.style.background = colors.cloudy;
                 condCanon = "fog";
-            } else if (weather.indexOf("Cloud") > -1 || weather == "Overcast") {
+            } else if (lowerWeather.indexOf("cloud") !== -1 || lowerWeather.indexOf("overcast") !== -1) {
                 iconURL = icons.cloudy;
                 document.body.style.background = colors.cloudy;
                 condCanon = "cloud";
-            } else if (weather.indexOf("Snow") > -1 || weather.indexOf("Hail") > -1) {
+            } else if (lowerWeather.indexOf("snow") !== -1 || lowerWeather.indexOf("hail") !== -1) {
                 iconURL = icons.snow;
                 document.body.style.background = colors.snow;
                 condCanon = "snow";
-            } else {
-                console.log("Not sure which weather icon to use so defaulting to Clear");
+            } else { // default to clear
                 iconURL = icons.clear;
                 document.body.style.background = colors.clear;
                 condCanon = "clear";
