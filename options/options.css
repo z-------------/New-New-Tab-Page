@@ -107,7 +107,6 @@ input[type=text], input[type=url] {
 }
 
 #save {
-    font-weight: 100;
     font-size: 17px;
     padding: 15px 20px;
     height: auto;
