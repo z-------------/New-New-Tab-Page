@@ -124,7 +124,7 @@ body, html {
     right: 20px;
     transition: all .2s;
     width: 50px;
-    z-index: 3;
+    z-index: 4;
 }
 
 #appbutton:hover {
@@ -271,7 +271,7 @@ body, html {
     height: calc(100% - 100px);
     width: 100%;
     background: #fff;
-    z-index: 4;
+    z-index: 3;
     border: none;
 	overflow: hidden;
 }
@@ -351,7 +351,7 @@ body, html {
     height: 0;
     bottom: 70px;
     position: fixed;
-    z-index: 3;
+    z-index: 4;
     transition: all .2s;
     opacity: 0;
 }
@@ -396,7 +396,7 @@ body, html {
     position: fixed;
     bottom: 20px;
     right: 90px;
-    z-index: 3;
+    z-index: 4;
 }
 
 #appsicon:hover {
@@ -502,7 +502,7 @@ a {
     bottom: 20px;
     right: 160px;
     display: none;
-    z-index: 3;
+    z-index: 4;
 }
 
 #bookmarks:hover {
