@@ -496,7 +496,8 @@ function addMarker(marker, coords, map) {
     
     window[marker] = new google.maps.Marker({
         position: new google.maps.LatLng(coords[0], coords[1]),
-        map: map
+        map: map,
+        draggable: true
     });
 }
 
