@@ -1,5 +1,5 @@
 var colors = {
-        clear: "#47C5FF",
+        clear: "#7ecdf1",
         storm: "#aaa",
         cloudy: "#a8becc",
         rainy: "#8ad",
@@ -267,13 +267,15 @@ function initWarnings() {
 }
 
 var headerBG = document.querySelector("#header-bg");
+var finalHeaderUrl;
+var loadHeader;
 
 function initHeaderBG(cond) {
     var wxPhotos = {
         clear: {
-            url: "https://farm2.staticflickr.com/1327/576282764_995bbb4b2b_b.jpg",
-            author: "Honou",
-            link: "https://www.flickr.com/photos/honou/576282764"
+            url: "https://farm3.staticflickr.com/2543/3874874014_ed5de0880d_b.jpg",
+            author: "Jim",
+            link: "https://www.flickr.com/photos/jarroast/3874874014"
         },
         rain: {
             url: "https://farm3.staticflickr.com/2671/4023111353_fb446deeac_b.jpg",
@@ -307,7 +309,10 @@ function initHeaderBG(cond) {
         }
     };
     
-    headerBG.style.backgroundImage = "url(" + wxPhotos[cond].url + ")";
+    finalHeaderBgStyle = "url(" + wxPhotos[cond].url + ")";
+    loadHeader = function(){
+        headerBG.style.backgroundImage = finalHeaderBgStyle;
+    };
     
     document.querySelector("footer").innerHTML += "&bull; Photo by <a href='" + wxPhotos[cond].link + "'>" + wxPhotos[cond].author + "</a>";
 }

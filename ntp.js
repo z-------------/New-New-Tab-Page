@@ -89,6 +89,8 @@ function getWeather(icon) {
         }
 
         document.body.classList.toggle("weatheropened");
+        
+        document.getElementById("weatherframe").contentWindow.loadHeader();
     }
 }
 
