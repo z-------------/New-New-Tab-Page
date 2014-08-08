@@ -59,7 +59,7 @@ body {
 
 #temp {
 	float: right;
-    margin-top: 55px;
+    margin-top: 62px;
 	width: calc(50% + 200px);
     padding-left: 200px;
 	text-align: left;
@@ -75,6 +75,7 @@ body {
 #temp div {
 	font-size: 30px;
 	font-weight: 100;
+    color: rgba(255, 255, 255, .8);
 }
 
 #main {
