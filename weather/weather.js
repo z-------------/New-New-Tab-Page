@@ -3,7 +3,8 @@ var colors = {
         storm: "#aaa",
         cloudy: "#a8becc",
         rainy: "#8ad",
-        snow: "#ccc"
+        snow: "#ccc",
+        night: "#263c48"
     },
     icons = {
         clear: "/img/weather/sunny.png",
@@ -65,16 +66,22 @@ function getWeather(response) {
                 iconURL = icons.snow;
                 document.body.style.background = colors.snow;
                 condCanon = "snow";
-            } else { // default to clear
+            } else {
                 iconURL = icons.clear;
                 document.body.style.background = colors.clear;
                 condCanon = "clear";
             }
         } else {
             iconURL = icons.moon;
-            document.body.style.backgroundColor = colors.clear;
-            document.getElementById("dark").style.display = "block";
-            condCanon = "night";
+            document.body.style.background = colors.night;
+            
+            if (lowerWeather.indexOf("storm") !== -1) {
+                condCanon = "nightstorm";
+            } else if (lowerWeather.indexOf("rain") !== -1 || lowerWeather.indexOf("shower") !== -1 || lowerWeather.indexOf("drizzle") !== -1) {
+                condCanon = "nightrain";
+            } else {
+                condCanon = "night";
+            }
         }
         
         document.getElementById("temp").innerHTML = "<h1>" + temp + "&#176;</h1><div>" + weather + "</div>";
@@ -288,9 +295,9 @@ function initHeaderBG(cond) {
             link: "https://www.flickr.com/photos/michael_harold/7339637786"
         },
         storm: {
-            url: "https://farm4.staticflickr.com/3882/14503085829_af8c3d36cc_b.jpg",
-            author: "Brian Tomlinson",
-            link: "https://www.flickr.com/photos/brian_tomlinson/14503085829"
+            url: "https://farm3.staticflickr.com/2927/14524963637_27cea1e31b_b.jpg",
+            author: "mLu.fotos",
+            link: "https://www.flickr.com/photos/luppes777/14524963637"
         },
         fog: {
             url: "https://farm6.staticflickr.com/5577/14777909183_b119ca6982_b.jpg",
@@ -306,6 +313,16 @@ function initHeaderBG(cond) {
             url: "https://farm8.staticflickr.com/7324/14100149394_96f56ce781_b.jpg",
             author: "Matthew Savage",
             link: "https://www.flickr.com/photos/msavagephotography/14100149394"
+        },
+        nightstorm: {
+            url: "https://farm4.staticflickr.com/3882/14503085829_af8c3d36cc_b.jpg",
+            author: "Brian Tomlinson",
+            link: "https://www.flickr.com/photos/brian_tomlinson/14503085829"
+        },
+        nightrain: {
+            url: "https://farm3.staticflickr.com/2671/4023111353_fb446deeac_b.jpg",
+            author: "Moyan Brenn",
+            link: "https://www.flickr.com/photos/aigle_dore/4023111353"
         }
     };
     
