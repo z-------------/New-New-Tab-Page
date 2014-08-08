@@ -81,6 +81,7 @@ body, html {
     transition: all .2s;
     width: 130px;
     background-color: white;
+    background-size: cover;
 }
 
 .app:hover {
