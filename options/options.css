@@ -107,6 +107,7 @@ input[type=text], input[type=url] {
 }
 
 #save {
+    font-weight: 300;
     font-size: 17px;
     padding: 15px 20px;
     height: auto;
@@ -232,6 +233,10 @@ li {
     margin-bottom: 10px;
 }
 
+#appopts ol {
+    transition: height .3s;
+}
+
 #appopts li {
     padding-left: 75px;
     background-size: 55px;
@@ -267,11 +272,8 @@ li {
 }
 
 #appopts li.hidden {
-    height: 0;
-    margin: 0;
     opacity: 0;
     pointer-events: none;
-    float: left;
 }
 
 section {
