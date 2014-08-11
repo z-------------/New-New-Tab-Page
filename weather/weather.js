@@ -257,7 +257,7 @@ function loadInfos(data, forecast, satellite, condCanon) {
         aoxt_temp: aoxtTemp,
         aoxt_cond: forecast[3].conditions,
         
-        map_overlay: satellite.image_url_ir4 + "&width=500&height=500&borders=0&basemap=0",
+        map_overlay: satellite.image_url_ir4 + "&width=500&height=500&borders=0&basemap=0&gtt=110",
         map_base: "http://maps.googleapis.com/maps/api/staticmap?center=" + city +"&zoom=8&size=500x500&maptype=hybrid"
     });
 
