@@ -227,6 +227,7 @@ input[type=file] {
 ul, ol {
     list-style: none;
     padding: 0;
+    overflow: hidden;
 }
 
 li {
