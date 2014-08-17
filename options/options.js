@@ -494,8 +494,15 @@ function addMarker(marker, coords, map) {
         window[marker].setMap(null);
     }
     
+    var position;
+    if (coords.constructor === Array) {
+        position = new google.maps.LatLng(coords[0], coords[1]);
+    } else {
+        position = coords;
+    }
+    
     window[marker] = new google.maps.Marker({
-        position: new google.maps.LatLng(coords[0], coords[1]),
+        position: position,
         map: map,
         draggable: true
     });
@@ -512,7 +519,7 @@ function initWxMap() {
     var map = new google.maps.Map(document.getElementById("wx-coords-map"), mapOptions);
     
     google.maps.event.addListener(map, "click", function(e) {
-        addMarker("gmapMarker", [e.latLng.k, e.latLng.B], map);
+        addMarker("gmapMarker", e.latLng, map);
     });
     
     addMarker("gmapMarker", [weatherCoords.lat, weatherCoords.lon], map);
