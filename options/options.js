@@ -5,7 +5,7 @@ function round(n, unit) {
     return Math.round(n/unit) * unit;
 }
 
-var xhr = function(url,callback) {
+function xhr(url, callback) {
     var oReq = new XMLHttpRequest();
     oReq.onload = function(){
         var response = this.responseText;
@@ -13,7 +13,7 @@ var xhr = function(url,callback) {
     };
     oReq.open("get", url, true);
     oReq.send();
-};
+}
 
 if (location.hash === "#iframe") {
     document.body.style.backgroundColor = "transparent";
