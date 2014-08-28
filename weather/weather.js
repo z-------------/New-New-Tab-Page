@@ -1,20 +1,22 @@
 var colors = {
-        clear: "#7ecdf1",
-        storm: "#aaa",
-        cloudy: "#a8becc",
-        rainy: "#8ad",
-        snow: "#ccc",
-        night: "#263c48"
-    },
-    icons = {
-        clear: "/img/weather/sunny.png",
-        storm: "/img/weather/storm.png",
-        cloudy: "/img/weather/cloudy.png",
-        rainy: "/img/weather/rain.png",
-        moon: "/img/weather/moon.png",
-        snow: "/img/weather/snow.png",
-        fog: "/img/weather/fog.png"
-    }
+    clear: "rgb(132, 165, 205)",
+    storm: "rgb(54, 79, 86)",
+    cloudy: "rgb(148, 151, 156)",
+    rainy: "rgb(49, 82, 104)",
+    snow: "rgb(106, 125, 133)",
+    night: "rgb(49, 51, 72)",
+    nightstorm: "rgb(70, 49, 46)",
+    nightrain: "rgb(49, 82, 104)"
+};
+var icons = {
+    clear: "/img/weather/sunny.png",
+    storm: "/img/weather/storm.png",
+    cloudy: "/img/weather/cloudy.png",
+    rainy: "/img/weather/rain.png",
+    moon: "/img/weather/moon.png",
+    snow: "/img/weather/snow.png",
+    fog: "/img/weather/fog.png"
+};
 
 var lastChecked = 0;
 var useF = false;
@@ -73,13 +75,15 @@ function getWeather(response) {
             }
         } else {
             iconURL = icons.moon;
-            document.body.style.background = colors.night;
             
             if (lowerWeather.indexOf("storm") !== -1) {
+                document.body.style.background = colors.nightstorm;
                 condCanon = "nightstorm";
             } else if (lowerWeather.indexOf("rain") !== -1 || lowerWeather.indexOf("shower") !== -1 || lowerWeather.indexOf("drizzle") !== -1) {
+                document.body.style.background = colors.nightrain;
                 condCanon = "nightrain";
             } else {
+                document.body.style.background = colors.night;
                 condCanon = "night";
             }
         }
