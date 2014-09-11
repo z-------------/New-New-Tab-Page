@@ -311,7 +311,7 @@ p {
     padding-top: 50px;
 }
 
-#apps h2, #weather h2 {
+#apps h2 {
     display: inline-block;
     margin-right: 10px;
 }
