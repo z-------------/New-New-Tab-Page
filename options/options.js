@@ -40,12 +40,8 @@ var defaultSettings = {
     showTumblr: false,
     apps: [],
     noAnimation: false,
-    weatherCity: "",
-    useFahrenheit: false,
-    weatherCity: "22.3,113.9"
+    useFahrenheit: false
 };
-
-var weatherCoords;
 
 var bgPreview = document.getElementById("bgpreview");
 var bgPresetsSelect = document.getElementById("bgopt");
@@ -335,22 +331,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("showWeather", function (val) {
             document.getElementById("showWeather").checked = val;
         });
-        readOption("weatherCity", function (val) {
-            // 22.4,114.2
-            val = val.split(",");
-            if (Number(val[0]) && Number(val[1])) {
-                weatherCoords = {
-                    lat: Number(val[0]),
-                    lon: Number(val[1])
-                }
-            } else {
-                var defaultCoords = defaultSettings.weatherCity.split(",");
-                weatherCoords = {
-                    lat: Number(defaultCoords[0]),
-                    lon: Number(defaultCoords[1])
-                }
-            }
-        });
         readOption("showFB", function (val) {
             document.getElementById("showfb").checked = val;
         });
@@ -394,10 +374,6 @@ chrome.storage.sync.get(null, function (sr) {
             document.getElementById("autoclose").checked = val;
         });
     });
-    
-    var gmapsScript = document.createElement("script");
-    gmapsScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBbIDkSh9Ywe6WYtzHs7MaWjpcz9Q3usMs&callback=initWxMap";
-    document.head.appendChild(gmapsScript);
 });
 
 document.getElementById("save").onclick = function () {
@@ -420,8 +396,6 @@ document.getElementById("save").onclick = function () {
     newSettings.showNews = document.getElementById("shownews").checked;
     newSettings.showTumblr = document.getElementById("showtum").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
-    
-    newSettings.weatherCity = round(gmapMarker.position.k, 0.1) + "," + round(gmapMarker.position.B, 0.1);
 
     newSettings.apps = defaultSettings.apps;
 
@@ -485,56 +459,3 @@ function easterEgg() {
 document.forms[0].onsubmit = function(e){
     e.preventDefault();
 };
-
-/* weather lat/long map stuff */
-var gmapMarker;
-
-function addMarker(marker, coords, map) {
-    if (window[marker] !== undefined) {
-        window[marker].setMap(null);
-    }
-    
-    var position;
-    if (coords.constructor === Array) {
-        position = new google.maps.LatLng(coords[0], coords[1]);
-    } else {
-        position = coords;
-    }
-    
-    window[marker] = new google.maps.Marker({
-        position: position,
-        map: map,
-        draggable: true
-    });
-}
-
-function initWxMap() {
-    var mapOptions = {
-        center: new google.maps.LatLng(weatherCoords.lat, weatherCoords.lon),
-        zoom: 7,
-        disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-    };
-    
-    var map = new google.maps.Map(document.getElementById("wx-coords-map"), mapOptions);
-    
-    google.maps.event.addListener(map, "click", function(e) {
-        addMarker("gmapMarker", e.latLng, map);
-    });
-    
-    addMarker("gmapMarker", [weatherCoords.lat, weatherCoords.lon], map);
-    
-    var mapSearch = document.querySelector(".map-search");
-    mapSearch.onkeydown = function(e){
-        if (e.which === 13) {
-            e.preventDefault();
-            xhr("https://maps.googleapis.com/maps/api/geocode/json?address=" + this.value + "&key=AIzaSyBbIDkSh9Ywe6WYtzHs7MaWjpcz9Q3usMs", function(r) {
-                r = JSON.parse(r);
-                var coords = r.results[0].geometry.location;
-                
-                addMarker("gmapMarker", [coords.lat, coords.lng], map);
-                map.panTo(new google.maps.LatLng(coords.lat, coords.lng));
-            });
-        }
-    }
-}

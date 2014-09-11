@@ -1,3 +1,13 @@
+var xhr = function(url,callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = function(){
+        var response = this.responseText;
+        callback(response);
+    };
+    oReq.open("get", url, true);
+    oReq.send();
+};
+
 var colors = {
     clear: "rgb(132, 165, 205)",
     storm: "rgb(54, 79, 86)",
@@ -8,6 +18,7 @@ var colors = {
     nightstorm: "rgb(70, 49, 46)",
     nightrain: "rgb(49, 82, 104)"
 };
+
 var icons = {
     clear: "/img/weather/sunny.png",
     storm: "/img/weather/storm.png",
@@ -97,23 +108,20 @@ function getWeather(response) {
     }
 }
 
-chrome.storage.sync.get(["useFahrenheit", "weatherCity"], function (r) {
+chrome.storage.sync.get("useFahrenheit", function (r) {
     if (r.useFahrenheit !== undefined) {
         useF = r.useFahrenheit;
         useImperial = useF;
-    }
-    if (r.weatherCity !== undefined) {
-        city = r.weatherCity;
     }
 
     if (localStorage.last_checked) {
         lastChecked = Number(localStorage.last_checked);
     }
 
-    if (new Date().getTime() - lastChecked >= 900000 && navigator.onLine) {
+    if (!lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)) {
         var script = document.createElement("script");
-        script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/forecast/satellite/q/" + city + ".json?callback=getWeather";
-        // please don't use my key
+        script.src = "https://api.wunderground.com/api/5d3e41d1ab52543e/conditions/forecast/satellite/q/autoip.json?callback=getWeather";
+        // please don't use my api key
         // i'm on a free account anyway
         document.getElementsByTagName("head")[0].appendChild(script);
         localStorage.last_checked = new Date().getTime();
@@ -216,7 +224,6 @@ var infosTemplate = "\
 var infosUl = document.querySelector("#infos");
 
 function loadInfos(data, forecast, satellite, condCanon) {
-    // show imperial units for the superior people of the USA, greatest country in the world
     var windSpeed, visibility, dewPoint, feelsLike;
     var tomTemp, oxtTemp, aoxtTemp; // "oxt" - an invented word meaning "not this coming one but the one after that"
     if (useImperial) {
@@ -262,7 +269,7 @@ function loadInfos(data, forecast, satellite, condCanon) {
         aoxt_cond: forecast[3].conditions,
         
         map_overlay: satellite.image_url_ir4 + "&width=500&height=500&borders=0&basemap=0&gtt=110",
-        map_base: "http://maps.googleapis.com/maps/api/staticmap?center=" + city +"&zoom=8&size=500x500&maptype=hybrid"
+        map_base: "http://maps.googleapis.com/maps/api/staticmap?center=" + data.display_location.latitude + "," + data.display_location.longitude + "&zoom=8&size=500x500&maptype=hybrid"
     });
 
     initWarnings();
