@@ -271,17 +271,15 @@ function loadInfos(data, forecast, satellite, condCanon) {
         map_overlay: satellite.image_url_ir4 + "&width=500&height=500&borders=0&basemap=0&gtt=110",
         map_base: "http://maps.googleapis.com/maps/api/staticmap?center=" + data.display_location.latitude + "," + data.display_location.longitude + "&zoom=8&size=500x500&maptype=hybrid"
     });
-
-    initWarnings();
+    
+    if (data.display_location.country == "HK") {
+        var warningsScript = document.createElement("script");
+        warningsScript.src = "hk-warnings.js";
+        document.head.appendChild(warningsScript);
+    }
     initHeaderBG(condCanon);
     
     document.querySelector(".map").style.height = document.querySelector(".map").offsetWidth + "px";
-}
-
-function initWarnings() {
-    var warningsScript = document.createElement("script");
-    warningsScript.src = "hk-warnings.js";
-    document.head.appendChild(warningsScript);
 }
 
 var headerBG = document.querySelector("#header-bg");

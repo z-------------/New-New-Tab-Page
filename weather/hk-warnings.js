@@ -1,7 +1,3 @@
-var hkBounds = [ // top left, bottom right
-    [22.6, 113.8], [22.2, 114.4]
-]
-
 var textIconMap = {
     "yellow fire danger warning": "warning_firey.png",
     "red fire danger warning": "warning_firer.png",
@@ -98,17 +94,6 @@ var entries;
 
 var warnContainer = document.querySelector("#warning_container");
 
-chrome.storage.sync.get("weatherCity", function(r){
-    coords = r.weatherCity.split(",");
-    
-    if (Number(coords[0]) && Number(coords[1])) {
-        coords[0] = Number(coords[0]);
-        coords[1] = Number(coords[1]);
-    }
-
-    if ((coords[0] <= hkBounds[0][0] && coords[0] >= hkBounds[1][0] && coords[1] >= hkBounds[0][1] && coords[0] <= hkBounds[1][1]) || coords.join().toLowerCase().indexOf("hong kong") !== -1) {
-        var script = document.createElement("script");
-        script.src = url;
-        document.head.appendChild(script);
-    }
-});
+var script = document.createElement("script");
+script.src = url;
+document.head.appendChild(script);
