@@ -1,13 +1,3 @@
-var xhr = function (url, callback) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = function () {
-        var response = this.responseText;
-        callback(response);
-    };
-    oReq.open("get", url, true);
-    oReq.send();
-};
-
 var hkBounds = [ // top left, bottom right
     [22.6, 113.8], [22.2, 114.4]
 ]
