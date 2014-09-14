@@ -5,16 +5,6 @@ function round(n, unit) {
     return Math.round(n/unit) * unit;
 }
 
-function xhr(url, callback) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = function(){
-        var response = this.responseText;
-        callback(response);
-    };
-    oReq.open("get", url, true);
-    oReq.send();
-}
-
 if (location.hash === "#iframe") {
     document.body.style.backgroundColor = "transparent";
 }
