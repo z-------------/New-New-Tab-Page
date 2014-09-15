@@ -51,6 +51,10 @@ body, html {
     z-index: 3;
 }
 
+#title * {
+    font-weight: inherit;
+}
+
 #title {
     cursor: default;
     display: inline-block;

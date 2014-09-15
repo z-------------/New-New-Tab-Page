@@ -191,8 +191,10 @@ function main() {
     container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
 
     function openIconURL(iconElement) {
-        window.location = iconElement.dataset.url;
-        white(iconElement);
+        white(iconElement, function(){
+            chrome.tabs.create({url: iconElement.dataset.url});
+            window.close();
+        });
     }
 
     for (i = 0; i < slotCount; i++) {
@@ -542,7 +544,7 @@ function main() {
         window.scrollTo(0, 0);
     }, 100);
 
-    function white(element) {
+    function white(element, callback) {
         var top = element.getClientRects()[0].top;
         var left = element.getClientRects()[0].left;
         var width = element.getClientRects()[0].width;
@@ -558,18 +560,22 @@ function main() {
         whiteElem.style.backgroundColor = iconBGColor(iconURL);
         whiteElem.style.opacity = "1";
 
-        setTimeout(function () {
-            whiteElem.style.transition = "all .26s";
+        setTimeout(function(){
+            whiteElem.style.transition = "all 260ms";
             whiteElem.style.top = "0";
             whiteElem.style.left = "0";
             whiteElem.style.height = "100%";
             whiteElem.style.width = "100%";
         });
 
-        setTimeout(function () {
+        setTimeout(function(){
             whiteElem.style.backgroundColor = "white";
             whiteElem.style.borderRadius = "0";
         }, 50);
+        
+        setTimeout(function(){
+            callback();
+        }, 260);
     }
 
     if (noAnimation) {
