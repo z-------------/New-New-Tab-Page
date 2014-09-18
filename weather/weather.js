@@ -32,7 +32,6 @@ var icons = {
 var lastChecked = 0;
 var useF = false;
 var useImperial = false;
-var city = "";
 
 function getWeather(response) {
     if (response.current_observation) {
