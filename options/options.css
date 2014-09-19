@@ -253,7 +253,7 @@ li {
 }
 
 #appopts li:after {
-    content: "Hello";
+    content: "";
     content: attr(data-slotno);
     
     position: absolute;
@@ -273,8 +273,7 @@ li {
 }
 
 #appopts li.hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
 }
 
 section {

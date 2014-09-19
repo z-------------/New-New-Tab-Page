@@ -243,10 +243,6 @@ chrome.storage.sync.get(null, function (sr) {
         function iconPreview(input) {
             input.parentElement.style.backgroundImage = "url(" + input.value + ")";
         }
-        
-        function resizeAppsList(count) {
-            appOptsList.style.height = (66 + 3) * Math.ceil(count / 2) + "px";
-        }
 
         for (i = 0; i < 12; i++) {
             var appLi = document.createElement("li");
@@ -286,8 +282,6 @@ chrome.storage.sync.get(null, function (sr) {
 
             appOptsList.appendChild(appLi);
         }
-        
-        resizeAppsList(Number(slotcount.value));
 
         slotcount.oninput = function () {
             var appLis = appOptsList.querySelectorAll("li");
