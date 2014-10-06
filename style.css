@@ -227,7 +227,11 @@ body, html {
 	background: black;
 }
 
-#options::-webkit-scrollbar-thumb {
+.customscrollbars #weatherframe::-webkit-scrollbar {
+    background: #bbb;
+}
+
+#options::-webkit-scrollbar-thumb, #weatherframe::-webkit-scrollbar-thumb {
 	background: rgba(255, 255, 255, .3);
 }
 
@@ -286,10 +290,6 @@ body, html {
 
 .weatheropened #bg {
     opacity: .7;
-}
-
-#weatherframe::-webkit-scrollbar {
-    display: none;
 }
 
 #topright {

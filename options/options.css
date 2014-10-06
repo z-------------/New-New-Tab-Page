@@ -236,6 +236,7 @@ li {
 
 #appopts ol {
     transition: height .3s;
+    text-align: center;
 }
 
 #appopts li {
