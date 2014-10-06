@@ -18,7 +18,7 @@ var defaultSettings = {
     showBookmarks: false,
     showAllBookmarks: false,
     firstRun: false,
-    backgroundURL: "url(/img/bg.jpg)",
+    backgroundURL: "url(/img/bg.png)",
     bgBlur: false,
     titleText: "New Tab",
     showWeather: false,
