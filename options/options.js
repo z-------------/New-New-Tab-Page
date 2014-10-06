@@ -63,7 +63,7 @@ bgPresetsSelect.oninput = bgPresetsSelect.onchange = function () {
 };
 
 bgURL.onchange = function () {
-    if (this.value.indexOf(":") < 5) { // has protocol
+    if (this.value.indexOf(":") <= 5) { // has protocol
         bgPreview.style.backgroundImage = "url(" + this.value + ")";
     } else { // doesn't have a protocol, add one
         bgPreview.style.backgroundImage = "url(http://" + this.value + ")";
