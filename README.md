@@ -2,7 +2,7 @@
 
 A minimal new tab page for Chrome
 
-![NNTP screenshot](http://i.imgur.com/6SPFYDp.png)
+![NNTP screenshot](http://i.imgur.com/Ms0H1Qj.png)
 
 ## Features
 
