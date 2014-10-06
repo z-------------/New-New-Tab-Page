@@ -192,8 +192,7 @@ function main() {
 
     function openIconURL(iconElement) {
         white(iconElement, function(){
-            chrome.tabs.create({url: iconElement.dataset.url});
-            window.close();
+            chrome.tabs.update({url: iconElement.dataset.url});
         });
     }
 
@@ -561,7 +560,8 @@ function main() {
         whiteElem.style.opacity = "1";
 
         setTimeout(function(){
-            whiteElem.style.transition = "all 260ms";
+            whiteElem.style.transitionDuration = "260ms";
+            whiteElem.style.transitionProperty = "top, left, width, height, border-radius, background";
             whiteElem.style.top = "0";
             whiteElem.style.left = "0";
             whiteElem.style.height = "100%";

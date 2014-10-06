@@ -297,8 +297,6 @@ chrome.storage.sync.get(null, function (sr) {
                     appLis[i].classList.add("hidden");
                 }
             }
-            
-            resizeAppsList(count);
         };
 
         slotcount.onchange = function () {
