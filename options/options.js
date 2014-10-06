@@ -18,7 +18,7 @@ var defaultSettings = {
     showBookmarks: false,
     showAllBookmarks: false,
     firstRun: false,
-    backgroundURL: "url(/img/bg.png)",
+    backgroundURL: "url(/img/bg.jpg)",
     bgBlur: false,
     titleText: "New Tab",
     showWeather: false,
@@ -57,7 +57,7 @@ document.querySelector("#vno").innerHTML = "v" + chrome.app.getDetails().version
 
 // background preview
 bgPresetsSelect.oninput = bgPresetsSelect.onchange = function () {
-    if (this.value !== "Preset backgrounds") {
+    if (this.value !== this.children[0].textContent) {
         bgPreview.style.backgroundImage = "url(/img/" + this.value + ".png)";
     }
 };
