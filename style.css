@@ -73,11 +73,12 @@ body, html {
     z-index: 2;
     transition-property: opacity !important;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .app {
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2), 0 2px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, .2);
     cursor: pointer;
     display: inline-block;
     height: 130px;
