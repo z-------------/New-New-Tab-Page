@@ -199,8 +199,13 @@ function main() {
     for (i = 0; i < slotCount; i++) {
         var thisApp = document.createElement("div");
         thisApp.classList.add("app");
+        
         thisApp.addEventListener("click", function () {
             openIconURL(this);
+        });
+        
+        thisApp.addEventListener("mouseenter", function () {
+            positionWhite(this);
         });
 
         if (apps[i]) {
@@ -361,7 +366,8 @@ function main() {
             app.classList.add("drawerapp");
             app.innerHTML = appsArray[i].name;
             app.dataset.id = appsArray[i].id;
-            app.onclick = function () {
+            
+            app.addEventListener("click", function(){
                 if (localStorage["app_clicks_" + this.dataset.id]) {
                     localStorage["app_clicks_" + this.dataset.id] = Number(localStorage["app_clicks_" + this.dataset.id]) + 1;
                 } else {
@@ -371,7 +377,8 @@ function main() {
                 if (autoClose) {
                     window.close();
                 }
-            }
+            });
+            
             drawer.appendChild(app);
         }
     }
@@ -542,8 +549,8 @@ function main() {
     setInterval(function () {
         window.scrollTo(0, 0);
     }, 100);
-
-    function white(element, callback) {
+    
+    function positionWhite(element) {
         var top = element.getClientRects()[0].top;
         var left = element.getClientRects()[0].left;
         var width = element.getClientRects()[0].width;
@@ -551,21 +558,26 @@ function main() {
 
         var background = element.style.backgroundImage;
         var iconURL = background.substring(4, background.lastIndexOf(")"));
-
+        
         whiteElem.style.top = top + "px";
         whiteElem.style.left = left + "px";
         whiteElem.style.width = width + "px";
         whiteElem.style.height = height + "px";
         whiteElem.style.backgroundColor = iconBGColor(iconURL);
-        whiteElem.style.opacity = "1";
+    }
 
+    function white(element, callback) {
+        positionWhite(element);
+        
         setTimeout(function(){
+            whiteElem.style.opacity = "1";
             whiteElem.style.transitionDuration = "260ms";
             whiteElem.style.transitionProperty = "top, left, width, height, border-radius, background";
             whiteElem.style.top = "0";
             whiteElem.style.left = "0";
             whiteElem.style.height = "100%";
             whiteElem.style.width = "100%";
+            whiteElem.style.zIndex = "5";
         });
 
         setTimeout(function(){
