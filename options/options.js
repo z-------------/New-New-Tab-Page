@@ -162,6 +162,10 @@ var appPresets = [{
     name: "Google Keep",
     url: "https://drive.google.com/keep",
     icon: "/img/gk.png"
+}, {
+    name: "Inbox",
+    url: "https://inbox.google.com/",
+    icon: "/img/ix.png"
 }].alphaSort("name");
 
 defaultSettings.apps = [{
