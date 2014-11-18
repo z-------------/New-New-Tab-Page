@@ -22,13 +22,17 @@
     transition: none !important;
 }
 
-body, html {
+html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
     padding: 0;
     width: 100%;
 	transition: none;
+}
+
+body {
+    position: relative;
 }
 
 #bg {
@@ -78,7 +82,7 @@ body, html {
 
 .app {
     border-radius: 10px;
-    box-shadow: 0 7px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     cursor: pointer;
     display: inline-block;
     height: 130px;
