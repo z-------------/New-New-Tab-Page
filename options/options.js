@@ -166,6 +166,10 @@ var appPresets = [{
     name: "Inbox",
     url: "https://inbox.google.com/",
     icon: "/img/ix.png"
+}, {
+    name: "Ello",
+    url: "https://ello.co/",
+    icon: "/img/el.png"
 }].alphaSort("name");
 
 defaultSettings.apps = [{
