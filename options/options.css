@@ -239,6 +239,10 @@ li {
     text-align: center;
 }
 
+.sortable-ghost {
+    opacity: 0;
+}
+
 #appopts li {
     padding-left: 75px;
     background-size: 55px;
@@ -251,17 +255,67 @@ li {
     display: inline-block;
     margin: 0 25px;
     position: relative;
+    cursor: -webkit-grab;
+}
+
+#appopts li:active {
+    background-color: #000;
 }
 
 #appopts li:after {
-    content: "";
-    content: attr(data-slotno);
-    
     position: absolute;
     top: 0;
     left: 0;
     color: rgba(255, 255, 255, .9);
     text-shadow: 0 0 10px rgba(0, 0, 0, .7);
+}
+
+#appopts li:nth-child(1):after {
+    content: "1";
+}
+
+#appopts li:nth-child(2):after {
+    content: "2";
+}
+
+#appopts li:nth-child(3):after {
+    content: "3";
+}
+
+#appopts li:nth-child(4):after {
+    content: "4";
+}
+
+#appopts li:nth-child(5):after {
+    content: "5";
+}
+
+#appopts li:nth-child(6):after {
+    content: "6";
+}
+
+#appopts li:nth-child(7):after {
+    content: "7";
+}
+
+#appopts li:nth-child(8):after {
+    content: "8";
+}
+
+#appopts li:nth-child(9):after {
+    content: "9";
+}
+
+#appopts li:nth-child(10):after {
+    content: "10";
+}
+
+#appopts li:nth-child(11):after {
+    content: "11";
+}
+
+#appopts li:nth-child(12):after {
+    content: "12";
 }
 
 #appopts li select {

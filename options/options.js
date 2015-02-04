@@ -438,7 +438,7 @@ function easterEgg() {
     }
 
     if (window.eggTitles === undefined) {
-        window.eggTitles = ["New New New Tab Page", "2new4me Tab Page", "#yeya", "Page Tab New New", "<pre>new NewTabPage();</pre>", "Neue Neue Tab Page", "Tab Page &Uuml;berneue", "New-ish Tab Page", "&Uuml;berneue Registerkarte", "Not a New Tab Page", "<span>(n) A doubly recently developed HTML document designed to start out multiple browsing contexts on the World Wide Web.</span>", "N3W N3W 74B P493", "&#9731;", "n3w n3w 7@b p493", "#nntp4lyf", "#yolo #sweg", "<span>New New Tab Page, now available for Internet Explorer</span>", "#b0rnInab4rn", "<span>lul pc peasents #consolemasturraic</span>", "<span>Smosh isn't funny anymore</span>", "#sherlock2016", "<span>lol u use an iphone? #iSheep</span>", "<span>Don't you have better things to do?</span>", "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD", "Hey Scotty", "#jesusman", "What are you still doing here?", "Go play Flappy Bird"];
+        window.eggTitles = ["New New New Tab Page", "2new4me Tab Page", "#yeya", "Page Tab New New", "<pre>new NewTabPage();</pre>", "Neue Neue Tab Page", "Tab Page &Uuml;berneue", "New-ish Tab Page", "&Uuml;berneue Registerkarte", "Not a New Tab Page", "<span>(n) A doubly recently developed HTML document designed to start out multiple browsing contexts on the World Wide Web.</span>", "N3W N3W 74B P493", "&#9731;", "n3w n3w 7@b p493", "#nntp4lyf", "#yolo #sweg", "<span>New New Tab Page, now available for Internet Explorer</span>", "<span>lul pc peasents #consolemasturraic</span>", "<span>Smosh isn't funny anymore</span>", "#sherlock2016", "<span>Don't you have better things to do?</span>", "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD", "What are you still doing here?", "Go play Flappy Bird"];
     }
 
     if (eggIndex === eggTitles.length) {
@@ -452,3 +452,6 @@ function easterEgg() {
 document.forms[0].onsubmit = function(e){
     e.preventDefault();
 };
+
+var sortableElem = document.querySelector("#appopts ol");
+var sortable = Sortable.create(sortableElem);
