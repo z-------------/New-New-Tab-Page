@@ -460,4 +460,14 @@ document.forms[0].onsubmit = function(e){
 };
 
 var sortableElem = document.querySelector("#appopts ol");
-var sortable = Sortable.create(sortableElem);
+var sortable = Sortable.create(sortableElem, {
+    onEnd: function (e) {
+        var index = e.newIndex;
+        var firstHidden = sortableElem.querySelectorAll(".hidden")[0];
+        var lis = [].slice.call(sortableElem.children)
+        if (index > lis.indexOf(firstHidden)) {
+            sortableElem.insertBefore(lis[index], firstHidden);
+            console.log("fixed app order")
+        }
+    },
+});
