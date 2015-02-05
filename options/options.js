@@ -30,7 +30,8 @@ var defaultSettings = {
     showTumblr: false,
     apps: [],
     noAnimation: false,
-    useFahrenheit: false
+    useFahrenheit: false,
+    appIconSize: 130
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -232,6 +233,10 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("slotCount", function (val) {
             document.getElementById("slotcount").value = val;
         });
+        
+        readOption("appIconSize", function (val) {
+            document.getElementById("appiconsize").value = val;
+        });
 
         readOption("apps", function (val) {
             apps = val;
@@ -372,6 +377,7 @@ document.getElementById("save").onclick = function () {
     delete newSettings.backgroundURL;
 
     newSettings.slotCount = Number(document.getElementById("slotcount").value);
+    newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
     newSettings.showWeather = document.getElementById("showWeather").checked;
     newSettings.showFB = document.getElementById("showfb").checked;

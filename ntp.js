@@ -2,6 +2,7 @@ var storage = chrome.storage.sync;
 
 var settings = {
     slotCount: 3,
+    appIconSize: 130,
     showAppsDrawer: true,
     topSiteCount: 6,
     showBookmarks: false,
@@ -180,16 +181,6 @@ function main() {
         bgElem.style.webkitFilter = "blur(20px)";
     }
 
-    if (slotCount < 7) {
-        container.style.width = 150 * slotCount + "px";
-    } else {
-        container.style.height = "300px";
-        container.style.marginTop = "-150px";
-
-        container.style.width = Math.ceil(slotCount / 2) * 150 + "px";
-    }
-    container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
-
     function openIconURL(iconElement) {
         white(iconElement, function(){
             chrome.tabs.update({url: iconElement.dataset.url});
@@ -207,6 +198,9 @@ function main() {
         thisApp.addEventListener("mouseenter", function () {
             positionWhite(this);
         });
+        
+        thisApp.style.width = appIconSize + "px";
+        thisApp.style.height = appIconSize + "px";
 
         if (apps[i]) {
             thisApp.style.backgroundImage = "url(" + apps[i].icon + ")";
