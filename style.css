@@ -77,14 +77,17 @@ body {
     z-index: 2;
     transition-property: opacity !important;
     
-    padding: 50px;
-    box-sizing: border-box;
-    
-    display: flex;
+    /*display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 50px;
+    box-sizing: border-box;*/
+    
+    height: 150px;		
+    left: 50%;
+    top: 50%;
 }
 
 .app {

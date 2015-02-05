@@ -186,6 +186,18 @@ function main() {
             chrome.tabs.update({url: iconElement.dataset.url});
         });
     }
+    
+    if (slotCount < 7) {		
+        container.style.width = (appIconSize + 20) * slotCount + "px";
+        container.style.height = (appIconSize + 20) + "px";
+        container.style.marginTop = "-" + (appIconSize + 20) / 2 + "px";
+    } else {		
+        container.style.height = 2*(appIconSize + 20) + "px";
+        container.style.marginTop = "-" + (appIconSize + 20) + "px";		
+		
+        container.style.width = Math.ceil(slotCount / 2) * (appIconSize + 20) + "px";		
+    }		
+    container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
 
     for (i = 0; i < slotCount; i++) {
         var thisApp = document.createElement("div");
