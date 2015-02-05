@@ -28,3 +28,9 @@ Quick and easy access to all your bookmarks
 ####[Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
 ####[Source (.zip)](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+
+
+## Credits
+[Sortable by rubaxa](http://rubaxa.github.io/Sortable/)
+
+[Roboto font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
