@@ -31,8 +31,11 @@ Quick and easy access to all your bookmarks
 
 
 ## Credits
-[Made by **Zack Guard**](http://zacharyguard.co.nf)
 
-[**Sortable** by rubaxa](http://rubaxa.github.io/Sortable/)
++ [Made by **Zack Guard**](http://zacharyguard.co.nf)
 
-[**Roboto** font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
++ [**Sortable** by rubaxa](http://rubaxa.github.io/Sortable/)
+
++ [**Roboto** font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
+
++ Kanchenjunga photos by Peter
