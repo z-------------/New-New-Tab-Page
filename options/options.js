@@ -467,7 +467,6 @@ var sortable = Sortable.create(sortableElem, {
         var lis = [].slice.call(sortableElem.children)
         if (index > lis.indexOf(firstHidden)) {
             sortableElem.insertBefore(lis[index], firstHidden);
-            console.log("fixed app order")
         }
     },
 });
