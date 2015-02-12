@@ -5,6 +5,7 @@ var settings = {
     appIconSize: 130,
     showAppsDrawer: true,
     topSiteCount: 6,
+    recSiteCount: 3,
     showBookmarks: false,
     showAllBookmarks: false,
     firstRun: false,
@@ -325,6 +326,27 @@ function main() {
             document.getElementById("sidewipe").style.width = "100%";
         };
     }
+    
+    function getRecentSites(res) {
+        if (recSiteCount >= 1) {
+            for (var i = 0; i < recSiteCount; i++) {
+                var recSite = res[i].tab;
+                
+                console.log(recSite);
+                var recentSitesList = document.getElementById("recentsites");
+                
+                var recSiteElem = document.createElement("a");
+                recSiteElem.href = recSite.url;
+                recSiteElem.innerHTML = "<div class='draweritem topsite' id='l" + i + "'>" + recSite.title + "</div>";
+                
+                recSiteElem.querySelector("div").style.backgroundImage = "url(" + recSite.favIconUrl + ")";
+                
+                recentSitesList.appendChild(recSiteElem);
+            }
+        } else {
+            document.getElementById("recmostvis").style.display = "none";
+        }
+    }
 
     function getTopSites(res) {
         if (topSiteCount >= 1) {
@@ -333,7 +355,7 @@ function main() {
                 document.getElementById("l" + i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.getDomain() + ")";
             }
         } else {
-            document.getElementById("mostvis").style.display = "none";
+            document.getElementById("topmostvis").style.display = "none";
         }
     }
 
@@ -391,6 +413,7 @@ function main() {
 
     if (showAppsDrawer) {
         chrome.topSites.get(getTopSites);
+        chrome.sessions.getRecentlyClosed(getRecentSites);
         chrome.management.getAll(getApps);
         document.getElementById("appsicon").style.display = "block";
         document.getElementById("appsicon").onclick = function () {

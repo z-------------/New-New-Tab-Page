@@ -15,6 +15,7 @@ var defaultSettings = {
     slotCount: 3,
     showAppsDrawer: true,
     topSiteCount: 6,
+    recSiteCount: 3,
     showBookmarks: false,
     showAllBookmarks: false,
     firstRun: false,
@@ -341,6 +342,9 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("topSiteCount", function (val) {
             document.getElementById("topsitecount").value = val;
         });
+        readOption("recSiteCount", function (val) {
+            document.getElementById("recsitecount").value = val;
+        });
         readOption("showAllBookmarks", function (val) {
             document.getElementById("showallbookmarks").checked = val;
         });
@@ -384,6 +388,7 @@ document.getElementById("save").onclick = function () {
     newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
     newSettings.topSiteCount = Number(document.getElementById("topsitecount").value);
+    newSettings.recSiteCount = Number(document.getElementById("recsitecount").value);
     newSettings.showStumble = document.getElementById("showstumble").checked;
     newSettings.showAllBookmarks = document.getElementById("showallbookmarks").checked;
     newSettings.bgBlur = document.getElementById("bgblur").checked;
