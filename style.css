@@ -961,3 +961,8 @@ input[type="text"] {
     border: none;
     padding: 5px;
 }
+
+#todo-list li.fading {
+    transition: opacity 1s linear;
+    opacity: 0;
+}
