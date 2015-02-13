@@ -677,7 +677,7 @@ a {
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 10px;
+    border-radius: 4px;
     background: rgba(0,0,0,.5);
 }
 
