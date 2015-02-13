@@ -22,12 +22,10 @@ var defaultSettings = {
     backgroundURL: "url(/img/bg.png)",
     bgBlur: false,
     titleText: "New Tab",
-    showWeather: false,
     showFB: false,
     showFBNotif: false,
     showStumble: false,
     autoClose: true,
-    showNews: false,
     showTumblr: false,
     apps: [],
     noAnimation: false,
@@ -324,9 +322,6 @@ chrome.storage.sync.get(null, function (sr) {
             this.oninput();
         };
 
-        readOption("showWeather", function (val) {
-            document.getElementById("showWeather").checked = val;
-        });
         readOption("showFB", function (val) {
             document.getElementById("showfb").checked = val;
         });
@@ -357,9 +352,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("noAnimation", function (val) {
             document.getElementById("disableanimation").checked = val;
         });
-        readOption("showNews", function (val) {
-            document.getElementById("shownews").checked = val;
-        });
         readOption("titleText", function (val) {
             document.getElementById("titletext").value = val;
         });
@@ -383,7 +375,6 @@ document.getElementById("save").onclick = function () {
     newSettings.slotCount = Number(document.getElementById("slotcount").value);
     newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
-    newSettings.showWeather = document.getElementById("showWeather").checked;
     newSettings.showFB = document.getElementById("showfb").checked;
     newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
@@ -394,7 +385,6 @@ document.getElementById("save").onclick = function () {
     newSettings.bgBlur = document.getElementById("bgblur").checked;
     newSettings.useFahrenheit = document.getElementById("usefahrenheit").checked;
     newSettings.noAnimation = document.getElementById("disableanimation").checked;
-    newSettings.showNews = document.getElementById("shownews").checked;
     newSettings.showTumblr = document.getElementById("showtum").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
 

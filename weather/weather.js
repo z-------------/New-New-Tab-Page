@@ -101,9 +101,12 @@ function getWeather(response) {
         document.getElementById("temp").innerHTML = "<h1>" + temp + "&#176;</h1><div>" + weather + "</div>";
         document.getElementById("temp").style.backgroundImage = "url(" + iconURL + ")";
 
-        loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite, condCanon);
+        /*loadInfos(response.current_observation, response.forecast.simpleforecast.forecastday, response.satellite, condCanon);*/
 
-        window.top.getWeather(iconURL);
+        /*window.top.getWeather(iconURL);*/
+        /*var scrollHeight = document.body.scrollHeight + "px";
+        console.log(scrollHeight);
+        window.top.document.querySelector("#weatherframe").style.height = scrollHeight;*/
     }
 }
 

@@ -80,9 +80,9 @@ function loadWarnings(r) {
     }
 
     if (titles.length > 0) {
-        if (window.top.startFlashing) {
+        /*if (window.top.startFlashing) {
             window.top.startFlashing(titles);
-        }
+        }*/
 
         warningsLI.classList.add("visible");
     }
