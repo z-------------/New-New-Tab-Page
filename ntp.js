@@ -645,10 +645,55 @@ function main() {
             changeSidebarSection(this.dataset.target);
         });
     });
+    
+    /* todo list */
+    
+    var todoList = document.querySelector("#todo-list");
+    var todoAddInput = todoList.querySelector("#todo-prompt-add");
+    
+    function addItem(text) {
+        storage.get("todoList", function(r){
+            var list = r.todoList || [];
+            list.push({
+                text: text,
+                done: false
+            });
+            storage.set({
+                todoList: list
+            });
+        });
+        
+        var todoLI = document.createElement("li");
+        todoLI.innerHTML = "<label><input type='checkbox'><span class='todo-text'></span></label>";
+        todoLI.querySelector(".todo-text").textContent = text;
+        
+        todoList.appendChild(todoLI);
+    }
+    
+    todoAddInput.addEventListener("keydown", function(e){
+        if (e.which === 13) {
+            addItem(this.value);
+        }
+    });
+    
+    storage.get("todoList", function(r){
+        var list = r.todoList || [];
+        list.forEach(function(todoItem){
+            var text = todoItem.text;
+            var done = todoItem.done;
+            
+            var todoLI = document.createElement("li");
+            todoLI.innerHTML = "<label><input type='checkbox'><span class='todo-text'></span></label>";
+            todoLI.querySelector(".todo-text").textContent = text;
+            todoLI.querySelector("input[type=checkbox]").checked = done;
+            
+            todoList.appendChild(todoLI);
+        });
+    });
 }
 
 window.onerror = function (e) {
-    prompt("Something went wrong. Please refresh the page and report this to the developer: '" + e + "'", "http://2shrt.co.nf/?nntp-bugreport");
+    prompt("Something went wrong. Please refresh the page and report the problem to the developer here: '" + e + "'", "http://2shrt.co.nf/?nntp-bugreport");
 };
 
 if (navigator.userAgent.indexOf("Macintosh") === -1) {
