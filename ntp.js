@@ -531,12 +531,15 @@ function main() {
                 
                 document.getElementById("newslist").appendChild(newsItem);
             }
+            document.getElementById("newslist").classList.remove("loading");
         }
 
         // load bbc feed
         var bbcjson = document.createElement("script");
         bbcjson.src = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=loadNews&q=http://feeds.bbci.co.uk/news/rss.xml";
         document.getElementsByTagName("head")[0].appendChild(bbcjson);
+        
+        document.getElementById("newslist").classList.add("loading");
     } else {
         document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
     }

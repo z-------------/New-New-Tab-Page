@@ -23,7 +23,10 @@
 }
 
 .loading {
-    
+    background-image: url(img/loading.svg);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 html, body {
@@ -823,6 +826,7 @@ a {
 }
 
 #newslist {
+    min-height: 100px;
     margin: 0;
     padding: 0;
 }
