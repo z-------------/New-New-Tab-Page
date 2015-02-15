@@ -696,13 +696,16 @@ function main() {
         
         elem.classList.add("fading");
         setTimeout(function(){
-            elem.parentElement.removeChild(elem);
+            try {
+                elem.parentElement.removeChild(elem);
+            } catch (e) {}
         }, 1000);
     }
     
     todoAddInput.addEventListener("keydown", function(e){
         if (e.which === 13) {
             addItem(this.value);
+            this.value = "";
         }
     });
     
