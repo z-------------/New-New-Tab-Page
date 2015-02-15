@@ -22,6 +22,16 @@ var settings = {
     noAnimation: false
 };
 
+var xhr = function(url,callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = function(){
+        var response = this.responseText;
+        callback(response);
+    };
+    oReq.open("get", url, true);
+    oReq.send();
+};
+
 String.prototype.getDomain = function () {
     var temp = document.createElement("a");
     temp.href = this;
@@ -329,7 +339,6 @@ function main() {
             for (var i = 0; i < recSiteCount; i++) {
                 var recSite = res[i].tab;
                 
-                console.log(recSite);
                 var recentSitesList = document.getElementById("recentsites");
                 
                 var recSiteElem = document.createElement("a");
@@ -521,23 +530,18 @@ function main() {
     }
 
     if (navigator.onLine) {    
-        window.loadNews = function (res) {
-            var newsEntries = res.responseData.feed.entries;
+        xhr("https://query.yahooapis.com/v1/public/yql?q=select%20title%2Clink%2Cdescription%2Cthumbnail%2CpubDate%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
+            var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
             for (i = 0; i < newsEntries.length; i++) {
                 var newsItem = document.createElement("li");
                 
-                newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><date>" + new Date(newsEntries[i].publishedDate).toTimeString() + "</date><p>" + newsEntries[i].content + "</p>";
+                newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><date>" + new Date(newsEntries[i].pubDate).toTimeString() + "</date><p>" + newsEntries[i].description + "</p>";
                 newsItem.classList.add("news");
                 
                 document.getElementById("newslist").appendChild(newsItem);
             }
             document.getElementById("newslist").classList.remove("loading");
-        }
-
-        // load bbc feed
-        var bbcjson = document.createElement("script");
-        bbcjson.src = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=loadNews&q=http://feeds.bbci.co.uk/news/rss.xml";
-        document.getElementsByTagName("head")[0].appendChild(bbcjson);
+        });
         
         document.getElementById("newslist").classList.add("loading");
     } else {
