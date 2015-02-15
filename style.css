@@ -808,14 +808,29 @@ a {
     cursor: pointer;
     font-weight: 700;
     display: inline;
+    margin: 5px 0;
 }
 
 .news h3:hover {
     color: #2EABE5;
 }
 
-.news h3, .news p {
-    margin: 5px 0;
+.news p {
+    margin: 0;
+}
+
+.news-content {
+    margin: 10px 0;
+}
+
+.news-thumb {
+    float: left;
+    margin-right: 10px;
+    margin-top: 3px;
+    width: 81px;
+    height: 81px;
+    background-size: cover;
+    background-position: center;
 }
 
 .news date {
