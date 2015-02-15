@@ -529,8 +529,9 @@ function main() {
         }
     }
 
-    if (navigator.onLine) {    
-        xhr("https://query.yahooapis.com/v1/public/yql?q=select%20title%2Clink%2Cdescription%2Cthumbnail%2CpubDate%20from%20rss%20where%20url%20%3D%20'http%3A%2F%2Ffeeds.bbci.co.uk%2Fnews%2Frss.xml'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
+    if (navigator.onLine) {
+        var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/rss.xml'";
+        xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
             var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
             for (i = 0; i < newsEntries.length; i++) {
                 var newsItem = document.createElement("li");
