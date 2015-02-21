@@ -819,6 +819,7 @@ a {
 
 .news p {
     margin: 0;
+    font-weight: 400;
 }
 
 .news-content {
