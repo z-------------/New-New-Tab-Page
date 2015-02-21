@@ -163,6 +163,10 @@ body.sidebar-opened {
     box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
 
+.sidebar-opened #container {
+    opacity: 0;
+}
+
 #sidebar-btn {
     opacity: .7;
     background: url("img/widgets.svg");
