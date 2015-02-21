@@ -2,7 +2,7 @@
     "chrome_url_overrides": {
         "newtab": "newtab.html"
     },
-    "content_security_policy": "script-src 'self' https://api.wunderground.com https://query.yahooapis.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://nntp-guardo.rhcloud.com https://api.wunderground.com https://query.yahooapis.com; object-src 'self'",
     "description": "A minimal new tab page replacement",
     "icons": {
         "128": "img/icon128.png"
