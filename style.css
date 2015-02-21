@@ -104,6 +104,14 @@ iframe {
     background-image: url(img/list.svg);
 }
 
+#sidebar nav a[data-target="fb-notif"] {
+    background-image: url(img/fb-notif.svg);
+}
+
+#sidebar nav a[data-target="fb-msg"] {
+    background-image: url(img/fb-msg.svg);
+}
+
 #sidebar section {
     width: 100%;
     margin: 20px 0;
