@@ -653,7 +653,7 @@ function main() {
     
     /* todo list */
     
-    var todoList = document.querySelector("#todo-list");
+    /*var todoList = document.querySelector("#todo-list");
     var todoAddInput = todoList.querySelector("#todo-prompt-add");
     
     function makeItemElem(text, id) {
@@ -719,7 +719,7 @@ function main() {
         list.forEach(function(todoItem){
             makeItemElem(todoItem.text, todoItem.id);
         });
-    });
+    });*/
 }
 
 window.onerror = function (e) {
