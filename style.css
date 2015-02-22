@@ -188,10 +188,8 @@ body.sidebar-opened {
 }
 
 .sidebar-opened #sidebar-btn {
-    background-image: url("img/cross.png");
-    background-size: 40px;
-    background-repeat: no-repeat;
-    background-position: center;
+    opacity: 0;
+    pointer-events: none;
 }
 
 #bg {
