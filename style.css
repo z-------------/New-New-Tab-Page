@@ -165,6 +165,7 @@ body.sidebar-opened {
 
 .sidebar-opened #container {
     opacity: 0;
+    pointer-events: none;
 }
 
 #sidebar-btn {
@@ -185,7 +186,7 @@ body.sidebar-opened {
     opacity: 1;
 }
 
-#sidebar-btn.active {
+.sidebar-opened #sidebar-btn {
     background-image: url("img/cross.png");
     background-size: 40px;
     background-repeat: no-repeat;

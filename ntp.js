@@ -84,7 +84,9 @@ var weatheropened = 0,
     time = new Date(),
     appsopened = 0,
     bmopened = 0,
-    optsopened = 0;
+    optsopened = 0,
+    sidebarMouseInterval,
+    sidebarMouseTime = 0;
 
 /* weather stuff */
 var weatherFlashInterval;
@@ -609,7 +611,6 @@ function main() {
     
     document.querySelector("#sidebar-btn").addEventListener("click", function(){
         document.body.classList.toggle("sidebar-opened");
-        this.classList.toggle("active")
     });
 
     if (noAnimation) {
@@ -720,6 +721,24 @@ function main() {
             makeItemElem(todoItem.text, todoItem.id);
         });
     });*/
+    
+    /* open sidebar when mouse on right edge */
+    window.addEventListener("mousemove", function(e){
+        clearInterval(sidebarMouseInterval);
+        if (Math.abs(e.clientX - window.innerWidth) <= 5) {
+            sidebarMouseTime = 0;
+            sidebarMouseInterval = setInterval(function(){
+                sidebarMouseTime += 1;
+                if (sidebarMouseTime >= 50) {
+                    document.body.classList.add("sidebar-opened");
+                }
+            });
+        }
+    });
+    
+    bgElem.addEventListener("click", function(){
+        document.body.classList.remove("sidebar-opened");
+    });
 }
 
 window.onerror = function (e) {
