@@ -24,9 +24,7 @@ var defaultSettings = {
     titleText: "New Tab",
     showFB: false,
     showFBNotif: false,
-    showStumble: false,
     autoClose: true,
-    showTumblr: false,
     apps: [],
     noAnimation: false,
     useFahrenheit: false,
@@ -331,9 +329,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("showBookmarks", function (val) {
             document.getElementById("showbookmarks").checked = val;
         });
-        readOption("showStumble", function (val) {
-            document.getElementById("showstumble").checked = val;
-        });
         readOption("topSiteCount", function (val) {
             document.getElementById("topsitecount").value = val;
         });
@@ -354,9 +349,6 @@ chrome.storage.sync.get(null, function (sr) {
         });
         readOption("titleText", function (val) {
             document.getElementById("titletext").value = val;
-        });
-        readOption("showTumblr", function (val) {
-            document.getElementById("showtum").checked = val;
         });
         readOption("backgroundURL", function (val) {
             bgPreview.style.backgroundImage = val;
@@ -380,12 +372,10 @@ document.getElementById("save").onclick = function () {
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
     newSettings.topSiteCount = Number(document.getElementById("topsitecount").value);
     newSettings.recSiteCount = Number(document.getElementById("recsitecount").value);
-    newSettings.showStumble = document.getElementById("showstumble").checked;
     newSettings.showAllBookmarks = document.getElementById("showallbookmarks").checked;
     newSettings.bgBlur = document.getElementById("bgblur").checked;
     newSettings.useFahrenheit = document.getElementById("usefahrenheit").checked;
     newSettings.noAnimation = document.getElementById("disableanimation").checked;
-    newSettings.showTumblr = document.getElementById("showtum").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
 
     newSettings.apps = defaultSettings.apps;

@@ -376,6 +376,13 @@ p {
     margin: 10px;
 }
 
+#fb-login-frame {
+    border: none;
+    width: 100%;
+    height: 38px;
+    display: block;
+}
+
 @media only screen and (max-width: 1030px) {
     section {
         width: 100% !important;
