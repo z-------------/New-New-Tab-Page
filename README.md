@@ -35,10 +35,12 @@ Quick and easy access to all your bookmarks.
 
 ## Credits
 
-+ [Made by **Zack Guard**](http://zacharyguard.co.nf)
++ [Made by Zack Guard](http://zacharyguard.co.nf)
 
-+ [**Sortable** by rubaxa](http://rubaxa.github.io/Sortable/)
++ [Sortable by rubaxa](http://rubaxa.github.io/Sortable/)
 
-+ [**Roboto** font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
++ [Roboto font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
+
++ [Material design icons by Google](https://google.github.io/material-design-icons/)
 
 + Kanchenjunga photos by Peter
