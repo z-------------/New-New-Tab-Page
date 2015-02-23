@@ -300,41 +300,6 @@ function main() {
     weatherIframe.src = "weather/weather.html";
     weatherIframe.setAttribute("id", "weatherframe");
     sidebar.querySelector("[data-id='weather']").appendChild(weatherIframe);*/
-
-    /*if (showFB) {
-        document.getElementById("fbmsg").style.display = "inline-block";
-        document.getElementById("fbmsg").onclick = function () {
-            chrome.windows.create({
-                url: "https://m.facebook.com/messages",
-                width: 350,
-                height: 500,
-                focused: true,
-                type: "panel"
-            });
-        };
-    }*/
-
-    /*if (showFBNotif) {
-        document.getElementById("fbnotif").style.display = "inline-block";
-        document.getElementById("fbnotif").onclick = function () {
-            chrome.windows.create({
-                url: "https://m.facebook.com/notifications.php",
-                width: 350,
-                height: 500,
-                focused: true,
-                type: "panel"
-            });
-        };
-    }*/
-
-    /*if (showStumble) {
-        document.getElementById("stumble").style.display = "inline-block";
-        document.getElementById("sidewipe").style.display = "block";
-        document.getElementById("stumble").onclick = function () {
-            window.location = "http://www.stumbleupon.com/to/stumble/go";
-            document.getElementById("sidewipe").style.width = "100%";
-        };
-    }*/
     
     function getRecentSites(res) {
         if (recSiteCount >= 1) {
@@ -607,6 +572,29 @@ function main() {
         setTimeout(function(){
             callback();
         }, 260);
+    }
+    
+    /* sidebar stuff */
+    
+    function addToSidebar(id, content) {
+        /* make nav elem */
+        var navElem = document.createElement("a");
+        navElem.dataset.target = id;
+        sidebar.querySelector("nav").appendChild(navElem);
+        
+        /* make section elem */
+        var sectionElem = document.createElement("section");
+        sectionElem.innerHTML = content;
+        sectionElem.dataset.id = id;
+        sidebar.appendChild(sectionElem);
+    }
+
+    if (showFBNotif) {
+        addToSidebar("fb-notif", "<iframe class='fb-frame' id='fb-notif-frame' src='https://nntp-guardo.rhcloud.com/fb/notif/'></iframe>");
+    }
+    
+    if (showFB) {
+        addToSidebar("fb-msg", "<iframe class='fb-frame' id='fb-msg-frame' src='https://nntp-guardo.rhcloud.com/fb/msg/'></iframe>");
     }
     
     document.querySelector("#sidebar-btn").addEventListener("click", function(){
