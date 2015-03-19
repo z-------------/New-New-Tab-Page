@@ -233,15 +233,7 @@ body.sidebar-opened {
     height: 100%;
     z-index: 2;
     transition-property: opacity !important;
-    
-    /*display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 50px;
-    box-sizing: border-box;*/
-    
+    text-align: center;
     height: 150px;	
     padding-bottom: 10px;
     left: 50%;
