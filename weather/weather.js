@@ -87,8 +87,11 @@ var codeIconMap = {
     3200: "Cloud"
 };
 
+var useImperial = false;
+
 function displayWeather(data){
     console.log(data);
+    console.log(useImperial);
     
     var conditionData = data.query.results.channel.item.condition;
     
@@ -96,14 +99,15 @@ function displayWeather(data){
     var temperatureElem = document.querySelector("#temperature");
     var conditionElem = document.querySelector("#condition");
     
+    var temperature = Math.round((useImperial ? conditionData.temp : 5 / 9 * (conditionData.temp - 32)));
+    
     tempElem.style.backgroundImage = "url(/img/weather/" + codeIconMap[Number(conditionData.code)] + ".svg)";
-    temperatureElem.textContent = conditionData.temp;
+    temperatureElem.textContent = temperature;
     conditionElem.textContent = conditionData.text;
 }
 
 chrome.storage.sync.get("useFahrenheit", function (r) {
     var lastChecked;
-    var useImperial;
     
     if (r.useFahrenheit !== undefined) {
         useImperial = r.useFahrenheit;
