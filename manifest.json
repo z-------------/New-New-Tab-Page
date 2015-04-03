@@ -21,5 +21,9 @@
         "sessions",
         "tabs",
         "https://nntp-guardo.rhcloud.com/"
-    ]
+    ],
+    "background": {
+        "page": "newtab.html",
+        "persistent": true
+    }
 }
