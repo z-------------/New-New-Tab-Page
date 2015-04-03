@@ -545,6 +545,8 @@ function main() {
     
     /* sidebar stuff */
     
+    var sidebarFirstTime = true;
+    
     function toggleSidebar(direction){
         if (direction === null || typeof direction === "undefined") {
             if (document.body.classList.contains("sidebar-opened")) {
@@ -558,6 +560,12 @@ function main() {
         var method = methods[direction];
         
         document.body.classList[method]("sidebar-opened");
+        
+        if (sidebarFirstTime) {
+            sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
+        }
+        
+        if (direction === 1) sidebarFirstTime = false;
     }
     
     function addToSidebar(id, content) {
