@@ -88,37 +88,6 @@ var weatheropened = 0,
     sidebarMouseInterval,
     sidebarMouseTime = 0;
 
-/* weather stuff */
-var weatherFlashInterval;
-
-function getWeather(icon) {
-    document.getElementById("weatherprvw").style.backgroundImage = "url(" + icon + ")";
-    document.getElementById("weatherprvw").style.display = "inline-block";
-    document.getElementById("weatherprvw").onclick = function () {
-        if (window.weatherFlashInterval) {
-            clearInterval(weatherFlashInterval);
-            this.style.backgroundImage = "url(" + icon + ")";
-        }
-
-        document.body.classList.toggle("weatheropened");
-        
-        document.getElementById("weatherframe").contentWindow.loadHeader();
-    }
-}
-
-function startFlashing(urls) {
-    var index = 0;
-    weatherFlashInterval = setInterval(function () {
-        document.getElementById("weatherprvw").style.backgroundImage = "url(" + urls[index] + ")";
-        index++;
-        if (index === urls.length) {
-            index = 0;
-        }
-    }, 3000);
-}
-
-/* end weather stuff */
-
 var settingsKeys = Object.keys(settings);
 
 var defaultSlots = [{
@@ -576,6 +545,21 @@ function main() {
     
     /* sidebar stuff */
     
+    function toggleSidebar(direction){
+        if (direction === null || typeof direction === "undefined") {
+            if (document.body.classList.contains("sidebar-opened")) {
+                direction = 0;
+            } else {
+                direction = 1;
+            }
+        }
+        
+        var methods = ["remove", "add"];
+        var method = methods[direction];
+        
+        document.body.classList[method]("sidebar-opened");
+    }
+    
     function addToSidebar(id, content) {
         /* make nav elem */
         var navElem = document.createElement("a");
@@ -598,7 +582,7 @@ function main() {
     }
     
     document.querySelector("#sidebar-btn").addEventListener("click", function(){
-        document.body.classList.toggle("sidebar-opened");
+        toggleSidebar();
     });
 
     if (noAnimation) {
@@ -640,76 +624,6 @@ function main() {
         });
     });
     
-    /* todo list */
-    
-    /*var todoList = document.querySelector("#todo-list");
-    var todoAddInput = todoList.querySelector("#todo-prompt-add");
-    
-    function makeItemElem(text, id) {
-        var todoLI = document.createElement("li");
-        todoLI.innerHTML = "<label><input type='checkbox'><span class='todo-text'></span></label>";
-        todoLI.querySelector(".todo-text").textContent = text;
-        todoLI.dataset.id = id;
-        
-        var checkbox = todoLI.querySelector("input[type=checkbox]");
-        checkbox.addEventListener("click", function(){
-            var elem = this.parentElement.parentElement;
-            removeItem(elem.dataset.id, elem);
-        });
-        
-        todoList.appendChild(todoLI);
-    }
-    
-    function addItem(text) {
-        var id = "" + new Date().getTime() + Math.round(Math.random()*10000);
-        
-        storage.get("todoList", function(r){
-            var list = r.todoList || [];
-            list.push({
-                text: text,
-                id: id
-            });
-            storage.set({
-                todoList: list
-            });
-        });
-        
-        makeItemElem(text, id);
-    }
-    
-    function removeItem(id, elem) {
-        storage.get("todoList", function(r){
-            var list = r.todoList;
-            var itemToRemove = list.filter(function(item){
-                return item.id === id;
-            })[0];
-            var index = list.indexOf(itemToRemove);
-            list.splice(index, 1);
-            storage.set({todoList: list});
-        });
-        
-        elem.classList.add("fading");
-        setTimeout(function(){
-            try {
-                elem.parentElement.removeChild(elem);
-            } catch (e) {}
-        }, 1000);
-    }
-    
-    todoAddInput.addEventListener("keydown", function(e){
-        if (e.which === 13) {
-            addItem(this.value);
-            this.value = "";
-        }
-    });
-    
-    storage.get("todoList", function(r){
-        var list = r.todoList || [];
-        list.forEach(function(todoItem){
-            makeItemElem(todoItem.text, todoItem.id);
-        });
-    });*/
-    
     /* open sidebar when mouse on right edge */
     window.addEventListener("mousemove", function(e){
         clearInterval(sidebarMouseInterval);
@@ -718,14 +632,14 @@ function main() {
             sidebarMouseInterval = setInterval(function(){
                 sidebarMouseTime += 1;
                 if (sidebarMouseTime >= 50) {
-                    document.body.classList.add("sidebar-opened");
+                    toggleSidebar(1);
                 }
             });
         }
     });
     
     bgElem.addEventListener("click", function(){
-        document.body.classList.remove("sidebar-opened");
+        toggleSidebar(0);
     });
 }
 
