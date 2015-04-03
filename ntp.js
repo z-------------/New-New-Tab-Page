@@ -644,7 +644,7 @@ function main() {
 }
 
 window.onerror = function (e) {
-    prompt("Something went wrong. Please refresh the page and report the problem to the developer here: '" + e + "'", "http://2shrt.co.nf/?nntp-bugreport");
+    console.log("Something went wrong.", e, "Please refresh the page and report the problem to the developer: http://2shrt.co.nf/?nntp-bugreport");
 };
 
 if (navigator.userAgent.indexOf("Macintosh") === -1) {
@@ -657,7 +657,7 @@ console.log("\n\
 8  \"8 8.dP'  YbdPYbdP     8  \"8 8.dP'  YbdPYbdP       8   8  8 8  8    8wwP' 8  8 8  8 8.dP' \n\
 8   8 `Y88P   YP  YP      8   8 `Y88P   YP  YP        8   `Y88 88P'    8     `Y88 `Y88 `Y88P \n\
                                                                                   wwdP       \n\
-\n(C) 2013-2014 Zachary Guard\n\
+\n(C) 2013-2015 Zachary Guard\n\
 \nif (you.isDeveloper()) {\n\
     goto('http://github.com/z-------------/New-New-Tab-Page');\n\
     contribute();\n\
