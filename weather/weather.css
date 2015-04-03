@@ -35,9 +35,9 @@ body {
 	width: 100%;
     padding-left: 175px;
 	text-align: left;
-	background-size: 130px;
 	background-repeat: no-repeat;
-    background-position: 25px 50%;
+    background-size: 200px;
+    background-position: -15px -25px;
 }
 
 #temp h1 {
