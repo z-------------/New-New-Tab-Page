@@ -40,8 +40,6 @@ html, body {
 
 body {
     position: relative;
-    
-    transition: margin .2s;
 }
 
 iframe {
@@ -148,10 +146,6 @@ iframe {
     background-color: #2EABE5;
 }*/
 
-body.sidebar-opened {
-    margin-left: -350px;
-}
-
 .sidebar-opened #sidebar, .sidebar-opened #sidebar nav {
     left: calc(100% - 350px);
 }
@@ -160,7 +154,12 @@ body.sidebar-opened {
     box-shadow: inset 0 0 20px rgba(0, 0, 0, .5);
 }
 
+.sidebar-opened #bg {
+    transform: translateX(-350px);
+}
+
 .sidebar-opened #container {
+    transform: translateX(-350px);
     opacity: .5;
     pointer-events: none;
 }
@@ -198,7 +197,7 @@ body.sidebar-opened {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-	transition-property: opacity, margin;
+	transition-property: opacity, transform;
 }
 
 #header {
@@ -222,13 +221,13 @@ body.sidebar-opened {
 }
 
 #container {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     z-index: 2;
-    transition-property: opacity !important;
+    transition-property: opacity, transform !important;
     text-align: center;
     height: 150px;	
     padding-bottom: 10px;
