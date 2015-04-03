@@ -1,46 +1,41 @@
 # ![NNTP Icon](http://i.imgur.com/MuaXyc8.png) New New Tab Page
 
-A minimal new tab page for Chrome
+A minimal new tab page for Google Chrome
 
 ![NNTP screenshot](http://i.imgur.com/Ms0H1Qj.png)
 
 ## Features
 
 + **Custom app icons**
-You get to decide which apps appear on your new tab page, or even choose your own custom app icons and urls.
 
 + **Facebook integration**
-Quick access to your latest Facebook messages and notifications.
 
-+ **Find bar**
-Quickly find what you're looking for on the web.
-
-+ **Custom backgrounds**
-Choose from a list of preset backgrounds or use your own.
++ **Custom background**
 
 + **Widgets**
-Includes a weather widget, Facebook notifications and more.
 
 + **App launcher**
-A simple app launcher containing all your installed apps (it even comes with a search bar!).
 
-+ **Bookmarks**
-Quick and easy access to all your bookmarks.
++ **Bookmarks, top sites and recently closed**
+
++ a few other things you might like
 
 ## Download
-####[Chrome Web Store](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
-####[Source (.zip)](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+[**Chrome Web Store**](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
 
+[**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+
+Instructions for source installation -> [How does one install an extension for Chrome browser from the local file system? - Super User](http://superuser.com/a/247654)
 
 ## Credits
 
-+ [Made by Zack Guard](http://zacharyguard.co.nf)
++ [Made by **Zack Guard**](http://zacharyguard.co.nf)
 
-+ [Sortable by rubaxa](http://rubaxa.github.io/Sortable/)
++ [Sortable by **rubaxa**](http://rubaxa.github.io/Sortable/)
 
-+ [Roboto font by Christian Robertson/Google](http://www.google.com/fonts/specimen/Roboto)
++ [Roboto font by **Christian Robertson/Google**](http://www.google.com/fonts/specimen/Roboto)
 
-+ [Material design icons by Google](https://google.github.io/material-design-icons/)
++ [Material design icons by **Google**](https://google.github.io/material-design-icons/)
 
-+ Kanchenjunga photos by Peter
++ Kanchenjunga photos by **Peter**
