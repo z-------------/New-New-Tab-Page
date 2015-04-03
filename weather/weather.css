@@ -53,6 +53,10 @@ body {
     margin-top: -5px;
 }
 
+#temp h1:after {
+    content: "°";
+}
+
 footer {
 	color: rgba(255, 255, 255, .5);
 	position: relative;
