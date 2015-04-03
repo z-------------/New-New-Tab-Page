@@ -15,7 +15,7 @@ html, body {
 
 body {
 	overflow: hidden;
-    
+    cursor: pointer;
     background: transparent !important;
 }
 

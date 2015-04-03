@@ -130,3 +130,9 @@ chrome.storage.sync.get("useFahrenheit", function (r) {
         displayWeather(JSON.parse(localStorage.getItem("last_weather")));
     }
 });
+
+document.body.addEventListener("click", function(){
+    chrome.tabs.create({
+        url: "https://weather.yahoo.com/"
+    });
+});
