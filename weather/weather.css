@@ -42,6 +42,7 @@ body {
 
 #temp h1 {
 	font-size: 100px;
+    font-weight: 400;
 	margin: 0;
     letter-spacing: -5px;
 }
@@ -55,6 +56,7 @@ body {
 
 #temp h1:after {
     content: "°";
+    font-weight: 100;
 }
 
 footer {
