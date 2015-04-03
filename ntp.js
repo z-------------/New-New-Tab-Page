@@ -264,11 +264,6 @@ function main() {
             optsopened = 1;
         }
     };
-
-    /*var weatherIframe = document.createElement("iframe");
-    weatherIframe.src = "weather/weather.html";
-    weatherIframe.setAttribute("id", "weatherframe");
-    sidebar.querySelector("[data-id='weather']").appendChild(weatherIframe);*/
     
     function getRecentSites(res) {
         if (recSiteCount >= 1) {
@@ -465,40 +460,6 @@ function main() {
         }
     }
 
-    if (navigator.onLine) {
-        var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/world/rss.xml'";
-        xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
-            var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
-            for (i = 0; i < newsEntries.length; i++) {
-                var newsItem = document.createElement("li");
-                
-                newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'><div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div><div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + new Date(newsEntries[i].pubDate).toLocaleTimeString() + "</date></div></div>";
-                newsItem.classList.add("news");
-                
-                document.getElementById("newslist").appendChild(newsItem);
-            }
-            document.getElementById("newslist").classList.remove("loading");
-        });
-        
-        document.getElementById("newslist").classList.add("loading");
-    } else {
-        document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
-    }
-
-    /*if (showTumblr && navigator.onLine) {
-        var tumbutton = document.getElementById("tumpost");
-
-        tumbutton.style.display = "inline-block";
-
-        tumbutton.onclick = function () {
-            chrome.windows.create({
-                url: "https://www.tumblr.com/share/text",
-                focused: true,
-                type: "panel"
-            });
-        }
-    }*/
-
     setInterval(function () {
         window.scrollTo(0, 0);
     }, 100);
@@ -547,6 +508,53 @@ function main() {
     
     var sidebarFirstTime = true;
     
+    var sidebarOnFirstOpen = function(){
+        /* weather */
+        sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
+        
+        /* news */
+        if (navigator.onLine) {
+            var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/world/rss.xml'";
+            xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
+                var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
+                for (i = 0; i < newsEntries.length; i++) {
+                    var newsItem = document.createElement("li");
+
+                    newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'><div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div><div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + new Date(newsEntries[i].pubDate).toLocaleTimeString() + "</date></div></div>";
+                    newsItem.classList.add("news");
+
+                    document.getElementById("newslist").appendChild(newsItem);
+                }
+                document.getElementById("newslist").classList.remove("loading");
+            });
+
+            document.getElementById("newslist").classList.add("loading");
+        } else {
+            document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
+        }
+        
+        /* facebook */
+        if (showFBNotif) {
+            addToSidebar("fb-notif", "<iframe class='fb-frame' id='fb-notif-frame' src='https://nntp-guardo.rhcloud.com/fb/notif/'></iframe>");
+        }
+
+        if (showFB) {
+            addToSidebar("fb-msg", "<iframe class='fb-frame' id='fb-msg-frame' src='https://nntp-guardo.rhcloud.com/fb/msg/'></iframe>");
+        }
+        
+        /* init navigation */
+        var sidebarNavElems = document.querySelectorAll("#sidebar nav a");
+        
+        [].slice.call(sidebarNavElems).forEach(function(sidebarNavElem, i){
+            if (i === 0) {
+                changeSidebarSection(sidebarNavElem.dataset.target);
+            }
+            sidebarNavElem.addEventListener("click", function(){
+                changeSidebarSection(this.dataset.target);
+            });
+        });
+    };
+    
     function toggleSidebar(direction){
         if (direction === null || typeof direction === "undefined") {
             if (document.body.classList.contains("sidebar-opened")) {
@@ -562,7 +570,7 @@ function main() {
         document.body.classList[method]("sidebar-opened");
         
         if (sidebarFirstTime) {
-            sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
+            sidebarOnFirstOpen();
         }
         
         if (direction === 1) sidebarFirstTime = false;
@@ -579,14 +587,6 @@ function main() {
         sectionElem.innerHTML = content;
         sectionElem.dataset.id = id;
         sidebar.appendChild(sectionElem);
-    }
-
-    if (showFBNotif) {
-        addToSidebar("fb-notif", "<iframe class='fb-frame' id='fb-notif-frame' src='https://nntp-guardo.rhcloud.com/fb/notif/'></iframe>");
-    }
-    
-    if (showFB) {
-        addToSidebar("fb-msg", "<iframe class='fb-frame' id='fb-msg-frame' src='https://nntp-guardo.rhcloud.com/fb/msg/'></iframe>");
     }
     
     document.querySelector("#sidebar-btn").addEventListener("click", function(){
@@ -621,16 +621,6 @@ function main() {
         targetSection.classList.add("current");
         targetLink.classList.add("current");
     }
-    
-    var sidebarNavElems = document.querySelectorAll("#sidebar nav a");
-    [].slice.call(sidebarNavElems).forEach(function(sidebarNavElem, i){
-        if (i === 0) {
-            changeSidebarSection(sidebarNavElem.dataset.target);
-        }
-        sidebarNavElem.addEventListener("click", function(){
-            changeSidebarSection(this.dataset.target);
-        });
-    });
     
     /* open sidebar when mouse on right edge */
     window.addEventListener("mousemove", function(e){
