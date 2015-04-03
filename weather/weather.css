@@ -60,6 +60,13 @@ footer {
 	margin-top: 20px;
 	text-align: center;
 	font-size: 10px;
+    opacity: 0;
+    
+    transition: opacity .3s;
+}
+
+body:hover footer {
+    opacity: 1;
 }
 
 footer a {
