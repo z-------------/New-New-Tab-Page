@@ -266,8 +266,8 @@ function main() {
     };
     
     function getRecentSites(res) {
-        if (recSiteCount >= 1) {
-            for (var i = 0; i < recSiteCount; i++) {
+        if (recSiteCount >= 1 && res.length >= 1) {
+            for (var i = 0; i < Math.min(recSiteCount, res.length); i++) {
                 var recSite = res[i].tab;
                 
                 var recentSitesList = document.getElementById("recentsites");
