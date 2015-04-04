@@ -12,7 +12,6 @@ if (location.hash === "#iframe") {
 var settings = {};
 
 var defaultSettings = {
-    slotCount: 3,
     showAppsDrawer: true,
     topSiteCount: 6,
     recSiteCount: 3,
@@ -122,31 +121,9 @@ chrome.storage.sync.get(null, function (sr) {
         var apps = [];
 
         /* main stuff */
-        readOption("slotCount", function (val) {
-            document.getElementById("slotcount").value = val;
-        });
-        
         readOption("appIconSize", function (val) {
             document.getElementById("appiconsize").value = val;
         });
-
-        slotcount.oninput = function () {
-            var count = Number(this.value) || 0;
-
-            if (count < 0) count = 0;
-            if (count > 12) count = 12;
-        };
-
-        slotcount.onchange = function () {
-            if (Number(this.value) < 0) {
-                this.value = "0";
-            }
-            if (Number(this.value) > 12) {
-                this.value = "12";
-            }
-
-            this.oninput();
-        };
 
         readOption("showFB", function (val) {
             document.getElementById("showfb").checked = val;
@@ -192,7 +169,6 @@ document.getElementById("save").onclick = function () {
 
     delete newSettings.backgroundURL;
 
-    newSettings.slotCount = Number(document.getElementById("slotcount").value);
     newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
     newSettings.showFB = document.getElementById("showfb").checked;

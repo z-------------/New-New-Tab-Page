@@ -257,6 +257,7 @@ button {
     background-size: cover;
     flex-shrink: 0;
     position: relative;
+    overflow: visible;
 }
 
 .app:hover {
@@ -273,12 +274,6 @@ button {
 
 .app.editing:before {
     opacity: 0 !important;
-}
-
-.cust {
-    background-position: center;
-    background-size: cover;
-    background-color: #fff;
 }
 
 ::selection {
@@ -1121,4 +1116,39 @@ input[type="text"] {
 .editor-addapp:hover:after {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     background-color: #2eabe5;
+}
+
+.app button {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: -5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    pointer-events: none;
+    opacity: 0;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.app:hover button, .app.editing button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.editor-move {
+    right: 0;
+    margin-right: -5px;
+    background-image: url(img/move.svg);
+}
+
+.editor-remove {
+    left: 0;
+    margin-left: -5px;
+    background-image: url(img/remove.svg);
 }

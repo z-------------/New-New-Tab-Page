@@ -292,8 +292,6 @@ function main() {
         }
         
         function updateApp(index, key, value) {
-            apps[index][key] = value;
-            
             if (key === "url") {
                 appElems[index].dataset.url = value;
             }
@@ -303,6 +301,16 @@ function main() {
         }
         
         function saveApps() {
+            [].slice.call(document.querySelectorAll(".app")).forEach(function(elem, i){
+                var url = elem.dataset.url;
+                
+                var bgImg = elem.style.backgroundImage;
+                var icon = bgImg.substring(4, bgImg.length - 1);
+                
+                apps[i].url = url;
+                apps[i].icon = icon;
+            });
+            
             storage.set({apps: apps}, function(){
                 location.reload();
             });
@@ -330,8 +338,10 @@ function main() {
                 if (elem !== appElem) elem.classList.remove("editing");
             });
             
-            urlInput.value = apps[index].url;
-            iconInput.value = apps[index].icon;
+            urlInput.value = appElem.dataset.url;
+            
+            var bgImg = appElem.style.backgroundImage;
+            iconInput.value = bgImg.substring(4, bgImg.length - 1);
             
             urlInput.onchange = function(){
                 updateApp(index, "url", this.value);
@@ -342,7 +352,7 @@ function main() {
             };
             
             fetchIconBtn.onclick = function(){
-                fetchIcon(apps[index].url, function(r){
+                fetchIcon(urlInput.value, function(r){
                     if (r) {
                         iconInput.value = r;
                         iconInput.dispatchEvent(new Event("change"));
@@ -356,11 +366,27 @@ function main() {
             positionEditorBtns();
         }
         
-        [].slice.call(appElems).forEach(function(elem){
-            elem.onclick = function(){
-                editApp(this);
-            };
-        });
+        function addControls() {
+            [].slice.call(document.querySelectorAll(".app")).forEach(function(elem){
+                elem.onclick = function(){
+                    editApp(this);
+                };
+
+                elem.innerHTML = "<button class='editor-remove'></button><button class='editor-move'></button>";
+                
+                elem.querySelector(".editor-remove").onclick = function(e){
+                    e.stopPropagation();
+                    
+                    closeBtn.click();
+                    container.removeChild(this.parentElement);
+                    
+                    slotCount -= 1;
+                    storage.set({ slotCount: slotCount });
+                };
+            });
+        }
+        
+        addControls();
         
         saveBtn.onclick = saveApps;
         cancelBtn.onclick = function(){
@@ -368,7 +394,7 @@ function main() {
         };
         
         closeBtn.onclick = function(){
-            document.querySelector(".app.editing").classList.remove("editing");
+            if (document.querySelector(".app.editing")) document.querySelector(".app.editing").classList.remove("editing");
             editorElem.style.display = "none";
         };
         
@@ -378,24 +404,49 @@ function main() {
         });
         
         addAppBtn.onclick = function(){
-            var index = appElems.length;
+            if (appElems.length < 12) {
+                var index = appElems.length;
             
-            var appElem = document.createElement("div");
-            appElem.classList.add("app");
-            
-            appElem.dataset.url = apps[index].url;
-            appElem.style.backgroundImage = "url(" + apps[index].icon + ")";
-            
-            container.insertBefore(appElem, addAppBtn);
-            
-            editApp(appElem);
-            
-            storage.set({ slotCount: settings.slotCount + 1 });
+                var appElem = document.createElement("div");
+                appElem.classList.add("app");
+
+                appElem.dataset.url = apps[index].url;
+                appElem.style.backgroundImage = "url(" + apps[index].icon + ")";
+
+                container.insertBefore(appElem, addAppBtn);
+                
+                addControls();
+
+                editApp(appElem);
+
+                slotCount += 1;
+                storage.set({ slotCount: slotCount });
+                
+                if (document.querySelectorAll(".app").length === 12) this.style.display = none;
+            }
         };
         
-        if (!container.querySelector(".editor-addapp")) container.appendChild(addAppBtn);
+        if (!container.querySelector(".editor-addapp") && document.querySelectorAll(".app").length < 12) container.appendChild(addAppBtn);
         
         editApp(appElems[0]);
+        
+        if (!document.querySelector("#sortable-script")) {
+            var scriptElem = document.createElement("script");
+            scriptElem.src = "js/Sortable/Sortable.min.js";
+            document.body.appendChild(scriptElem);
+            
+            scriptElem.onload = function(){
+                var appsSrtbl = Sortable.create(container, {
+                    handle: ".editor-move",
+                    onStart: function(){
+                        closeBtn.click();
+                    },
+                    onEnd: function(){
+                        addControls();
+                    }
+                });
+            };
+        }
     };
 
     var searchFocusTimeout;
