@@ -193,7 +193,7 @@ function main() {
     }
 
     function openIconURL(iconElement) {
-        if (!document.querySelector("#apps-editor.opened")) {
+        if (!document.querySelector("#apps-editor-container.opened")) {
             white(iconElement, function(){
                 chrome.tabs.update({url: iconElement.dataset.url});
             });
@@ -241,15 +241,16 @@ function main() {
     document.getElementById("title").innerHTML = titleText;
     
     window.openAppsEditor = function(){
+        var editorContainer = document.querySelector("#apps-editor-container");
         var editorElem = document.querySelector("#apps-editor");
-        editorElem.classList.add("opened");
+        editorContainer.classList.add("opened");
         
-        var urlInput = editorElem.querySelector("#editor-url");
-        var iconInput = editorElem.querySelector("#editor-icon");
-        var iconFileInput = editorElem.querySelector("#editor-icon-file");
-        
-        var saveBtn = editorElem.querySelector("#editor-save");
-        var cancelBtn = editorElem.querySelector("#editor-cancel");
+        var urlInput = document.querySelector("#editor-url");
+        var iconInput = document.querySelector("#editor-icon");
+        var iconFileInput = document.querySelector("#editor-icon-file");
+        var fetchIconBtn = document.querySelector("#editor-fetchicon");
+        var saveBtn = document.querySelector("#editor-save");
+        var cancelBtn = document.querySelector("#editor-cancel");
         
         var appElems = document.querySelectorAll(".app");
         
@@ -274,10 +275,10 @@ function main() {
                     var linkTags = doc.head.querySelectorAll("link");
                     var icons = [].slice.call(linkTags).filter(function(tag){
                         var isAppleIcon = (tag.getAttribute("rel") === "apple-touch-icon-precomposed" || tag.getAttribute("rel") === "apple-touch-icon");
-                        return (isAppleIcon && tag.getAttribute("sizes") === "152x152");
+                        return isAppleIcon;
                     });
                     var icon;
-                    if (icons.length > 0) icon = icons[0].getAttribute("href");
+                    if (icons.length > 0) icon = url.getDomain() + icons[0].getAttribute("href");
 
                     callback(icon);
                 });
@@ -301,34 +302,50 @@ function main() {
             });
         }
         
+        function positionEditor(appElem) {
+            editorElem.style.left = container.offsetLeft + appElem.offsetLeft + "px";
+            
+            if (appElem.offsetTop < appIconSize) {
+                editorElem.style.top = container.offsetTop - editorElem.offsetHeight + "px";
+            } else {
+                editorElem.style.top = container.offsetTop + appElem.offsetTop + appElem.offsetHeight + "px";
+            }
+        }
+        
         function editApp(appElem) {
+            appElem.classList.add("editing");
+            
             var index = [].slice.call(appElems).indexOf(appElem);
             
             [].slice.call(appElems).forEach(function(elem){
-                elem.classList.remove("editing");
+                if (elem !== appElem) elem.classList.remove("editing");
             });
-            appElem.classList.add("editing");
             
             urlInput.value = apps[index].url;
             iconInput.value = apps[index].icon;
             
             urlInput.onchange = function(){
                 updateApp(index, "url", this.value);
+            };
+            
+            iconInput.onchange = function(){
+                updateApp(index, "icon", this.value);
+            };
+            
+            fetchIconBtn.onclick = function(){
                 fetchIcon(apps[index].url, function(r){
                     if (r) {
                         iconInput.value = r;
                         iconInput.dispatchEvent(new Event("change"));
                     }
                 });
-            };
+            }
             
-            iconInput.onchange = function(){
-                updateApp(index, "icon", this.value);
-            };
+            positionEditor(appElem);
         }
         
         [].slice.call(appElems).forEach(function(elem){
-            elem.innerHTML = "<button class='edit-app-btn'>Edit</button>";
+            elem.innerHTML = "<button class='edit-app-btn'></button>";
             
             elem.onclick = function(){
                 editApp(this);

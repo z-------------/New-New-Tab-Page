@@ -974,27 +974,36 @@ input[type="text"] {
     background-color: #555;
 }
 
-#apps-editor {
+#apps-editor-container {
     display: none;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
     color: #000;
-    z-index: 3;
-    padding: 20px;
 }
 
-#apps-editor * {
+#apps-editor-container > * {
+    z-index: 3;
+}
+
+#apps-editor-container * {
     color: inherit;
 }
 
-#apps-editor.opened {
+#apps-editor-container.opened {
     display: block;
+}
+
+#apps-editor {
+    position: absolute;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
 }
 
 #apps-editor label {
     display: block;
     margin: 10px 0;
+}
+
+#apps-editor-buttons {
+    position: absolute;
 }

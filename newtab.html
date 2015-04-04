@@ -14,17 +14,22 @@
         <div id="header">
             <span id="title">New Tab</span>
         </div>
-        <div id="apps-editor">
-            <label>
-                <span>URL</span>
-                <input type="url" placeholder="http://example.com" id="editor-url">
-            </label>
-            <label>
-                <span>Icon</span>
-                <input type="url" placeholder="http://example.com/icon.png" id="editor-icon">
-            </label>
-            <button id="editor-cancel">Cancel</button>
-            <button id="editor-save">Save</button>
+        <div id="apps-editor-container">
+            <div id="apps-editor">
+                <label>
+                    <span>URL</span>
+                    <input type="url" placeholder="http://example.com" id="editor-url">
+                </label>
+                <label>
+                    <span>Icon</span>
+                    <input type="url" placeholder="http://example.com/icon.png" id="editor-icon">
+                    <button id="editor-fetchicon">Find one for me</button>
+                </label>
+            </div>
+            <div id="apps-editor-buttons">
+                <button id="editor-cancel">Cancel</button>
+                <button id="editor-save">Save</button>
+            </div>
         </div>
         <div id="container"></div>
         <div id="appbutton"></div>
