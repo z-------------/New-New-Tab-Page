@@ -85,7 +85,7 @@ function iconBGColor(url) {
 
         return "rgb(" + sum.r + "," + sum.g + "," + sum.b + ")";
     } catch (e) {
-        return "white";
+        return "#ffffff";
     }
 }
 
@@ -287,6 +287,17 @@ function main() {
                         var isAppleIcon = (tag.getAttribute("rel") === "apple-touch-icon-precomposed" || tag.getAttribute("rel") === "apple-touch-icon");
                         return isAppleIcon;
                     });
+                    
+                    var sizePreference = ["57x57", "76x76", "120x120", "152x152", "180x180"];
+                    
+                    icons.sort(function(a, b){
+                        var sizeA = a.getAttribute("sizes");
+                        var sizeB = b.getAttribute("sizes");
+                        if (sizePreference.indexOf(sizeA) > sizePreference.indexOf(sizeB)) return -1;
+                        if (sizePreference.indexOf(sizeA) < sizePreference.indexOf(sizeB)) return 1;
+                        return 0;
+                    });
+                    
                     var icon;
                     if (icons.length > 0) icon = icons[0].href;
 
