@@ -269,7 +269,7 @@ button {
 }
 
 .app.editing {
-    box-shadow: 0 0 0 7px lightblue;
+    box-shadow: 0 0 0 7px #2EABE5;
 }
 
 .app.editing:before {
