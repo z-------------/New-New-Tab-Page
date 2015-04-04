@@ -164,6 +164,10 @@ iframe {
     pointer-events: none;
 }
 
+.sidebar-opened #apps-editor-container.opened {
+    display: none;
+}
+
 #sidebar-btn {
     opacity: .7;
     background: url("img/widgets.svg");
@@ -989,6 +993,8 @@ input[type="text"] {
 
 #apps-editor-container.opened {
     display: block;
+    
+    transition: opacity .3s;
 }
 
 #apps-editor {
@@ -997,6 +1003,8 @@ input[type="text"] {
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    overflow: visible;
+    transition: none;
 }
 
 #apps-editor label {
@@ -1006,4 +1014,31 @@ input[type="text"] {
 
 #apps-editor-buttons {
     position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#apps-editor:before {
+    content: "";
+    
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+#apps-editor.top:before {
+    top: 100%;
+    border-width: 10px 10px 0 10px;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+#apps-editor.bottom:before {
+    bottom: 100%;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #ffffff transparent;
 }

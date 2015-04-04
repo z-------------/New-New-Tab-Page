@@ -243,6 +243,7 @@ function main() {
     window.openAppsEditor = function(){
         var editorContainer = document.querySelector("#apps-editor-container");
         var editorElem = document.querySelector("#apps-editor");
+        var editorBtnsElem = document.querySelector("#apps-editor-buttons");
         editorContainer.classList.add("opened");
         
         var urlInput = document.querySelector("#editor-url");
@@ -303,12 +304,18 @@ function main() {
         }
         
         function positionEditor(appElem) {
-            editorElem.style.left = container.offsetLeft + appElem.offsetLeft + "px";
+            editorElem.style.left = container.offsetLeft + appElem.offsetLeft + appElem.offsetWidth / 2 - editorElem.offsetWidth / 2 + "px";
             
             if (appElem.offsetTop < appIconSize) {
                 editorElem.style.top = container.offsetTop - editorElem.offsetHeight + "px";
+                
+                editorElem.classList.remove("bottom");
+                editorElem.classList.add("top");
             } else {
-                editorElem.style.top = container.offsetTop + appElem.offsetTop + appElem.offsetHeight + "px";
+                editorElem.style.top = container.offsetTop + appElem.offsetTop + appElem.offsetHeight + 10 + "px";
+                
+                editorElem.classList.remove("top");
+                editorElem.classList.add("bottom");
             }
         }
         
@@ -356,6 +363,10 @@ function main() {
         cancelBtn.onclick = function(){
             location.reload();
         };
+        
+        window.addEventListener("resize", function(){
+            positionEditor(document.querySelector(".app.editing"));
+        });
         
         editApp(appElems[0]);
     };
