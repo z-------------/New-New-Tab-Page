@@ -25,7 +25,6 @@ var defaultSettings = {
     showFB: false,
     showFBNotif: false,
     autoClose: true,
-    apps: [],
     noAnimation: false,
     useFahrenheit: false,
     appIconSize: 130
@@ -104,110 +103,6 @@ Array.prototype.alphaSort = function (key) {
     return array;
 };
 
-var appPresets = [{
-    name: "Facebook",
-    url: "https://www.facebook.com",
-    icon: "/img/fb.png"
-}, {
-    name: "Google+",
-    url: "https://plus.google.com",
-    icon: "/img/gp.png"
-}, {
-    name: "YouTube",
-    url: "http://www.youtube.com",
-    icon: "/img/yt.png"
-}, {
-    name: "9gag",
-    url: "http://9gag.com",
-    icon: "/img/ng.png"
-}, {
-    name: "Gmail",
-    url: "https://mail.google.com",
-    icon: "/img/gm.png"
-}, {
-    name: "Reddit",
-    url: "http://www.reddit.com",
-    icon: "/img/rd.png"
-}, {
-    name: "Google",
-    url: "https://www.google.com",
-    icon: "/img/gg.png"
-}, {
-    name: "Yahoo",
-    url: "http://www.yahoo.com",
-    icon: "/img/yh.png"
-}, {
-    name: "Google Drive",
-    url: "https://drive.google.com",
-    icon: "/img/gd.png"
-}, {
-    name: "Digg",
-    url: "http://www.digg.com",
-    icon: "/img/dg.png"
-}, {
-    name: "The Verge",
-    url: "http://www.theverge.com",
-    icon: "/img/vg.png"
-}, {
-    name: "Twitter",
-    url: "https://www.twitter.com",
-    icon: "/img/tw.png"
-}, {
-    name: "Pocket",
-    url: "http://getpocket.com/a/queue",
-    icon: "/img/pk.png"
-}, {
-    name: "Google Keep",
-    url: "https://drive.google.com/keep",
-    icon: "/img/gk.png"
-}, {
-    name: "Inbox",
-    url: "https://inbox.google.com/",
-    icon: "/img/ix.png"
-}, {
-    name: "Ello",
-    url: "https://ello.co/",
-    icon: "/img/el.png"
-}].alphaSort("name");
-
-defaultSettings.apps = [{
-    "icon": "/img/fb.png",
-    "url": "http://www.facebook.com"
-}, {
-    "icon": "/img/ng.png",
-    "url": "http://9gag.com"
-}, {
-    "icon": "/img/yt.png",
-    "url": "http://www.youtube.com"
-}, {
-    "icon": "/img/rd.png",
-    "url": "http://www.reddit.com"
-}, {
-    "icon": "/img/gp.png",
-    "url": "https://plus.google.com"
-}, {
-    "icon": "/img/gg.png",
-    "url": "https://www.google.com"
-}, {
-    "icon": "/img/yh.png",
-    "url": "http://www.yahoo.com"
-}, {
-    "icon": "/img/pk.png",
-    "url": "http://getpocket.com/a/queue/"
-}, {
-    "icon": "/img/tw.png",
-    "url": "https://twitter.com"
-}, {
-    "icon": "/img/gd.png",
-    "url": "https://drive.google.com"
-}, {
-    "icon": "/img/gk.png",
-    "url": "https://drive.google.com/keep"
-}, {
-    "icon": "/img/vg.png",
-    "url": "http://www.theverge.com"
-}];
-
 function readOption(key, callback) {
     // console.log("read option '%s'", key);
     var val = defaultSettings[key];
@@ -234,64 +129,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("appIconSize", function (val) {
             document.getElementById("appiconsize").value = val;
         });
-
-        readOption("apps", function (val) {
-            apps = val;
-        });
-
-        var appLiTemplate = "\
-<input type='url' class='url' placeholder='URL'>\
-<input type='text' class='icon' placeholder='Icon URL'>\
-<select class='presets'>\
-<option>App presets</option>\
-</select>\
-";
-
-        var appOpts = document.getElementById("appopts");
-        var appOptsList = appOpts.querySelector("ol");
-
-        function iconPreview(input) {
-            input.parentElement.style.backgroundImage = "url(" + input.value + ")";
-        }
-
-        for (i = 0; i < 12; i++) {
-            var appLi = document.createElement("li");
-            appLi.innerHTML = appLiTemplate;
-
-            var presetsSelect = appLi.querySelector(".presets");
-            for (j = 0; j < appPresets.length; j++) {
-                presetsSelect.innerHTML += "<option>" + appPresets[j].name + "</option>";
-            }
-
-            presetsSelect.oninput = function () {
-                var urlInput = this.parentElement.querySelector(".url");
-                var iconInput = this.parentElement.querySelector(".icon");
-
-                if (this.value !== presetsSelect.childNodes[0].textContent) {
-                    urlInput.value = appPresets.valueIs("name", this.value).url;
-                    iconInput.value = appPresets.valueIs("name", this.value).icon;
-                    iconPreview(iconInput);
-                }
-            };
-
-            var urlInput = appLi.querySelector(".url");
-            var iconInput = appLi.querySelector(".icon");
-
-            urlInput.value = apps[i].url;
-            iconInput.value = apps[i].icon;
-            iconPreview(iconInput);
-
-            iconInput.oninput = function () {
-                iconPreview(this);
-            };
-
-            if (i >= Number(slotcount.value)) {
-                appLi.classList.add("hidden");
-            }
-            appLi.dataset.slotno = i + 1;
-
-            appOptsList.appendChild(appLi);
-        }
 
         slotcount.oninput = function () {
             var appLis = appOptsList.querySelectorAll("li");
@@ -378,20 +215,6 @@ document.getElementById("save").onclick = function () {
     newSettings.noAnimation = document.getElementById("disableanimation").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
 
-    newSettings.apps = defaultSettings.apps;
-
-    var appLis = document.querySelectorAll("#appopts ol li");
-
-    for (i = 0; i < appLis.length; i++) {
-        var url = appLis[i].querySelector(".url").value;
-        var icon = appLis[i].querySelector(".icon").value;
-
-        newSettings.apps[i] = {
-            url: url,
-            icon: icon
-        };
-    }
-
     var syncDone = false;
     var localDone = false;
 
@@ -444,14 +267,7 @@ document.forms[0].onsubmit = function(e){
     e.preventDefault();
 };
 
-var sortableElem = document.querySelector("#appopts ol");
-var sortable = Sortable.create(sortableElem, {
-    onEnd: function (e) {
-        var index = e.newIndex;
-        var firstHidden = sortableElem.querySelectorAll(".hidden")[0];
-        var lis = [].slice.call(sortableElem.children)
-        if (index > lis.indexOf(firstHidden)) {
-            sortableElem.insertBefore(lis[index], firstHidden);
-        }
-    },
+document.querySelector("#edit-apps-btn").addEventListener("click", function(){
+    window.top.openAppsEditor();
+    window.top.document.querySelector("#optionbutton").click();
 });

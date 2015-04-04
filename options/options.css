@@ -30,20 +30,11 @@ h1 {
 	margin: 0;
 	text-align: center;
 	cursor: default;
-	transition: -webkit-transform 1s;
 }
 
 h1::selection {
 	background: transparent;
 	color: inherit;
-}
-
-h1:hover {
-	-webkit-transform: rotateY(1turn);
-}
-
-h1:active {
-    -webkit-transform: translateZ(-100px);
 }
 
 h2 {

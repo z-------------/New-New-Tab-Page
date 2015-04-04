@@ -257,6 +257,10 @@ iframe {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
 }
 
+.app.editing {
+    box-shadow: 0 0 0 7px lightblue;
+}
+
 .cust {
     background-position: center;
     background-size: cover;
@@ -428,7 +432,6 @@ iframe {
     right: 10px;
     text-align: right;
     z-index: 3;
-    width: 500px;
     height: 70px;
 }
 
@@ -969,4 +972,29 @@ input[type="text"] {
 
 .fb-frame::-webkit-scrollbar {
     background-color: #555;
+}
+
+#apps-editor {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #000;
+    z-index: 3;
+    padding: 20px;
+}
+
+#apps-editor * {
+    color: inherit;
+}
+
+#apps-editor.opened {
+    display: block;
+}
+
+#apps-editor label {
+    display: block;
+    margin: 10px 0;
 }

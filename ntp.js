@@ -38,6 +38,16 @@ String.prototype.getDomain = function () {
     return temp.protocol + "//" + temp.host;
 };
 
+String.prototype.getPureDomain = function () {
+    var temp = document.createElement("a");
+    temp.href = this;
+    
+    var val = temp.host;
+    if (val.indexOf("www") === 0) val = val.substring(val.indexOf("www.") + "www.".length);
+    
+    return val;
+};
+
 function iconBGColor(url) {
     var img = document.createElement("img");
     img.src = url;
@@ -128,6 +138,26 @@ var defaultSlots = [{
     "url": "http://www.theverge.com"
 }];
 
+var urlIconMap = {
+    "facebook.com": "fb",
+    "plus.google.com": "gp",
+    "youtube.com": "yt",
+    "9gag.com": "ng",
+    "mail.google.com": "gmail",
+    "reddit.com": "rd",
+    "google.com": "gg",
+    "yahoo.com": "yh",
+    "drive.google.com": "gd",
+    "digg.com": "dg",
+    "theverge.com": "vg",
+    "twitter.com": "tw",
+    "getpocket.com": "pk",
+    "keep.google.com": "gk",
+    "inbox.google.com": "ix",
+    "ello.co": "el",
+    "^[\S]+.slack.com|slack.com": "sk"
+};
+
 settings.apps = defaultSlots;
 
 storage.get(settingsKeys, function (r) {
@@ -163,9 +193,11 @@ function main() {
     }
 
     function openIconURL(iconElement) {
-        white(iconElement, function(){
-            chrome.tabs.update({url: iconElement.dataset.url});
-        });
+        if (!document.querySelector("#apps-editor.opened")) {
+            white(iconElement, function(){
+                chrome.tabs.update({url: iconElement.dataset.url});
+            });
+        }
     }
     
     if (slotCount < 7) {		
@@ -207,6 +239,109 @@ function main() {
     }
 
     document.getElementById("title").innerHTML = titleText;
+    
+    window.openAppsEditor = function(){
+        var editorElem = document.querySelector("#apps-editor");
+        editorElem.classList.add("opened");
+        
+        var urlInput = editorElem.querySelector("#editor-url");
+        var iconInput = editorElem.querySelector("#editor-icon");
+        var iconFileInput = editorElem.querySelector("#editor-icon-file");
+        
+        var saveBtn = editorElem.querySelector("#editor-save");
+        var cancelBtn = editorElem.querySelector("#editor-cancel");
+        
+        var appElems = document.querySelectorAll(".app");
+        
+        function fetchIcon(url, callback) {
+            var presetMatchedId;
+            
+            Object.keys(urlIconMap).forEach(function(regex){
+                if (new RegExp(regex).test(url.getPureDomain())) {
+                    presetMatchedId = urlIconMap[regex];
+                }
+            });
+            
+            if (presetMatchedId) {
+                callback("/img/" + presetMatchedId + ".png");
+            } else {
+                xhr(url, function(r){
+                    console.log(r);
+
+                    parser = new DOMParser();
+                    doc = parser.parseFromString(r, "text/html");
+                    console.log(doc);
+                    var linkTags = doc.head.querySelectorAll("link");
+                    var icons = [].slice.call(linkTags).filter(function(tag){
+                        var isAppleIcon = (tag.getAttribute("rel") === "apple-touch-icon-precomposed" || tag.getAttribute("rel") === "apple-touch-icon");
+                        return (isAppleIcon && tag.getAttribute("sizes") === "152x152");
+                    });
+                    var icon;
+                    if (icons.length > 0) icon = icons[0].getAttribute("href");
+
+                    callback(icon);
+                });
+            }
+        }
+        
+        function updateApp(index, key, value) {
+            apps[index][key] = value;
+            
+            if (key === "url") {
+                appElems[index].dataset.url = value;
+            }
+            if (key === "icon") {
+                appElems[index].style.backgroundImage = "url(" + value + ")";
+            }
+        }
+        
+        function saveApps() {
+            storage.set({apps: apps}, function(){
+                location.reload();
+            });
+        }
+        
+        function editApp(appElem) {
+            var index = [].slice.call(appElems).indexOf(appElem);
+            
+            [].slice.call(appElems).forEach(function(elem){
+                elem.classList.remove("editing");
+            });
+            appElem.classList.add("editing");
+            
+            urlInput.value = apps[index].url;
+            iconInput.value = apps[index].icon;
+            
+            urlInput.onchange = function(){
+                updateApp(index, "url", this.value);
+                fetchIcon(apps[index].url, function(r){
+                    if (r) {
+                        iconInput.value = r;
+                        iconInput.dispatchEvent(new Event("change"));
+                    }
+                });
+            };
+            
+            iconInput.onchange = function(){
+                updateApp(index, "icon", this.value);
+            };
+        }
+        
+        [].slice.call(appElems).forEach(function(elem){
+            elem.innerHTML = "<button class='edit-app-btn'>Edit</button>";
+            
+            elem.onclick = function(){
+                editApp(this);
+            };
+        });
+        
+        saveBtn.onclick = saveApps;
+        cancelBtn.onclick = function(){
+            location.reload();
+        };
+        
+        editApp(appElems[0]);
+    };
 
     var searchFocusTimeout;
 
@@ -569,7 +704,7 @@ function main() {
         
         document.body.classList[method]("sidebar-opened");
         
-        if (sidebarFirstTime) {
+        if (direction === 1 && sidebarFirstTime) {
             sidebarOnFirstOpen();
         }
         
