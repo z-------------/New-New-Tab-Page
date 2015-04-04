@@ -131,19 +131,10 @@ chrome.storage.sync.get(null, function (sr) {
         });
 
         slotcount.oninput = function () {
-            var appLis = appOptsList.querySelectorAll("li");
             var count = Number(this.value) || 0;
 
             if (count < 0) count = 0;
             if (count > 12) count = 12;
-
-            for (i = 0; i < appLis.length; i++) {
-                if (i < count) {
-                    appLis[i].classList.remove("hidden");
-                } else {
-                    appLis[i].classList.add("hidden");
-                }
-            }
         };
 
         slotcount.onchange = function () {

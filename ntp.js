@@ -254,6 +254,10 @@ function main() {
         var cancelBtn = document.querySelector("#editor-cancel");
         var closeBtn = document.querySelector("#editor-closeeditor");
         
+        var addAppBtn = document.createElement("div");
+        addAppBtn.classList.add("editor-addapp");
+        addAppBtn.style.height = appIconSize + "px";
+        
         var appElems = document.querySelectorAll(".app");
         
         function fetchIcon(url, callback) {
@@ -316,6 +320,8 @@ function main() {
         }
         
         function editApp(appElem) {
+            appElems = document.querySelectorAll(".app");
+            
             appElem.classList.add("editing");
             
             var index = [].slice.call(appElems).indexOf(appElem);
@@ -370,6 +376,24 @@ function main() {
             positionEditor(document.querySelector(".app.editing"));
             positionEditorBtns();
         });
+        
+        addAppBtn.onclick = function(){
+            var index = appElems.length;
+            
+            var appElem = document.createElement("div");
+            appElem.classList.add("app");
+            
+            appElem.dataset.url = apps[index].url;
+            appElem.style.backgroundImage = "url(" + apps[index].icon + ")";
+            
+            container.insertBefore(appElem, addAppBtn);
+            
+            editApp(appElem);
+            
+            storage.set({ slotCount: settings.slotCount + 1 });
+        };
+        
+        if (!container.querySelector(".editor-addapp")) container.appendChild(addAppBtn);
         
         editApp(appElems[0]);
     };

@@ -241,6 +241,7 @@ button {
     padding-bottom: 10px;
     left: 50%;
     top: 50%;
+    overflow: visible;
 }
 
 .app {
@@ -1032,6 +1033,10 @@ input[type="text"] {
     border-radius: 4px;
 }
 
+#apps-editor-container button {
+    font-weight: 400;
+}
+
 #apps-editor {
     position: absolute;
     background-color: rgba(0, 0, 0, .9);
@@ -1051,14 +1056,14 @@ input[type="text"] {
 #apps-editor-buttons {
     position: absolute;
     z-index: 1;
-    
     padding: 10px 0;
     font-size: 1.5em;
+    
+    transition: none;
 }
 
 #apps-editor-buttons button {
     font-size: 1em;
-    font-weight: 400;
     padding: 10px 15px;
     margin-right: 10px;
     float: right;
@@ -1089,4 +1094,31 @@ input[type="text"] {
     right: 0;
     top: 0;
     background-color: transparent !important;
+}
+
+.editor-addapp {
+    width: 0;
+    overflow: visible;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.editor-addapp:after {
+    content: "+";
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+    font-size: 43px;
+    position: absolute;
+    margin: -10px 10px;
+    
+    transition-property: box-shadow, background;
+    transition-duration: .3s;
+}
+
+.editor-addapp:hover:after {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    background-color: #2eabe5;
 }
