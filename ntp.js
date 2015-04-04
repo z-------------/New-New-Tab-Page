@@ -277,11 +277,9 @@ function main() {
                 callback("/img/" + presetMatchedId + ".png");
             } else {
                 xhr(url, function(r){
-                    console.log(r);
-
                     parser = new DOMParser();
                     doc = parser.parseFromString(r, "text/html");
-                    console.log(doc);
+                    
                     var linkTags = doc.head.querySelectorAll("link");
                     var icons = [].slice.call(linkTags).filter(function(tag){
                         var isAppleIcon = (tag.getAttribute("rel") === "apple-touch-icon-precomposed" || tag.getAttribute("rel") === "apple-touch-icon");
@@ -902,10 +900,6 @@ function main() {
         toggleSidebar(0);
     });
 }
-
-window.onerror = function (e) {
-    console.log("Something went wrong.", e, "Please refresh the page and report the problem to the developer: http://2shrt.co.nf/?nntp-bugreport");
-};
 
 if (navigator.userAgent.indexOf("Macintosh") === -1) {
     document.body.classList.add("customscrollbars");
