@@ -252,6 +252,7 @@ function main() {
         var fetchIconBtn = document.querySelector("#editor-fetchicon");
         var saveBtn = document.querySelector("#editor-save");
         var cancelBtn = document.querySelector("#editor-cancel");
+        var closeBtn = document.querySelector("#editor-closeeditor");
         
         var appElems = document.querySelectorAll(".app");
         
@@ -279,7 +280,7 @@ function main() {
                         return isAppleIcon;
                     });
                     var icon;
-                    if (icons.length > 0) icon = url.getDomain() + icons[0].getAttribute("href");
+                    if (icons.length > 0) icon = icons[0].href;
 
                     callback(icon);
                 });
@@ -305,18 +306,13 @@ function main() {
         
         function positionEditor(appElem) {
             editorElem.style.left = container.offsetLeft + appElem.offsetLeft + appElem.offsetWidth / 2 - editorElem.offsetWidth / 2 + "px";
-            
-            if (appElem.offsetTop < appIconSize) {
-                editorElem.style.top = container.offsetTop - editorElem.offsetHeight + "px";
-                
-                editorElem.classList.remove("bottom");
-                editorElem.classList.add("top");
-            } else {
-                editorElem.style.top = container.offsetTop + appElem.offsetTop + appElem.offsetHeight + 10 + "px";
-                
-                editorElem.classList.remove("top");
-                editorElem.classList.add("bottom");
-            }
+            editorElem.style.top = container.offsetTop + appElem.offsetTop - editorElem.offsetHeight - 20 + "px";
+        }
+        
+        function positionEditorBtns() {
+            editorBtnsElem.style.left = container.offsetLeft + "px";
+            editorBtnsElem.style.top = container.offsetTop - editorBtnsElem.offsetHeight + "px";
+            editorBtnsElem.style.width = container.offsetWidth + "px";
         }
         
         function editApp(appElem) {
@@ -348,12 +344,13 @@ function main() {
                 });
             }
             
+            editorElem.style.display = "block";
+            
             positionEditor(appElem);
+            positionEditorBtns();
         }
         
         [].slice.call(appElems).forEach(function(elem){
-            elem.innerHTML = "<button class='edit-app-btn'></button>";
-            
             elem.onclick = function(){
                 editApp(this);
             };
@@ -364,8 +361,14 @@ function main() {
             location.reload();
         };
         
+        closeBtn.onclick = function(){
+            document.querySelector(".app.editing").classList.remove("editing");
+            editorElem.style.display = "none";
+        };
+        
         window.addEventListener("resize", function(){
             positionEditor(document.querySelector(".app.editing"));
+            positionEditorBtns();
         });
         
         editApp(appElems[0]);

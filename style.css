@@ -46,6 +46,10 @@ iframe {
     border: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 #sidebar {
     position: fixed;
     top: 0;
@@ -251,6 +255,7 @@ iframe {
     background-color: white;
     background-size: cover;
     flex-shrink: 0;
+    position: relative;
 }
 
 .app:hover {
@@ -263,6 +268,10 @@ iframe {
 
 .app.editing {
     box-shadow: 0 0 0 7px lightblue;
+}
+
+.app.editing:before {
+    opacity: 0 !important;
 }
 
 .cust {
@@ -980,11 +989,6 @@ input[type="text"] {
 
 #apps-editor-container {
     display: none;
-    color: #000;
-}
-
-#apps-editor-container > * {
-    z-index: 3;
 }
 
 #apps-editor-container * {
@@ -997,14 +1001,46 @@ input[type="text"] {
     transition: opacity .3s;
 }
 
+#apps-editor-container.opened ~ #container .app:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    opacity: 0;
+    border-radius: inherit;
+    
+    background-image: url(img/edit.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    
+    transition: opacity .3s;
+}
+
+#apps-editor-container.opened ~ #container .app:hover:before {
+    opacity: 1;
+}
+
+#apps-editor-container input, #apps-editor-container button {
+    background-color: rgba(127, 127, 127, .3);
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+}
+
 #apps-editor {
     position: absolute;
-    background-color: #fff;
-    padding: 20px;
+    background-color: rgba(0, 0, 0, .9);
+    padding: 10px 20px;
     border-radius: 4px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     overflow: visible;
     transition: none;
+    z-index: 3;
 }
 
 #apps-editor label {
@@ -1014,9 +1050,23 @@ input[type="text"] {
 
 #apps-editor-buttons {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 1;
+    
+    padding: 10px 0;
+    font-size: 1.5em;
+}
+
+#apps-editor-buttons button {
+    font-size: 1em;
+    font-weight: 400;
+    padding: 10px 15px;
+    margin-right: 10px;
+    float: right;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+
+#editor-save {
+    background-color: #00a545 !important;
 }
 
 #apps-editor:before {
@@ -1024,6 +1074,9 @@ input[type="text"] {
     
     position: absolute;
     left: 50%;
+    top: 100%;
+    border-width: 10px 10px 0 10px;
+    border-color: rgba(0, 0, 0, .9) transparent transparent transparent;
     margin-left: -10px;
     
     width: 0;
@@ -1031,14 +1084,9 @@ input[type="text"] {
     border-style: solid;
 }
 
-#apps-editor.top:before {
-    top: 100%;
-    border-width: 10px 10px 0 10px;
-    border-color: #ffffff transparent transparent transparent;
-}
-
-#apps-editor.bottom:before {
-    bottom: 100%;
-    border-width: 0 10px 10px 10px;
-    border-color: transparent transparent #ffffff transparent;
+#editor-closeeditor {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: transparent !important;
 }
