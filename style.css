@@ -1141,10 +1141,15 @@ input[type="text"] {
     pointer-events: auto;
 }
 
+.app.sortable-ghost {
+    opacity: 0;
+}
+
 .editor-move {
     right: 0;
     margin-right: -5px;
     background-image: url(img/move.svg);
+    cursor: -webkit-grab !important;
 }
 
 .editor-remove {
