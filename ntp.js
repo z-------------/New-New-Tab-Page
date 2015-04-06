@@ -288,7 +288,7 @@ function main() {
                         return isAppleIcon;
                     });
                     
-                    var sizePreference = ["57x57", "76x76", "120x120", "152x152", "180x180"];
+                    var sizePreference = ["57x57", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
                     
                     icons.sort(function(a, b){
                         var sizeA = a.getAttribute("sizes");
