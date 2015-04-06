@@ -359,6 +359,7 @@ function main() {
             iconInput.value = bgImg.substring(4, bgImg.length - 1);
             
             urlInput.onchange = function(){
+                if (this.value.indexOf("://") === -1) this.value = "http://" + this.value;
                 updateApp(index, "url", this.value);
             };
             
