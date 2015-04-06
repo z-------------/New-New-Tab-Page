@@ -362,6 +362,10 @@ function main() {
                 updateApp(index, "url", this.value);
             };
             
+            urlInput.addEventListener("awesomplete-selectcomplete", function(){
+                updateApp(index, "url", this.value);
+            });
+            
             iconInput.onchange = function(){
                 updateApp(index, "icon", this.value);
             };
