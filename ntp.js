@@ -258,6 +258,8 @@ function main() {
         var cancelBtn = document.querySelector("#editor-cancel");
         var closeBtn = document.querySelector("#editor-closeeditor");
         
+        var urlAutocompleteList = [];
+        
         var addAppBtn = document.createElement("div");
         addAppBtn.classList.add("editor-addapp");
         addAppBtn.style.height = appIconSize + "px";
@@ -449,6 +451,32 @@ function main() {
         
         editApp(appElems[0]);
         
+        chrome.topSites.get(function(res){
+            res.forEach(function(r){
+                var url = r.url;
+                document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
+            });
+            
+            if (!document.querySelector("#awesomplete-script")) {
+                var scriptElem = document.createElement("script");
+                scriptElem.src = "js/Awesomplete/awesomplete.min.js";
+                document.body.appendChild(scriptElem);
+
+                var styleElem = document.createElement("link");
+                styleElem.setAttribute("rel", "stylesheet");
+                styleElem.href = "js/Awesomplete/awesomplete.css";
+                document.head.appendChild(styleElem);
+
+                scriptElem.onload = function(){
+                    new Awesomplete(urlInput, {
+                        list: "#top-sites-datalist",
+                        minChars: 1,
+                        autoFirst: true
+                    });
+                };
+            }
+        });
+        
         if (!document.querySelector("#sortable-script")) {
             var scriptElem = document.createElement("script");
             scriptElem.src = "js/Sortable/Sortable.min.js";
@@ -456,16 +484,23 @@ function main() {
             
             scriptElem.onload = function(){
                 var appsSrtbl = Sortable.create(container, {
+                    draggable: ".app",
                     handle: ".editor-move",
                     onStart: function(){
                         closeBtn.click();
                     },
                     onEnd: function(){
                         addControls();
-                    }
+                    },
+                    animation: 150
                 });
             };
         }
+        
+        Object.keys(urlIconMap).forEach(function(url){
+            url = "http://" + url;
+            document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
+        });
     };
 
     var searchFocusTimeout;

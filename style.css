@@ -1046,6 +1046,7 @@ input[type="text"] {
 #apps-editor label {
     display: block;
     margin: 10px 0;
+    overflow: visible;
 }
 
 #apps-editor-buttons {
@@ -1156,4 +1157,24 @@ input[type="text"] {
     left: 0;
     margin-left: -5px;
     background-image: url(img/remove.svg);
+}
+
+.awesomplete {
+    overflow: visible;
+}
+
+.awesomplete ul {
+    color: #000 !important;
+}
+
+.awesomplete > ul > li {
+    font-weight: 400;
+}
+
+.awesomplete > ul > li * {
+    font: inherit !important;
+}
+
+.awesomplete > ul > li[aria-selected="true"] {
+    color: #fff !important;
 }
