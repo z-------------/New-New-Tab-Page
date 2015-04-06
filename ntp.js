@@ -362,9 +362,14 @@ function main() {
                 updateApp(index, "url", this.value);
             };
             
-            urlInput.addEventListener("awesomplete-selectcomplete", function(){
-                updateApp(index, "url", this.value);
-            });
+            urlInput.onkeydown = function(e){
+                var that = this;
+                if (e.which === 13) {
+                    setTimeout(function(){
+                        updateApp(index, "url", that.value);
+                    }, 10)
+                }
+            };
             
             iconInput.onchange = function(){
                 updateApp(index, "icon", this.value);
