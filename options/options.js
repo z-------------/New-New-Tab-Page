@@ -235,6 +235,6 @@ document.forms[0].onsubmit = function(e){
 };
 
 document.querySelector("#edit-apps-btn").addEventListener("click", function(){
-    window.top.openAppsEditor();
     window.top.document.querySelector("#optionbutton").click();
+    setTimeout(window.top.openAppsEditor, 300);
 });
