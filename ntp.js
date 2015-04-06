@@ -362,15 +362,6 @@ function main() {
                 updateApp(index, "url", this.value);
             };
             
-            urlInput.onkeydown = function(e){
-                var that = this;
-                if (e.which === 13) {
-                    setTimeout(function(){
-                        updateApp(index, "url", that.value);
-                    }, 10)
-                }
-            };
-            
             iconInput.onchange = function(){
                 updateApp(index, "icon", this.value);
             };
@@ -509,6 +500,10 @@ function main() {
         Object.keys(urlIconMap).forEach(function(url){
             url = "http://" + url;
             document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
+        });
+        
+        urlInput.addEventListener("awesomplete-selectcomplete", function(){
+            urlInput.dispatchEvent(new Event("change"));
         });
     };
 
