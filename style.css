@@ -1104,18 +1104,18 @@ input[type="text"] {
     width: 50px;
     height: 50px;
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(127, 127, 127, 0.5);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     font-weight: 700;
     font-size: 43px;
     position: absolute;
     margin: -10px 10px;
     
-    transition-property: box-shadow, background;
+    transition-property: background;
     transition-duration: .3s;
 }
 
 .editor-addapp:hover:after {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
     background-color: #2eabe5;
 }
 
