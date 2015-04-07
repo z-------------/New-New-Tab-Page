@@ -284,8 +284,8 @@ function main() {
                     
                     var linkTags = doc.head.querySelectorAll("link");
                     var icons = [].slice.call(linkTags).filter(function(tag){
-                        var isAppleIcon = (tag.getAttribute("rel") === "apple-touch-icon-precomposed" || tag.getAttribute("rel") === "apple-touch-icon");
-                        return isAppleIcon;
+                        var attrRel = tag.getAttribute("rel");
+                        return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon";
                     });
                     
                     var sizePreference = ["57x57", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
