@@ -26,7 +26,12 @@ A minimal new tab page for Google Chrome
 
 [**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
 
-Instructions for source installation -> [How does one install an extension for Chrome browser from the local file system? - Super User](http://superuser.com/a/247654)
+### How to install from source
+
+1. Go to `chrome://extensions`
+2. Tick "developer mode" and click "load unpacked extension"
+3. Choose folder
+4. New New Tab Page should now be installed
 
 ## Credits
 
