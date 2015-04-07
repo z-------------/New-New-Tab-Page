@@ -60,7 +60,10 @@ function iconBGColor(url) {
 
     canvas.width = width;
     canvas.height = height;
-
+    
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, width, height);
+    
     ctx.drawImage(img, 0, 0);
 
     var data;
