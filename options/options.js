@@ -21,8 +21,6 @@ var defaultSettings = {
     backgroundURL: "url(/img/bg.png)",
     bgBlur: false,
     titleText: "New Tab",
-    showFB: false,
-    showFBNotif: false,
     autoClose: true,
     noAnimation: false,
     useFahrenheit: false,
@@ -125,12 +123,6 @@ chrome.storage.sync.get(null, function (sr) {
             document.getElementById("appiconsize").value = val;
         });
 
-        readOption("showFB", function (val) {
-            document.getElementById("showfb").checked = val;
-        });
-        readOption("showFBNotif", function (val) {
-            document.getElementById("shownotif").checked = val;
-        });
         readOption("showBookmarks", function (val) {
             document.getElementById("showbookmarks").checked = val;
         });
@@ -171,8 +163,6 @@ document.getElementById("save").onclick = function () {
 
     newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
-    newSettings.showFB = document.getElementById("showfb").checked;
-    newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
     newSettings.topSiteCount = Number(document.getElementById("topsitecount").value);
     newSettings.recSiteCount = Number(document.getElementById("recsitecount").value);

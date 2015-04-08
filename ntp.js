@@ -838,11 +838,29 @@ function main() {
         
         /* facebook */
         if (showFBNotif) {
-            addToSidebar("fb-notif", "<iframe class='fb-frame' id='fb-notif-frame' src='https://nntp-guardo.rhcloud.com/fb/notif/'></iframe>");
+            addToSidebar("fb-notif", "");
+            document.querySelector("aside [data-target='fb-notif']").addEventListener("click", function(){
+                chrome.windows.create({
+                    url: "https://m.facebook.com/messages",
+                    width: 350,
+                    height: 500,
+                    focused: true,
+                    type: "panel"
+                });
+            });
         }
 
         if (showFB) {
-            addToSidebar("fb-msg", "<iframe class='fb-frame' id='fb-msg-frame' src='https://nntp-guardo.rhcloud.com/fb/msg/'></iframe>");
+            addToSidebar("fb-msg", "");
+            document.querySelector("aside [data-target='fb-msg']").addEventListener("click", function(){
+                chrome.windows.create({
+                    url: "https://m.facebook.com/notifications",
+                    width: 350,
+                    height: 500,
+                    focused: true,
+                    type: "panel"
+                });
+            });
         }
         
         /* init navigation */
