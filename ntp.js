@@ -841,7 +841,7 @@ function main() {
             addToSidebar("fb-notif", "");
             document.querySelector("aside [data-target='fb-notif']").addEventListener("click", function(){
                 chrome.windows.create({
-                    url: "https://m.facebook.com/messages",
+                    url: "https://m.facebook.com/notifications",
                     width: 350,
                     height: 500,
                     focused: true,
@@ -854,7 +854,7 @@ function main() {
             addToSidebar("fb-msg", "");
             document.querySelector("aside [data-target='fb-msg']").addEventListener("click", function(){
                 chrome.windows.create({
-                    url: "https://m.facebook.com/notifications",
+                    url: "https://m.facebook.com/messages",
                     width: 350,
                     height: 500,
                     focused: true,
