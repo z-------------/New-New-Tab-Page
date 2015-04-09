@@ -24,7 +24,9 @@ var defaultSettings = {
     autoClose: true,
     noAnimation: false,
     useFahrenheit: false,
-    appIconSize: 130
+    appIconSize: 130,
+    showFB: false,		
+    showFBNotif: false
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -119,10 +121,15 @@ chrome.storage.sync.get(null, function (sr) {
         var apps = [];
 
         /* main stuff */
+        readOption("showFB", function (val) {		
+            document.getElementById("showfb").checked = val;		
+        });		
+        readOption("showFBNotif", function (val) {		
+            document.getElementById("shownotif").checked = val;		
+        });
         readOption("appIconSize", function (val) {
             document.getElementById("appiconsize").value = val;
         });
-
         readOption("showBookmarks", function (val) {
             document.getElementById("showbookmarks").checked = val;
         });
@@ -161,6 +168,8 @@ document.getElementById("save").onclick = function () {
 
     delete newSettings.backgroundURL;
 
+    newSettings.showFB = document.getElementById("showfb").checked;		
+    newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
