@@ -823,7 +823,7 @@ function main() {
                 for (i = 0; i < newsEntries.length; i++) {
                     var newsItem = document.createElement("li");
                     
-                    newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'><div class='news-thumb' style='background-image:url(" + (newsEntries[i].thumbnail ? newsEntries[i].thumbnail.url : "") +  ")'></div><div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + new Date(newsEntries[i].pubDate).toLocaleTimeString() + "</date></div></div>";
+                    newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'>" + (!!newsEntries[i].thumbnail ? "<div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div>" : "") + "<div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + new Date(newsEntries[i].pubDate).toLocaleTimeString() + "</date></div></div>";
                     newsItem.classList.add("news");
 
                     document.getElementById("newslist").appendChild(newsItem);
