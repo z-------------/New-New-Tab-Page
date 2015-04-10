@@ -816,24 +816,31 @@ function main() {
         sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
         
         /* news */
-        if (navigator.onLine) {
-            var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/world/rss.xml'";
-            xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
-                var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
-                for (i = 0; i < newsEntries.length; i++) {
-                    var newsItem = document.createElement("li");
-                    
-                    newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'>" + (!!newsEntries[i].thumbnail ? "<div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div>" : "") + "<div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + new Date(newsEntries[i].pubDate).toLocaleTimeString() + "</date></div></div>";
-                    newsItem.classList.add("news");
+        if (!document.querySelector("#momentjs-script")) {
+            var scriptElem = document.createElement("script");
+            scriptElem.src = "js/Moment.js/moment.min.js";
+            document.body.appendChild(scriptElem);
+            scriptElem.onload = function(){
+                if (navigator.onLine) {
+                    var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/world/rss.xml'";
+                    xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
+                        var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
+                        for (i = 0; i < newsEntries.length; i++) {
+                            var newsItem = document.createElement("li");
 
-                    document.getElementById("newslist").appendChild(newsItem);
+                            newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'>" + (!!newsEntries[i].thumbnail ? "<div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div>" : "") + "<div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + moment(newsEntries[i].pubDate).calendar() + "</date></div></div>";
+                            newsItem.classList.add("news");
+
+                            document.getElementById("newslist").appendChild(newsItem);
+                        }
+                        document.getElementById("newslist").classList.remove("loading");
+                    });
+
+                    document.getElementById("newslist").classList.add("loading");
+                } else {
+                    document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
                 }
-                document.getElementById("newslist").classList.remove("loading");
-            });
-
-            document.getElementById("newslist").classList.add("loading");
-        } else {
-            document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
+            };
         }
         
         /* facebook */
