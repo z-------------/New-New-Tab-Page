@@ -333,7 +333,10 @@ function main() {
                 apps[i].icon = icon;
             });
             
-            storage.set({apps: apps}, function(){
+            storage.set({
+                apps: apps,
+                slotCount: slotCount
+            }, function(){
                 location.reload();
             });
         }
@@ -404,7 +407,6 @@ function main() {
                     container.removeChild(this.parentElement);
                     
                     slotCount -= 1;
-                    storage.set({ slotCount: slotCount });
                     
                     sizeContainer();
                     positionEditorBtns();
@@ -440,15 +442,12 @@ function main() {
                 appElem.style.backgroundImage = "url(" + apps[index].icon + ")";
 
                 container.insertBefore(appElem, addAppBtn);
-                
-                addControls();
-
-                editApp(appElem);
 
                 slotCount += 1;
-                storage.set({ slotCount: slotCount });
                 
                 sizeContainer();
+                editApp(appElem);
+                addControls();
                 positionEditorBtns();
                 
                 if (document.querySelectorAll(".app").length === 12) this.style.display = "none";
