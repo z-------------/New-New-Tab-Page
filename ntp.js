@@ -291,7 +291,7 @@ function main() {
                         return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon" || attrRel === "icon";
                     });
                     
-                    var sizePreference = ["57x57", "72x72", "76x76", "114x114", "120x120", "144x144", "152x152", "180x180"];
+                    var sizePreference = ["57x57", "60x60", "72x72", "76x76", "96x96", "114x114", "120x120", "144x144", "152x152", "180x180", "192x192"];
                     
                     icons.sort(function(a, b){
                         var sizeA = a.getAttribute("sizes");
