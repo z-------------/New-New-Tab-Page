@@ -301,8 +301,12 @@ function main() {
                         return 0;
                     });
                     
-                    var icon;
-                    if (icons.length > 0) icon = icons[0].href;
+                    var icon = false;
+                    if (icons.length > 0) {
+                        var iconElem = icons[0];
+                        var iconHrefAttr = iconElem.getAttribute("href");
+                        icon = URI(iconHrefAttr).absoluteTo(url).toString();
+                    }
 
                     callback(icon);
                 });
@@ -499,6 +503,12 @@ function main() {
                     animation: 150
                 });
             };
+        }
+        
+        if (!document.querySelector("#URI-script")) {
+            var scriptElem = document.createElement("script");
+            scriptElem.src = "js/URI.js/URI.js";
+            document.body.appendChild(scriptElem);
         }
         
         Object.keys(urlIconMap).forEach(function(url){
