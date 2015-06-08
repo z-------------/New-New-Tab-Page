@@ -25,8 +25,9 @@ var defaultSettings = {
     noAnimation: false,
     useFahrenheit: false,
     appIconSize: 130,
-    showFB: false,		
-    showFBNotif: false
+    showFB: false,
+    showFBNotif: false,
+    sidebarEnabled: true
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -121,11 +122,11 @@ chrome.storage.sync.get(null, function (sr) {
         var apps = [];
 
         /* main stuff */
-        readOption("showFB", function (val) {		
-            document.getElementById("showfb").checked = val;		
-        });		
-        readOption("showFBNotif", function (val) {		
-            document.getElementById("shownotif").checked = val;		
+        readOption("showFB", function (val) {
+            document.getElementById("showfb").checked = val;
+        });
+        readOption("showFBNotif", function (val) {
+            document.getElementById("shownotif").checked = val;
         });
         readOption("appIconSize", function (val) {
             document.getElementById("appiconsize").value = val;
@@ -160,6 +161,9 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("autoClose", function (val) {
             document.getElementById("autoclose").checked = val;
         });
+        readOption("sidebarEnabled", function (val) {
+            document.getElementById("sidebarenabled").checked = val;
+        });
     });
 });
 
@@ -168,7 +172,7 @@ document.getElementById("save").onclick = function () {
 
     delete newSettings.backgroundURL;
 
-    newSettings.showFB = document.getElementById("showfb").checked;		
+    newSettings.showFB = document.getElementById("showfb").checked;
     newSettings.showFBNotif = document.getElementById("shownotif").checked;
     newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
@@ -180,6 +184,7 @@ document.getElementById("save").onclick = function () {
     newSettings.useFahrenheit = document.getElementById("usefahrenheit").checked;
     newSettings.noAnimation = document.getElementById("disableanimation").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
+    newSettings.sidebarEnabled = document.getElementById("sidebarenabled").checked;
 
     var syncDone = false;
     var localDone = false;

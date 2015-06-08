@@ -19,7 +19,8 @@ var settings = {
     autoClose: true,
     showTumblr: false,
     apps: [],
-    noAnimation: false
+    noAnimation: false,
+    sidebarEnabled: true
 };
 
 var xhr = function(url,callback) {
@@ -41,10 +42,10 @@ String.prototype.getDomain = function () {
 String.prototype.getPureDomain = function () {
     var temp = document.createElement("a");
     temp.href = this;
-    
+
     var val = temp.host;
     if (val.indexOf("www") === 0) val = val.substring(val.indexOf("www.") + "www.".length);
-    
+
     return val;
 };
 
@@ -60,10 +61,10 @@ function iconBGColor(url) {
 
     canvas.width = width;
     canvas.height = height;
-    
+
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, width, height);
-    
+
     ctx.drawImage(img, 0, 0);
 
     var data;
@@ -202,33 +203,33 @@ function main() {
             });
         }
     }
-    
+
     function sizeContainer() {
-        if (slotCount < 7) {		
+        if (slotCount < 7) {
             container.style.width = (appIconSize + 20) * slotCount + "px";
             container.style.height = (appIconSize + 20) + "px";
             container.style.marginTop = "-" + (appIconSize + 20) / 2 + "px";
-        } else {		
+        } else {
             container.style.height = 2*(appIconSize + 20) + "px";
-            container.style.marginTop = "-" + (appIconSize + 20) + "px";		
+            container.style.marginTop = "-" + (appIconSize + 20) + "px";
 
-            container.style.width = Math.ceil(slotCount / 2) * (appIconSize + 20) + "px";		
-        }		
+            container.style.width = Math.ceil(slotCount / 2) * (appIconSize + 20) + "px";
+        }
         container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
     }
 
     for (i = 0; i < slotCount; i++) {
         var thisApp = document.createElement("div");
         thisApp.classList.add("app");
-        
+
         thisApp.addEventListener("click", function () {
             openIconURL(this);
         });
-        
+
         thisApp.addEventListener("mouseenter", function () {
             positionWhite(this);
         });
-        
+
         thisApp.style.width = appIconSize + "px";
         thisApp.style.height = appIconSize + "px";
 
@@ -242,17 +243,17 @@ function main() {
 
         document.getElementById("container").appendChild(thisApp);
     }
-    
+
     sizeContainer();
 
     document.getElementById("title").innerHTML = titleText;
-    
+
     window.openAppsEditor = function(){
         var editorContainer = document.querySelector("#apps-editor-container");
         var editorElem = document.querySelector("#apps-editor");
         var editorBtnsElem = document.querySelector("#apps-editor-buttons");
         editorContainer.classList.add("opened");
-        
+
         var urlInput = document.querySelector("#editor-url");
         var iconInput = document.querySelector("#editor-icon");
         var iconFileInput = document.querySelector("#editor-icon-file");
@@ -260,39 +261,39 @@ function main() {
         var saveBtn = document.querySelector("#editor-save");
         var cancelBtn = document.querySelector("#editor-cancel");
         var closeBtn = document.querySelector("#editor-closeeditor");
-        
+
         var urlAutocompleteList = [];
-        
+
         var addAppBtn = document.createElement("div");
         addAppBtn.classList.add("editor-addapp");
         addAppBtn.style.height = appIconSize + "px";
-        
+
         var appElems = document.querySelectorAll(".app");
-        
+
         function fetchIcon(url, callback) {
             var presetMatchedId;
-            
+
             Object.keys(urlIconMap).forEach(function(regex){
                 if (new RegExp(regex).test(url.getPureDomain())) {
                     presetMatchedId = urlIconMap[regex];
                 }
             });
-            
+
             if (presetMatchedId) {
                 callback("/img/" + presetMatchedId + ".png");
             } else {
                 xhr(url, function(r){
                     parser = new DOMParser();
                     doc = parser.parseFromString(r, "text/html");
-                    
+
                     var linkTags = doc.head.querySelectorAll("link");
                     var icons = [].slice.call(linkTags).filter(function(tag){
                         var attrRel = tag.getAttribute("rel");
                         return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon" || attrRel === "icon";
                     });
-                    
+
                     var sizePreference = ["57x57", "60x60", "72x72", "76x76", "96x96", "114x114", "120x120", "144x144", "152x152", "180x180", "192x192"];
-                    
+
                     icons.sort(function(a, b){
                         var sizeA = a.getAttribute("sizes");
                         var sizeB = b.getAttribute("sizes");
@@ -300,7 +301,7 @@ function main() {
                         if (sizePreference.indexOf(sizeA) < sizePreference.indexOf(sizeB)) return 1;
                         return 0;
                     });
-                    
+
                     var icon = false;
                     if (icons.length > 0) {
                         var iconElem = icons[0];
@@ -312,7 +313,7 @@ function main() {
                 });
             }
         }
-        
+
         function updateApp(index, key, value) {
             if (key === "url") {
                 appElems[index].dataset.url = value;
@@ -321,18 +322,18 @@ function main() {
                 appElems[index].style.backgroundImage = "url(" + value + ")";
             }
         }
-        
+
         function saveApps() {
             [].slice.call(document.querySelectorAll(".app")).forEach(function(elem, i){
                 var url = elem.dataset.url;
-                
+
                 var bgImg = elem.style.backgroundImage;
                 var icon = bgImg.substring(4, bgImg.length - 1);
-                
+
                 apps[i].url = url;
                 apps[i].icon = icon;
             });
-            
+
             storage.set({
                 apps: apps,
                 slotCount: slotCount
@@ -340,43 +341,43 @@ function main() {
                 location.reload();
             });
         }
-        
+
         function positionEditor(appElem) {
             editorElem.style.left = container.offsetLeft + appElem.offsetLeft + appElem.offsetWidth / 2 - editorElem.offsetWidth / 2 + "px";
             editorElem.style.top = container.offsetTop + appElem.offsetTop - editorElem.offsetHeight - 20 + "px";
         }
-        
+
         function positionEditorBtns() {
             editorBtnsElem.style.left = container.offsetLeft + "px";
             editorBtnsElem.style.top = container.offsetTop - editorBtnsElem.offsetHeight + "px";
             editorBtnsElem.style.width = container.offsetWidth + "px";
         }
-        
+
         function editApp(appElem) {
             appElems = document.querySelectorAll(".app");
-            
+
             appElem.classList.add("editing");
-            
+
             var index = [].slice.call(appElems).indexOf(appElem);
-            
+
             [].slice.call(appElems).forEach(function(elem){
                 if (elem !== appElem) elem.classList.remove("editing");
             });
-            
+
             urlInput.value = appElem.dataset.url;
-            
+
             var bgImg = appElem.style.backgroundImage;
             iconInput.value = bgImg.substring(4, bgImg.length - 1);
-            
+
             urlInput.onchange = function(){
                 if (this.value.indexOf("://") === -1) this.value = "http://" + this.value;
                 updateApp(index, "url", this.value);
             };
-            
+
             iconInput.onchange = function(){
                 updateApp(index, "icon", this.value);
             };
-            
+
             fetchIconBtn.onclick = function(){
                 fetchIcon(urlInput.value, function(r){
                     if (r) {
@@ -385,13 +386,13 @@ function main() {
                     }
                 });
             }
-            
+
             editorElem.style.display = "block";
-            
+
             positionEditor(appElem);
             positionEditorBtns();
         }
-        
+
         function addControls() {
             [].slice.call(document.querySelectorAll(".app")).forEach(function(elem){
                 elem.onclick = function(){
@@ -399,42 +400,42 @@ function main() {
                 };
 
                 elem.innerHTML = "<button class='editor-remove'></button><button class='editor-move'></button>";
-                
+
                 elem.querySelector(".editor-remove").onclick = function(e){
                     e.stopPropagation();
-                    
+
                     closeBtn.click();
                     container.removeChild(this.parentElement);
-                    
+
                     slotCount -= 1;
-                    
+
                     sizeContainer();
                     positionEditorBtns();
                 };
             });
         }
-        
+
         addControls();
-        
+
         saveBtn.onclick = saveApps;
         cancelBtn.onclick = function(){
             location.reload();
         };
-        
+
         closeBtn.onclick = function(){
             if (document.querySelector(".app.editing")) document.querySelector(".app.editing").classList.remove("editing");
             editorElem.style.display = "none";
         };
-        
+
         window.addEventListener("resize", function(){
             positionEditor(document.querySelector(".app.editing"));
             positionEditorBtns();
         });
-        
+
         addAppBtn.onclick = function(){
             if (appElems.length < 12) {
                 var index = appElems.length;
-            
+
                 var appElem = document.createElement("div");
                 appElem.classList.add("app");
 
@@ -444,26 +445,26 @@ function main() {
                 container.insertBefore(appElem, addAppBtn);
 
                 slotCount += 1;
-                
+
                 sizeContainer();
                 editApp(appElem);
                 addControls();
                 positionEditorBtns();
-                
+
                 if (document.querySelectorAll(".app").length === 12) this.style.display = "none";
             }
         };
-        
+
         if (!container.querySelector(".editor-addapp") && document.querySelectorAll(".app").length < 12) container.appendChild(addAppBtn);
-        
+
         editApp(appElems[0]);
-        
+
         chrome.topSites.get(function(res){
             res.forEach(function(r){
                 var url = r.url;
                 document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
             });
-            
+
             if (!document.querySelector("#awesomplete-script")) {
                 var scriptElem = document.createElement("script");
                 scriptElem.src = "js/Awesomplete/awesomplete.min.js";
@@ -483,12 +484,12 @@ function main() {
                 };
             }
         });
-        
+
         if (!document.querySelector("#sortable-script")) {
             var scriptElem = document.createElement("script");
             scriptElem.src = "js/Sortable/Sortable.min.js";
             document.body.appendChild(scriptElem);
-            
+
             scriptElem.onload = function(){
                 var appsSrtbl = Sortable.create(container, {
                     draggable: ".app",
@@ -503,18 +504,18 @@ function main() {
                 });
             };
         }
-        
+
         if (!document.querySelector("#URI-script")) {
             var scriptElem = document.createElement("script");
             scriptElem.src = "js/URI.js/URI.js";
             document.body.appendChild(scriptElem);
         }
-        
+
         Object.keys(urlIconMap).forEach(function(url){
             url = "http://" + url;
             document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
         });
-        
+
         urlInput.addEventListener("awesomplete-selectcomplete", function(){
             urlInput.dispatchEvent(new Event("change"));
         });
@@ -537,7 +538,7 @@ function main() {
             document.getElementById("search").focus();
         }, 200);
     };
-    
+
     document.getElementById("close").onclick = function () {
         clearTimeout(searchFocusTimeout);
 
@@ -550,7 +551,7 @@ function main() {
         document.getElementById("drawerarrow").style.opacity = null;
         document.getElementById("bmarrow").style.opacity = null;
     };
-    
+
     document.getElementById("search").onkeydown = function (e) {
         if (e.which === 13) {
             window.location = "https://www.google.com/search?q=" + encodeURI(this.value) + "&btnI";
@@ -576,20 +577,20 @@ function main() {
             optsopened = 1;
         }
     };
-    
+
     function getRecentSites(res) {
         if (recSiteCount >= 1 && res.length >= 1) {
             for (var i = 0; i < Math.min(recSiteCount, res.length); i++) {
                 var recSite = res[i].tab;
-                
+
                 var recentSitesList = document.getElementById("recentsites");
-                
+
                 var recSiteElem = document.createElement("a");
                 recSiteElem.href = recSite.url;
                 recSiteElem.innerHTML = "<div class='draweritem topsite' id='l" + i + "'>" + recSite.title + "</div>";
-                
+
                 recSiteElem.querySelector("div").style.backgroundImage = "url(" + recSite.favIconUrl + ")";
-                
+
                 recentSitesList.appendChild(recSiteElem);
             }
         } else {
@@ -643,7 +644,7 @@ function main() {
             app.classList.add("drawerapp");
             app.innerHTML = appsArray[i].name;
             app.dataset.id = appsArray[i].id;
-            
+
             app.addEventListener("click", function(){
                 if (localStorage["app_clicks_" + this.dataset.id]) {
                     localStorage["app_clicks_" + this.dataset.id] = Number(localStorage["app_clicks_" + this.dataset.id]) + 1;
@@ -655,7 +656,7 @@ function main() {
                     window.close();
                 }
             });
-            
+
             drawer.appendChild(app);
         }
     }
@@ -775,7 +776,7 @@ function main() {
     setInterval(function () {
         window.scrollTo(0, 0);
     }, 100);
-    
+
     function positionWhite(element) {
         var top = element.getClientRects()[0].top;
         var left = element.getClientRects()[0].left;
@@ -784,7 +785,7 @@ function main() {
 
         var background = element.style.backgroundImage;
         var iconURL = background.substring(4, background.lastIndexOf(")"));
-        
+
         whiteElem.style.top = top + "px";
         whiteElem.style.left = left + "px";
         whiteElem.style.width = width + "px";
@@ -794,7 +795,7 @@ function main() {
 
     function white(element, callback) {
         positionWhite(element);
-        
+
         setTimeout(function(){
             whiteElem.style.opacity = "1";
             whiteElem.style.transitionDuration = "260ms";
@@ -810,20 +811,20 @@ function main() {
             whiteElem.style.backgroundColor = "white";
             whiteElem.style.borderRadius = "0";
         }, 50);
-        
+
         setTimeout(function(){
             callback();
         }, 260);
     }
-    
+
     /* sidebar stuff */
-    
+
     var sidebarFirstTime = true;
-    
+
     var sidebarOnFirstOpen = function(){
         /* weather */
         sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
-        
+
         /* news */
         if (!document.querySelector("#momentjs-script")) {
             var scriptElem = document.createElement("script");
@@ -851,7 +852,7 @@ function main() {
                 }
             };
         }
-        
+
         /* facebook */
         if (showFBNotif) {
             addToSidebar("fb-notif", "");
@@ -878,10 +879,10 @@ function main() {
                 });
             });
         }
-        
+
         /* init navigation */
         var sidebarNavElems = document.querySelectorAll("#sidebar nav a");
-        
+
         [].slice.call(sidebarNavElems).forEach(function(sidebarNavElem, i){
             if (i === 0) {
                 changeSidebarSection(sidebarNavElem.dataset.target);
@@ -891,49 +892,54 @@ function main() {
             });
         });
     };
-    
+
     function toggleSidebar(direction){
-        if (direction === null || typeof direction === "undefined") {
-            if (document.body.classList.contains("sidebar-opened")) {
-                direction = 0;
-            } else {
-                direction = 1;
+        if (sidebarEnabled !== false) {
+            if (direction === null || typeof direction === "undefined") {
+                if (document.body.classList.contains("sidebar-opened")) {
+                    direction = 0;
+                } else {
+                    direction = 1;
+                }
             }
+
+            var methods = ["remove", "add"];
+            var method = methods[direction];
+
+            document.body.classList[method]("sidebar-opened");
+
+            if (direction === 1 && sidebarFirstTime) {
+                sidebarOnFirstOpen();
+            }
+
+            if (direction === 1) sidebarFirstTime = false;
         }
-        
-        var methods = ["remove", "add"];
-        var method = methods[direction];
-        
-        document.body.classList[method]("sidebar-opened");
-        
-        if (direction === 1 && sidebarFirstTime) {
-            sidebarOnFirstOpen();
-        }
-        
-        if (direction === 1) sidebarFirstTime = false;
     }
-    
+
     function addToSidebar(id, content) {
         /* make nav elem */
         var navElem = document.createElement("a");
         navElem.dataset.target = id;
         sidebar.querySelector("nav").appendChild(navElem);
-        
+
         /* make section elem */
         var sectionElem = document.createElement("section");
         sectionElem.innerHTML = content;
         sectionElem.dataset.id = id;
         sidebar.appendChild(sectionElem);
     }
-    
+
     document.querySelector("#sidebar-btn").addEventListener("click", function(){
         toggleSidebar();
     });
+    if (sidebarEnabled === false) {
+        document.querySelector("#sidebar-btn").style.display = "none";
+    }
 
     if (noAnimation) {
         document.body.classList.add("noanimation");
     }
-    
+
     (function(){
         var image = document.createElement("img");
         image.src = window.backgroundURL.substring(4, backgroundURL.lastIndexOf(")")); // grab "image.png" from "url(image.png)"
@@ -941,24 +947,24 @@ function main() {
             document.body.style.backgroundColor = "black";
         };
     })();
-    
+
     /* sidebar navigation */
-    
+
     function changeSidebarSection(id){
         var targetSection = sidebar.querySelector("section[data-id='" + id + "']");
         var targetLink = sidebar.querySelector("nav [data-target='" + id + "']");
         var sections = sidebar.querySelectorAll("section[data-id]");
         var links = sidebar.querySelectorAll("nav [data-target]");
-        
+
         for (var i = 0; i < sections.length; i++) {
             sections[i].classList.remove("current");
             links[i].classList.remove("current");
         }
-        
+
         targetSection.classList.add("current");
         targetLink.classList.add("current");
     }
-    
+
     /* open sidebar when mouse on right edge */
     window.addEventListener("mousemove", function(e){
         clearInterval(sidebarMouseInterval);
@@ -972,7 +978,7 @@ function main() {
             });
         }
     });
-    
+
     bgElem.addEventListener("click", function(){
         toggleSidebar(0);
     });
