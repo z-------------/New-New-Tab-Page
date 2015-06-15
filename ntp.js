@@ -198,8 +198,11 @@ function main() {
 
     function openIconURL(iconElement) {
         if (!document.querySelector("#apps-editor-container.opened")) {
-            white(iconElement, function(){
-                chrome.tabs.update({url: iconElement.dataset.url});
+            chrome.tabs.getCurrent(function(r) {
+                var currentTabId = r && r.id ? r.id : null;
+                white(iconElement, function(){
+                    chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
+                });
             });
         }
     }
