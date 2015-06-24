@@ -629,9 +629,11 @@ function main() {
 
         appsArray.sort(function (a, b) {
             if (a.clicks === b.clicks) {
-                if (a.name > b.name) {
+                var aName = a.name.toLowerCase();
+                var bName = b.name.toLowerCase();
+                if (aName > bName) {
                     return 1;
-                } else if (a.name < b.name) {
+                } else if (aName < bName) {
                     return -1;
                 } else {
                     return 0;
