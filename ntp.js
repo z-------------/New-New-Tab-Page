@@ -222,13 +222,22 @@ function main() {
             container.style.width = (appIconSize + 20) * slotCount + "px";
             container.style.height = (appIconSize + 20) + "px";
             container.style.marginTop = "-" + (appIconSize + 20) / 2 + "px";
-        } else {
+            container.classList.remove("autosize");
+            container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
+        } else if (slotCount <= 12) {
             container.style.height = 2*(appIconSize + 20) + "px";
             container.style.marginTop = "-" + (appIconSize + 20) + "px";
 
             container.style.width = Math.ceil(slotCount / 2) * (appIconSize + 20) + "px";
+            container.classList.remove("autosize");
+            container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
+        } else {
+            container.style.height = null;
+            container.style.marginTop = null;
+            container.style.marginLeft = null;
+            container.style.width = null;
+            container.classList.add("autosize");
         }
-        container.style.marginLeft = -parseInt(container.style.width) / 2 + "px";
     }
 
     for (i = 0; i < slotCount; i++) {
@@ -341,6 +350,10 @@ function main() {
                 var bgImg = elem.style.backgroundImage;
                 var icon = bgImg.substring(4, bgImg.length - 1);
 
+                if (!apps[i]) {
+                    apps[i] = {};
+                }
+
                 apps[i].url = url;
                 apps[i].icon = icon;
             });
@@ -444,26 +457,24 @@ function main() {
         });
 
         addAppBtn.onclick = function(){
-            if (appElems.length < 12) {
-                var index = appElems.length;
+            var index = appElems.length;
 
-                var appElem = document.createElement("div");
-                appElem.classList.add("app");
+            var appElem = document.createElement("div");
+            appElem.classList.add("app");
 
-                appElem.dataset.url = apps[index].url;
-                appElem.style.backgroundImage = "url(" + apps[index].icon + ")";
+            var flooredIndex = Math.min(index, apps.length - 1);
 
-                container.insertBefore(appElem, addAppBtn);
+            appElem.dataset.url = apps[flooredIndex].url;
+            appElem.style.backgroundImage = "url(" + apps[flooredIndex].icon + ")";
 
-                slotCount += 1;
+            container.insertBefore(appElem, addAppBtn);
 
-                sizeContainer();
-                editApp(appElem);
-                addControls();
-                positionEditorBtns();
+            slotCount += 1;
 
-                if (document.querySelectorAll(".app").length === 12) this.style.display = "none";
-            }
+            sizeContainer();
+            editApp(appElem);
+            addControls();
+            positionEditorBtns();
         };
 
         if (!container.querySelector(".editor-addapp") && document.querySelectorAll(".app").length < 12) container.appendChild(addAppBtn);
