@@ -49,6 +49,16 @@ String.prototype.getPureDomain = function () {
     return val;
 };
 
+String.prototype.getHostname = function () {
+    var temp = document.createElement("a");
+    temp.href = this;
+
+    var val = temp.hostname;
+    if (val.indexOf("www") === 0) val = val.substring(val.indexOf("www.") + "www.".length);
+
+    return val;
+};
+
 function iconBGColor(url) {
     var img = document.createElement("img");
     img.src = url;
@@ -159,7 +169,7 @@ var urlIconMap = {
     "keep.google.com": "gk",
     "inbox.google.com": "ix",
     "ello.co": "el",
-    "^[\S]+.slack.com|slack.com": "sk"
+    "slack.com": "sk"
 };
 
 settings.apps = defaultSlots;
@@ -276,11 +286,9 @@ function main() {
         function fetchIcon(url, callback) {
             var presetMatchedId;
 
-            Object.keys(urlIconMap).forEach(function(regex){
-                if (new RegExp(regex).test(url.getPureDomain())) {
-                    presetMatchedId = urlIconMap[regex];
-                }
-            });
+            if (urlIconMap.hasOwnProperty(url.getPureDomain())) {
+                presetMatchedId = urlIconMap[url.getPureDomain()];
+            }
 
             if (presetMatchedId) {
                 callback("/img/" + presetMatchedId + ".png");
