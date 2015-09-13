@@ -237,7 +237,7 @@ button {
     left: 50%;
     top: 50%;
     z-index: 2;
-    transition-property: opacity !important;
+    transition-property: opacity, transform !important;
     text-align: center;
     padding-bottom: 10px;
     overflow: visible;
