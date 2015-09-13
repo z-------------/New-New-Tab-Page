@@ -802,19 +802,21 @@ function main() {
     }, 100);
 
     function positionWhite(element) {
-        var top = element.getClientRects()[0].top;
-        var left = element.getClientRects()[0].left;
-        var width = element.getClientRects()[0].width;
-        var height = element.getClientRects()[0].height;
+        if (parseInt(whiteElem.style.opacity) !== 1) {
+            var top = element.getClientRects()[0].top;
+            var left = element.getClientRects()[0].left;
+            var width = element.getClientRects()[0].width;
+            var height = element.getClientRects()[0].height;
 
-        var background = element.style.backgroundImage;
-        var iconURL = background.substring(4, background.lastIndexOf(")"));
+            var background = element.style.backgroundImage;
+            var iconURL = background.substring(4, background.lastIndexOf(")"));
 
-        whiteElem.style.top = top + "px";
-        whiteElem.style.left = left + "px";
-        whiteElem.style.width = width + "px";
-        whiteElem.style.height = height + "px";
-        whiteElem.style.backgroundColor = iconBGColor(iconURL);
+            whiteElem.style.top = top + "px";
+            whiteElem.style.left = left + "px";
+            whiteElem.style.width = width + "px";
+            whiteElem.style.height = height + "px";
+            whiteElem.style.backgroundColor = iconBGColor(iconURL);
+        }
     }
 
     function white(element, callback) {
