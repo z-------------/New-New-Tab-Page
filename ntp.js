@@ -477,7 +477,7 @@ function main() {
             positionEditorBtns();
         };
 
-        if (!container.querySelector(".editor-addapp") && document.querySelectorAll(".app").length < 12) container.appendChild(addAppBtn);
+        if (!container.querySelector(".editor-addapp")) container.appendChild(addAppBtn);
 
         editApp(appElems[0]);
 
