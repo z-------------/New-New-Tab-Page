@@ -241,6 +241,7 @@ button {
     text-align: center;
     padding-bottom: 10px;
     overflow: visible;
+    -webkit-user-select: none;
 }
 
 #container.autosize {
