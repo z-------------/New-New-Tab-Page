@@ -20,7 +20,8 @@ var settings = {
     showTumblr: false,
     apps: [],
     noAnimation: false,
-    sidebarEnabled: true
+    sidebarEnabled: true,
+    appsgridstyle: false
 };
 
 var xhr = function(url,callback) {
@@ -666,6 +667,7 @@ function main() {
             app.style.backgroundImage = "url(" + appsArray[i].icon + ")";
             app.classList.add("draweritem");
             app.classList.add("drawerapp");
+            app.setAttribute("title", appsArray[i].name);
             app.innerHTML = appsArray[i].name;
             app.dataset.id = appsArray[i].id;
 
@@ -682,6 +684,10 @@ function main() {
             });
 
             drawer.appendChild(app);
+        }
+
+        if (appsgridstyle) {
+            drawer.classList.add("apps-gridstyle");
         }
     }
 

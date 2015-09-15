@@ -27,7 +27,8 @@ var defaultSettings = {
     appIconSize: 130,
     showFB: false,
     showFBNotif: false,
-    sidebarEnabled: true
+    sidebarEnabled: true,
+    appsgridstyle: false
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -164,6 +165,9 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("sidebarEnabled", function (val) {
             document.getElementById("sidebarenabled").checked = val;
         });
+        readOption("appsgridstyle", function (val) {
+            document.getElementById("appsgridstyle").checked = val;
+        });
     });
 });
 
@@ -185,6 +189,7 @@ document.getElementById("save").onclick = function () {
     newSettings.noAnimation = document.getElementById("disableanimation").checked;
     newSettings.autoClose = document.getElementById("autoclose").checked;
     newSettings.sidebarEnabled = document.getElementById("sidebarenabled").checked;
+    newSettings.appsgridstyle = document.getElementById("appsgridstyle").checked;
 
     var syncDone = false;
     var localDone = false;
