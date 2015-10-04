@@ -101,6 +101,8 @@ function displayWeather(data){
     tempElem.style.backgroundImage = "url(/img/weather/" + codeIconMap[Number(conditionData.code)] + ".svg)";
     temperatureElem.textContent = temperature;
     conditionElem.textContent = conditionData.text;
+
+    document.body.classList.add("visible");
 }
 
 chrome.storage.sync.get("useFahrenheit", function (r) {

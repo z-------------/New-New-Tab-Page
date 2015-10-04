@@ -17,6 +17,12 @@ body {
 	overflow: hidden;
     cursor: pointer;
     background: transparent !important;
+
+	display: none;
+}
+
+body.visible {
+	display: block;
 }
 
 ::selection {
@@ -67,7 +73,7 @@ footer {
 	text-align: center;
 	font-size: 10px;
     opacity: 0;
-    
+
     transition: opacity .3s;
 }
 
