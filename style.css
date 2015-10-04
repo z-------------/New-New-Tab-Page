@@ -830,6 +830,11 @@ a {
     padding: 0;
 }
 
+#newslist .error-msg {
+    text-align: center;
+    padding: 1em 0;
+}
+
 #tumpost {
     opacity: .7;
     background: url("img/tumpost.png") center no-repeat;

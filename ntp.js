@@ -910,7 +910,8 @@ function main() {
                             } else if (localStorage.getItem("news_cache")) {
                                 displayNews(JSON.parse(localStorage.getItem("news_cache")));
                             } else {
-                                document.getElementById("newslist").innerHTML = "<p>Couldn't load news.</p>";
+                                document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>";
+                                document.getElementById("newslist").classList.remove("loading");
                             }
                         });
 
@@ -919,7 +920,7 @@ function main() {
                         displayNews(JSON.parse(localStorage.getItem("news_cache")));
                     }
                 } else {
-                    document.getElementById("newslist").innerHTML = "<p>You are offline.</p>";
+                    document.getElementById("newslist").innerHTML = "<p class='error-msg'>You are offline.</p>";
                 }
             };
         }
