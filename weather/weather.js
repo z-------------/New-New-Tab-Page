@@ -90,17 +90,14 @@ var codeIconMap = {
 var useImperial = false;
 
 function displayWeather(data){
-    console.log(data);
-    console.log(useImperial);
-    
     var conditionData = data.query.results.channel.item.condition;
-    
+
     var tempElem = document.querySelector("#temp");
     var temperatureElem = document.querySelector("#temperature");
     var conditionElem = document.querySelector("#condition");
-    
+
     var temperature = Math.round((useImperial ? conditionData.temp : 5 / 9 * (conditionData.temp - 32)));
-    
+
     tempElem.style.backgroundImage = "url(/img/weather/" + codeIconMap[Number(conditionData.code)] + ".svg)";
     temperatureElem.textContent = temperature;
     conditionElem.textContent = conditionData.text;
@@ -108,7 +105,7 @@ function displayWeather(data){
 
 chrome.storage.sync.get("useFahrenheit", function (r) {
     var lastChecked;
-    
+
     if (r.useFahrenheit !== undefined) {
         useImperial = r.useFahrenheit;
     }
@@ -120,9 +117,9 @@ chrome.storage.sync.get("useFahrenheit", function (r) {
     if (!lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)) {
         xhr("https://nntp-guardo.rhcloud.com/wx/", function(data){
             data = JSON.parse(data);
-            
+
             displayWeather(data);
-            
+
             localStorage.setItem("last_checked", new Date().getTime());
             localStorage.setItem("last_weather", JSON.stringify(data))
         });
