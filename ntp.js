@@ -21,7 +21,10 @@ var settings = {
     apps: [],
     noAnimation: false,
     sidebarEnabled: true,
-    appsgridstyle: false
+    appsgridstyle: false,
+    feedurls: [
+        "http://feeds.bbci.co.uk/news/world/rss.xml"
+    ]
 };
 
 var xhr = function(url,callback) {
@@ -858,29 +861,65 @@ function main() {
         sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
 
         /* news */
+        function displayNews(data) {
+            var items = data.items;
+            items.forEach(function(item) {
+                var newsItem = document.createElement("li");
+
+                newsItem.innerHTML = "<a target='_blank' href='" + item.originId + "'>\
+                <h3>" + item.title + "</h3></a>\
+                <div class='news-content'>" +
+                "<div class='news-text'>\
+                <p>" + item.summary.content + "</p>\
+                <date>" + moment(item.published).calendar() + "</date>\
+                </div>\
+                </div>";
+                newsItem.classList.add("news");
+
+                document.getElementById("newslist").appendChild(newsItem);
+            });
+            document.getElementById("newslist").classList.remove("loading");
+        }
+
         if (!document.querySelector("#momentjs-script")) {
             var scriptElem = document.createElement("script");
             scriptElem.src = "js/Moment.js/moment.min.js";
             document.body.appendChild(scriptElem);
             scriptElem.onload = function(){
+                var lastChecked = Number(localStorage.getItem("news_last_checked"));
+
                 if (navigator.onLine) {
-                    var yqlQuery = "select title,link,description,thumbnail,pubDate from rss where url = 'http://feeds.bbci.co.uk/news/world/rss.xml'";
-                    xhr("https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(res){
-                        var newsEntries = JSON.parse(res).query.results.item.filter(function(e, i){return i % 2 !== 0});
-                        for (i = 0; i < newsEntries.length; i++) {
-                            var newsItem = document.createElement("li");
-
-                            newsItem.innerHTML = "<a target='_blank' href='" + newsEntries[i].link + "'><h3>" + newsEntries[i].title + "</h3></a><div class='news-content'>" + (!!newsEntries[i].thumbnail ? "<div class='news-thumb' style='background-image:url(" + newsEntries[i].thumbnail.url +  ")'></div>" : "") + "<div class='news-text'><p>" + newsEntries[i].description + "</p><date>" + moment(newsEntries[i].pubDate).calendar() + "</date></div></div>";
-                            newsItem.classList.add("news");
-
-                            document.getElementById("newslist").appendChild(newsItem);
+                    if (!lastChecked || (new Date().getTime() - lastChecked >= 900000)) {
+                        var feedlyURLs = [];
+                        for (url of feedurls) {
+                            feedlyURLs.push("http://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + url + "&count=50");
                         }
-                        document.getElementById("newslist").classList.remove("loading");
-                    });
 
-                    document.getElementById("newslist").classList.add("loading");
+                        var yqlQuery = "select items from json where url in ('" + feedlyURLs.join("', '") + "')";
+                        var yqlURL = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json";
+
+                        console.log(yqlQuery);
+                        console.log(yqlURL);
+
+                        xhr(yqlURL, function(res) {
+                            var json = JSON.parse(res);
+                            var results = json.query.results;
+                            if (results) {
+                                // displayNews(JSON.parse(res));
+                                // localStorage.setItem("news_cache", res);
+                            } else if (localStorage.getItem("news_cache")) {
+                                displayNews(JSON.parse(localStorage.getItem("news_cache")));
+                            } else {
+                                document.getElementById("newslist").innerHTML = "<p>Couldn't load news.</p>";
+                            }
+                        });
+
+                        document.getElementById("newslist").classList.add("loading");
+                    } else {
+                        displayNews(JSON.parse(localStorage.getItem("news_cache")));
+                    }
                 } else {
-                    document.getElementById("newslist").innerHTML = "<p>You are offline ;_;</p>";
+                    document.getElementById("newslist").innerHTML = "<p>You are offline.</p>";
                 }
             };
         }

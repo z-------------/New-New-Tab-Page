@@ -28,7 +28,10 @@ var defaultSettings = {
     showFB: false,
     showFBNotif: false,
     sidebarEnabled: true,
-    appsgridstyle: false
+    appsgridstyle: false,
+    feedurls: [
+        "http://feeds.bbci.co.uk/news/world/rss.xml"
+    ]
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -168,6 +171,9 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("appsgridstyle", function (val) {
             document.getElementById("appsgridstyle").checked = val;
         });
+        readOption("feedurls", function (val) {
+            document.getElementById("feedurls").value = val.join("\n");
+        });
     });
 });
 
@@ -190,6 +196,7 @@ document.getElementById("save").onclick = function () {
     newSettings.autoClose = document.getElementById("autoclose").checked;
     newSettings.sidebarEnabled = document.getElementById("sidebarenabled").checked;
     newSettings.appsgridstyle = document.getElementById("appsgridstyle").checked;
+    newSettings.feedurls = document.getElementById("feedurls").value.split("\n");
 
     var syncDone = false;
     var localDone = false;
