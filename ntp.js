@@ -37,6 +37,20 @@ var xhr = function(url,callback) {
     oReq.send();
 };
 
+var parseURL = function(url) {
+    var a = document.createElement("a");
+    a.href = url;
+    return {
+        host: a.host,
+        hostname: a.hostname,
+        port: a.port,
+        hash: a.hash,
+        pathname: a.pathname,
+        path: a.pathname.split("/").slice(1),
+        protocol: a.protocol
+    };
+};
+
 String.prototype.getDomain = function () {
     var temp = document.createElement("a");
     temp.href = this;
@@ -861,23 +875,68 @@ function main() {
         sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
 
         /* news */
-        function displayNews(data) {
-            var items = data.items;
-            items.forEach(function(item) {
+        function displayNews(items) {
+            for (item of items) {
                 var newsItem = document.createElement("li");
 
-                newsItem.innerHTML = "<a target='_blank' href='" + item.originId + "'>\
+                console.log(item);
+
+                function stripTags(html) {
+                    return html.replace(/(<([^>]+)>)/ig, ""); // nifty regex by Chris Coyier of CSS-Tricks
+                }
+
+                function truncate(str) {
+                    if (str.length > 200) {
+                        return str.substring(0, 200) + "...";
+                    } else {
+                        return str;
+                    }
+                }
+
+                var url;
+                if (item.canonical && item.canonical.href) {
+                    url = item.canonical.href;
+                } else if (item.originId) {
+                    url = item.originId;
+                } else if (item.alternate && item.alternate.href) {
+                    url = item.alternate.href;
+                } else {
+                    url = "";
+                }
+
+                var description;
+                if (item.summary && item.summary.content) {
+                    description = truncate(stripTags(item.summary.content));
+                } else if (item.content && item.content.content) {
+                    description = truncate(stripTags(item.content.content));
+                } else {
+                    description = item.title;
+                }
+
+                var source = parseURL(url).hostname;
+
+                var author;
+                if (item.author) {
+                    author = item.author + " - " + "<a href='http://" + source + "'>" + source + "</a>";
+                } else {
+                    author = "<a href='http://" + source + "'>" + source + "</a>";
+                }
+
+                newsItem.classList.add("news");
+                newsItem.innerHTML = "<a target='_blank' href='" + url  + "'>\
                 <h3>" + item.title + "</h3></a>\
                 <div class='news-content'>" +
                 "<div class='news-text'>\
-                <p>" + item.summary.content + "</p>\
-                <date>" + moment(item.published).calendar() + "</date>\
+                <p>" + description  + "</p>\
+                <div class='news-meta'><date>" + moment(Number(item.published)).calendar() + "</date>\
+                 • \
+                <span>" + author + "</span>\
                 </div>\
-                </div>";
-                newsItem.classList.add("news");
+                </div>\
+                </a>";
 
                 document.getElementById("newslist").appendChild(newsItem);
-            });
+            };
             document.getElementById("newslist").classList.remove("loading");
         }
 
@@ -892,21 +951,27 @@ function main() {
                     if (!lastChecked || (new Date().getTime() - lastChecked >= 900000)) {
                         var feedlyURLs = [];
                         for (url of feedurls) {
-                            feedlyURLs.push("http://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + url + "&count=50");
+                            var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=100";
+                            var proxyURL = "https://jsonp.afeld.me/?url=" + baseURL;
+                            feedlyURLs.push(proxyURL);
                         }
 
                         var yqlQuery = "select items from json where url in ('" + feedlyURLs.join("', '") + "')";
-                        var yqlURL = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json";
+                        var yqlURL = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&diagnostics=true";
 
                         console.log(yqlQuery);
                         console.log(yqlURL);
 
                         xhr(yqlURL, function(res) {
                             var json = JSON.parse(res);
-                            var results = json.query.results;
-                            if (results) {
-                                // displayNews(JSON.parse(res));
-                                // localStorage.setItem("news_cache", res);
+                            console.log(json);
+                            var results = json.query.results.json;
+                            var items = results.map(function(result) {
+                                return result.items;
+                            });
+                            if (items) {
+                                displayNews(items);
+                                localStorage.setItem("news_cache", items);
                             } else if (localStorage.getItem("news_cache")) {
                                 displayNews(JSON.parse(localStorage.getItem("news_cache")));
                             } else {

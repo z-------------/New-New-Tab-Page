@@ -817,11 +817,18 @@ a {
     background-position: center;
 }
 
-.news date {
+.news-meta {
     color: rgba(255, 255, 255, .5);
     font-size: .9em;
-    display: block;
     margin-top: 5px;
+}
+
+.news-meta * {
+    color: rgba(255, 255, 255, .5);
+}
+
+.news-meta a {
+    cursor: pointer;
 }
 
 #newslist {
