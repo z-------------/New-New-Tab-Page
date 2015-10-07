@@ -840,6 +840,16 @@ a {
 #newslist .error-msg {
     text-align: center;
     padding: 1em 0;
+    padding-top: 100px;
+
+    background-image: url(/img/error.svg);
+    background-repeat: no-repeat;
+    background-position: center calc(50% + 14px);
+    background-size: 28px;
+}
+
+#newslist .error-msg.error--offline {
+    background-image: url(/img/offline_cloud.svg);
 }
 
 #tumpost {

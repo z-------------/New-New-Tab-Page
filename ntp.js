@@ -27,11 +27,14 @@ var settings = {
     ]
 };
 
-var xhr = function(url,callback) {
+var xhr = function(url, callback, errCallback) {
     var oReq = new XMLHttpRequest();
-    oReq.onload = function(){
+    oReq.onload = function() {
         var response = this.responseText;
         callback(response);
+    };
+    oReq.onerror = function(e) {
+        errCallback(e);
     };
     oReq.open("get", url, true);
     oReq.send();
@@ -966,6 +969,8 @@ function main() {
                             var json = JSON.parse(res);
                             console.log(json);
                             if (json.query && json.query.results && json.query.results.json) {
+                                console.log("using fresh news");
+
                                 var results = json.query.results.json;
                                 var items = results.map(function(result) {
                                     return result.items;
@@ -974,19 +979,37 @@ function main() {
                                 localStorage.setItem("news_cache", JSON.stringify(items));
                                 localStorage.setItem("news_last_checked", new Date().getTime().toString())
                             } else if (localStorage.getItem("news_cache")) {
+                                console.log("using cached news");
+
                                 displayNews(JSON.parse(localStorage.getItem("news_cache")));
                             } else {
+                                console.log("gave up on news");
+
                                 document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>";
                                 document.getElementById("newslist").classList.remove("loading");
                             }
+                        }, function(err) {
+                            console.log("gave up on news");
+
+                            document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>";
+                            document.getElementById("newslist").classList.remove("loading");
                         });
 
                         document.getElementById("newslist").classList.add("loading");
-                    } else {
+                    } else if (localStorage.getItem("news_cache")) {
+                        console.log("using cached news");
+
                         displayNews(JSON.parse(localStorage.getItem("news_cache")));
+                    } else {
+                        console.log("gave up on news");
+
+                        document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>";
+                        document.getElementById("newslist").classList.remove("loading");
                     }
                 } else {
-                    document.getElementById("newslist").innerHTML = "<p class='error-msg'>You are offline.</p>";
+                    console.log("client is offline");
+
+                    document.getElementById("newslist").innerHTML = "<p class='error-msg error--offline'>You are offline.</p>";
                 }
             };
         }
