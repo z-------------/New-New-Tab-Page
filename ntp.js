@@ -926,6 +926,7 @@ function main() {
 
                 var newsItem = document.createElement("a");
                 newsItem.href = url;
+                newsItem.setAttribute("target", "_blank");
 
                 newsItem.innerHTML = "<li class='news'>\
                 <div class='news-content'>\
