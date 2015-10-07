@@ -88,6 +88,13 @@ bgLocal.onchange = function () {
     }
 };
 
+// resize background preview to fit screen size
+function resizeBgPreview() {
+    bgPreview.style.height = 300 * window.top.innerHeight / window.top.innerWidth + "px";
+}
+window.top.addEventListener("resize", resizeBgPreview);
+resizeBgPreview();
+
 Array.prototype.valueIs = function (key, value) {
     for (i = 0; i < this.length; i++) {
         if (this[i][key] === value) {
