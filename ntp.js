@@ -1019,6 +1019,10 @@ function main() {
                         document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>";
                         document.getElementById("newslist").classList.remove("loading");
                     }
+                } else if (localStorage.getItem("news_cache")) {
+                    console.log("using cached news");
+
+                    displayNews(JSON.parse(localStorage.getItem("news_cache")));
                 } else {
                     console.log("client is offline");
 
