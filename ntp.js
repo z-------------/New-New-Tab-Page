@@ -895,12 +895,10 @@ function main() {
                 }
 
                 var url;
-                if (item.canonical && item.canonical.href) {
-                    url = item.canonical.href;
+                if (item.alternate && item.alternate.href) {
+                    url = item.alternate.href;
                 } else if (item.originId) {
                     url = item.originId;
-                } else if (item.alternate && item.alternate.href) {
-                    url = item.alternate.href;
                 } else {
                     url = "";
                 }
@@ -914,13 +912,16 @@ function main() {
                     description = item.title;
                 }
 
-                var source = parseURL(url).hostname;
+                var source = {
+                    title: item.origin.title,
+                    url: item.origin.htmlUrl
+                };
 
                 var author;
                 if (item.author) {
-                    author = item.author + " - " + "<a target='_blank' href='http://" + source + "'>" + source + "</a>";
+                    author = "by " + item.author + " at " + "<a target='_blank' href='" + source.url + "'>" + source.title + "</a>";
                 } else {
-                    author = "<a target='_blank' href='http://" + source + "'>" + source + "</a>";
+                    author = "<a target='_blank' href='" + source.url + "'>from " + source.title + "</a>";
                 }
 
                 var newsItem = document.createElement("a");
