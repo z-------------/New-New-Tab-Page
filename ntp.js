@@ -965,13 +965,14 @@ function main() {
                         xhr(yqlURL, function(res) {
                             var json = JSON.parse(res);
                             console.log(json);
-                            var results = json.query.results.json;
-                            var items = results.map(function(result) {
-                                return result.items;
-                            });
-                            if (items) {
+                            if (json.query && json.query.results && json.query.results.json) {
+                                var results = json.query.results.json;
+                                var items = results.map(function(result) {
+                                    return result.items;
+                                });
                                 displayNews(items);
-                                localStorage.setItem("news_cache", items);
+                                localStorage.setItem("news_cache", JSON.stringify(items));
+                                localStorage.setItem("news_last_checked", new Date().getTime().toString())
                             } else if (localStorage.getItem("news_cache")) {
                                 displayNews(JSON.parse(localStorage.getItem("news_cache")));
                             } else {
