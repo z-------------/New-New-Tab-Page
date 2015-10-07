@@ -924,17 +924,22 @@ function main() {
                     author = "<a target='_blank' href='" + source.url + "'>from " + source.title + "</a>";
                 }
 
+                var publishedMoment = moment(Number(item.published));
+
                 var newsItem = document.createElement("a");
                 newsItem.href = url;
                 newsItem.setAttribute("target", "_blank");
 
                 newsItem.innerHTML = "<li class='news'>\
                 <div class='news-content'>\
+                <div class='news-header'>\
                 <h3 class='news-title'>" + item.title + "</h3>\
+                <div class='news-time--short'>" + publishedMoment.fromNow(true) + "</div>\
+                </div>\
                 <div class='news-text'>\
                 <p>" + description  + "</p>\
                 <div class='news-meta'>\
-                <date>" + moment(Number(item.published)).fromNow() + "</date>\
+                <span>" + publishedMoment.fromNow() + "</span>\
                  • \
                 <span>" + author + "</span>\
                 </div>\

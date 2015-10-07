@@ -813,15 +813,19 @@ a {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
 }
 
-.news-title {
+.news-header {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 20px;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
 
+.news-title {
     font-weight: 700;
-    display: inline;
     font-size: 1.3em;
+    margin: 0;
 }
 
 .news-text {
@@ -834,7 +838,7 @@ a {
     transform: translateY(50px);
 }
 
-.news:hover .news-title {
+.news:hover .news-header {
     transform: translateY(-50px);
     opacity: 0;
 }
@@ -870,6 +874,22 @@ a {
 
 .news-meta a {
     cursor: pointer;
+}
+
+.news-time--short {
+    background-image: url(/img/clock.svg);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: left center;
+    padding: 3px;
+    padding-left: 25px;
+
+    font-size: .9em;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 12px;
 }
 
 #newslist {
