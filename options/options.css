@@ -139,6 +139,8 @@ textarea {
     width: 250px;
     height: 75px;
     padding: 5px;
+
+    transition-property: background, color;
 }
 
 select {
