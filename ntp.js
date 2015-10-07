@@ -957,7 +957,7 @@ function main() {
                 var lastChecked = Number(localStorage.getItem("news_last_checked"));
 
                 if (navigator.onLine) {
-                    if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 900000)) {
+                    if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 3.6E+6)) {
                         var feedlyURLs = [];
                         for (url of feedurls) {
                             var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=100";
