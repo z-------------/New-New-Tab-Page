@@ -957,7 +957,7 @@ function main() {
                 var lastChecked = Number(localStorage.getItem("news_last_checked"));
 
                 if (navigator.onLine) {
-                    if (!lastChecked || (new Date().getTime() - lastChecked >= 900000)) {
+                    if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 900000)) {
                         var feedlyURLs = [];
                         for (url of feedurls) {
                             var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=100";
@@ -980,6 +980,12 @@ function main() {
                                 var results = json.query.results.json;
                                 var items = results.map(function(result) {
                                     return result.items;
+                                }).sort(function(a, b) {
+                                    var aPub = Number(a.published);
+                                    var bPub = Number(b.published);
+                                    if (aPub > bPub) return -1;
+                                    if (aPub < bPub) return 1;
+                                    return 0;
                                 });
                                 displayNews(items);
                                 localStorage.setItem("news_cache", JSON.stringify(items));
