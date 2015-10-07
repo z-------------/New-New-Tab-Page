@@ -934,7 +934,7 @@ function main() {
                 <div class='news-text'>\
                 <p>" + description  + "</p>\
                 <div class='news-meta'>\
-                <date>" + moment(Number(item.published)).calendar() + "</date>\
+                <date>" + moment(Number(item.published)).fromNow() + "</date>\
                  • \
                 <span>" + author + "</span>\
                 </div>\
