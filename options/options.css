@@ -61,6 +61,10 @@ label {
     transition: opacity .3s;
 }
 
+label > * {
+    vertical-align: middle;
+}
+
 input, button {
 	margin-left: 10px;
 }
@@ -71,7 +75,7 @@ button {
     padding: 1px 6px;
 }
 
-input[type=text], input[type=url] {
+input[type=text], input[type=url], textarea {
     transition: .2s;
     width: 140px;
     padding: 1px 5px;
@@ -113,7 +117,7 @@ input[type=text], input[type=url] {
     background-color: rgba(0, 0, 0, .2);
 }
 
-input, select, input[type=file]::-webkit-file-upload-button, button {
+input, select, input[type=file]::-webkit-file-upload-button, button, textarea {
     height: 25px;
     border: none;
     background-color: rgba(255, 255, 255, .2);
@@ -126,9 +130,15 @@ input, select, input[type=file]::-webkit-file-upload-button, button {
     color: rgba(255, 255, 255, .6);
 }
 
-input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus, button:hover, button:focus {
+input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus, button:hover, button:focus, textarea:focus {
     background-color: rgba(255, 255, 255, .3);
     color: rgba(255, 255, 255, .7);
+}
+
+textarea {
+    width: 250px;
+    height: 75px;
+    padding: 5px;
 }
 
 select {
@@ -402,7 +412,7 @@ p {
 	#appopts li input {
 		display: block;
 	}
-	
+
 	#appopts li {
 		height: 90px;
 	}

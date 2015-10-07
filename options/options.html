@@ -15,7 +15,8 @@
 
             <section id="apps">
                 <h2>Apps</h2>
-                <label>App icon size
+                <label>
+                    <span>App icon size</span>
                     <input type="number" min="0" step="10" id="appiconsize">px
                 </label>
                 <button id="edit-apps-btn"><span>Edit apps</span></button>
@@ -34,18 +35,21 @@
                 </select>
                 <br>
 
-                <label>URL
+                <label>
+                    <span>URL</span>
                     <input type="text" id="custombg" placeholder="http://">
                 </label>
                 <br>
-                <label>Local
+                <label>
+                    <span>Local</span>
                     <input type="button" value="Choose file" id="bglocalfacade">
                     <input type="file" id="bglocal" accept="image/*">
                 </label>
 
                 <div id="bgpreview"></div>
 
-                <label>Blur
+                <label>
+                    <span>Blur</span>
                     <input type="checkbox" id="bgblur">
                 </label>
                 <p><strong>Note</strong>: Enabling blur is likely to slow down your new tab page.
@@ -54,56 +58,69 @@
 
             <section>
                 <h2>Bookmarks & App Drawer</h2>
-                <label>No. of recently closed sites
+                <label>
+                    <span>No. of recently closed sites</span>
                     <input type="number" id="recsitecount" min="0" max="20">
                 </label>
-                <label>No. of top sites
+                <label>
+                    <span>No. of top sites</span>
                     <input type="number" id="topsitecount" min="0" max="20">
                 </label>
-                <label>Display apps as grid
+                <label>
+                    <span>Display apps as grid</span>
                     <input type="checkbox" id="appsgridstyle">
                 </label>
-                <label>Close tab after launching app
+                <label>
+                    <span>Close tab after launching app</span>
                     <input type="checkbox" id="autoclose">
                 </label>
                 <br>
-                <label>Show bookmarks
+                <label>
+                    <span>Show bookmarks</span>
                     <input type="checkbox" id="showbookmarks">
                 </label>
-                <label>List all bookmarks
+                <label>
+                    <span>List all bookmarks</span>
                     <input type="checkbox" id="showallbookmarks">
                 </label>
             </section>
 
             <section>
                 <h2>Sidebar</h2>
-                <label>Enabled
+                <label>
+                    <span>Enabled</span>
                     <input type="checkbox" id="sidebarenabled">
                 </label>
-                <label>Facebook Messages
+                <label>
+                    <span>Facebook Messages</span>
                     <input type="checkbox" id="showfb">
                 </label>
-                <label>Facebook Notifications
+                <label>
+                    <span>Facebook Notifications</span>
                     <input type="checkbox" id="shownotif">
                 </label>
-                <label>News feed URLs
+                <label>
+                    <span>News feed URLs</span>
                     <textarea id="feedurls"></textarea>
                 </label>
             </section>
 
             <section>
                 <h2>Other</h2>
-                <label>New Tab title text
+                <label>
+                    <span>New Tab title text</span>
                     <input type="text" id="titletext">
                 </label>
                 <br>
 
-                <label>Disable animations
+                <label>
+                    <span>Disable animations</span>
                     <input type="checkbox" id="disableanimation">
                 </label>
                 <br>
 
-                <label>Use imperial units
+                <label>
+                    <span>Use imperial units</span>
                     <input type="checkbox" id="usefahrenheit">
                 </label>
             </section>
