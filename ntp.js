@@ -880,8 +880,6 @@ function main() {
         /* news */
         function displayNews(items) {
             for (item of items) {
-                var newsItem = document.createElement("li");
-
                 console.log(item);
 
                 function stripTags(html) {
@@ -920,29 +918,31 @@ function main() {
 
                 var author;
                 if (item.author) {
-                    author = item.author + " - " + "<a href='http://" + source + "'>" + source + "</a>";
+                    author = item.author + " - " + "<a target='_blank' href='http://" + source + "'>" + source + "</a>";
                 } else {
-                    author = "<a href='http://" + source + "'>" + source + "</a>";
+                    author = "<a target='_blank' href='http://" + source + "'>" + source + "</a>";
                 }
 
-                var imageHTML = "";
-                if (item.visual && item.visual.contentType.match(/image\/*/gi) && item.visual.url) {
-                    imageHTML = "<div class='news-thumb' style='background-image: url(" + item.visual.url + ")'></div>";
-                }
+                var newsItem = document.createElement("a");
+                newsItem.href = url;
 
-                newsItem.classList.add("news");
-                newsItem.innerHTML = "<a target='_blank' href='" + url  + "'>\
-                <h3>" + item.title + "</h3></a>\
-                <div class='news-content'>" +
-                imageHTML +
-                "<div class='news-text'>\
+                newsItem.innerHTML = "<li class='news'>\
+                <div class='news-content'>\
+                <h3 class='news-title'>" + item.title + "</h3>\
+                <div class='news-text'>\
                 <p>" + description  + "</p>\
-                <div class='news-meta'><date>" + moment(Number(item.published)).calendar() + "</date>\
+                <div class='news-meta'>\
+                <date>" + moment(Number(item.published)).calendar() + "</date>\
                  • \
                 <span>" + author + "</span>\
                 </div>\
                 </div>\
-                </a>";
+                </div>\
+                </li>";
+
+                if (item.visual && item.visual.contentType.match(/image\/*/gi) && item.visual.url) {
+                    newsItem.querySelector("li.news").style.backgroundImage = "url(" + item.visual.url + ")";
+                }
 
                 document.getElementById("newslist").appendChild(newsItem);
             };

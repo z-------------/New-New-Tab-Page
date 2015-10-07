@@ -5,7 +5,7 @@
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1) !important;
     transition-duration: .2s;
     font-weight: 300;
-    cursor: default;
+    box-sizing: inherit;
 }
 
 @-webkit-keyframes weatherFlash {
@@ -777,34 +777,75 @@ a {
 }
 
 .news {
-    margin: 20px;
+    box-sizing: border-box;
     color: rgba(255, 255, 255, .7);
     font-size: 15px;
     text-align: left;
     transition: all .2s;
     display: block;
-}
+    padding: 20px;
+    height: 175px;
+    margin: 20px;
+    border-radius: 4px;
+    overflow: hidden;
 
-.news h3 {
-    cursor: pointer;
-    font-weight: 700;
-    display: inline;
-    font-size: 1.3em;
-}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
-.news h3:hover {
-    color: #2EABE5;
+    position: relative;
 }
 
 .news p {
     margin: 0;
-    margin-top: 7px;
     font-weight: 400;
     color: rgba(255, 255, 255, .8);
 }
 
 .news-content {
-    margin: 5px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
+}
+
+.news-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+
+    font-weight: 700;
+    display: inline;
+    font-size: 1.3em;
+}
+
+.news-text {
+    position: absolute;
+    max-height: 200px;
+    margin: 20px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.news:hover .news-title {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.news:hover .news-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.news:hover .news-content {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .news-thumb {
@@ -834,6 +875,7 @@ a {
 #newslist {
     min-height: 100px;
     margin: 0;
+    margin-top: 20px;
     padding: 0;
 }
 
