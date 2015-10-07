@@ -925,10 +925,16 @@ function main() {
                     author = "<a href='http://" + source + "'>" + source + "</a>";
                 }
 
+                var imageHTML = "";
+                if (item.visual && item.visual.contentType.match(/image\/*/gi) && item.visual.url) {
+                    imageHTML = "<div class='news-thumb' style='background-image: url(" + item.visual.url + ")'></div>";
+                }
+
                 newsItem.classList.add("news");
                 newsItem.innerHTML = "<a target='_blank' href='" + url  + "'>\
                 <h3>" + item.title + "</h3></a>\
                 <div class='news-content'>" +
+                imageHTML +
                 "<div class='news-text'>\
                 <p>" + description  + "</p>\
                 <div class='news-meta'><date>" + moment(Number(item.published)).calendar() + "</date>\
