@@ -139,9 +139,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("showFBNotif", function (val) {
             document.getElementById("shownotif").checked = val;
         });
-        readOption("appIconSize", function (val) {
-            document.getElementById("appiconsize").value = val;
-        });
         readOption("showBookmarks", function (val) {
             document.getElementById("showbookmarks").checked = val;
         });
@@ -191,7 +188,6 @@ document.getElementById("save").onclick = function () {
 
     newSettings.showFB = document.getElementById("showfb").checked;
     newSettings.showFBNotif = document.getElementById("shownotif").checked;
-    newSettings.appIconSize = Number(document.getElementById("appiconsize").value);
     newSettings.titleText = document.getElementById("titletext").value;
     newSettings.showBookmarks = document.getElementById("showbookmarks").checked;
     newSettings.topSiteCount = Number(document.getElementById("topsitecount").value);
