@@ -72,13 +72,13 @@ input, button {
 button {
     cursor: pointer;
     text-align: center;
-    padding: 1px 6px;
+    padding: 1px 8px;
 }
 
 input[type=text], input[type=url], textarea {
     transition: .2s;
-    width: 140px;
-    padding: 1px 5px;
+    min-width: 175px;
+    padding: 1px 8px;
 }
 
 #vno {
