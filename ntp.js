@@ -947,7 +947,7 @@ function main() {
                 </div>\
                 </li>";
 
-                if (item.visual && item.visual.contentType.match(/image\/*/gi) && item.visual.url) {
+                if (item.visual && item.visual.url && item.visual.url !== "none" && item.visual.contentType.match(/image\/*/gi)) {
                     newsItem.querySelector("li.news").style.backgroundImage = "url(" + item.visual.url + ")";
                 }
 
