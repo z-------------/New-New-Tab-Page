@@ -6,13 +6,11 @@ A minimal new tab page for Google Chrome
 
 ## Features
 
-+ **Custom app icons**
-
-+ **Facebook integration**
++ **Custom shortcuts**
 
 + **Custom background**
 
-+ **Widgets**
++ **Weather + News**
 
 + **App launcher**
 
@@ -26,9 +24,11 @@ A minimal new tab page for Google Chrome
 
 [**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
 
-### How to install from source
+### Installing from source
 
-1. Go to `chrome://extensions`
-2. Tick "developer mode" and click "load unpacked extension"
-3. Choose folder
-4. New New Tab Page should now be installed
+1. Download and unzip the zip file.
+2. Go to `chrome://extensions`.
+3. Tick "Developer mode" and click "Load unpacked extension".
+4. Choose the appropriate directory.
+
+New New Tab Page should now be installed.
