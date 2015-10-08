@@ -42,6 +42,7 @@ var bgLocal = document.getElementById("bglocal");
 document.getElementById("resetdefaults").onclick = function () {
     this.textContent = "Click again to confirm";
     this.onclick = function () {
+        localStorage.clear();
         chrome.storage.sync.clear(function () {
             chrome.storage.local.clear();
             chrome.storage.sync.set({
