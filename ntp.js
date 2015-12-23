@@ -848,7 +848,7 @@ function main() {
     }
 
     function white(element, callback) {
-        var transitionDuration = 300;
+        var transitionDuration = 350;
 
         positionWhite(element);
 
@@ -856,7 +856,7 @@ function main() {
             var newDiameter = Math.max(window.innerWidth, window.innerHeight) * 1.5;
 
             whiteElem.style.transitionDuration = transitionDuration + "ms";
-            whiteElem.style.transitionProperty = "top, left, width, height, border-radius, background";
+            whiteElem.style.transitionProperty = "top, left, width, height, background";
 
             whiteElem.style.zIndex = "5";
             whiteElem.style.opacity = "1";
