@@ -829,16 +829,18 @@ function main() {
 
     function positionWhite(element) {
         if (parseInt(whiteElem.style.opacity) !== 1) {
-            var top = element.getClientRects()[0].top;
-            var left = element.getClientRects()[0].left;
-            var width = element.getClientRects()[0].width;
-            var height = element.getClientRects()[0].height;
+            var clientRects = element.getClientRects()[0];
+
+            var top = clientRects.top;
+            var left = clientRects.left;
+            var width = clientRects.width;
+            var height = clientRects.height;
 
             var background = element.style.backgroundImage;
             var iconURL = background.substring(4, background.lastIndexOf(")"));
 
-            whiteElem.style.top = top + "px";
-            whiteElem.style.left = left + "px";
+            whiteElem.style.top = top + height / 2 + "px";
+            whiteElem.style.left = left + width / 2 + "px";
             whiteElem.style.width = width + "px";
             whiteElem.style.height = height + "px";
             whiteElem.style.backgroundColor = iconBGColor(iconURL);
@@ -846,27 +848,36 @@ function main() {
     }
 
     function white(element, callback) {
+        var transitionDuration = 300;
+
         positionWhite(element);
 
         setTimeout(function(){
-            whiteElem.style.opacity = "1";
-            whiteElem.style.transitionDuration = "260ms";
+            var newDiameter = Math.max(window.innerWidth, window.innerHeight) * 1.5;
+
+            whiteElem.style.transitionDuration = transitionDuration + "ms";
             whiteElem.style.transitionProperty = "top, left, width, height, border-radius, background";
-            whiteElem.style.top = "0";
-            whiteElem.style.left = "0";
-            whiteElem.style.height = "100%";
-            whiteElem.style.width = "100%";
+
             whiteElem.style.zIndex = "5";
+            whiteElem.style.opacity = "1";
+
+            whiteElem.style.height = newDiameter + "px";
+            whiteElem.style.width = newDiameter + "px";
+
+            whiteElem.style.top = "50%";
+            whiteElem.style.left = "50%";
+
+            whiteElem.style.transform = "translateX(-50%) translateY(-50%)";
+            whiteElem.style.transformOrigin = "center";
         });
 
         setTimeout(function(){
             whiteElem.style.backgroundColor = "white";
-            whiteElem.style.borderRadius = "0";
         }, 50);
 
         setTimeout(function(){
             callback();
-        }, 260);
+        }, /* transitionDuration */ 0);
     }
 
     /* sidebar stuff */
