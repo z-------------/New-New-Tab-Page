@@ -370,6 +370,9 @@ function main() {
 
                 var bgImg = elem.style.backgroundImage;
                 var icon = bgImg.substring(4, bgImg.length - 1);
+                if (icon[0] === "\"" && icon[icon.length - 1] === "\"") {
+                    icon = icon.substring(1, icon.length - 1); // remove quotes if present
+                }
 
                 if (!apps[i]) {
                     apps[i] = {};
@@ -838,6 +841,9 @@ function main() {
 
             var background = element.style.backgroundImage;
             var iconURL = background.substring(4, background.lastIndexOf(")"));
+            if (iconURL[0] === "\"" && iconURL[iconURL.length - 1] === "\"") {
+                iconURL = iconURL.substring(1, iconURL.length - 1); // remove quotes if present
+            }
 
             whiteElem.style.top = top + height / 2 + "px";
             whiteElem.style.left = left + width / 2 + "px";
@@ -876,7 +882,7 @@ function main() {
         }, 50);
 
         setTimeout(function(){
-            callback();
+            //callback();
         }, /* transitionDuration */ 0);
     }
 
@@ -1137,7 +1143,13 @@ function main() {
 
     (function(){
         var image = document.createElement("img");
-        image.src = window.backgroundURL.substring(4, backgroundURL.lastIndexOf(")")); // grab "image.png" from "url(image.png)"
+
+        var bgURL = window.backgroundURL.substring(4, backgroundURL.lastIndexOf(")"));
+        if (bgURL[0] === "\"" && bgURL[bgURL.length - 1] === "\"") {
+            bgURL = bgURL.substring(1, bgURL.length - 1); // remove quotes if present
+        }
+
+        image.src = bgURL;
         image.onload = function(){ // if we do this before the background is loaded user will see a flash of black
             document.body.style.backgroundColor = "black";
         };
