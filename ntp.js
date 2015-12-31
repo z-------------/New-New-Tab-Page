@@ -882,7 +882,7 @@ function main() {
         }, 50);
 
         setTimeout(function(){
-            //callback();
+            callback();
         }, /* transitionDuration */ 0);
     }
 
