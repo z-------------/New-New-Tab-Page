@@ -106,17 +106,23 @@ function iconBGColor(url) {
     };
 
     try {
-        data = ctx.getImageData(0, 0, width, 1).data;
+        data = ctx.getImageData(0, 0, width, height).data;
 
-        for (i = 0; i < width * 4; i += 4) {
+        for (var i = 0; i < width * 4; i += 4) {
             sum.r += data[i];
             sum.g += data[i + 1];
             sum.b += data[i + 2];
         }
 
-        sum.r = Math.round(sum.r / width);
-        sum.g = Math.round(sum.g / width);
-        sum.b = Math.round(sum.b / width);
+        for (var i = height * width * 4 - width * 4; i < height * width * 4; i += 4) {
+            sum.r += data[i];
+            sum.g += data[i + 1];
+            sum.b += data[i + 2];
+        }
+
+        sum.r = Math.round(sum.r / (width * 2));
+        sum.g = Math.round(sum.g / (width * 2));
+        sum.b = Math.round(sum.b / (width * 2));
 
         return "rgb(" + sum.r + "," + sum.g + "," + sum.b + ")";
     } catch (e) {
