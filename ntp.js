@@ -270,7 +270,7 @@ function main() {
         });
 
         thisApp.addEventListener("mouseenter", function () {
-            positionWhite(this);
+            colorWhite(this);
         });
 
         thisApp.style.width = appIconSize + "px";
@@ -830,60 +830,54 @@ function main() {
         window.scrollTo(0, 0);
     }, 100);
 
-    function positionWhite(element) {
-        if (parseInt(whiteElem.style.opacity) !== 1) {
-            var clientRects = element.getClientRects()[0];
-
-            var top = clientRects.top;
-            var left = clientRects.left;
-            var width = clientRects.width;
-            var height = clientRects.height;
-
-            var background = element.style.backgroundImage;
-            var iconURL = background.substring(4, background.lastIndexOf(")"));
-            if (iconURL[0] === "\"" && iconURL[iconURL.length - 1] === "\"") {
-                iconURL = iconURL.substring(1, iconURL.length - 1); // remove quotes if present
-            }
-
-            whiteElem.style.top = top + height / 2 + "px";
-            whiteElem.style.left = left + width / 2 + "px";
-            whiteElem.style.width = width + "px";
-            whiteElem.style.height = height + "px";
-            whiteElem.style.backgroundColor = iconBGColor(iconURL);
+    function colorWhite(element) {
+        var rects = element.getClientRects()[0];
+        var background = element.style.backgroundImage;
+        var iconURL = background.substring(4, background.lastIndexOf(")"));
+        if (iconURL[0] === "\"" && iconURL[iconURL.length - 1] === "\"") {
+            iconURL = iconURL.substring(1, iconURL.length - 1); // remove quotes if present
         }
+
+        window.whiteFillColor = iconBGColor(iconURL);
+        window.whiteX = rects.left + rects.width / 2;
+        window.whiteY = rects.top + rects.height / 2;
     }
 
     function white(element, callback) {
-        var transitionDuration = 350;
+        colorWhite(element);
 
-        positionWhite(element);
+        window.whiteContext = whiteElem.getContext("2d");
+        window.whiteStartDate = new Date();
+        window.requestAnimationFrame(whiteStep);
 
-        setTimeout(function(){
-            var newDiameter = Math.max(window.innerWidth, window.innerHeight) * 1.5;
-
-            whiteElem.style.transitionDuration = transitionDuration + "ms";
-            whiteElem.style.transitionProperty = "top, left, width, height, background";
-
-            whiteElem.style.zIndex = "5";
-            whiteElem.style.opacity = "1";
-
-            whiteElem.style.height = newDiameter + "px";
-            whiteElem.style.width = newDiameter + "px";
-
-            whiteElem.style.top = "50%";
-            whiteElem.style.left = "50%";
-
-            whiteElem.style.transform = "translateX(-50%) translateY(-50%)";
-            whiteElem.style.transformOrigin = "center";
-        });
-
-        setTimeout(function(){
-            whiteElem.style.backgroundColor = "white";
-        }, 50);
+        whiteElem.width = window.innerWidth;
+        whiteElem.height = window.innerHeight;
 
         setTimeout(function(){
             callback();
         }, /* transitionDuration */ 0);
+    }
+
+    function whiteStep() {
+        var duration = 350;
+        var progress = Math.pow((new Date() - whiteStartDate) / duration, 2);
+        var radius = (Math.max(window.innerWidth, window.innerHeight) + 45) * Math.sqrt(2);
+
+        // color circle
+        whiteContext.fillStyle = whiteFillColor;
+        whiteContext.beginPath();
+        whiteContext.arc(whiteX, whiteY, progress * radius, 0, 2*Math.PI);
+        whiteContext.fill();
+
+        // lightener circle
+        whiteContext.fillStyle = "rgba(255, 255, 255, " + progress + ")";
+        whiteContext.beginPath();
+        whiteContext.arc(whiteX, whiteY, progress * radius, 0, 2*Math.PI);
+        whiteContext.fill();
+
+        if (progress < 1) {
+            window.requestAnimationFrame(whiteStep);
+        }
     }
 
     /* sidebar stuff */
