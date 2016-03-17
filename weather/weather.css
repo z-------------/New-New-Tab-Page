@@ -72,17 +72,10 @@ footer {
 	margin-top: 20px;
 	text-align: center;
 	font-size: 10px;
-    opacity: 0;
 
     transition: opacity .3s;
 }
 
-body:hover footer {
-    opacity: 1;
-}
-
-footer a {
-	text-decoration: none;
+footer span {
 	color: inherit;
-	border-bottom: solid 1px rgba(255, 255, 255, .3);
 }
