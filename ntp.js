@@ -866,6 +866,7 @@ function main() {
 
     function whiteStep() {
         var duration = 350;
+        if (noAnimation === true) duration = 0;
         var progress = Math.pow((new Date() - whiteStartDate) / duration, 2);
         var radius = (Math.max(window.innerWidth, window.innerHeight) + 45) * Math.sqrt(2);
 
