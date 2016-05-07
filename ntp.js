@@ -24,7 +24,8 @@ var settings = {
     appsgridstyle: false,
     feedurls: [
         "http://feeds.bbci.co.uk/news/world/rss.xml"
-    ]
+    ],
+    appIconBorderRadius: 7.5
 };
 
 var xhr = function(url, callback, errCallback) {
@@ -281,6 +282,7 @@ function main() {
 
         thisApp.style.width = appIconSize + "px";
         thisApp.style.height = appIconSize + "px";
+        thisApp.style.borderRadius = appIconBorderRadius + "%";
 
         if (apps[i]) {
             thisApp.style.backgroundImage = "url(" + apps[i].icon + ")";

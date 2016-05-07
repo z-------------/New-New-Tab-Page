@@ -31,7 +31,8 @@ var defaultSettings = {
     appsgridstyle: false,
     feedurls: [
         "http://feeds.bbci.co.uk/news/world/rss.xml"
-    ]
+    ],
+    appIconBorderRadius: 7.5
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -179,6 +180,9 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("feedurls", function (val) {
             document.getElementById("feedurls").value = val.join("\n");
         });
+        readOption("appIconBorderRadius", function (val) {
+            document.getElementById("app_icon_border_radius").value = Number(val);
+        });
     });
 });
 
@@ -201,6 +205,7 @@ document.getElementById("save").onclick = function () {
     newSettings.sidebarEnabled = document.getElementById("sidebarenabled").checked;
     newSettings.appsgridstyle = document.getElementById("appsgridstyle").checked;
     newSettings.feedurls = document.getElementById("feedurls").value.split("\n");
+    newSettings.appIconBorderRadius = Number(document.getElementById("app_icon_border_radius").value);
 
     var syncDone = false;
     var localDone = false;
