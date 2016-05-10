@@ -216,8 +216,10 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                     }
                 };
 
-                chrome.storage.local.set({ background: background }, function() {
-                    window.location.reload();
+                chrome.storage.local.remove("backgroundURL", function() {
+                    chrome.storage.local.set({ background: background }, function() {
+                        window.location.reload();
+                    });
                 });
             }
         });
