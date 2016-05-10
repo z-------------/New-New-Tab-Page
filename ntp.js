@@ -14,6 +14,9 @@ var xhr = function(url, callback, errCallback) {
 };
 
 var settings;
+
+var editorContainer, editorElem, editorBtnsElem;
+
 xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     settings = JSON.parse(res).default_settings;
 

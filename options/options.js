@@ -183,6 +183,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var newSettings = defaultSettings;
 
         delete newSettings.backgroundURL;
+        delete newSettings.apps;
+        delete newSettings.slotCount;
 
         newSettings.showFB = document.getElementById("showfb").checked;
         newSettings.showFBNotif = document.getElementById("shownotif").checked;
@@ -251,7 +253,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             window.eggTitles = [
                 "New New New Tab Page", "2new4me Tab Page", "Page Tab New New",
                 "<pre>new NewTabPage();</pre>", "Tab Page &Uuml;berneue",
-                "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;", 
+                "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;",
                 "#nntp4lyf", "<span>New New Tab Page, now available for Internet Explorer</span>",
                 "I mean Edge", "<span>Smosh isn't funny anymore</span>",
                 "<span>Don't you have better things to do?</span>",
@@ -268,13 +270,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
     }
 
-    document.querySelector("form").addEventListener("keydown", function(e){
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault();
+    });
+
+    document.querySelector("form").addEventListener("keydown", function(e) {
         if (e.keyCode === 13) {
             e.preventDefault();
         }
     });
 
-    document.querySelector("#edit-apps-btn").addEventListener("click", function(){
+    document.querySelector("#edit-apps-btn").addEventListener("click", function() {
         window.top.document.querySelector("#optionbutton").click();
         setTimeout(window.top.openAppsEditor, 300);
     });
