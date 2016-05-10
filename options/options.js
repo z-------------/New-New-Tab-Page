@@ -20,6 +20,7 @@ if (location.hash === "#iframe") {
 }
 
 var settings = {};
+var easterEgg;
 
 var defaultSettings;
 xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
@@ -241,13 +242,22 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     /* shh! super-secret easter egg stuff! */
     /* tell no-one */
 
-    function easterEgg() {
+    easterEgg = function() {
         if (window.eggIndex === undefined) {
             window.eggIndex = 0;
         }
 
         if (window.eggTitles === undefined) {
-            window.eggTitles = ["New New New Tab Page", "2new4me Tab Page", "Page Tab New New", "<pre>new NewTabPage();</pre>", "Neue Neue Tab Page", "Tab Page &Uuml;berneue", "New-ish Tab Page", "&Uuml;berneue Registerkarte", "Not a New Tab Page", "<span>(n) A doubly recently developed HTML document designed to start out multiple browsing contexts on the World Wide Web.</span>", "N3W N3W 74B P493", "&#9731;", "n3w n3w 7@b p493", "#nntp4lyf", "#yolo #sweg", "<span>New New Tab Page, now available for Internet Explorer</span>", "<span>lul pc peasents #consolemasturraic</span>", "<span>Smosh isn't funny anymore</span>", "#sherlock2016", "<span>Don't you have better things to do?</span>", "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD", "What are you still doing here?", "Go play Flappy Bird"];
+            window.eggTitles = [
+                "New New New Tab Page", "2new4me Tab Page", "Page Tab New New",
+                "<pre>new NewTabPage();</pre>", "Tab Page &Uuml;berneue",
+                "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;", 
+                "#nntp4lyf", "<span>New New Tab Page, now available for Internet Explorer</span>",
+                "I mean Edge", "<span>Smosh isn't funny anymore</span>",
+                "<span>Don't you have better things to do?</span>",
+                "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD",
+                "What are you still doing here?", "Go play Flappy Bird"
+            ];
         }
 
         if (eggIndex === eggTitles.length) {
