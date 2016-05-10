@@ -61,6 +61,11 @@ label {
     transition: opacity .3s;
 }
 
+label.full-width {
+    width: 100%;
+    display: block;
+}
+
 label > * {
     vertical-align: middle;
 }
@@ -136,9 +141,10 @@ input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-bu
 }
 
 textarea {
-    width: 250px;
+    width: 100%;
     height: 75px;
     padding: 5px;
+    resize: vertical;
 
     transition-property: background, color;
 }

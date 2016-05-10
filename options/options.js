@@ -32,7 +32,16 @@ var defaultSettings = {
     feedurls: [
         "http://feeds.bbci.co.uk/news/world/rss.xml"
     ],
-    appIconBorderRadius: 7.5
+    appIconBorderRadius: 7.5,
+    background: {
+        images: [{
+            type: "preset",
+            uri: "/img/bg.png"
+        }],
+        background: {
+            color: "#2EABE5"
+        }
+    }
 };
 
 var bgPreview = document.getElementById("bgpreview");
@@ -165,9 +174,6 @@ chrome.storage.sync.get(null, function (sr) {
         readOption("titleText", function (val) {
             document.getElementById("titletext").value = val;
         });
-        readOption("backgroundURL", function (val) {
-            bgPreview.style.backgroundImage = val;
-        });
         readOption("autoClose", function (val) {
             document.getElementById("autoclose").checked = val;
         });
@@ -182,6 +188,11 @@ chrome.storage.sync.get(null, function (sr) {
         });
         readOption("appIconBorderRadius", function (val) {
             document.getElementById("app_icon_border_radius").value = Number(val);
+        });
+
+        chrome.storage.local.get("background", function (result) {
+            var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri;
+            bgPreview.style.backgroundImage = "url(" + imageUri + ")";
         });
     });
 });
@@ -217,14 +228,25 @@ document.getElementById("save").onclick = function () {
         }
     });
 
-    chrome.storage.local.set({
-        backgroundURL: bgPreview.style.backgroundImage
-    }, function () {
-        localDone = true;
-        if (syncDone && localDone) {
-            window.top.location.reload();
+    chrome.storage.local.get("background", function(results) {
+        var newBackground = results.background;
+
+        var newImageUri = bgPreview.style.backgroundImage.substring(4, bgPreview.style.backgroundImage.length - 1);
+        if (newImageUri[0] === "\"" && newImageUri[newImageUri.length - 1] === "\"") {
+            newImageUri = newImageUri.substring(1, newImageUri.length - 1);
         }
-    });
+
+        newBackground.images[0].uri = newImageUri;
+
+        chrome.storage.local.set({
+            background: newBackground
+        }, function () {
+            localDone = true;
+            if (syncDone && localDone) {
+                window.top.location.reload();
+            }
+        });
+    })
 };
 
 document.getElementById("exportopts").onclick = function () {
@@ -244,7 +266,7 @@ function easterEgg() {
     }
 
     if (window.eggTitles === undefined) {
-        window.eggTitles = ["New New New Tab Page", "2new4me Tab Page", "#yeya", "Page Tab New New", "<pre>new NewTabPage();</pre>", "Neue Neue Tab Page", "Tab Page &Uuml;berneue", "New-ish Tab Page", "&Uuml;berneue Registerkarte", "Not a New Tab Page", "<span>(n) A doubly recently developed HTML document designed to start out multiple browsing contexts on the World Wide Web.</span>", "N3W N3W 74B P493", "&#9731;", "n3w n3w 7@b p493", "#nntp4lyf", "#yolo #sweg", "<span>New New Tab Page, now available for Internet Explorer</span>", "<span>lul pc peasents #consolemasturraic</span>", "<span>Smosh isn't funny anymore</span>", "#sherlock2016", "<span>Don't you have better things to do?</span>", "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD", "What are you still doing here?", "Go play Flappy Bird"];
+        window.eggTitles = ["New New New Tab Page", "2new4me Tab Page", "Page Tab New New", "<pre>new NewTabPage();</pre>", "Neue Neue Tab Page", "Tab Page &Uuml;berneue", "New-ish Tab Page", "&Uuml;berneue Registerkarte", "Not a New Tab Page", "<span>(n) A doubly recently developed HTML document designed to start out multiple browsing contexts on the World Wide Web.</span>", "N3W N3W 74B P493", "&#9731;", "n3w n3w 7@b p493", "#nntp4lyf", "#yolo #sweg", "<span>New New Tab Page, now available for Internet Explorer</span>", "<span>lul pc peasents #consolemasturraic</span>", "<span>Smosh isn't funny anymore</span>", "#sherlock2016", "<span>Don't you have better things to do?</span>", "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD", "What are you still doing here?", "Go play Flappy Bird"];
     }
 
     if (eggIndex === eggTitles.length) {
@@ -255,9 +277,11 @@ function easterEgg() {
     }
 }
 
-document.forms[0].onsubmit = function(e){
-    e.preventDefault();
-};
+document.querySelector("form").addEventListener("keydown", function(e){
+    if (e.keyCode === 13) {
+        e.preventDefault();
+    }
+});
 
 document.querySelector("#edit-apps-btn").addEventListener("click", function(){
     window.top.document.querySelector("#optionbutton").click();

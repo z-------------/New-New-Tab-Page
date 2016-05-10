@@ -25,7 +25,16 @@ var settings = {
     feedurls: [
         "http://feeds.bbci.co.uk/news/world/rss.xml"
     ],
-    appIconBorderRadius: 7.5
+    appIconBorderRadius: 7.5,
+    background: {
+        images: [{
+            type: "preset",
+            uri: "/img/bg.png"
+        }],
+        background: {
+            color: "#2EABE5"
+        }
+    }
 };
 
 var xhr = function(url, callback, errCallback) {
@@ -214,11 +223,36 @@ storage.get(settingsKeys, function (r) {
         // so i dont have to do settings.foo every time
     }
 
-    chrome.storage.local.get("backgroundURL", function (lr) {
+    chrome.storage.local.get(["backgroundURL", "background"], function (lr) {
+        if (lr.background !== undefined) {
+            window.background = lr.background;
+        }
         if (lr.backgroundURL !== undefined) {
             window.backgroundURL = lr.backgroundURL;
         }
+
         main();
+
+        if (lr.background === undefined) {
+            var imageUri = window.backgroundURL.substring(4, window.backgroundURL.length - 1);
+            if (imageUri[0] === "\"" && imageUri[imageUri.length - 1] === "\"") {
+                imageUri = imageUri.substring(1, imageUri.length - 1);
+            }
+
+            var background = {
+                images: [{
+                    type: "url",
+                    uri: imageUri
+                }],
+                background: {
+                    color: settings.background.background.color
+                }
+            };
+
+            chrome.storage.local.set({ background: background }, function() {
+                window.location.reload();
+            });
+        }
     });
 });
 
@@ -229,7 +263,7 @@ function main() {
     var drawer = document.getElementById("applist");
     var sidebar = document.querySelector("#sidebar");
 
-    bgElem.style.backgroundImage = backgroundURL || "url(/img/bg.png)";
+    bgElem.style.backgroundImage = "url(" + (background.images[0].uri || settings.background.images[0].uri) + ")";
     if (bgBlur) {
         bgElem.style.webkitFilter = "blur(20px)";
     }
