@@ -234,20 +234,29 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var container = document.getElementById("container");
         var drawer = document.getElementById("applist");
         var sidebar = document.querySelector("#sidebar");
+        var style = document.createElement('style');
 
         bgElem.style.backgroundImage = "url(" + (background.images[0].uri || settings.background.images[0].uri) + ")";
         if (bgBlur) {
             bgElem.style.webkitFilter = "blur(20px)";
         }
 
-        function openIconURL(iconElement) {
+        style.type = 'text/css';
+        style.innerHTML = customCSS;
+        document.getElementsByTagName('head')[0].appendChild(style);
+
+        function openIconURL(iconElement, e) {
             if (!document.querySelector("#apps-editor-container.opened")) {
+              if(e.button == 1){
+                chrome.tabs.create({ url: iconElement.dataset.url , active: false });
+              } else {
                 chrome.tabs.getCurrent(function(r) {
                     var currentTabId = r && r.id ? r.id : null;
                     white(iconElement, function(){
                         chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
                     });
                 });
+              }
             }
         }
 
@@ -278,8 +287,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             var thisApp = document.createElement("div");
             thisApp.classList.add("app");
 
-            thisApp.addEventListener("click", function () {
-                openIconURL(this);
+            thisApp.addEventListener("click", function (e) {
+                openIconURL(this, e);
             });
 
             thisApp.addEventListener("mouseenter", function () {

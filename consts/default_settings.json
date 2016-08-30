@@ -22,6 +22,7 @@
         "sidebarEnabled": true,
         "appsgridstyle": false,
         "feedurls": ["http://feeds.bbci.co.uk/news/world/rss.xml"],
+        "customCSS": "",
         "appIconBorderRadius": 7.5,
         "background": {
             "images": [{
