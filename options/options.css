@@ -141,7 +141,7 @@ input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-bu
 }
 
 textarea {
-    width: 100%;
+    width: calc(100% - 20px);
     height: 75px;
     padding: 5px;
     resize: vertical;
