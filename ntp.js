@@ -234,29 +234,29 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var container = document.getElementById("container");
         var drawer = document.getElementById("applist");
         var sidebar = document.querySelector("#sidebar");
-        var style = document.createElement('style');
+        var style = document.createElement("style");
 
         bgElem.style.backgroundImage = "url(" + (background.images[0].uri || settings.background.images[0].uri) + ")";
         if (bgBlur) {
             bgElem.style.webkitFilter = "blur(20px)";
         }
 
-        style.type = 'text/css';
+        style.type = "text/css";
         style.innerHTML = customCSS;
-        document.getElementsByTagName('head')[0].appendChild(style);
+        document.getElementsByTagName("head")[0].appendChild(style);
 
         function openIconURL(iconElement, e) {
             if (!document.querySelector("#apps-editor-container.opened")) {
-              if(e.button == 1){
-                chrome.tabs.create({ url: iconElement.dataset.url , active: false });
-              } else {
-                chrome.tabs.getCurrent(function(r) {
-                    var currentTabId = r && r.id ? r.id : null;
-                    white(iconElement, function(){
+                if (e.button == 1) {
+                    chrome.tabs.create({ url: iconElement.dataset.url , active: false });
+                } else {
+                    chrome.tabs.getCurrent(function(r) {
+                        var currentTabId = r && r.id ? r.id : null;
+                        white(iconElement, function(){
                         chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
+                        });
                     });
-                });
-              }
+                }
             }
         }
 
