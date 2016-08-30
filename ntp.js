@@ -867,14 +867,16 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
 
         function white(element, callback) {
-            colorWhite(element);
+            if (!noAnimation) {
+                colorWhite(element);
 
-            window.whiteContext = whiteElem.getContext("2d");
-            window.whiteStartDate = new Date();
-            window.requestAnimationFrame(whiteStep);
+                window.whiteContext = whiteElem.getContext("2d");
+                window.whiteStartDate = new Date();
+                window.requestAnimationFrame(whiteStep);
 
-            whiteElem.width = window.innerWidth;
-            whiteElem.height = window.innerHeight;
+                whiteElem.width = window.innerWidth;
+                whiteElem.height = window.innerHeight;
+            }
 
             setTimeout(function(){
                 callback();
@@ -883,7 +885,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
         function whiteStep() {
             var duration = 350;
-            if (noAnimation === true) duration = 0;
             var progress = Math.pow((new Date() - whiteStartDate) / duration, 2);
             var radius = (Math.max(window.innerWidth, window.innerHeight) + 45) * Math.sqrt(2);
 
