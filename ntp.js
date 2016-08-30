@@ -234,11 +234,16 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var container = document.getElementById("container");
         var drawer = document.getElementById("applist");
         var sidebar = document.querySelector("#sidebar");
+        var style = document.createElement('style');
 
         bgElem.style.backgroundImage = "url(" + (background.images[0].uri || settings.background.images[0].uri) + ")";
         if (bgBlur) {
             bgElem.style.webkitFilter = "blur(20px)";
         }
+
+        style.type = 'text/css';
+        style.innerHTML = customCSS;
+        document.getElementsByTagName('head')[0].appendChild(style);
 
         function openIconURL(iconElement) {
             if (!document.querySelector("#apps-editor-container.opened")) {

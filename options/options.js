@@ -171,6 +171,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             readOption("appIconBorderRadius", function (val) {
                 document.getElementById("app_icon_border_radius").value = Number(val);
             });
+            readOption("customCSS", function (val){
+                document.getElementById("customcss").value = val;
+            });
 
             chrome.storage.local.get("background", function (result) {
                 var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri;
@@ -201,6 +204,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         newSettings.appsgridstyle = document.getElementById("appsgridstyle").checked;
         newSettings.feedurls = document.getElementById("feedurls").value.split("\n");
         newSettings.appIconBorderRadius = Number(document.getElementById("app_icon_border_radius").value);
+        newSettings.customCSS = document.getElementById("customcss").value;
 
         var syncDone = false;
         var localDone = false;
