@@ -278,12 +278,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         e.preventDefault();
     });
 
-    document.querySelector("form").addEventListener("keydown", function(e) {
-        if (e.keyCode === 13) {
-            e.preventDefault();
-        }
-    });
-
     document.querySelector("#edit-apps-btn").addEventListener("click", function() {
         window.top.document.querySelector("#optionbutton").click();
         setTimeout(window.top.openAppsEditor, 300);
