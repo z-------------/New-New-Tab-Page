@@ -253,7 +253,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                     chrome.tabs.getCurrent(function(r) {
                         var currentTabId = r && r.id ? r.id : null;
                         white(iconElement, function(){
-                        chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
+                            chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
                         });
                     });
                 }
