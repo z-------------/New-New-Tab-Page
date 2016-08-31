@@ -247,7 +247,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
         function openIconURL(iconElement, e) {
             if (!document.querySelector("#apps-editor-container.opened")) {
-                if (e.button == 1) {
+                if (e.button == 1 || e.ctrlKey == true || e.metaKey == true) {
                     chrome.tabs.create({ url: iconElement.dataset.url , active: false });
                 } else {
                     chrome.tabs.getCurrent(function(r) {
