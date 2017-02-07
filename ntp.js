@@ -350,7 +350,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                         parser = new DOMParser();
                         doc = parser.parseFromString(r, "text/html");
 
-                        var linkTags = doc.head.querySelectorAll("link");
+                        var linkTags = doc.querySelectorAll("link");
                         var icons = [].slice.call(linkTags).filter(function(tag){
                             var attrRel = tag.getAttribute("rel");
                             return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon" || attrRel === "icon";
@@ -366,7 +366,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                             return 0;
                         });
 
-                        var icon = false;
+                        var icon = URI("favicon.ico").absoluteTo(url).toString();
                         if (icons.length > 0) {
                             var iconElem = icons[0];
                             var iconHrefAttr = iconElem.getAttribute("href");
