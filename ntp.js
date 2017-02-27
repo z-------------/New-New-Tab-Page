@@ -246,6 +246,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         document.getElementsByTagName("head")[0].appendChild(style);
 
         function openIconURL(iconElement, e) {
+            console.log(e);
             if (!document.querySelector("#apps-editor-container.opened")) {
                 if (e.button == 1 || e.ctrlKey == true || e.metaKey == true) {
                     chrome.tabs.create({ url: iconElement.dataset.url , active: false });
@@ -286,6 +287,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         for (i = 0; i < slotCount; i++) {
             var thisApp = document.createElement("div");
             thisApp.classList.add("app");
+
+            //middle click moved from 'click' event to 'auxclick' event between chrome versions 52 and 55
+            thisApp.addEventListener("auxclick", function (e) {
+              if(e.button === 1){ //middle click only, not right click.
+                openIconURL(this, e);
+              }
+            });
 
             thisApp.addEventListener("click", function (e) {
                 openIconURL(this, e);
