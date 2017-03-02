@@ -287,6 +287,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             var thisApp = document.createElement("div");
             thisApp.classList.add("app");
 
+            //middle click moved from 'click' event to 'auxclick' event between chrome versions 52 and 55
+            thisApp.addEventListener("auxclick", function (e) {
+              if(e.button === 1){ //middle click only, not right click.
+                openIconURL(this, e);
+              }
+            });
+
             thisApp.addEventListener("click", function (e) {
                 openIconURL(this, e);
             });
