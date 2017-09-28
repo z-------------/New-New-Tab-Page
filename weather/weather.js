@@ -81,7 +81,7 @@ chrome.storage.sync.get("useFahrenheit", function (r) {
     }
 
     if (!lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)) {
-        xhr("https://nntp-guardo.rhcloud.com/wx/", function(data){
+        xhr("http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx/", function(data){
             data = JSON.parse(data);
 
             displayWeather(data);

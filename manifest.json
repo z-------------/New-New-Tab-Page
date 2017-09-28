@@ -20,7 +20,7 @@
         "storage",
         "sessions",
         "tabs",
-        "https://nntp-guardo.rhcloud.com/",
+        "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/",
         "*://*/*"
     ],
     "background": {
