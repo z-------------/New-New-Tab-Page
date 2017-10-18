@@ -35,4 +35,4 @@ New New Tab Page should now be installed.
 
 ## Contributing
 
-Please feel free to submit pull requests of any kind.
+Please feel free to submit pull requests or issues of any kind.
