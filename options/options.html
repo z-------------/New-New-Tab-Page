@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Options - New New Tab Page</title>
+        <meta charset="utf-8" />
         <link rel="stylesheet" href="/fonts/roboto.css">
         <link rel="stylesheet" href="options.css">
         <script src="/js/Sortable/Sortable.min.js"></script>
@@ -17,8 +18,20 @@
                 <h2>Shortcuts</h2>
                 <button id="edit-apps-btn"><span>Edit shortcuts</span></button>
                 <label>
-                    <span>Icon border radius (in %)</span>
+                    <span>Icon border radius (in %):</span>
                     <input type="number" id="app_icon_border_radius" min="0" max="50" value="7.5">
+                </label>
+                <label>
+                    <span>Use fixed grid:</span>
+                    <input type="checkbox" id="use_fixed_grid" />
+                </label>
+                <label>
+                    <span>Fixed grid columns:</span>
+                    <input type="number" id="fixed_grid_cols" min="0" step="1" />
+                </label>
+                <label>
+                    <span>Fixed grid rows:</span>
+                    <input type="number" id="fixed_grid_rows" min="0" step="1" />
                 </label>
             </section>
 

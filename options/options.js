@@ -174,6 +174,15 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             readOption("customCSS", function (val){
                 document.getElementById("customcss").value = val;
             });
+            readOption("useFixedGrid", function (val){
+                document.getElementById("use_fixed_grid").checked = val;
+            });
+            readOption("fixedGridCols", function (val){
+                document.getElementById("fixed_grid_cols").value = val;
+            });
+            readOption("fixedGridRows", function (val){
+                document.getElementById("fixed_grid_rows").value = val;
+            });
 
             chrome.storage.local.get("background", function (result) {
                 var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri;
@@ -205,6 +214,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         newSettings.feedurls = document.getElementById("feedurls").value.split("\n");
         newSettings.appIconBorderRadius = Number(document.getElementById("app_icon_border_radius").value);
         newSettings.customCSS = document.getElementById("customcss").value;
+        newSettings.useFixedGrid = document.getElementById("use_fixed_grid").checked;
+        newSettings.fixedGridCols = Number(document.getElementById("fixed_grid_cols").value);
+        newSettings.fixedGridRows = Number(document.getElementById("fixed_grid_rows").value);
 
         var syncDone = false;
         var localDone = false;

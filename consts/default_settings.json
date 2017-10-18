@@ -32,6 +32,9 @@
             "background": {
                 "color": "#2EABE5"
             }
-        }
+        },
+        "useFixedGrid": false,
+        "fixedGridCols": 5,
+        "fixedGridRows": 5
     }
 }

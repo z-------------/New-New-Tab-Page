@@ -253,6 +253,10 @@ button {
     top: auto;
 }
 
+#container.fixedgrid {
+    transition: none;
+}
+
 .app {
     border-radius: 7.5%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
@@ -1192,7 +1196,7 @@ input[type="text"], input[type="url"] {
     background-color: #00a545 !important;
 }
 
-#apps-editor:before {
+/*#apps-editor:before {
     content: "";
 
     position: absolute;
@@ -1205,7 +1209,7 @@ input[type="text"], input[type="url"] {
     width: 0;
     height: 0;
     border-style: solid;
-}
+}*/
 
 #editor-closeeditor {
     position: absolute;
