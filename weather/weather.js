@@ -52,6 +52,8 @@ var useImperial = false;
 var overrideWxLocation = false;
 var wxCoordsLat = 0;
 var wxCoordsLong = 0;
+var wxUseGPS = false;
+var lastChecked;
 
 function displayWeather(data){
     var conditionData = data.weather.currently;
@@ -72,27 +74,7 @@ function displayWeather(data){
     document.body.classList.add("visible");
 }
 
-chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "wxCoordsLong"], function (r) {
-    var lastChecked;
-
-    if (r.useFahrenheit !== undefined) {
-        useImperial = r.useFahrenheit;
-    }
-
-    if (r.overrideWxLocation === true) {
-        overrideWxLocation = true;
-        if (r.wxCoordsLat) {
-            wxCoordsLat = r.wxCoordsLat;
-        }
-        if (r.wxCoordsLong) {
-            wxCoordsLong = r.wxCoordsLong;
-        }
-    }
-
-    if (localStorage.last_checked) {
-        lastChecked = Number(localStorage.last_checked);
-    }
-
+function gotCoords() {
     var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx";
     if (overrideWxLocation) {
         requestUrl += `?coords=${wxCoordsLat},${wxCoordsLong}`;
@@ -109,6 +91,44 @@ chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "
         });
     } else if (localStorage.last_weather) {
         displayWeather(JSON.parse(localStorage.getItem("last_weather")));
+    }
+}
+
+chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "wxCoordsLong", "wxUseGPS"], function (r) {
+    var lastChecked;
+
+    if (r.useFahrenheit !== undefined) {
+        useImperial = r.useFahrenheit;
+    }
+
+    if (r.overrideWxLocation === true) {
+        overrideWxLocation = true;
+        if (r.wxCoordsLat) {
+            wxCoordsLat = r.wxCoordsLat;
+        }
+        if (r.wxCoordsLong) {
+            wxCoordsLong = r.wxCoordsLong;
+        }
+    }
+
+    if (r.wxUseGPS === true && overrideWxLocation === false) {
+        wxUseGPS = true;
+        navigator.geolocation.getCurrentPosition((r) => {
+            overrideWxLocation = true;
+            wxCoordsLat = r.coords.latitude;
+            wxCoordsLong = r.coords.longitude;
+            gotCoords();
+        }, (err) => {
+            if (err && (err.code === 1 || err.code === 2 || err.code === 3)) {
+                gotCoords(); // fall back to IP-based location
+            }
+        });
+    } else {
+        gotCoords();
+    }
+
+    if (localStorage.last_checked) {
+        lastChecked = Number(localStorage.last_checked);
     }
 });
 

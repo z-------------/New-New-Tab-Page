@@ -38,6 +38,7 @@
         "fixedGridRows": 5,
         "overrideWxLocation": false,
         "wxCoordsLat": 0,
-        "wxCoordsLong": 0
+        "wxCoordsLong": 0,
+        "wxUseGPS": false
     }
 }

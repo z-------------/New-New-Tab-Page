@@ -178,6 +178,7 @@ input[type=checkbox] {
     display: inline-block;
     vertical-align: middle;
     margin: 4px;
+    margin-left: 0;
     background: url(/img/checkbox.svg);
     background-size: contain;
     opacity: .7;
@@ -196,6 +197,10 @@ input[type=number] {
     padding: 0;
     width: 50px;
     text-align: center;
+}
+
+input[type=number].wider-number-input {
+  width: 75px;
 }
 
 #slotselects select {

@@ -21,17 +21,13 @@
                     <span>Icon border radius (in %):</span>
                     <input type="number" id="app_icon_border_radius" min="0" max="50" value="7.5">
                 </label>
-                <label>
-                    <span>Use fixed grid:</span>
+                <label class="full-width">
                     <input type="checkbox" id="use_fixed_grid" />
-                </label>
-                <label>
-                    <span>Fixed grid columns:</span>
+                    <span>Use fixed grid</span>:
                     <input type="number" id="fixed_grid_cols" min="0" step="1" />
-                </label>
-                <label>
-                    <span>Fixed grid rows:</span>
+                    <span>columns,</span>
                     <input type="number" id="fixed_grid_rows" min="0" step="1" />
+                    <span>rows</span>
                 </label>
             </section>
 
@@ -39,8 +35,8 @@
                 <h2>Background</h2>
                 <select id="bgopt">
                     <option>Preset backgrounds</option>
-                    <option value="bg">KitKat Mountains</option>
-                    <option value="bg2">KitKat Abstract</option>
+                    <option value="bg">KitKat - mountains</option>
+                    <option value="bg2">KitKat - abstract</option>
                     <option value="bg4">Kanchenjunga 1</option>
                     <option value="bg5">Kanchenjunga 2</option>
                     <option value="bg3">Solid blue</option>
@@ -63,10 +59,10 @@
                 <div id="bgpreview"></div>
 
                 <label>
-                    <span>Blur</span>
                     <input type="checkbox" id="bgblur">
+                    <span>Blur</span>
                 </label>
-                <p><strong>Note</strong>: Enabling blur is likely to slow down your new tab page.
+                <p><strong>Note:</strong> Enabling blur is likely to slow down your new tab page.
                     <br>Strange things might happen.</p>
             </section>
 
@@ -81,37 +77,37 @@
                     <input type="number" id="topsitecount" min="0" max="20">
                 </label>
                 <label>
-                    <span>Display apps as grid</span>
                     <input type="checkbox" id="appsgridstyle">
+                    <span>Display apps as grid</span>
                 </label>
                 <label>
-                    <span>Close tab after launching app</span>
                     <input type="checkbox" id="autoclose">
+                    <span>Close tab after launching app</span>
                 </label>
                 <br>
                 <label>
-                    <span>Show bookmarks</span>
                     <input type="checkbox" id="showbookmarks">
+                    <span>Show bookmarks</span>
                 </label>
                 <label>
-                    <span>List all bookmarks</span>
                     <input type="checkbox" id="showallbookmarks">
+                    <span>List all bookmarks</span>
                 </label>
             </section>
 
             <section>
                 <h2>Sidebar</h2>
                 <label>
-                    <span>Enabled</span>
                     <input type="checkbox" id="sidebarenabled">
+                    <span>Enabled</span>
                 </label>
                 <label>
-                    <span>Facebook Messages</span>
                     <input type="checkbox" id="showfb">
+                    <span>Facebook Messages</span>
                 </label>
                 <label>
-                    <span>Facebook Notifications</span>
                     <input type="checkbox" id="shownotif">
+                    <span>Facebook Notifications</span>
                 </label>
                 <label class="full-width">
                     <span>News feed URLs</span>
@@ -119,15 +115,19 @@
                     <textarea id="feedurls"></textarea>
                 </label>
                 <label>
-                    <span>Override weather location</span>
-                    <input type="checkbox" id="override_wx_location" />
+                    <input type="checkbox" id="wx_use_gps" />
+                    <span>Use GPS location if possible</span>
                 </label>
                 <label class="full-width">
-                    <span>Weather location coordinates:</span>
-                    <input type="number" min="-90" max="90" id="wx_coords_lat" placeholder="lat" />
+                    <input type="checkbox" id="override_wx_location" />
+                    <span>Force weather coordinates:</span>
+                    <input class="wider-number-input" type="number" min="-90" max="90" step="0.0001" id="wx_coords_lat" placeholder="lat" />
                     <span>,</span>
-                    <input type="number" min="-180" max="180" id="wx_coords_long" placeholder="long" />
+                    <input class="wider-number-input" type="number" min="-180" max="180" step="0.0001" id="wx_coords_long" placeholder="long" />
                 </label>
+                <p>
+                  <strong>Note:</strong> "force weather coordinates" overrides GPS location. If neither is enabled, your location is estimated from your IP address.
+                </p>
             </section>
 
             <section>
@@ -147,14 +147,14 @@
                 <br>
 
                 <label>
-                    <span>Disable animations</span>
                     <input type="checkbox" id="disableanimation">
+                    <span>Disable animations</span>
                 </label>
                 <br>
 
                 <label>
-                    <span>Use imperial units</span>
                     <input type="checkbox" id="usefahrenheit">
+                    <span>Use imperial units</span>
                 </label>
             </section>
 
