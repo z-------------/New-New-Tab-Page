@@ -96,6 +96,6 @@ chrome.storage.sync.get("useFahrenheit", function (r) {
 
 document.body.addEventListener("click", function(){
     chrome.tabs.create({
-        url: "http://forecast.io/"
+        url: "https://darksky.net/"
     });
 });
