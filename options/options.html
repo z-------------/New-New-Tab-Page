@@ -118,6 +118,16 @@
                     <p>Enter the full URLs of the RSS feeds, one per line.</p>
                     <textarea id="feedurls"></textarea>
                 </label>
+                <label>
+                    <span>Override weather location</span>
+                    <input type="checkbox" id="override_wx_location" />
+                </label>
+                <label class="full-width">
+                    <span>Weather location coordinates:</span>
+                    <input type="number" min="-90" max="90" id="wx_coords_lat" placeholder="lat" />
+                    <span>,</span>
+                    <input type="number" min="-180" max="180" id="wx_coords_long" placeholder="long" />
+                </label>
             </section>
 
             <section>

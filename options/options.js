@@ -183,6 +183,15 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             readOption("fixedGridRows", function (val){
                 document.getElementById("fixed_grid_rows").value = val;
             });
+            readOption("overrideWxLocation", function (val){
+                document.getElementById("override_wx_location").checked = val;
+            });
+            readOption("wxCoordsLat", function (val){
+                document.getElementById("wx_coords_lat").value = val;
+            });
+            readOption("wxCoordsLong", function (val){
+                document.getElementById("wx_coords_long").value = val;
+            });
 
             chrome.storage.local.get("background", function (result) {
                 var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri;
@@ -215,8 +224,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         newSettings.appIconBorderRadius = Number(document.getElementById("app_icon_border_radius").value);
         newSettings.customCSS = document.getElementById("customcss").value;
         newSettings.useFixedGrid = document.getElementById("use_fixed_grid").checked;
-        newSettings.fixedGridCols = Number(document.getElementById("fixed_grid_cols").value);
-        newSettings.fixedGridRows = Number(document.getElementById("fixed_grid_rows").value);
+        newSettings.fixedGridCols = Number(document.getElementById("fixed_grid_cols").value) || 5;
+        newSettings.fixedGridRows = Number(document.getElementById("fixed_grid_rows").value) || 5;
+        newSettings.overrideWxLocation = document.getElementById("override_wx_location").checked;
+        newSettings.wxCoordsLat = Number(document.getElementById("wx_coords_lat").value) || 0;
+        newSettings.wxCoordsLong = Number(document.getElementById("wx_coords_long").value) || 0;
 
         var syncDone = false;
         var localDone = false;

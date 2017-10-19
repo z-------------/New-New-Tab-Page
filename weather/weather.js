@@ -49,6 +49,9 @@ var codeIconMap = {
 };
 
 var useImperial = false;
+var overrideWxLocation = false;
+var wxCoordsLat = 0;
+var wxCoordsLong = 0;
 
 function displayWeather(data){
     var conditionData = data.weather.currently;
@@ -69,19 +72,34 @@ function displayWeather(data){
     document.body.classList.add("visible");
 }
 
-chrome.storage.sync.get("useFahrenheit", function (r) {
+chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "wxCoordsLong"], function (r) {
     var lastChecked;
 
     if (r.useFahrenheit !== undefined) {
         useImperial = r.useFahrenheit;
     }
 
+    if (r.overrideWxLocation === true) {
+        overrideWxLocation = true;
+        if (r.wxCoordsLat) {
+            wxCoordsLat = r.wxCoordsLat;
+        }
+        if (r.wxCoordsLong) {
+            wxCoordsLong = r.wxCoordsLong;
+        }
+    }
+
     if (localStorage.last_checked) {
         lastChecked = Number(localStorage.last_checked);
     }
 
+    var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx";
+    if (overrideWxLocation) {
+        requestUrl += `?coords=${wxCoordsLat},${wxCoordsLong}`;
+    }
+
     if (!lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)) {
-        xhr("http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx/", function(data){
+        xhr(requestUrl, function(data){
             data = JSON.parse(data);
 
             displayWeather(data);

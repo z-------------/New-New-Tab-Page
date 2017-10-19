@@ -35,6 +35,9 @@
         },
         "useFixedGrid": false,
         "fixedGridCols": 5,
-        "fixedGridRows": 5
+        "fixedGridRows": 5,
+        "overrideWxLocation": false,
+        "wxCoordsLat": 0,
+        "wxCoordsLong": 0
     }
 }
