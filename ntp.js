@@ -1057,8 +1057,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 3.6E+6)) {
               var feedlyURLs = [];
               for (url of feedurls) {
-                var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=100";
-                var proxyURL = "https://jsonp.afeld.me/?url=" + baseURL;
+                var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=20";
+                var proxyURL = "https://jsonproxy.herokuapp.com/?url=" + baseURL;
                 feedlyURLs.push(proxyURL);
               }
 
