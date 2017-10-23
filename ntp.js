@@ -1268,6 +1268,28 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     document.body.classList.add("customscrollbars");
   }
 
+  /* check for and display update messages from server */
+  xhr("http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/update-msg/latest.json", function(response) {
+    if (response) {
+      response = JSON.parse(response)
+      var lastDismissedTime = parseInt(localStorage.getItem("update_msg_last_dismissed_time"))
+      if (lastDismissedTime && lastDismissedTime > response.time) {
+        // don't display update message
+      } else {
+        // display update message
+        var messageElem = document.createElement("div")
+        messageElem.classList.add("update-msg")
+        messageElem.classList.add(`update-msg--${response.type}`)
+        messageElem.innerHTML = `<p>${response.title}<a href="http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/update-msg/latest.html">Read</a></p>`;
+        messageElem.querySelector("p a").addEventListener("click", function(e) {
+          localStorage.setItem("update_msg_last_dismissed_time", new Date().getTime().toString())
+          messageElem.classList.add("hidden")
+        })
+        document.body.appendChild(messageElem)
+      }
+    }
+  })
+
   console.log("\n\
   8b  8                     8b  8                     88888      8       888b.                 \n\
   8Ybm8 .d88b Yb  db  dP    8Ybm8 .d88b Yb  db  dP      8   .d88 88b.    8  .8 .d88 .d88 .d88b \n\

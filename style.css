@@ -1305,3 +1305,46 @@ input[type="text"], input[type="url"] {
 .awesomplete > ul > li[aria-selected="true"] {
     color: #fff !important;
 }
+
+.update-msg {
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 20px;
+  width: 500px;
+  height: 50px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  background: rgba(50, 50, 50, 0.9);
+  color: #ffffff;
+  border-radius: 4px;
+  z-index: 999999;
+  padding: 1.5px;
+  padding-left: 60px;
+  font-size: 1.2em;
+
+  transition-property: opacity;
+  transition-duration: 300ms;
+}
+
+.update-msg.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.update-msg--warning:before {
+  content: "";
+  background-image: url(/img/warning.svg);
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  background-size: cover;
+  left: 0;
+  margin: 10px;
+  margin-left: 20px;
+}
+
+.update-msg p a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #448AFF;
+  margin-left: 1em;
+}
