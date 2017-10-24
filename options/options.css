@@ -415,6 +415,12 @@ p {
     margin-right: 0.3em;
 }
 
+#customcss {
+  /* font stack based on https://css-tricks.com/snippets/css/font-stacks/ */
+  font-family: "Iosevka", "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Monaco", "Courier New", "Courier", monospace;
+  height: 100px;
+}
+
 @media only screen and (max-width: 1030px) {
     section {
         width: 100% !important;
