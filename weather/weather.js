@@ -95,8 +95,6 @@ function gotCoords() {
 }
 
 chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "wxCoordsLong", "wxUseGPS"], function (r) {
-    var lastChecked;
-
     if (r.useFahrenheit !== undefined) {
         useImperial = r.useFahrenheit;
     }
