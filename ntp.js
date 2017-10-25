@@ -966,7 +966,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     var sidebarOnFirstOpen = function(){
       /* weather */
-      sidebar.getElementById("weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
+      document.getElementById("weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
 
       /* news */
       function displayNews(items) {
