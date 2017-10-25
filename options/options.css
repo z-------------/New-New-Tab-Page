@@ -102,7 +102,6 @@ input[type=text], input[type=url], textarea {
     bottom: 10px;
     right: 10px;
     text-align: right;
-    width: 680px;
     z-index: 2;
 }
 
