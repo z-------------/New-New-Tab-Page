@@ -89,7 +89,6 @@ input[type=text], input[type=url], textarea {
 #vno {
     color: rgba(255, 255, 255, .5);
     font-size: 15px;
-    font-style: italic;
     font-weight: 100;
     position: fixed;
     top: 0;
