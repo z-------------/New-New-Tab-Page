@@ -229,12 +229,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
   });
 
   function main() {
-    var bgElem = document.getElementById("bg");
-    var whiteElem = document.getElementById("white");
-    var container = document.getElementById("container");
-    var drawer = document.getElementById("applist");
-    var sidebar = document.querySelector("#sidebar");
-    var style = document.createElement("style");
+    let bgElem = document.getElementById("bg"),
+        whiteElem = document.getElementById("white"),
+        container = document.getElementById("container"),
+        drawer = document.getElementById("applist"),
+        sidebar = document.getElementById("sidebar"),
+        style = document.createElement("style");
 
     bgElem.style.backgroundImage = "url(" + (background.images[0].uri || settings.background.images[0].uri) + ")";
     if (bgBlur) {
@@ -343,18 +343,18 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     document.getElementById("title").innerHTML = titleText;
 
     window.openAppsEditor = function(){
-      var editorContainer = document.querySelector("#apps-editor-container");
-      var editorElem = document.querySelector("#apps-editor");
-      var editorBtnsElem = document.querySelector("#apps-editor-buttons");
+      let editorContainer = document.getElementById("apps-editor-container"),
+          editorElem = document.getElementById("apps-editor"),
+          editorBtnsElem = document.getElementById("apps-editor-buttons");
       editorContainer.classList.add("opened");
 
-      var urlInput = document.querySelector("#editor-url");
-      var iconInput = document.querySelector("#editor-icon");
-      var iconFileInput = document.querySelector("#editor-icon-file");
-      var fetchIconBtn = document.querySelector("#editor-fetchicon");
-      var saveBtn = document.querySelector("#editor-save");
-      var cancelBtn = document.querySelector("#editor-cancel");
-      var closeBtn = document.querySelector("#editor-closeeditor");
+      let urlInput = document.getElementById("editor-url"),
+          iconInput = document.getElementById("editor-icon"),
+          iconFileInput = document.getElementById("editor-icon-file"),
+          fetchIconBtn = document.getElementById("editor-fetchicon"),
+          saveBtn = document.getElementById("editor-save"),
+          cancelBtn = document.getElementById("editor-cancel"),
+          closeBtn = document.getElementById("editor-closeeditor");
 
       var urlAutocompleteList = [];
 
@@ -378,7 +378,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             parser = new DOMParser();
             doc = parser.parseFromString(r, "text/html");
 
-            var linkTags = doc.querySelectorAll("link");
+            var linkTags = doc.getElementsByTagName("link");
             var icons = [].slice.call(linkTags).filter(function(tag){
               var attrRel = tag.getAttribute("rel");
               return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon" || attrRel === "icon";
@@ -585,10 +585,10 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       chrome.topSites.get(function(res){
         res.forEach(function(r){
           var url = r.url;
-          document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
+          document.getElementById("top-sites-datalist").innerHTML += "<option>" + url + "</option>";
         });
 
-        if (!document.querySelector("#awesomplete-script")) {
+        if (!document.getElementById("awesomplete-script")) {
           var scriptElem = document.createElement("script");
           scriptElem.src = "js/Awesomplete/awesomplete.min.js";
           document.body.appendChild(scriptElem);
@@ -608,7 +608,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
       });
 
-      if (!document.querySelector("#sortable-script")) {
+      if (!document.getElementById("sortable-script")) {
         var scriptElem = document.createElement("script");
         scriptElem.src = "js/Sortable/Sortable.min.js";
         document.body.appendChild(scriptElem);
@@ -628,7 +628,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         };
       }
 
-      if (!document.querySelector("#URI-script")) {
+      if (!document.getElementById("URI-script")) {
         var scriptElem = document.createElement("script");
         scriptElem.src = "js/URI.js/URI.js";
         document.body.appendChild(scriptElem);
@@ -636,7 +636,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       Object.keys(urlIconMap).forEach(function(url){
         url = "http://" + url;
-        document.querySelector("#top-sites-datalist").innerHTML += "<option>" + url + "</option>";
+        document.getElementById("top-sites-datalist").innerHTML += "<option>" + url + "</option>";
       });
 
       urlInput.addEventListener("awesomplete-selectcomplete", function(){
@@ -712,7 +712,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           recSiteElem.href = recSite.url;
           recSiteElem.innerHTML = "<div class='draweritem topsite' id='l" + i + "'>" + recSite.title + "</div>";
 
-          recSiteElem.querySelector("div").style.backgroundImage = "url(" + recSite.favIconUrl + ")";
+          recSiteElem.getElementsByTagName("div")[0].style.backgroundImage = "url(" + recSite.favIconUrl + ")";
 
           recentSitesList.appendChild(recSiteElem);
         }
@@ -723,8 +723,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     function getTopSites(res) {
       if (topSiteCount >= 1) {
+        let topSitesElem = document.getElementById("topsites");
         for (let i = 0; i < topSiteCount; i++) {
-          document.getElementById("topsites").innerHTML = document.getElementById("topsites").innerHTML + "<a href=" + res[i].url + "><div class=\"draweritem topsite\"id=l" + i + ">" + res[i].title + "</div></a>";
+          topSitesElem.innerHTML = topSitesElem.innerHTML + "<a href=" + res[i].url + "><div class=\"draweritem topsite\"id=l" + i + ">" + res[i].title + "</div></a>";
           document.getElementById("l" + i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.getDomain() + ")";
         }
       } else {
@@ -965,7 +966,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     var sidebarOnFirstOpen = function(){
       /* weather */
-      sidebar.querySelector("#weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
+      sidebar.getElementById("weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>";
 
       /* news */
       function displayNews(items) {
@@ -1047,7 +1048,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         document.getElementById("newslist").classList.remove("loading");
       }
 
-      if (!document.querySelector("#momentjs-script")) {
+      if (!document.getElementById("momentjs-script")) {
         var scriptElem = document.createElement("script");
         scriptElem.src = "js/Moment.js/moment.min.js";
         document.body.appendChild(scriptElem);
@@ -1196,7 +1197,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       /* make nav elem */
       var navElem = document.createElement("a");
       navElem.dataset.target = id;
-      sidebar.querySelector("nav").appendChild(navElem);
+      sidebar.getElementsByTagName("nav")[0].appendChild(navElem);
 
       /* make section elem */
       var sectionElem = document.createElement("section");
@@ -1205,11 +1206,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       sidebar.appendChild(sectionElem);
     }
 
-    document.querySelector("#sidebar-btn").addEventListener("click", function(){
+    document.getElementById("sidebar-btn").addEventListener("click", function(){
       toggleSidebar();
     });
     if (sidebarEnabled === false) {
-      document.querySelector("#sidebar-btn").style.display = "none";
+      document.getElementById("sidebar-btn").style.display = "none";
     }
 
     if (noAnimation) {
