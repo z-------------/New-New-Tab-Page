@@ -306,7 +306,7 @@ button {
 
 #appbutton {
     opacity: .7;
-    background: url("img/search.png");
+    background: url("img/search.svg");
     background-size: 50px 50px;
     bottom: 20px;
     cursor: pointer;
@@ -356,8 +356,8 @@ button {
 
 #close {
     opacity: .7;
-    background: url("img/cross.png") center no-repeat;
-    background-size: 40px 40px;
+    background: url("img/close.svg") center no-repeat;
+    background-size: 50px;
     cursor: pointer;
     height: 50px;
     margin: -25px 20px 0 0;
@@ -379,7 +379,7 @@ button {
 
 #optionbutton {
     opacity: .7;
-    background: url("img/options.png");
+    background: url("img/options.svg");
     background-size: 50px 50px;
     bottom: 20px;
     cursor: pointer;
@@ -421,25 +421,6 @@ button {
 #options::-webkit-scrollbar-thumb, #weatherframe::-webkit-scrollbar-thumb {
 	background: rgba(255, 255, 255, .3);
 }*/
-
-#closeopts {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    height: 35px;
-    width: 35px;
-    display: none;
-    background: url("img/cross.png") center no-repeat;
-    background-size: 35px 35px;
-    -webkit-filter: brightness(.7);
-    transition: all .2s;
-    z-index: 7;
-    cursor: pointer;
-}
-
-#closeopts:hover {
-    -webkit-filter: brightness(.5);
-}
 
 #weatherframe {
     width: 100%;
@@ -535,7 +516,8 @@ button {
 
 #appsicon {
     opacity: .7;
-    background: url("img/apps.png") center no-repeat;
+    background: url("img/apps.svg") center no-repeat;
+    background-size: 50px;
     cursor: pointer;
     height: 50px;
     width: 50px;
@@ -642,7 +624,8 @@ a {
 
 #bookmarks {
     opacity: .7;
-    background: url("img/bookmarks.png") center no-repeat;
+    background: url("img/bookmarks.svg") center no-repeat;
+    background-size: 50px;
     cursor: pointer;
     height: 50px;
     width: 50px;
