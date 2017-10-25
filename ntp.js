@@ -970,7 +970,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       /* news */
       function displayNews(items) {
         for (item of items) {
-          console.log(item);
+          // console.log(item);
 
           function stripTags(html) {
             return html.replace(/(<([^>]+)>)/ig, ""); // nifty regex by Chris Coyier of CSS-Tricks
@@ -1009,9 +1009,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
           var author;
           if (item.author) {
-            author = "by " + item.author + " at " + "<a target='_blank' href='" + source.url + "'>" + source.title + "</a>";
+            author = `<a target='_blank' href='${source.url}'>${source.title}</a> • by ${item.author}`;
           } else {
-            author = "<a target='_blank' href='" + source.url + "'>from " + source.title + "</a>";
+            author = `<a target='_blank' href='${source.url}'>${source.title}</a>`;
           }
 
           var publishedMoment = moment(Number(item.published));

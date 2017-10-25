@@ -879,6 +879,11 @@ a {
 
 .news-meta a {
     cursor: pointer;
+    transition: none;
+}
+
+.news-meta a:hover {
+  box-shadow: inset 0 -1px rgba(255, 255, 255, .5);
 }
 
 .news-time--short {
