@@ -88,13 +88,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     try {
       data = ctx.getImageData(0, 0, width, height).data;
 
-      for (var i = 0; i < width * 4; i += 4) {
+      for (let i = 0, l = width * 4; i < l; i += 4) {
         sum.r += data[i];
         sum.g += data[i + 1];
         sum.b += data[i + 2];
       }
 
-      for (var i = height * width * 4 - width * 4; i < height * width * 4; i += 4) {
+      for (let i = height * width * 4 - width * 4, l = height * width * 4; i < l; i += 4) {
         sum.r += data[i];
         sum.g += data[i + 1];
         sum.b += data[i + 2];
@@ -183,12 +183,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
   storage.get(settingsKeys, function (r) {
     var rKeys = Object.keys(r);
-    for (i = 0; i < rKeys.length; i++) {
+    for (let i = 0, l = rKeys.length; i < l; i++) {
       settings[rKeys[i]] = r[rKeys[i]];
     }
 
     settingsKeys = Object.keys(settings);
-    for (i = 0; i < settingsKeys.length; i++) {
+    for (let i = 0, l = settingsKeys.length; i < l; i++) {
       window[settingsKeys[i]] = settings[settingsKeys[i]]; // copy settings into global namespace (lazy laze, that's why)
       // so i dont have to do settings.foo every time
     }
@@ -304,7 +304,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
     }
 
-    for (i = 0; i < slotCount; i++) {
+    for (let i = 0; i < slotCount; i++) {
       var thisApp = document.createElement("div");
       thisApp.classList.add("app");
 
@@ -703,7 +703,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     function getRecentSites(res) {
       if (recSiteCount >= 1 && res.length >= 1) {
-        for (var i = 0; i < Math.min(recSiteCount, res.length); i++) {
+        for (let i = 0, l = Math.min(recSiteCount, res.length); i < l; i++) {
           var recSite = res[i].tab;
 
           var recentSitesList = document.getElementById("recentsites");
@@ -723,7 +723,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     function getTopSites(res) {
       if (topSiteCount >= 1) {
-        for (i = 0; i < topSiteCount; i++) {
+        for (let i = 0; i < topSiteCount; i++) {
           document.getElementById("topsites").innerHTML = document.getElementById("topsites").innerHTML + "<a href=" + res[i].url + "><div class=\"draweritem topsite\"id=l" + i + ">" + res[i].title + "</div></a>";
           document.getElementById("l" + i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.getDomain() + ")";
         }
@@ -735,7 +735,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     function getApps(res) {
       var appsArray = [];
 
-      for (i = 0; i < res.length; i++) {
+      for (let i = 0, l = res.length; i < l; i++) {
         if ((res[i].type === "hosted_app" || res[i].type === "packaged_app" || res[i].type === "legacy_packaged_app") && res[i].enabled === true) {
           var appObject = {};
           appObject.name = res[i].name;
@@ -762,7 +762,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         return b.clicks - a.clicks;
       });
 
-      for (i = 0; i < appsArray.length - 1; i++) {
+      for (let i = 0, l = appsArray.length - 1; i < l; i++) {
         var app = document.createElement("a");
         app.style.backgroundImage = "url(" + appsArray[i].icon + ")";
         app.classList.add("draweritem");
@@ -826,7 +826,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       appSearch.oninput = function () {
         var appElems = document.querySelectorAll(".drawerapp");
-        for (i = 0; i < appElems.length; i++) {
+        for (let i = 0, l = appElems.length; i < l; i++) {
           if (appElems[i].textContent.toLowerCase().indexOf(this.value.toLowerCase()) !== -1) {
             appElems[i].classList.remove("hidden");
           } else {
@@ -841,7 +841,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       if (document.getElementById("bmsearch").value == "") {
         document.getElementById("bookmarkslist").innerHTML = "<div id='bmsearchtip'>Search for bookmarks and results will appear here</div>";
       } else if (res.length > 0) {
-        for (var i = 0; i < res.length; i++) {
+        for (let i = 0, l = res.length; i < l; i++) {
           if (res[i].url.indexOf("javascript:") == -1 && res[i].url.indexOf("chrome://") == -1) {
             document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href=" + res[i].url + "><div class='bmsite' style='background-image:url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0, res[i].url.indexOf("/", 9)) + ")'>" + res[i].title + "</div></a>";
           }
@@ -854,7 +854,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     function getAllBookmarks(res) {
       document.getElementById("bookmarkslist").innerHTML = "";
       if (res.length > 0) {
-        for (var i = 0; i < res.length; i++) {
+        for (let i = 0, l = res.length; i < l; i++) {
           if (res[i].url.indexOf("javascript:") == -1) {
             document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href=" + res[i].url + "><div class=bmsite style=background-image:url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0, res[i].url.indexOf("/", 9)) + ")>" + res[i].title + "</div></a>";
           }
@@ -969,7 +969,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       /* news */
       function displayNews(items) {
-        for (item of items) {
+        for (let i = 0, l = items.length; i < l; i++) {
+          let item = items[i]
           // console.log(item);
 
           function stripTags(html) {
@@ -1056,7 +1057,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           if (navigator.onLine) {
             if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 3.6E+6)) {
               var feedlyURLs = [];
-              for (url of feedurls) {
+              for (let i = 0, l = feedurls.length; i < l; i++) {
+                let url = feedurls[i];
                 var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=20";
                 var proxyURL = "https://jsonproxy.herokuapp.com/?url=" + baseURL;
                 feedlyURLs.push(proxyURL);
@@ -1236,7 +1238,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       var sections = sidebar.querySelectorAll("section[data-id]");
       var links = sidebar.querySelectorAll("nav [data-target]");
 
-      for (var i = 0; i < sections.length; i++) {
+      for (let i = 0, l = sections.length; i < l; i++) {
         sections[i].classList.remove("current");
         links[i].classList.remove("current");
       }
