@@ -227,7 +227,7 @@ button {
     cursor: default;
     display: inline-block;
     font-size: 60px;
-    font-weight: 100;
+    font-weight: 300;
     margin-top: 15px;
     margin-left: 25px;
 }
@@ -338,7 +338,7 @@ button {
     border: none;
     color: rgba(0,0,0,.7);
     font-size: 47px;
-    font-weight: 100;
+    font-weight: 300;
     height: 55px;
     top: 50%;
     left: 50%;
@@ -537,10 +537,9 @@ button {
     color: rgba(255,255,255,.8);
     font-size: 20px;
     text-align: left;
-    font-style: italic;
     margin: 20px 0 15px 20px;
     position: relative;
-	height: 25px;
+	  height: 25px;
     font-weight: 400;
 }
 
