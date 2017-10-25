@@ -74,13 +74,16 @@ function displayWeather(data){
     document.body.classList.add("visible");
 }
 
+var dontUseCache;
+
 function gotCoords() {
     var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx";
     if (overrideWxLocation) {
         requestUrl += `?coords=${wxCoordsLat},${wxCoordsLong}`;
     }
 
-    if (!lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)) {
+    if (dontUseCache) {
+        console.log("getting fresh weather")
         xhr(requestUrl, function(data){
             data = JSON.parse(data);
 
@@ -90,6 +93,7 @@ function gotCoords() {
             localStorage.setItem("last_weather", JSON.stringify(data))
         });
     } else if (localStorage.last_weather) {
+        console.log("using cached weather")
         displayWeather(JSON.parse(localStorage.getItem("last_weather")));
     }
 }
@@ -109,7 +113,14 @@ chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "
         }
     }
 
-    if (r.wxUseGPS === true && overrideWxLocation === false) {
+    if (localStorage.last_checked) {
+        lastChecked = Number(localStorage.last_checked);
+        dontUseCache = !lastChecked || (new Date().getTime() - lastChecked >= 900000 && navigator.onLine)
+    } else {
+        dontUseCache = true;
+    }
+
+    if (dontUseCache && r.wxUseGPS === true && overrideWxLocation === false) {
         wxUseGPS = true;
         navigator.geolocation.getCurrentPosition((r) => {
             overrideWxLocation = true;
@@ -123,10 +134,6 @@ chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "
         });
     } else {
         gotCoords();
-    }
-
-    if (localStorage.last_checked) {
-        lastChecked = Number(localStorage.last_checked);
     }
 });
 
