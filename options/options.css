@@ -150,10 +150,10 @@ textarea {
 select {
     padding: 0 25px 0 5px;
     cursor: pointer;
-	background-image: url(/img/select-arrow.png);
-	background-repeat: no-repeat;
-	background-size: 10px;
-	background-position: calc(100% - 7px);
+  	background-image: url(/img/dropdown.svg);
+    background-repeat: no-repeat;
+    background-size: 17px;
+    background-position: calc(100% - 5px);
 }
 
 #slotselects {
