@@ -11,7 +11,7 @@
         "backgroundURL": "url(/img/bg.png)",
         "bgBlur": false,
         "disableAnimation": false,
-        "titleText": "New Tab",
+        "titleText": "",
         "showFB": false,
         "showFBNotif": false,
         "showStumble": false,
