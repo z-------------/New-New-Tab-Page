@@ -1283,7 +1283,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var messageElem = document.createElement("div")
         messageElem.classList.add("update-msg")
         messageElem.classList.add(`update-msg--${response.type}`)
-        messageElem.innerHTML = `<p>${response.title}<a href="http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/update-msg/latest.html">Read</a></p>`;
+        messageElem.innerHTML = `<p>${response.title}<a href="http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/update-msg/latest.html" target="_blank">Read</a></p>`;
         messageElem.querySelector("p a").addEventListener("click", function(e) {
           localStorage.setItem("update_msg_last_dismissed_time", new Date().getTime().toString())
           messageElem.classList.add("hidden")
