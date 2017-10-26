@@ -443,38 +443,6 @@ button {
     margin: 20px 10px 0 10px;
 }
 
-#fbmsg {
-    opacity: .7;
-    background: url("img/messenger.png") center no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    height: 50px;
-    transition: all .2s;
-    width: 50px;
-    display: none;
-    margin: 20px 10px 0 10px;
-}
-
-#fbmsg:hover {
-    opacity: 1;
-}
-
-#fbnotif {
-    opacity: .7;
-    background: url("img/notifs.png") center no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    height: 50px;
-    transition: all .2s;
-    width: 50px;
-    display: none;
-    margin: 20px 10px 0 10px;
-}
-
-#fbnotif:hover {
-    opacity: 1;
-}
-
 #appdrawerframe, #bmdrawerframe, #newsdrawerframe {
     width: 275px;
     height: 0;
@@ -591,34 +559,6 @@ a {
 
 .storelink:hover {
     color: rgba(255,255,255,.9);
-}
-
-#stumble {
-    opacity: .7;
-    background: url("img/stumble.png") center no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    height: 50px;
-    transition: all .2s;
-    display: none;
-    width: 50px;
-    margin: 20px 10px 0 10px;
-}
-
-#stumble:hover {
-    opacity: 1;
-}
-
-#sidewipe {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 0;
-    transition: all .2s;
-    z-index: 5;
-    background: #fff;
 }
 
 #bookmarks {
@@ -904,22 +844,6 @@ a {
 
 #newslist .error-msg.error--offline {
     background-image: url(/img/offline_cloud.svg);
-}
-
-#tumpost {
-    opacity: .7;
-    background: url("img/tumpost.png") center no-repeat;
-    background-size: contain;
-    cursor: pointer;
-    height: 50px;
-    transition: all .2s;
-    width: 50px;
-    display: none;
-    margin: 20px 10px 0 10px;
-}
-
-#tumpost:hover {
-    opacity: 1;
 }
 
 body.optsopened, .optsopened #bg {
