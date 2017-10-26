@@ -1,4 +1,4 @@
-# ![NNTP Icon](http://i.imgur.com/MuaXyc8.png) New New Tab Page
+# <img src="https://i.imgur.com/OHA0imv.png" alt="NNTP icon" width="32" /> New New Tab Page
 
 A minimal new tab page for Google Chrome
 
