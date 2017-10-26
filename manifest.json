@@ -5,6 +5,7 @@
     "content_security_policy": "script-src 'self'; object-src 'self'",
     "description": "A minimal new tab page replacement",
     "icons": {
+        "16": "img/icon16.png",
         "128": "img/icon128.png"
     },
     "author": "Zachary Guard",
