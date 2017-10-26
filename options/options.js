@@ -192,9 +192,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             readOption("wxCoordsLong", function (val){
                 document.getElementById("wx_coords_long").value = val;
             });
-            // readOption("wxUseGPS", function (val){
-            //     document.getElementById("wx_use_gps").checked = val;
-            // });
+            readOption("wxUseGPS", function (val){
+                document.getElementById("wx_use_gps").checked = val;
+            });
 
             chrome.storage.local.get("background", function (result) {
                 var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri;
@@ -232,7 +232,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         newSettings.overrideWxLocation = document.getElementById("override_wx_location").checked;
         newSettings.wxCoordsLat = Number(document.getElementById("wx_coords_lat").value) || 0;
         newSettings.wxCoordsLong = Number(document.getElementById("wx_coords_long").value) || 0;
-        // newSettings.wxUseGPS = document.getElementById("wx_use_gps").checked;
+        newSettings.wxUseGPS = document.getElementById("wx_use_gps").checked;
 
         var syncDone = false;
         var localDone = false;

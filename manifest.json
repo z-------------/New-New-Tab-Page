@@ -21,6 +21,7 @@
         "storage",
         "sessions",
         "tabs",
+        "geolocation",
         "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/",
         "*://*/*"
     ],
