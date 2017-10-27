@@ -46,6 +46,15 @@ h1:before {
   margin-left: -1.4em;
 }
 
+h1.easter-egged {
+  margin-left: 0;
+  color: inherit;
+}
+
+h1.easter-egged:before {
+  content: none;
+}
+
 h2 {
   font-weight: 300;
   margin-bottom: 10px;

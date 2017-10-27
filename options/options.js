@@ -277,6 +277,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     /* tell no-one */
 
     easterEgg = function() {
+        let h1Elem = document.getElementsByTagName("h1")[0];
+
         if (window.eggIndex === undefined) {
             window.eggIndex = 0;
         }
@@ -295,9 +297,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
 
         if (eggIndex === eggTitles.length) {
-            document.querySelector("h1").innerHTML = "New New Tab Page";
+            h1Elem.innerHTML = "New New Tab Page";
+            h1Elem.classList.remove("easter-egged");
         } else {
-            document.querySelector("h1").innerHTML = eggTitles[eggIndex];
+            h1Elem.innerHTML = eggTitles[eggIndex];
+            h1Elem.classList.add("easter-egged");
             eggIndex += 1;
         }
     }
