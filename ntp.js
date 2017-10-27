@@ -1039,9 +1039,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           </div>\
           </li>";
 
+          var imageURL;
           if (item.visual && item.visual.url && item.visual.url !== "none" && item.visual.contentType.match(/image\/*/gi)) {
-            newsItem.querySelector("li.news").style.backgroundImage = "url(" + item.visual.url + ")";
+            imageURL = item.visual.url;
+          } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
+            imageURL = item.thumbnail[item.thumbnail.length - 1].url;
           }
+          newsItem.querySelector("li.news").style.backgroundImage = "url(" + imageURL + ")";
 
           document.getElementById("newslist").appendChild(newsItem);
         };
