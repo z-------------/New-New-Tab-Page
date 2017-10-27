@@ -289,10 +289,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                 "<pre>new NewTabPage();</pre>", "Tab Page &Uuml;berneue",
                 "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;",
                 "#nntp4lyf", "<span>New New Tab Page, now available for Internet Explorer</span>",
-                "I mean Edge", "<span>Smosh isn't funny anymore</span>",
-                "<span>Don't you have better things to do?</span>",
+                "I mean Edge", "<span>Don't you have better things to do?</span>",
                 "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD",
-                "What are you still doing here?", "Go play Flappy Bird"
+                "What are you still doing here?", "<del>Go play Flappy Bird</del>"
             ];
         }
 
