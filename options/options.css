@@ -28,9 +28,22 @@ h1 {
 	font-weight: 300;
 	font-size: 75px;
 	margin: 0;
+  margin-bottom: 0.3em;
 	text-align: center;
 	cursor: default;
   user-select: none;
+  color: #ffffff;
+  margin-left: 1.4em;
+}
+
+h1:before {
+  content: "";
+  width: 1.2em;
+  height: 1.2em;
+  background-image: url(/img/icon128.png);
+  position: absolute;
+  background-size: contain;
+  margin-left: -1.4em;
 }
 
 h2 {
