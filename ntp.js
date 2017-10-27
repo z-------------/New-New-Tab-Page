@@ -1039,13 +1039,22 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           </div>\
           </li>";
 
-          var imageURL;
+          var imageURL = null;
           if (item.visual && item.visual.url && item.visual.url !== "none" && item.visual.contentType.match(/image\/*/gi)) {
             imageURL = item.visual.url;
           } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
             imageURL = item.thumbnail[item.thumbnail.length - 1].url;
+          } else if (item.content && item.content.content) {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(item.content.content, "text/html");
+            let imageElems = doc.getElementsByTagName("img");
+            if (imageElems[0] && imageElems[0].getAttribute("src")) {
+              imageURL = imageElems[0].src;
+            }
           }
-          newsItem.querySelector("li.news").style.backgroundImage = "url(" + imageURL + ")";
+          if (imageURL) {
+            newsItem.querySelector("li.news").style.backgroundImage = "url(" + imageURL + ")";
+          }
 
           document.getElementById("newslist").appendChild(newsItem);
         };
