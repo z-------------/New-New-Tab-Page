@@ -1,179 +1,179 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Options - New New Tab Page</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="/fonts/roboto.css">
-        <link rel="stylesheet" href="options.css">
-        <script src="/js/Sortable/Sortable.min.js"></script>
-        <base target="_top">
-    </head>
+  <head>
+    <title>Options - New New Tab Page</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/fonts/roboto.css">
+    <link rel="stylesheet" href="options.css">
+    <script src="/js/Sortable/Sortable.min.js"></script>
+    <base target="_top">
+  </head>
 
-    <body>
-        <span id="vno"></span>
-        <form>
-            <h1>New New Tab Page</h1>
+  <body>
+    <span id="vno"></span>
+    <form>
+      <h1>New New Tab Page</h1>
 
-            <section id="apps">
-                <h2>Shortcuts</h2>
-                <button id="edit-apps-btn"><span>Edit shortcuts</span></button>
-                <label>
-                    <span>Icon border radius (in %):</span>
-                    <input type="number" id="app_icon_border_radius" min="0" max="50" value="7.5">
-                </label>
-                <label class="full-width">
-                    <input type="checkbox" id="use_fixed_grid" />
-                    <span>Use fixed grid</span>:
-                    <input type="number" id="fixed_grid_cols" min="0" step="1" />
-                    <span>columns,</span>
-                    <input type="number" id="fixed_grid_rows" min="0" step="1" />
-                    <span>rows</span>
-                </label>
-            </section>
+      <section id="apps">
+        <h2>Shortcuts</h2>
+        <button id="edit-apps-btn"><span>Edit shortcuts</span></button>
+        <label>
+          <span>Icon border radius (in %):</span>
+          <input type="number" id="app_icon_border_radius" min="0" max="50" value="7.5">
+        </label>
+        <label class="full-width">
+          <input type="checkbox" id="use_fixed_grid" />
+          <span>Use fixed grid</span>:
+          <input type="number" id="fixed_grid_cols" min="0" step="1" />
+          <span>columns,</span>
+          <input type="number" id="fixed_grid_rows" min="0" step="1" />
+          <span>rows</span>
+        </label>
+      </section>
 
-            <section>
-                <h2>Background</h2>
-                <select id="bgopt">
-                    <option>Preset backgrounds</option>
-                    <option value="bg">KitKat - mountains</option>
-                    <option value="bg2">KitKat - abstract</option>
-                    <option value="bg4">Kanchenjunga 1</option>
-                    <option value="bg5">Kanchenjunga 2</option>
-                    <option value="bg3">Solid blue</option>
-                    <option value="bg6">Solid red</option>
-                    <option value="bg7">Solid black</option>
-                </select>
-                <br>
+      <section>
+        <h2>Background</h2>
+        <select id="bgopt">
+          <option>Preset backgrounds</option>
+          <option value="bg">KitKat - mountains</option>
+          <option value="bg2">KitKat - abstract</option>
+          <option value="bg4">Kanchenjunga 1</option>
+          <option value="bg5">Kanchenjunga 2</option>
+          <option value="bg3">Solid blue</option>
+          <option value="bg6">Solid red</option>
+          <option value="bg7">Solid black</option>
+        </select>
+        <br>
 
-                <label>
-                    <span>URL</span>
-                    <input type="text" id="custombg" placeholder="http://">
-                </label>
-                <br>
-                <label>
-                    <span>Local</span>
-                    <input type="button" value="Choose file" id="bglocalfacade">
-                    <input type="file" id="bglocal" accept="image/*">
-                </label>
+        <label>
+          <span>URL</span>
+          <input type="text" id="custombg" placeholder="http://">
+        </label>
+        <br>
+        <label>
+          <span>Local</span>
+          <input type="button" value="Choose file" id="bglocalfacade">
+          <input type="file" id="bglocal" accept="image/*">
+        </label>
 
-                <div id="bgpreview"></div>
+        <div id="bgpreview"></div>
 
-                <label>
-                    <input type="checkbox" id="bgblur">
-                    <span>Blur</span>
-                </label>
-            </section>
+        <label>
+          <input type="checkbox" id="bgblur">
+          <span>Blur</span>
+        </label>
+      </section>
 
-            <section>
-                <h2>Bookmarks & app drawer</h2>
-                <label>
-                    <span>No. of recently closed sites</span>
-                    <input type="number" id="recsitecount" min="0" max="20">
-                </label>
-                <label>
-                    <span>No. of top sites</span>
-                    <input type="number" id="topsitecount" min="0" max="20">
-                </label>
-                <label>
-                    <input type="checkbox" id="appsgridstyle">
-                    <span>Display apps as grid</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="autoclose">
-                    <span>Close tab after launching app</span>
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" id="showbookmarks">
-                    <span>Show bookmarks</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="showallbookmarks">
-                    <span>List all bookmarks</span>
-                </label>
-            </section>
+      <section>
+        <h2>Bookmarks & app drawer</h2>
+        <label>
+          <span>No. of recently closed sites</span>
+          <input type="number" id="recsitecount" min="0" max="20">
+        </label>
+        <label>
+          <span>No. of top sites</span>
+          <input type="number" id="topsitecount" min="0" max="20">
+        </label>
+        <label>
+          <input type="checkbox" id="appsgridstyle">
+          <span>Display apps as grid</span>
+        </label>
+        <label>
+          <input type="checkbox" id="autoclose">
+          <span>Close tab after launching app</span>
+        </label>
+        <br>
+        <label>
+          <input type="checkbox" id="showbookmarks">
+          <span>Show bookmarks</span>
+        </label>
+        <label>
+          <input type="checkbox" id="showallbookmarks">
+          <span>List all bookmarks</span>
+        </label>
+      </section>
 
-            <section>
-                <h2>Sidebar & news</h2>
-                <label>
-                    <input type="checkbox" id="sidebarenabled">
-                    <span>Enabled</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="showfb">
-                    <span>Facebook Messages</span>
-                </label>
-                <label>
-                    <input type="checkbox" id="shownotif">
-                    <span>Facebook Notifications</span>
-                </label>
-                <label class="full-width">
-                    <span>News feed URLs</span>
-                    <p>Enter the full URLs of the RSS feeds, one per line.</p>
-                    <textarea id="feedurls"></textarea>
-                </label>
-            </section>
+      <section>
+        <h2>Sidebar & news</h2>
+        <label>
+          <input type="checkbox" id="sidebarenabled">
+          <span>Enabled</span>
+        </label>
+        <label>
+          <input type="checkbox" id="showfb">
+          <span>Facebook Messages</span>
+        </label>
+        <label>
+          <input type="checkbox" id="shownotif">
+          <span>Facebook Notifications</span>
+        </label>
+        <label class="full-width">
+          <span>News feed URLs</span>
+          <p>Enter the full URLs of the RSS feeds, one per line.</p>
+          <textarea id="feedurls"></textarea>
+        </label>
+      </section>
 
-            <section>
-                <h2>Weather</h2>
-                <label>
-                    <input type="checkbox" id="wx_use_gps" />
-                    <span>Use GPS location if possible</span>
-                </label>
-                <label class="full-width">
-                    <input type="checkbox" id="override_wx_location" />
-                    <span>Force weather coordinates:</span>
-                    <input class="wider-number-input" type="number" min="-90" max="90" step="0.0001" id="wx_coords_lat" placeholder="lat" />
-                    <span>,</span>
-                    <input class="wider-number-input" type="number" min="-180" max="180" step="0.0001" id="wx_coords_long" placeholder="long" />
-                </label>
-                <p>
-                  <strong>Note:</strong> "force weather coordinates" overrides GPS location. If neither is enabled, your location is estimated from your IP address.
-                </p>
-            </section>
+      <section>
+        <h2>Weather</h2>
+        <label>
+          <input type="checkbox" id="wx_use_gps" />
+          <span>Use GPS location if possible</span>
+        </label>
+        <label class="full-width">
+          <input type="checkbox" id="override_wx_location" />
+          <span>Force weather coordinates:</span>
+          <input class="wider-number-input" type="number" min="-90" max="90" step="0.0001" id="wx_coords_lat" placeholder="lat" />
+          <span>,</span>
+          <input class="wider-number-input" type="number" min="-180" max="180" step="0.0001" id="wx_coords_long" placeholder="long" />
+        </label>
+        <p>
+          <strong>Note:</strong> "force weather coordinates" overrides GPS location. If neither is enabled, your location is estimated from your IP address.
+        </p>
+      </section>
 
-            <section>
-                <h2>Custom CSS</h2>
-                <label class="full-width">
-                    <p>Enter your custom CSS values here.</p>
-                    <textarea id="customcss"></textarea>
-                </label>
-            </section>
+      <section>
+        <h2>Custom CSS</h2>
+        <label class="full-width">
+          <p>Enter your custom CSS values here.</p>
+          <textarea id="customcss"></textarea>
+        </label>
+      </section>
 
-            <section>
-                <h2>Other</h2>
-                <label>
-                    <span>New Tab title text</span>
-                    <input type="text" id="titletext">
-                </label>
-                <br>
+      <section>
+        <h2>Other</h2>
+        <label>
+          <span>New Tab title text</span>
+          <input type="text" id="titletext">
+        </label>
+        <br>
 
-                <label>
-                    <input type="checkbox" id="disableanimation">
-                    <span>Disable animations</span>
-                </label>
-                <br>
+        <label>
+          <input type="checkbox" id="disableanimation">
+          <span>Disable animations</span>
+        </label>
+        <br>
 
-                <label>
-                    <input type="checkbox" id="usefahrenheit">
-                    <span>Use imperial units</span>
-                </label>
-            </section>
+        <label>
+          <input type="checkbox" id="usefahrenheit">
+          <span>Use imperial units</span>
+        </label>
+      </section>
 
-            <section class="notitle">
-                <button type="button" id="exportopts">Import/export options</button>
-                <button type="button" id="resetdefaults" style="background-color:rgb(200,50,50)">Reset to defaults</button><br>
-                <button type="button"><a href="https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc/support">Send feedback / get help</a></button>
-                <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page/issues">Submit a GitHub issue</a></button>
-                <button type="button"><a href="/credits.html">Credits</a></button>
-                <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page">View GitHub repo</a></button>
-            </section>
+      <section class="notitle">
+        <button type="button" id="exportopts">Import/export options</button>
+        <button type="button" id="resetdefaults" style="background-color:rgb(200,50,50)">Reset to defaults</button><br>
+        <button type="button"><a href="https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc/support">Send feedback / get help</a></button>
+        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page/issues">Submit a GitHub issue</a></button>
+        <button type="button"><a href="/credits.html">Credits</a></button>
+        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page">View GitHub repo</a></button>
+      </section>
 
-        </form>
-        <div id="bottomright">
-            <input type="button" id="save" value="Save" style="background-color:rgb(0,120,50)">
-        </div>
+    </form>
+    <div id="bottomright">
+      <input type="button" id="save" value="Save" style="background-color:rgb(0,120,50)">
+    </div>
 
-        <script src="options.js"></script>
-    </body>
+    <script src="options.js"></script>
+  </body>
 </html>
