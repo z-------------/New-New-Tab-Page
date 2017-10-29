@@ -1,27 +1,27 @@
 *, input[type=file]::-webkit-file-upload-button {
-    font-family: Roboto, sans-serif;
-    box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+  box-sizing: border-box;
 }
 
 :focus {
-    outline: none;
+  outline: none;
 }
 
 body, html {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    text-align: left;
-    padding-bottom: 100px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  padding-bottom: 100px;
 }
 
 body {
-    background-color: black;
+  background-color: black;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 h1 {
@@ -62,30 +62,30 @@ h2 {
 }
 
 form {
-    font-size: 20px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, .7);
-    margin-top: 100px;
-    width: 100%;
-    padding: 0 16%;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 100px;
+  width: 100%;
+  padding: 0 16%;
 	-webkit-perspective: 1000;
 }
 
 label {
-    font-size: 13px;
-    padding-left: 5px;
-    clear: both;
-    display: inline-block;
-    transition: opacity .3s;
+  font-size: 13px;
+  padding-left: 5px;
+  clear: both;
+  display: inline-block;
+  transition: opacity .3s;
 }
 
 label.full-width {
-    width: 100%;
-    display: block;
+  width: 100%;
+  display: block;
 }
 
 label > * {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 input, button {
@@ -93,126 +93,126 @@ input, button {
 }
 
 button {
-    cursor: pointer;
-    text-align: center;
-    padding: 1px 8px;
+  cursor: pointer;
+  text-align: center;
+  padding: 1px 8px;
 }
 
 input[type=text], input[type=url], textarea {
-    transition: .2s;
-    min-width: 175px;
-    padding: 1px 8px;
+  transition: .2s;
+  min-width: 175px;
+  padding: 1px 8px;
 }
 
 #vno {
-    color: rgba(255, 255, 255, .5);
-    font-size: 15px;
-    font-weight: 100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 20px;
+  color: rgba(255, 255, 255, .5);
+  font-size: 15px;
+  font-weight: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 20px;
 }
 
 #bottomright {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    text-align: right;
-    z-index: 2;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  text-align: right;
+  z-index: 2;
 }
 
 #save {
-    font-weight: 300;
-    font-size: 17px;
-    padding: 15px 20px;
-    height: auto;
+  font-weight: 300;
+  font-size: 17px;
+  padding: 15px 20px;
+  height: auto;
 }
 
 #save:hover {
-    color: white;
+  color: white;
 }
 
 ::selection {
-    color: #fff;
-    background-color: rgba(0, 0, 0, .2);
+  color: #fff;
+  background-color: rgba(0, 0, 0, .2);
 }
 
 input, select, input[type=file]::-webkit-file-upload-button, button, textarea {
-    height: 25px;
-    border: none;
-    background-color: rgba(255, 255, 255, .2);
-    box-shadow: none;
-    transition: .2s;
-    font-size: 12px;
-    margin: 4px;
-    -webkit-appearance: none;
-    border-radius: 4px;
-    color: rgba(255, 255, 255, .6);
+  height: 25px;
+  border: none;
+  background-color: rgba(255, 255, 255, .2);
+  box-shadow: none;
+  transition: .2s;
+  font-size: 12px;
+  margin: 4px;
+  -webkit-appearance: none;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, .6);
 }
 
 input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus, button:hover, button:focus, textarea:focus {
-    background-color: rgba(255, 255, 255, .3);
-    color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .7);
 }
 
 textarea {
-    width: calc(100% - 20px);
-    height: 75px;
-    padding: 5px;
-    resize: vertical;
+  width: calc(100% - 20px);
+  height: 75px;
+  padding: 5px;
+  resize: vertical;
 
-    transition-property: background, color;
+  transition-property: background, color;
 }
 
 select {
-    padding: 0 25px 0 5px;
-    cursor: pointer;
-  	background-image: url(/img/dropdown.svg);
-    background-repeat: no-repeat;
-    background-size: 17px;
-    background-position: calc(100% - 5px);
+  padding: 0 25px 0 5px;
+  cursor: pointer;
+  background-image: url(/img/dropdown.svg);
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: calc(100% - 5px);
 }
 
 #slotselects {
-    width: 432px;
-    margin: 0 auto 0 auto;
-    transition: height .2s;
-    text-align: center;
+  width: 432px;
+  margin: 0 auto 0 auto;
+  transition: height .2s;
+  text-align: center;
 }
 
 .longinput:focus {
-    width: 200px;
+  width: 200px;
 }
 
 input[type=checkbox] {
-    -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    transition: opacity .2s;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 4px;
-    margin-left: 0;
-    background: url(/img/checkbox.svg);
-    background-size: contain;
-    opacity: .7;
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  transition: opacity .2s;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 4px;
+  margin-left: 0;
+  background: url(/img/checkbox.svg);
+  background-size: contain;
+  opacity: .7;
 }
 
 input[type=checkbox]:checked {
-    background-image: url(/img/checkbox-filled.svg);
-    opacity: 1;
+  background-image: url(/img/checkbox-filled.svg);
+  opacity: 1;
 }
 
 input[type=checkbox]:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 input[type=number] {
-    padding: 0;
-    width: 50px;
-    text-align: center;
+  padding: 0;
+  width: 50px;
+  text-align: center;
 }
 
 input[type=number].wider-number-input {
@@ -220,156 +220,156 @@ input[type=number].wider-number-input {
 }
 
 #slotselects select {
-    width: 79px;
+  width: 79px;
 }
 
 #check {
-    float: left;
+  float: left;
 }
 
 option {
-    color: #000;
-    background-color: #fff;
+  color: #000;
+  background-color: #fff;
 }
 
 #bgpreview {
-    height: 200px;
-    width: 300px;
-    margin: 10px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, .5);
-    background-size: cover;
-    background-position: center;
+  height: 200px;
+  width: 300px;
+  margin: 10px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, .5);
+  background-size: cover;
+  background-position: center;
 }
 
 input[type=file] {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .3);
 }
 
 ul, ol {
-    list-style: none;
-    padding: 0;
-    overflow: hidden;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
 }
 
 li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #appopts ol {
-    transition: height .3s;
-    text-align: center;
+  transition: height .3s;
+  text-align: center;
 }
 
 .sortable-ghost {
-    opacity: 0;
+  opacity: 0;
 }
 
 #appopts li {
-    padding-left: 75px;
-    background-size: 55px;
-    background-repeat: no-repeat;
-    background-position: 5px 5px;
-    overflow: hidden;
-    height: 66px;
-    transition-duration: .2s;
-    transition-property: opacity;
-    display: inline-block;
-    margin: 0 25px;
-    position: relative;
-    cursor: -webkit-grab;
+  padding-left: 75px;
+  background-size: 55px;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  overflow: hidden;
+  height: 66px;
+  transition-duration: .2s;
+  transition-property: opacity;
+  display: inline-block;
+  margin: 0 25px;
+  position: relative;
+  cursor: -webkit-grab;
 }
 
 #appopts li:active {
-    background-color: #000;
+  background-color: #000;
 }
 
 #appopts li:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: rgba(255, 255, 255, .9);
-    text-shadow: 0 0 10px rgba(0, 0, 0, .7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, .9);
+  text-shadow: 0 0 10px rgba(0, 0, 0, .7);
 }
 
 #appopts li:nth-child(1):after {
-    content: "1";
+  content: "1";
 }
 
 #appopts li:nth-child(2):after {
-    content: "2";
+  content: "2";
 }
 
 #appopts li:nth-child(3):after {
-    content: "3";
+  content: "3";
 }
 
 #appopts li:nth-child(4):after {
-    content: "4";
+  content: "4";
 }
 
 #appopts li:nth-child(5):after {
-    content: "5";
+  content: "5";
 }
 
 #appopts li:nth-child(6):after {
-    content: "6";
+  content: "6";
 }
 
 #appopts li:nth-child(7):after {
-    content: "7";
+  content: "7";
 }
 
 #appopts li:nth-child(8):after {
-    content: "8";
+  content: "8";
 }
 
 #appopts li:nth-child(9):after {
-    content: "9";
+  content: "9";
 }
 
 #appopts li:nth-child(10):after {
-    content: "10";
+  content: "10";
 }
 
 #appopts li:nth-child(11):after {
-    content: "11";
+  content: "11";
 }
 
 #appopts li:nth-child(12):after {
-    content: "12";
+  content: "12";
 }
 
 #appopts li select {
-    display: block;
-    opacity: 0;
+  display: block;
+  opacity: 0;
 }
 
 #appopts li:hover select {
-    opacity: 1;
+  opacity: 1;
 }
 
 #appopts li.hidden {
-    display: none;
+  display: none;
 }
 
 section {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 section:not(#apps) {
-    width: 50%;
-    float: left;
+  width: 50%;
+  float: left;
 }
 
 h1 pre {
 	white-space: normal;
 	font-size: .9em;
-	font-family: Menlo, Consolas, "Courier New", Courier, monospace;
+	font-family: "Menlo", "Consolas", "Courier New", "Courier", monospace;
 }
 
 h1 span {
@@ -388,47 +388,47 @@ p {
 }
 
 .notitle {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 #apps h2 {
-    display: inline-block;
-    margin-right: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 #wx-coords-map {
-    height: 200px;
-    width: 100%;
-    margin: 10px;
+  height: 200px;
+  width: 100%;
+  margin: 10px;
 }
 
 #fb-login-frame {
-    border: none;
-    width: 100%;
-    height: 38px;
-    display: block;
+  border: none;
+  width: 100%;
+  height: 38px;
+  display: block;
 }
 
 #edit-apps-btn {
-    display: block;
-    width: 100%;
-    height: 100px;
-    border-radius: 0;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: block;
+  width: 100%;
+  height: 100px;
+  border-radius: 0;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #edit-apps-btn span:before {
-    content: "";
-    background-image: url(/img/edit.svg);
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    opacity: .7;
-    vertical-align: -0.1em;
-    margin-right: 0.3em;
+  content: "";
+  background-image: url(/img/edit.svg);
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  opacity: .7;
+  vertical-align: -0.1em;
+  margin-right: 0.3em;
 }
 
 #customcss {
@@ -438,9 +438,9 @@ p {
 }
 
 @media only screen and (max-width: 1030px) {
-    section {
-        width: 100% !important;
-    }
+  section {
+    width: 100% !important;
+  }
 }
 
 @media only screen and (max-width: 1252px) {
