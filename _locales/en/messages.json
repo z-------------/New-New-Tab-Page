@@ -155,6 +155,9 @@
   "optionsButtonRestoreDefaults": {
     "message": "Reset to defaults"
   },
+  "optionsButtonRestoreDefaultsConfirm": {
+    "message": "Click again to confirm"
+  },
   "optionsButtonEmail": {
     "message": "Send me an email"
   },

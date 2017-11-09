@@ -32,7 +32,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     var bgLocal = document.getElementById("bglocal");
 
     document.getElementById("resetdefaults").onclick = function () {
-        this.textContent = "Click again to confirm";
+        this.textContent = chrome.i18n.getMessage("optionsButtonRestoreDefaultsConfirm");
         this.onclick = function () {
             localStorage.clear();
             chrome.storage.sync.clear(function () {

@@ -54,7 +54,7 @@
     "message": "Edit shortcuts"
   },
   "optionsLabelIconBorderRadius": {
-    "message": "Icon border radius (in %):"
+    "message": "圖示邊框半徑 (%):"
   },
   "optionsLabelFixedGridToggle": {
     "message": "Use fixed grid"
@@ -126,7 +126,7 @@
     "message": "Use GPS location if possible"
   },
   "optionsToggleWeatherForceCoords": {
-    "message": "強制坐標："
+    "message": "強制坐標:"
   },
   "optionsHelpWeatherLocationOverrides": {
     "message": "Note: 'Force weather coordinates' overrides GPS location. If neither is enabled, your location is estimated from your IP address."
@@ -135,7 +135,7 @@
     "message": "自訂CSS"
   },
   "optionsHelpCustomCSS": {
-    "message": "Enter your custom CSS values here."
+    "message": "在此輸入您的自訂CSS規則。"
   },
   "optionsHeadingOther": {
     "message": "其他"
@@ -154,6 +154,9 @@
   },
   "optionsButtonRestoreDefaults": {
     "message": "重置為默認值"
+  },
+  "optionsButtonRestoreDefaultsConfirm": {
+    "message": "再次點擊確認"
   },
   "optionsButtonEmail": {
     "message": "Send me an email"
