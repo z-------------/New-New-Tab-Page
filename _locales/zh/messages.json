@@ -170,6 +170,9 @@
   "optionsButtonGitHubRepo": {
     "message": "查看 GitHub 儲存庫"
   },
+  "optionsButtonSave": {
+    "message": "保存"
+  },
   "optionsTitle": {
     "message": "選項",
     "description": "Text shown in tab title on options page alongside extension name"

@@ -170,6 +170,9 @@
   "optionsButtonGitHubRepo": {
     "message": "View GitHub repo"
   },
+  "optionsButtonSave": {
+    "message": "Save"
+  },
   "optionsTitle": {
     "message": "Options",
     "description": "Text shown in tab title on options page alongside extension name"
