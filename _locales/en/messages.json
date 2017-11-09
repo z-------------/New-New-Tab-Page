@@ -1,4 +1,8 @@
 {
+  "extensionName": {
+    "message": "New New Tab Page",
+    "description": "Name of the extension"
+  },
   "newTabPageTitle": {
     "message": "New Tab",
     "description": "Text to show in tab title on new tab page"
@@ -162,5 +166,9 @@
   },
   "optionsButtonGitHubRepo": {
     "message": "View GitHub repo"
+  },
+  "optionsTitle": {
+    "message": "Options",
+    "description": "Text shown in tab title on options page alongside extension name"
   }
 }
