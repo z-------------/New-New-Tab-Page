@@ -34,6 +34,7 @@ h1 {
   user-select: none;
   color: #ffffff;
   margin-left: 1.4em;
+  line-height: 1.25;
 }
 
 h1:before {
