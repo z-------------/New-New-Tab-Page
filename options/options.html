@@ -15,26 +15,26 @@
       <h1>New New Tab Page</h1>
 
       <section id="apps">
-        <h2>Shortcuts</h2>
-        <button id="edit-apps-btn"><span>Edit shortcuts</span></button>
+        <h2 data-msg-name="optionsHeadingShortcuts"></h2>
+        <button id="edit-apps-btn"><span data-msg-name="optionsButtonEditShortcuts"></span></button>
         <label>
-          <span>Icon border radius (in %):</span>
+          <span data-msg-name="optionsLabelIconBorderRadius"></span>
           <input type="number" id="app_icon_border_radius" min="0" max="50" value="7.5">
         </label>
         <label class="full-width">
           <input type="checkbox" id="use_fixed_grid" />
-          <span>Use fixed grid</span>:
+          <span data-msg-name="optionsLabelFixedGridToggle"></span>:
           <input type="number" id="fixed_grid_cols" min="0" step="1" />
-          <span>columns,</span>
+          <span data-msg-name="optionsLabelGridColumns"></span>
           <input type="number" id="fixed_grid_rows" min="0" step="1" />
-          <span>rows</span>
+          <span data-msg-name="optionsLabelGridRows"></span>
         </label>
       </section>
 
       <section>
-        <h2>Background</h2>
+        <h2 data-msg-name="optionsHeadingBackground"></h2>
         <select id="bgopt">
-          <option>Preset backgrounds</option>
+          <option data-msg-name="optionsLabelPresetBackgrounds"></option>
           <option value="bg">KitKat - mountains</option>
           <option value="bg2">KitKat - abstract</option>
           <option value="bg4">Kanchenjunga 1</option>
@@ -46,12 +46,12 @@
         <br>
 
         <label>
-          <span>URL</span>
+          <span data-msg-name="optionsLabelBackgroundURL"></span>
           <input type="text" id="custombg" placeholder="http://">
         </label>
         <br>
         <label>
-          <span>Local</span>
+          <span data-msg-name="optionsLabelLocalBackground"></span>
           <input type="button" value="Choose file" id="bglocalfacade">
           <input type="file" id="bglocal" accept="image/*">
         </label>
@@ -60,113 +60,111 @@
 
         <label>
           <input type="checkbox" id="bgblur">
-          <span>Blur</span>
+          <span data-msg-name="optionsToggleBackgroundBlur"></span>
         </label>
       </section>
 
       <section>
-        <h2>Bookmarks & app drawer</h2>
+        <h2 data-msg-name="optionsHeadingDrawers"></h2>
         <label>
-          <span>No. of recently closed sites</span>
+          <span data-msg-name="optionsLabelRecentlyClosedSitesCount"></span>
           <input type="number" id="recsitecount" min="0" max="20">
         </label>
         <label>
-          <span>No. of top sites</span>
+          <span data-msg-name="optionsLabelTopSitesCount"></span>
           <input type="number" id="topsitecount" min="0" max="20">
         </label>
         <label>
           <input type="checkbox" id="appsgridstyle">
-          <span>Display apps as grid</span>
+          <span data-msg-name="optionsToggleAppsGrid"></span>
         </label>
         <label>
           <input type="checkbox" id="autoclose">
-          <span>Close tab after launching app</span>
+          <span data-msg-name="optionsToggleCloseTabUponAppLaunch"></span>
         </label>
         <br>
         <label>
           <input type="checkbox" id="showbookmarks">
-          <span>Show bookmarks</span>
+          <span data-msg-name="optionsToggleShowBookmarks"></span>
         </label>
         <label>
           <input type="checkbox" id="showallbookmarks">
-          <span>List all bookmarks</span>
+          <span data-msg-name="optionsToggleListAllBookmarks"></span>
         </label>
       </section>
 
       <section>
-        <h2>Sidebar & news</h2>
+        <h2 data-msg-name="optionsHeadingSidebar"></h2>
         <label>
           <input type="checkbox" id="sidebarenabled">
-          <span>Enabled</span>
+          <span data-msg-name="optionsToggleEnabled"></span>
         </label>
         <label>
           <input type="checkbox" id="showfb">
-          <span>Facebook Messages</span>
+          <span data-msg-name="optionsToggleFacebookMessages"></span>
         </label>
         <label>
           <input type="checkbox" id="shownotif">
-          <span>Facebook Notifications</span>
+          <span data-msg-name="optionsToggleFacebookNotifications"></span>
         </label>
         <label class="full-width">
-          <span>News feed URLs</span>
-          <p>Enter the full URLs of the RSS feeds, one per line.</p>
+          <span data-msg-name="optionsLabelNewsRSSURLs"></span>
+          <p data-msg-name="optionsHelpNewsRSSURLs"></p>
           <textarea id="feedurls"></textarea>
         </label>
       </section>
 
       <section>
-        <h2>Weather</h2>
+        <h2 data-msg-name="optionsHeadingWeather"></h2>
         <label>
           <input type="checkbox" id="wx_use_gps" />
-          <span>Use GPS location if possible</span>
+          <span data-msg-name="optionsToggleWeatherGPS"></span>
         </label>
         <label class="full-width">
           <input type="checkbox" id="override_wx_location" />
-          <span>Force weather coordinates:</span>
+          <span data-msg-name="optionsToggleWeatherForceCoords"></span>
           <input class="wider-number-input" type="number" min="-90" max="90" step="0.0001" id="wx_coords_lat" placeholder="lat" />
           <span>,</span>
           <input class="wider-number-input" type="number" min="-180" max="180" step="0.0001" id="wx_coords_long" placeholder="long" />
         </label>
-        <p>
-          <strong>Note:</strong> "force weather coordinates" overrides GPS location. If neither is enabled, your location is estimated from your IP address.
-        </p>
+        <p data-msg-name="optionsHelpWeatherLocationOverrides"></p>
       </section>
 
       <section>
-        <h2>Custom CSS</h2>
+        <h2 data-msg-name="optionsHeadingCustomCSS"></h2>
         <label class="full-width">
-          <p>Enter your custom CSS values here.</p>
+          <p data-msg-name="optionsHelpCustomCSS"></p>
           <textarea id="customcss"></textarea>
         </label>
       </section>
 
       <section>
-        <h2>Other</h2>
+        <h2 data-msg-name="optionsHeadingOther"></h2>
         <label>
-          <span>New Tab title text</span>
+          <span data-msg-name="optionsLabelNewTabTitleText"></span>
           <input type="text" id="titletext">
         </label>
         <br>
 
         <label>
           <input type="checkbox" id="disableanimation">
-          <span>Disable animations</span>
+          <span data-msg-name="optionsToggleDisableAnimations"></span>
         </label>
         <br>
 
         <label>
           <input type="checkbox" id="usefahrenheit">
-          <span>Use imperial units</span>
+          <span data-msg-name="optionsToggleImperialUnits"></span>
         </label>
       </section>
 
       <section class="notitle">
-        <button type="button" id="exportopts">Import/export options</button>
-        <button type="button" id="resetdefaults" style="background-color:rgb(200,50,50)">Reset to defaults</button><br>
-        <button type="button"><a href="mailto:zacharguard@gmail.com?subject=New+New+Tab+Page+feedback" target="_blank">Send me an email</a></button>
-        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page/issues" target="_blank">Submit a GitHub issue</a></button>
-        <button type="button"><a href="/credits.html" target="_blank">Credits</a></button>
-        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page" target="_blank">View GitHub repo</a></button>
+        <button type="button" id="exportopts" data-msg-name="optionsButtonImportExport"></button>
+        <button type="button" id="resetdefaults" style="background-color:rgb(200,50,50)" data-msg-name="optionsButtonRestoreDefaults"></button><br>
+        <button type="button"><a href="mailto:zacharguard@gmail.com?subject=New+New+Tab+Page+feedback" target="_blank" data-msg-name="optionsButtonEmail"></a></button>
+        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page/issues" target="_blank" data-msg-name="optionsButtonGitHubIssue"></a></button>
+        <button type="button"><a href="/credits.html" target="_blank" data-msg-name="optionsButtonCredits"></a></button>
+        <button type="button"><a href="https://github.com/z-------------/New-New-Tab-Page" target="_blank" data-msg-name="optionsButtonGitHubRepo"></a></button>
       </section>
 
     </form>
@@ -175,5 +173,6 @@
     </div>
 
     <script src="options.js"></script>
+    <script src="/i18n.js" async></script>
   </body>
 </html>

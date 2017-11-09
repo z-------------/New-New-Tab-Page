@@ -42,5 +42,125 @@
   "bookmarksEmptyMessage": {
     "message": "Search for bookmarks and results will appear here",
     "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
+  },
+  "optionsHeadingShortcuts": {
+    "message": "Shortcuts"
+  },
+  "optionsButtonEditShortcuts": {
+    "message": "Edit shortcuts"
+  },
+  "optionsLabelIconBorderRadius": {
+    "message": "Icon border radius (in %):"
+  },
+  "optionsLabelFixedGridToggle": {
+    "message": "Use fixed grid"
+  },
+  "optionsLabelGridColumns": {
+    "message": "columns,"
+  },
+  "optionsLabelGridRows": {
+    "message": "rows"
+  },
+  "optionsHeadingBackground": {
+    "message": "Background"
+  },
+  "optionsLabelPresetBackgrounds": {
+    "message": "Preset backgrounds"
+  },
+  "optionsLabelBackgroundURL": {
+    "message": "URL"
+  },
+  "optionsLabelLocalBackground": {
+    "message": "Local"
+  },
+  "optionsToggleBackgroundBlur": {
+    "message": "Blur"
+  },
+  "optionsHeadingDrawers": {
+    "message": "Bookmarks & app drawer"
+  },
+  "optionsLabelRecentlyClosedSitesCount": {
+    "message": "No. of recently closed sites"
+  },
+  "optionsLabelTopSitesCount": {
+    "message": "No. of top sites"
+  },
+  "optionsToggleAppsGrid": {
+    "message": "Display apps as grid"
+  },
+  "optionsToggleCloseTabUponAppLaunch": {
+    "message": "Close tab after launching app"
+  },
+  "optionsToggleShowBookmarks": {
+    "message": "Show bookmarks"
+  },
+  "optionsToggleListAllBookmarks": {
+    "message": "List all bookmarks"
+  },
+  "optionsHeadingSidebar": {
+    "message": "Sidebar & news"
+  },
+  "optionsToggleEnabled": {
+    "message": "Enabled"
+  },
+  "optionsToggleFacebookMessages": {
+    "message": "Facebook Messages"
+  },
+  "optionsToggleFacebookNotifications": {
+    "message": "Facebook Notifications"
+  },
+  "optionsLabelNewsRSSURLs": {
+    "message": "News feed URLs"
+  },
+  "optionsHelpNewsRSSURLs": {
+    "message": "Enter the full URLs of the RSS feeds, one per line."
+  },
+  "optionsHeadingWeather": {
+    "message": "Weather"
+  },
+  "optionsToggleWeatherGPS": {
+    "message": "Use GPS location if possible"
+  },
+  "optionsToggleWeatherForceCoords": {
+    "message": "Force weather coordinates:"
+  },
+  "optionsHelpWeatherLocationOverrides": {
+    "message": "Note: 'Force weather coordinates' overrides GPS location. If neither is enabled, your location is estimated from your IP address."
+  },
+  "optionsHeadingCustomCSS": {
+    "message": "Custom CSS"
+  },
+  "optionsHelpCustomCSS": {
+    "message": "Enter your custom CSS values here."
+  },
+  "optionsHeadingOther": {
+    "message": "Other"
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "New Tab title text"
+  },
+  "optionsToggleDisableAnimations": {
+    "message": "Disable animations"
+  },
+  "optionsToggleImperialUnits": {
+    "message": "Use imperial units"
+  },
+  "optionsButtonImportExport": {
+    "message": "Import/export options"
+  },
+  "optionsButtonRestoreDefaults": {
+    "message": "Reset to defaults"
+  },
+  "optionsButtonEmail": {
+    "message": "Send me an email"
+  },
+  "optionsButtonGitHubIssue": {
+    "message": "Submit a GitHub issue"
+  },
+  "optionsButtonCredits": {
+    "message": "Credits"
+  },
+  "optionsButtonGitHubRepo": {
+    "message": "View GitHub repo"
   }
 }
