@@ -1,5 +1,5 @@
 *, input[type=file]::-webkit-file-upload-button {
-  font-family: Roboto, sans-serif;
+  font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
   box-sizing: border-box;
 }
 

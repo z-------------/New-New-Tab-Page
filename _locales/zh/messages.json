@@ -1,0 +1,174 @@
+{
+  "extensionName": {
+    "message": "新新標籤頁",
+    "description": "Name of the extension"
+  },
+  "newTabPageTitle": {
+    "message": "新標籤",
+    "description": "Text to show in tab title on new tab page"
+  },
+  "appsEditorURLLabel": {
+    "message": "網址",
+    "description": "Label for URL field in shortcuts editor"
+  },
+  "appsEditorIconLabel": {
+    "message": "圖示",
+    "description": "Label for icon field in shortcuts editor"
+  },
+  "appsEditorAutofindIconButton": {
+    "message": "自動找圖示",
+    "description": "Text for button for automatic icon-fetching in shortcuts editor"
+  },
+  "appsEditorCancelButton": {
+    "message": "取消",
+    "description": "Text for cancel button in shortcuts editor"
+  },
+  "appsEditorSaveButton": {
+    "message": "保存",
+    "description": "Text for save button in shortcuts editor"
+  },
+  "drawerRecentlyClosedHeading": {
+    "message": "最近關閉的分頁",
+    "description": "Heading for recently closed sites in drawer"
+  },
+  "drawerTopSitesHeading": {
+    "message": "Top sites",
+    "description": "Heading for most visited sites in drawer"
+  },
+  "drawerChromeAppsHeading": {
+    "message": "Chrome 應用程式",
+    "description": "Heading for Chrome Apps in drawer"
+  },
+  "bookmarksHeading": {
+    "message": "書籤",
+    "description": "Heading for bookmarks drawer"
+  },
+  "bookmarksEmptyMessage": {
+    "message": "在下面搜索，匹配的書籤將出現在這裡",
+    "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
+  },
+  "optionsHeadingShortcuts": {
+    "message": "Shortcuts"
+  },
+  "optionsButtonEditShortcuts": {
+    "message": "Edit shortcuts"
+  },
+  "optionsLabelIconBorderRadius": {
+    "message": "Icon border radius (in %):"
+  },
+  "optionsLabelFixedGridToggle": {
+    "message": "Use fixed grid"
+  },
+  "optionsLabelGridColumns": {
+    "message": "列"
+  },
+  "optionsLabelGridRows": {
+    "message": "行"
+  },
+  "optionsHeadingBackground": {
+    "message": "背景"
+  },
+  "optionsLabelPresetBackgrounds": {
+    "message": "預設背景"
+  },
+  "optionsLabelBackgroundURL": {
+    "message": "URL"
+  },
+  "optionsLabelLocalBackground": {
+    "message": "本地文件"
+  },
+  "optionsToggleBackgroundBlur": {
+    "message": "模糊"
+  },
+  "optionsHeadingDrawers": {
+    "message": "書籤及應用程序抽屜"
+  },
+  "optionsLabelRecentlyClosedSitesCount": {
+    "message": "No. of recently closed sites"
+  },
+  "optionsLabelTopSitesCount": {
+    "message": "No. of top sites"
+  },
+  "optionsToggleAppsGrid": {
+    "message": "Display apps as grid"
+  },
+  "optionsToggleCloseTabUponAppLaunch": {
+    "message": "Close tab after launching app"
+  },
+  "optionsToggleShowBookmarks": {
+    "message": "顯示書籤"
+  },
+  "optionsToggleListAllBookmarks": {
+    "message": "列出所有書籤"
+  },
+  "optionsHeadingSidebar": {
+    "message": "邊欄及新聞"
+  },
+  "optionsToggleEnabled": {
+    "message": "啟用"
+  },
+  "optionsToggleFacebookMessages": {
+    "message": "Facebook Messages"
+  },
+  "optionsToggleFacebookNotifications": {
+    "message": "Facebook Notifications"
+  },
+  "optionsLabelNewsRSSURLs": {
+    "message": "News feed URLs"
+  },
+  "optionsHelpNewsRSSURLs": {
+    "message": "輸入RSS源的完整URL，每行一個。"
+  },
+  "optionsHeadingWeather": {
+    "message": "天氣"
+  },
+  "optionsToggleWeatherGPS": {
+    "message": "Use GPS location if possible"
+  },
+  "optionsToggleWeatherForceCoords": {
+    "message": "強制坐標："
+  },
+  "optionsHelpWeatherLocationOverrides": {
+    "message": "Note: 'Force weather coordinates' overrides GPS location. If neither is enabled, your location is estimated from your IP address."
+  },
+  "optionsHeadingCustomCSS": {
+    "message": "自訂CSS"
+  },
+  "optionsHelpCustomCSS": {
+    "message": "Enter your custom CSS values here."
+  },
+  "optionsHeadingOther": {
+    "message": "其他"
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "New Tab title text"
+  },
+  "optionsToggleDisableAnimations": {
+    "message": "Disable animations"
+  },
+  "optionsToggleImperialUnits": {
+    "message": "使用英制單位"
+  },
+  "optionsButtonImportExport": {
+    "message": "導入/導出選項"
+  },
+  "optionsButtonRestoreDefaults": {
+    "message": "重置為默認值"
+  },
+  "optionsButtonEmail": {
+    "message": "Send me an email"
+  },
+  "optionsButtonGitHubIssue": {
+    "message": "Submit a GitHub issue"
+  },
+  "optionsButtonCredits": {
+    "message": "Credits"
+  },
+  "optionsButtonGitHubRepo": {
+    "message": "查看 GitHub 儲存庫"
+  },
+  "optionsTitle": {
+    "message": "選項",
+    "description": "Text shown in tab title on options page alongside extension name"
+  }
+}
