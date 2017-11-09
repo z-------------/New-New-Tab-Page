@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Tab</title>
+        <title data-msg-name="newTabPageTitle"></title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="fonts/roboto.css">
@@ -16,19 +16,19 @@
         <div id="apps-editor-container">
             <div id="apps-editor">
                 <label>
-                    <span>URL</span>
+                    <span data-msg-name="appsEditorURLLabel"></span>
                     <input type="text" placeholder="http://example.com" id="editor-url">
                 </label>
                 <label>
-                    <span>Icon</span>
+                    <span data-msg-name="appsEditorIconLabel"></span>
                     <input type="url" placeholder="http://example.com/icon.png" id="editor-icon">
-                    <button id="editor-fetchicon">Find one for me</button>
+                    <button id="editor-fetchicon" data-msg-name="appsEditorAutofindIconButton"></button>
                 </label>
                 <button id="editor-closeeditor">✕</button>
             </div>
             <div id="apps-editor-buttons">
-                <button id="editor-cancel">Cancel</button>
-                <button id="editor-save">Save</button>
+                <button id="editor-cancel" data-msg-name="appsEditorCancelButton"></button>
+                <button id="editor-save" data-msg-name="appsEditorSaveButton"></button>
             </div>
         </div>
         <div id="container"></div>
@@ -53,14 +53,14 @@
         <div id="appdrawerframe">
             <div id="actualdrawer">
                 <div class="drawersection" id="recentsites">
-                    <div class="drawerti" id="recmostvis">Recently Closed</div>
+                    <div class="drawerti" id="recmostvis" data-msg-name="drawerRecentlyClosedHeading"></div>
                 </div>
                 <div class="drawersection" id="topsites">
-                    <div class="drawerti" id="topmostvis">Top Sites</div>
+                    <div class="drawerti" id="topmostvis" data-msg-name="drawerTopSitesHeading"></div>
                 </div>
                 <div class="drawersection" id="applist">
                     <div class="drawerti">
-                        Chrome Apps
+                        <span data-msg-name="drawerChromeAppsHeading"></span>
                         <div class="drawerbtns">
                             <a href="https://chrome.google.com/webstore">
                                 <img src="img/cws2.svg">
@@ -78,11 +78,9 @@
         <div id="bookmarks"></div>
         <div id="bmdrawerframe">
             <div id="bmdrawer">
-                <div class="drawerti">
-                    Bookmarks
-                </div>
+                <div class="drawerti" data-msg-name="bookmarksHeading"></div>
                 <div id="bookmarkslist">
-                    <div id="bmsearchtip">Search for bookmarks and results will appear here</div>
+                    <div id="bmsearchtip" data-msg-name="bookmarksEmptyMessage"></div>
                 </div>
                 <input type="text" id="bmsearch" placeholder="Search">
             </div>
@@ -102,5 +100,6 @@
         <datalist id="top-sites-datalist"></datalist>
 
         <script src="ntp.js"></script>
+        <script src="i18n.js" async></script>
     </body>
 </html>

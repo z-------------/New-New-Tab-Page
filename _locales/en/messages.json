@@ -1,0 +1,46 @@
+{
+  "newTabPageTitle": {
+    "message": "New Tab",
+    "description": "Text to show in tab title on new tab page"
+  },
+  "appsEditorURLLabel": {
+    "message": "URL",
+    "description": "Label for URL field in shortcuts editor"
+  },
+  "appsEditorIconLabel": {
+    "message": "Icon",
+    "description": "Label for icon field in shortcuts editor"
+  },
+  "appsEditorAutofindIconButton": {
+    "message": "Find one for me",
+    "description": "Text for button for automatic icon-fetching in shortcuts editor"
+  },
+  "appsEditorCancelButton": {
+    "message": "Cancel",
+    "description": "Text for cancel button in shortcuts editor"
+  },
+  "appsEditorSaveButton": {
+    "message": "Save",
+    "description": "Text for save button in shortcuts editor"
+  },
+  "drawerRecentlyClosedHeading": {
+    "message": "Recently closed",
+    "description": "Heading for recently closed sites in drawer"
+  },
+  "drawerTopSitesHeading": {
+    "message": "Top sites",
+    "description": "Heading for most visited sites in drawer"
+  },
+  "drawerChromeAppsHeading": {
+    "message": "Chrome Apps",
+    "description": "Heading for Chrome Apps in drawer"
+  },
+  "bookmarksHeading": {
+    "message": "Bookmarks",
+    "description": "Heading for bookmarks drawer"
+  },
+  "bookmarksEmptyMessage": {
+    "message": "Search for bookmarks and results will appear here",
+    "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
+  }
+}

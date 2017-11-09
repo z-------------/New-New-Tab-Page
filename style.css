@@ -511,6 +511,11 @@ button {
   font-weight: 400;
 }
 
+.drawerti span {
+  color: inherit;
+  font-weight: inherit;
+}
+
 .draweritem {
   height: 30px;
   width: 185px;
