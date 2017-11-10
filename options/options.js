@@ -276,33 +276,37 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     /* shh! super-secret easter egg stuff! */
     /* tell no-one */
 
-    easterEgg = function() {
-        let h1Elem = document.getElementsByTagName("h1")[0];
+    if (chrome.i18n.getUILanguage().split("-")[0] === "en") {
+        easterEgg = function() {
+            let h1Elem = document.getElementsByTagName("h1")[0];
 
-        if (window.eggIndex === undefined) {
-            window.eggIndex = 0;
-        }
+            if (window.eggIndex === undefined) {
+                window.eggIndex = 0;
+            }
 
-        if (window.eggTitles === undefined) {
-            window.eggTitles = [
-                "New New New Tab Page", "2new4me Tab Page", "Page Tab New New",
-                "<pre>new NewTabPage();</pre>", "Tab Page &Uuml;berneue",
-                "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;",
-                "#nntp4lyf", "<span>New New Tab Page, now available for Internet Explorer</span>",
-                "I mean Edge", "<span>Don't you have better things to do?</span>",
-                "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD",
-                "What are you still doing here?", "<del>Go play Flappy Bird</del>"
-            ];
-        }
+            if (window.eggTitles === undefined) {
+                window.eggTitles = [
+                    "New New New Tab Page", "2new4me Tab Page", "Page Tab New New",
+                    "<pre>new NewTabPage();</pre>", "Tab Page &Uuml;berneue",
+                    "Not a New Tab Page", "N3W N3W 74B P493", "&#9731;",
+                    "#nntp4lyf", "<span>New New Tab Page, now available for Internet Explorer</span>",
+                    "I mean Edge", "<span>Don't you have better things to do?</span>",
+                    "&nbsp;", "&nbsp;", "&nbsp;", "boo", "LOL U JUST GOT PRANKD",
+                    "What are you still doing here?", "<del>Go play Flappy Bird</del>"
+                ];
+            }
 
-        if (eggIndex === eggTitles.length) {
-            h1Elem.innerHTML = "New New Tab Page";
-            h1Elem.classList.remove("easter-egged");
-        } else {
-            h1Elem.innerHTML = eggTitles[eggIndex];
-            h1Elem.classList.add("easter-egged");
-            eggIndex += 1;
+            if (eggIndex === eggTitles.length) {
+                h1Elem.innerHTML = "New New Tab Page";
+                h1Elem.classList.remove("easter-egged");
+            } else {
+                h1Elem.innerHTML = eggTitles[eggIndex];
+                h1Elem.classList.add("easter-egged");
+                eggIndex += 1;
+            }
         }
+    } else {
+        easterEgg = function() {}
     }
 
     document.querySelector("form").addEventListener("submit", function(e) {
