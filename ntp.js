@@ -245,15 +245,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     style.innerHTML = customCSS;
     document.getElementsByTagName("head")[0].appendChild(style);
 
-    function openIconURL(iconElement, e) {
+    function openIconURL(index, e) {
+      let url = apps[index].url;
+      let element = container.children[index];
       if (!document.querySelector("#apps-editor-container.opened")) {
         if (e.button == 1 || e.ctrlKey == true || e.metaKey == true) {
-          chrome.tabs.create({ url: iconElement.dataset.url , active: false });
+          chrome.tabs.create({ url: url , active: false });
         } else {
           chrome.tabs.getCurrent(function(r) {
             var currentTabId = r && r.id ? r.id : null;
-            white(iconElement, function(){
-              chrome.tabs.update(currentTabId, { url: iconElement.dataset.url });
+            white(element, function(){
+              chrome.tabs.update(currentTabId, { url: url });
             });
           });
         }
@@ -311,12 +313,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       //middle click moved from 'click' event to 'auxclick' event between chrome versions 52 and 55
       thisApp.addEventListener("auxclick", function (e) {
         if(e.button === 1){ //middle click only, not right click.
-          openIconURL(this, e);
+          openIconURL([].slice.call(this.parentElement.children).indexOf(this), e);
         }
       });
 
       thisApp.addEventListener("click", function (e) {
-        openIconURL(this, e);
+        openIconURL([].slice.call(this.parentElement.children).indexOf(this), e);
       });
 
       thisApp.addEventListener("mouseenter", function () {
