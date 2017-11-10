@@ -1,0 +1,180 @@
+{
+  "extensionName": {
+    "message": "New New Tab Page",
+    "description": "Name of the extension"
+  },
+  "newTabPageTitle": {
+    "message": "Nueva pestaña",
+    "description": "Text to show in tab title on new tab page"
+  },
+  "appsEditorURLLabel": {
+    "message": "URL",
+    "description": "Label for URL field in shortcuts editor"
+  },
+  "appsEditorIconLabel": {
+    "message": "Icono",
+    "description": "Label for icon field in shortcuts editor"
+  },
+  "appsEditorAutofindIconButton": {
+    "message": "Find one for me",
+    "description": "Text for button for automatic icon-fetching in shortcuts editor"
+  },
+  "appsEditorCancelButton": {
+    "message": "Cancelar",
+    "description": "Text for cancel button in shortcuts editor"
+  },
+  "appsEditorSaveButton": {
+    "message": "Guardar",
+    "description": "Text for save button in shortcuts editor"
+  },
+  "drawerRecentlyClosedHeading": {
+    "message": "Cerrado recientemente",
+    "description": "Heading for recently closed sites in drawer"
+  },
+  "drawerTopSitesHeading": {
+    "message": "Top sites",
+    "description": "Heading for most visited sites in drawer"
+  },
+  "drawerChromeAppsHeading": {
+    "message": "Apps de Chrome",
+    "description": "Heading for Chrome Apps in drawer"
+  },
+  "bookmarksHeading": {
+    "message": "Marcadores",
+    "description": "Heading for bookmarks drawer"
+  },
+  "bookmarksEmptyMessage": {
+    "message": "Search for bookmarks and results will appear here",
+    "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
+  },
+  "optionsHeadingShortcuts": {
+    "message": "Shortcuts"
+  },
+  "optionsButtonEditShortcuts": {
+    "message": "Edit shortcuts"
+  },
+  "optionsLabelIconBorderRadius": {
+    "message": "Icon border radius (in %):"
+  },
+  "optionsLabelFixedGridToggle": {
+    "message": "Use fixed grid"
+  },
+  "optionsLabelGridColumns": {
+    "message": "columns,"
+  },
+  "optionsLabelGridRows": {
+    "message": "rows"
+  },
+  "optionsHeadingBackground": {
+    "message": "Fondo"
+  },
+  "optionsLabelPresetBackgrounds": {
+    "message": "Preset backgrounds"
+  },
+  "optionsLabelBackgroundURL": {
+    "message": "URL"
+  },
+  "optionsLabelLocalBackground": {
+    "message": "Archivo local"
+  },
+  "optionsToggleBackgroundBlur": {
+    "message": "Difuminar"
+  },
+  "optionsHeadingDrawers": {
+    "message": "Marcadores y cajón de aplicaciones"
+  },
+  "optionsLabelRecentlyClosedSitesCount": {
+    "message": "No. de páginas cerradas recientemente"
+  },
+  "optionsLabelTopSitesCount": {
+    "message": "No. of top sites"
+  },
+  "optionsToggleAppsGrid": {
+    "message": "Display apps as grid"
+  },
+  "optionsToggleCloseTabUponAppLaunch": {
+    "message": "Close tab after launching app"
+  },
+  "optionsToggleShowBookmarks": {
+    "message": "Mostrar marcadores"
+  },
+  "optionsToggleListAllBookmarks": {
+    "message": "Enumerar todos los marcadores"
+  },
+  "optionsHeadingSidebar": {
+    "message": "Sidebar & news"
+  },
+  "optionsToggleEnabled": {
+    "message": "Habilitado"
+  },
+  "optionsToggleFacebookMessages": {
+    "message": "Facebook Messages"
+  },
+  "optionsToggleFacebookNotifications": {
+    "message": "Facebook Notifications"
+  },
+  "optionsLabelNewsRSSURLs": {
+    "message": "News feed URLs"
+  },
+  "optionsHelpNewsRSSURLs": {
+    "message": "Enter the full URLs of the RSS feeds, one per line."
+  },
+  "optionsHeadingWeather": {
+    "message": "Clima"
+  },
+  "optionsToggleWeatherGPS": {
+    "message": "Usar GPS si es posible"
+  },
+  "optionsToggleWeatherForceCoords": {
+    "message": "Force weather coordinates:"
+  },
+  "optionsHelpWeatherLocationOverrides": {
+    "message": "Note: 'Force weather coordinates' overrides GPS location. If neither is enabled, your location is estimated from your IP address."
+  },
+  "optionsHeadingCustomCSS": {
+    "message": "Custom CSS"
+  },
+  "optionsHelpCustomCSS": {
+    "message": "Enter your custom CSS values here."
+  },
+  "optionsHeadingOther": {
+    "message": "Otro"
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "New Tab title text"
+  },
+  "optionsToggleDisableAnimations": {
+    "message": "Disable animations"
+  },
+  "optionsToggleImperialUnits": {
+    "message": "Usar sistema imperial de unidades"
+  },
+  "optionsButtonImportExport": {
+    "message": "Import/export options"
+  },
+  "optionsButtonRestoreDefaults": {
+    "message": "Restablecer los valores predeterminados"
+  },
+  "optionsButtonRestoreDefaultsConfirm": {
+    "message": "Haga clic otra vez para confirmar"
+  },
+  "optionsButtonEmail": {
+    "message": "Send me an email"
+  },
+  "optionsButtonGitHubIssue": {
+    "message": "Submit a GitHub issue"
+  },
+  "optionsButtonCredits": {
+    "message": "Credits"
+  },
+  "optionsButtonGitHubRepo": {
+    "message": "View GitHub repo"
+  },
+  "optionsButtonSave": {
+    "message": "Guardar"
+  },
+  "optionsTitle": {
+    "message": "Configuración",
+    "description": "Text shown in tab title on options page alongside extension name"
+  }
+}
