@@ -248,7 +248,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     function openIconURL(index, e) {
       let url = apps[index].url;
       let element = container.children[index];
-      if (!document.querySelector("#apps-editor-container.opened")) {
+      if (!document.querySelector("#apps-editor-container").classList.contains("opened")) {
         if (e.button == 1 || e.ctrlKey == true || e.metaKey == true) {
           chrome.tabs.create({ url: url , active: false });
         } else {
