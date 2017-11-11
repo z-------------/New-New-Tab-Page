@@ -36,3 +36,5 @@ New New Tab Page should now be installed.
 ## Contributing
 
 Please feel free to submit pull requests or issues of any kind.
+
+Help with updating and completing the existing translations or starting new ones (in the `locales` directory) would also be greatly appreciated.
