@@ -494,7 +494,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         urlInput.value = appElem.dataset.url;
 
         var bgImg = appElem.style.backgroundImage;
-        iconInput.value = bgImg.substring(4, bgImg.length - 1);
+        iconInput.value = bgImg.substring(5, bgImg.length - 2);
 
         urlInput.onchange = function(){
           if (this.value.indexOf("://") === -1) this.value = "http://" + this.value;
