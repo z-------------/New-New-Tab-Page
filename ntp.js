@@ -454,7 +454,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         editorElem.style.top = appRects.top - editorRects.height - 20 + "px";
 
         editorRects = editorElem.getClientRects()[0];
-        console.log(editorRects)
+        // console.log(editorRects)
         if (editorRects.left < 0) {
           editorElem.style.marginLeft = Math.abs(editorRects.left) + "px";
         } else if (editorRects.right > window.innerWidth) {
@@ -1083,12 +1083,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
               var yqlQuery = "select items from json where url in ('" + feedlyURLs.join("', '") + "')";
               var yqlURL = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&diagnostics=true";
 
-              console.log(yqlQuery);
-              console.log(yqlURL);
+              // console.log(yqlQuery);
+              // console.log(yqlURL);
 
               xhr(yqlURL, function(res) {
                 var json = JSON.parse(res);
-                console.log(json);
+                // console.log(json);
                 if (json.query && json.query.results && json.query.results.json) {
                   console.log("using fresh news");
 
