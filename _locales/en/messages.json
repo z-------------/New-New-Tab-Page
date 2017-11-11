@@ -159,7 +159,7 @@
     "message": "Click again to confirm"
   },
   "optionsButtonEmail": {
-    "message": "Send me an email"
+    "message": "Email the developer"
   },
   "optionsButtonGitHubIssue": {
     "message": "Submit a GitHub issue"
@@ -176,5 +176,8 @@
   "optionsTitle": {
     "message": "Options",
     "description": "Text shown in tab title on options page alongside extension name"
+  },
+  "optionsHelpContact": {
+    "message": "The best way to reach me about issues, feedback, suggestions, or support is via the above two options 😊"
   }
 }

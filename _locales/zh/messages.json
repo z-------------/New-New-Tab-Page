@@ -159,7 +159,7 @@
     "message": "再次點擊確認"
   },
   "optionsButtonEmail": {
-    "message": "Send me an email"
+    "message": "Email the developer"
   },
   "optionsButtonGitHubIssue": {
     "message": "Submit a GitHub issue"
