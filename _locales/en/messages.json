@@ -135,7 +135,7 @@
     "message": "Custom CSS"
   },
   "optionsHelpCustomCSS": {
-    "message": "Enter your custom CSS values here."
+    "message": "Enter your custom CSS stylesheet here."
   },
   "optionsHeadingOther": {
     "message": "Other"
