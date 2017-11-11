@@ -48,16 +48,16 @@
     "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
   },
   "optionsHeadingShortcuts": {
-    "message": "Shortcuts"
+    "message": "捷徑"
   },
   "optionsButtonEditShortcuts": {
-    "message": "Edit shortcuts"
+    "message": "編輯捷徑"
   },
   "optionsLabelIconBorderRadius": {
     "message": "圖示邊框半徑 (%):"
   },
   "optionsLabelFixedGridToggle": {
-    "message": "Use fixed grid"
+    "message": "使用固定佈局"
   },
   "optionsLabelGridColumns": {
     "message": "列"
@@ -93,7 +93,7 @@
     "message": "Display apps as grid"
   },
   "optionsToggleCloseTabUponAppLaunch": {
-    "message": "Close tab after launching app"
+    "message": "打開應用程式後關閉新標籤"
   },
   "optionsToggleShowBookmarks": {
     "message": "顯示書籤"
@@ -114,16 +114,16 @@
     "message": "Facebook Notifications"
   },
   "optionsLabelNewsRSSURLs": {
-    "message": "News feed URLs"
+    "message": "新聞 RSS 源"
   },
   "optionsHelpNewsRSSURLs": {
-    "message": "輸入RSS源的完整URL，每行一個。"
+    "message": "輸入 RSS 源的完整 URL，每行一個。"
   },
   "optionsHeadingWeather": {
     "message": "天氣"
   },
   "optionsToggleWeatherGPS": {
-    "message": "Use GPS location if possible"
+    "message": "如果可能，使用 GPS 位置"
   },
   "optionsToggleWeatherForceCoords": {
     "message": "強制坐標:"
@@ -132,10 +132,10 @@
     "message": "Note: 'Force weather coordinates' overrides GPS location. If neither is enabled, your location is estimated from your IP address."
   },
   "optionsHeadingCustomCSS": {
-    "message": "自訂CSS"
+    "message": "自訂 CSS"
   },
   "optionsHelpCustomCSS": {
-    "message": "在此輸入您的自訂CSS規則。"
+    "message": "在此輸入您的自訂 CSS 規則。"
   },
   "optionsHeadingOther": {
     "message": "其他"
