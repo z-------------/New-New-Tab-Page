@@ -170,5 +170,17 @@
   },
   "optionsButtonCredits": {
     "message": "Reconocimientos"
+  },
+  "importexportHeadingExport": {
+    "message": "Exportar",
+    "description": "Heading shown above export data"
+  },
+  "importexportHeadingImport": {
+    "message": "Importar",
+    "description": "Heading shown above import data input field"
+  },
+  "importexportButtonImport": {
+    "message": "Importar",
+    "description": "Button to start import process"
   }
 }
