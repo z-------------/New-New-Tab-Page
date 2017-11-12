@@ -83,7 +83,7 @@ let next = function(key) {
       var newMessageData = { message: newTranslation }
       if (description) newMessageData.description = description
       currentLocale[key] = newMessageData
-      fs.writeFile(path.join(LOCALES_DIR, locale, "messages.json"), JSON.stringify(currentLocale, null, 2), (err) => {
+      fs.writeFile(path.join(LOCALES_DIR, locale, "messages.json"), JSON.stringify(currentLocale, null, 2) + "\n", (err) => {
         if (err) throw err
         next(keysToAdd[keysToAdd.indexOf(key) + 1])
       })
