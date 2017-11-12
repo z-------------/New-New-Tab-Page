@@ -164,5 +164,11 @@
   },
   "optionsLabelNewTabTitleText": {
     "message": "Texto en el encabezado"
+  },
+  "optionsButtonEmail": {
+    "message": "Enviar un email al desarrollador"
+  },
+  "optionsButtonCredits": {
+    "message": "Reconocimientos"
   }
 }
