@@ -67,7 +67,7 @@ let getLocaleProgress = function(localeToCheck) {
 
 let startEditing = function(chosenLocale) {
   locale = chosenLocale
-  console.log(`\nWorking on locale ${styles.BRIGHT}${locale}${styles.RESET}.`)
+  // console.log(`\nWorking on locale ${styles.BRIGHT}${locale}${styles.RESET}.`)
 
   fs.readFile(path.join(LOCALES_DIR, locale, "messages.json"), (err, data) => {
     if (err) throw err
@@ -85,26 +85,31 @@ let startEditing = function(chosenLocale) {
 }
 
 let next = function(key) {
-  let defaultMessage = defaultLocale[key].message
-  let description = defaultLocale[key].description
-  console.log(`\n┌─${styles.BRIGHT}${key}${styles.RESET}──\n│`)
-  if (description) {
-    console.log(`│ ${styles.BRIGHT}Description${styles.RESET}: ${description}`)
-  }
-  console.log(`│ ${styles.BRIGHT}Message in ${manifest.default_locale}${styles.RESET}: ${defaultMessage}`)
-  rl.question(`│ ${styles.BRIGHT}${styles.UNDERSCORE}Translation for ${locale}${styles.RESET}: `, (newTranslation) => {
-    if (newTranslation.length > 0) {
-      var newMessageData = { message: newTranslation }
-      if (description) newMessageData.description = description
-      currentLocale[key] = newMessageData
-      fs.writeFile(path.join(LOCALES_DIR, locale, "messages.json"), JSON.stringify(currentLocale, null, 2) + "\n", (err) => {
-        if (err) throw err
-        console.log("│\n└────────────────────────")
-        next(keysToAdd[keysToAdd.indexOf(key) + 1])
-      })
-    } else {
-      console.log("│\n└─Skipped. Moving on...──")
-      next(keysToAdd[keysToAdd.indexOf(key) + 1])
+  if (key && defaultLocale[key]) {
+    let defaultMessage = defaultLocale[key].message
+    let description = defaultLocale[key].description
+    console.log(`\n┌─${styles.BRIGHT}${key}${styles.RESET}──\n│`)
+    if (description) {
+      console.log(`│ ${styles.BRIGHT}Description${styles.RESET}: ${description}`)
     }
-  })
+    console.log(`│ ${styles.BRIGHT}Message in ${manifest.default_locale}${styles.RESET}: ${defaultMessage}`)
+    rl.question(`│ ${styles.BRIGHT}${styles.UNDERSCORE}Translation for ${locale}${styles.RESET}: `, (newTranslation) => {
+      if (newTranslation.length > 0) {
+        var newMessageData = { message: newTranslation }
+        if (description) newMessageData.description = description
+        currentLocale[key] = newMessageData
+        fs.writeFile(path.join(LOCALES_DIR, locale, "messages.json"), JSON.stringify(currentLocale, null, 2) + "\n", (err) => {
+          if (err) throw err
+          console.log("│\n└────────────────────────")
+          next(keysToAdd[keysToAdd.indexOf(key) + 1])
+        })
+      } else {
+        console.log("│\n└─Skipped. Moving on...──")
+        next(keysToAdd[keysToAdd.indexOf(key) + 1])
+      }
+    })
+  } else {
+    console.log(`\n${styles.BRIGHT}That's all for locale ${locale}${styles.RESET}. Exiting.`)
+    process.exit(0)
+  }
 }
