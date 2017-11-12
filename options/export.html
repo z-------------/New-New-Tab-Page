@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
     <head>
-        <title>Import / Export options - New New Tab Page</title>
+        <title data-msg-template="${optionsButtonImportExport} - ${extensionName}"></title>
         <link rel="stylesheet" href="/fonts/roboto.css">
         <style>
             * {
                 box-sizing: border-box;
-                font-family: Roboto, sans-serif;
+                font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
                 margin: 0;
                 padding: 0;
                 color: white;
@@ -36,7 +36,7 @@
                 margin: 10px 0;
                 padding: 10px;
                 font-size: 15px;
-                font-family: Menlo, Consolas, "Courier New", Courier, monospace;
+                font-family: "Iosevka", "Roboto Mono", "Menlo", "Inconsolata", "Consolas", "Courier New", "Courier", monospace;
             }
             textarea:focus {
                 border-color: white;
@@ -53,21 +53,22 @@
 
     <body>
         <header>
-            <h1>Import / Export options - New New Tab Page</h1>
-            <a href="#" id="backbtn">&lt; Back</a>
+            <h1 data-msg-template="${optionsButtonImportExport} - ${extensionName}"></h1>
+            <a href="#" id="backbtn" data-msg-name="importexportButtonBack"></a>
         </header>
 
         <section id="export">
-            <h2>Export</h2>
+            <h2 data-msg-name="importexportHeadingExport"></h2>
             <textarea></textarea>
         </section>
 
         <section id="import">
-            <h2>Import</h2>
+            <h2 data-msg-name="importexportHeadingImport"></h2>
             <textarea></textarea>
-            <button>Import</button>
+            <button data-msg-name="importexportButtonImport"></button>
         </section>
 
         <script src="export.js"></script>
+        <script src="/i18n.js" async></script>
     </body>
 </html>

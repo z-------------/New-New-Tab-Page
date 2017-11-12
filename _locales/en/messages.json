@@ -191,5 +191,21 @@
   },
   "optionsHelpContact": {
     "message": "The best way to reach me about issues, feedback, suggestions, or support is via the above two options 😊"
+  },
+  "importexportButtonBack": {
+    "message": "Back",
+    "description": "Button shown in Import/export options taking user back to options page"
+  },
+  "importexportHeadingExport": {
+    "message": "Export",
+    "description": "Heading shown above export data"
+  },
+  "importexportHeadingImport": {
+    "message": "Import",
+    "description": "Heading shown above import data input field"
+  },
+  "importexportButtonImport": {
+    "message": "Import",
+    "description": "Button to start import process"
   }
 }
