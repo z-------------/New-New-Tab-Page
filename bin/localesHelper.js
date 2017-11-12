@@ -13,12 +13,19 @@ const PROJECT_ROOT = path.join(__dirname, "..")
 const manifest = require(path.join(PROJECT_ROOT, "manifest.json"))
 const LOCALES_DIR = path.join(PROJECT_ROOT, "_locales")
 
-var locale, defaultLocale, currentLocale
+var locale, currentLocale
 var keysToAdd = []
+let defaultLocale = require(path.join(LOCALES_DIR, manifest.default_locale, "messages.json"))
+let defaultLocaleKeys = Object.keys(defaultLocale)
 
 fs.readdir(LOCALES_DIR, (err, existingLocales) => {
-  console.log(`\nDefault locale:   ${manifest.default_locale}`)
-  console.log(`Existing locales: ${existingLocales.join(", ")}`)
+  console.log(`\nDefault locale  : ${manifest.default_locale}`)
+
+  existingLocalesString = existingLocales.map((localeName) => {
+    return `${localeName} (${Math.floor(getLocaleProgress(localeName) * 100)}%)`
+  })
+  console.log(`Existing locales: ${existingLocalesString.join(", ")}`)
+
   rl.question("\nWork on {e}xisting locale, or start a {n}ew one? ", (mode) => {
     if (mode === "e" || mode === "n") {
       rl.question("\nLocale code? ", (chosenLocale) => {
@@ -42,12 +49,15 @@ fs.readdir(LOCALES_DIR, (err, existingLocales) => {
   })
 })
 
+let getLocaleProgress = function(localeToCheck) {
+  let fileContents = fs.readFileSync(path.join(LOCALES_DIR, localeToCheck, "messages.json"))
+  let localeKeys = Object.keys(JSON.parse(fileContents))
+  return localeKeys.length / defaultLocaleKeys.length
+}
+
 let startEditing = function(chosenLocale) {
   locale = chosenLocale
   console.log(`\nWorking on locale ${locale}.`)
-
-  defaultLocale = require(path.join(LOCALES_DIR, manifest.default_locale, "messages.json"))
-  let defaultLocaleKeys = Object.keys(defaultLocale)
 
   fs.readFile(path.join(LOCALES_DIR, locale, "messages.json"), (err, data) => {
     if (err) throw err
