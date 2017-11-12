@@ -155,5 +155,14 @@
   },
   "optionsHelpContact": {
     "message": "La mejor manera de comunicarse conmigo sobre problemas, comentarios, sugerencias o asistencia es a través de las dos opciones anteriores 😊"
+  },
+  "optionsLabelPresetBackgrounds": {
+    "message": "Fondos preestablecidos"
+  },
+  "optionsHelpCustomCSS": {
+    "message": "Ingrese su hoja de estilos CSS aquí."
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "Texto en el encabezado"
   }
 }
