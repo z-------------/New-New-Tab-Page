@@ -20,3 +20,15 @@ for (let i = 0, l = i18nTemplateElems.length; i < l; i++) {
   }
   elem.textContent = finalString;
 }
+
+let i18nAttrMapElems = document.querySelectorAll("[data-msg-attr-map]");
+for (let i = 0, l = i18nAttrMapElems.length; i < l; i++) {
+  let elem = i18nAttrMapElems[i];
+  let mappings = elem.dataset.msgAttrMap.split(";").map(function(val) {
+    return val.split(":");
+  });
+  for (let j = 0, m = mappings.length; j < m; j++) {
+    let mapping = mappings[j];
+    elem.setAttribute(mapping[0], chrome.i18n.getMessage(mapping[1]));
+  }
+}
