@@ -9,6 +9,16 @@ const rl = readline.createInterface({
   output: process.stdout
 })
 
+const styles = {
+  RESET: "\x1b[0m",
+  BRIGHT: "\x1b[1m",
+  DIM: "\x1b[2m",
+  UNDERSCORE: "\x1b[4m",
+  BLINK: "\x1b[5m",
+  REVERSE: "\x1b[7m",
+  HIDDEN: "\x1b[8m"
+}
+
 const PROJECT_ROOT = path.join(__dirname, "..")
 const manifest = require(path.join(PROJECT_ROOT, "manifest.json"))
 const LOCALES_DIR = path.join(PROJECT_ROOT, "_locales")
@@ -19,16 +29,16 @@ let defaultLocale = require(path.join(LOCALES_DIR, manifest.default_locale, "mes
 let defaultLocaleKeys = Object.keys(defaultLocale)
 
 fs.readdir(LOCALES_DIR, (err, existingLocales) => {
-  console.log(`\nDefault locale  : ${manifest.default_locale}`)
+  console.log(`\n${styles.BRIGHT}Default locale${styles.RESET}  : ${manifest.default_locale}`)
 
   existingLocalesString = existingLocales.map((localeName) => {
     return `${localeName} (${Math.floor(getLocaleProgress(localeName) * 100)}%)`
   })
-  console.log(`Existing locales: ${existingLocalesString.join(", ")}`)
+  console.log(`${styles.BRIGHT}Existing locales${styles.RESET}: ${existingLocalesString.join(", ")}`)
 
-  rl.question("\nWork on {e}xisting locale, or start a {n}ew one? ", (mode) => {
+  rl.question(`\n${styles.UNDERSCORE}Work on {e}xisting locale, or start a {n}ew one?${styles.RESET} `, (mode) => {
     if (mode === "e" || mode === "n") {
-      rl.question("\nLocale code? ", (chosenLocale) => {
+      rl.question(`\n${styles.UNDERSCORE}Locale code?${styles.RESET} `, (chosenLocale) => {
         if (mode === "n") {
           fs.mkdir(path.join(LOCALES_DIR, chosenLocale), (err) => {
             if (err) throw err
@@ -43,7 +53,7 @@ fs.readdir(LOCALES_DIR, (err, existingLocales) => {
         }
       })
     } else {
-      console.log("\nError: mode must be 'e' or 'n'")
+      console.log(`\n${styles.BRIGHT}Error${styles.RESET}: mode must be 'e' or 'n'`)
       process.exit(1)
     }
   })
@@ -57,7 +67,7 @@ let getLocaleProgress = function(localeToCheck) {
 
 let startEditing = function(chosenLocale) {
   locale = chosenLocale
-  console.log(`\nWorking on locale ${locale}.`)
+  console.log(`\nWorking on locale ${styles.BRIGHT}${locale}${styles.RESET}.`)
 
   fs.readFile(path.join(LOCALES_DIR, locale, "messages.json"), (err, data) => {
     if (err) throw err
@@ -77,18 +87,23 @@ let startEditing = function(chosenLocale) {
 let next = function(key) {
   let defaultMessage = defaultLocale[key].message
   let description = defaultLocale[key].description
-  console.log(`\nName: ${key}${description ? `\nDescription: ${description}` : ""}\nMessage in ${manifest.default_locale}: ${defaultMessage}`)
-  rl.question(`Translation for ${locale}: `, (newTranslation) => {
+  console.log(`\n┌─${styles.BRIGHT}${key}${styles.RESET}──\n│`)
+  if (description) {
+    console.log(`│ ${styles.BRIGHT}Description${styles.RESET}: ${description}`)
+  }
+  console.log(`│ ${styles.BRIGHT}Message in ${manifest.default_locale}${styles.RESET}: ${defaultMessage}`)
+  rl.question(`│ ${styles.BRIGHT}${styles.UNDERSCORE}Translation for ${locale}${styles.RESET}: `, (newTranslation) => {
     if (newTranslation.length > 0) {
       var newMessageData = { message: newTranslation }
       if (description) newMessageData.description = description
       currentLocale[key] = newMessageData
       fs.writeFile(path.join(LOCALES_DIR, locale, "messages.json"), JSON.stringify(currentLocale, null, 2) + "\n", (err) => {
         if (err) throw err
+        console.log("│\n└────────────────────────")
         next(keysToAdd[keysToAdd.indexOf(key) + 1])
       })
     } else {
-      console.log("Skipped. Moving on...")
+      console.log("│\n└─Skipped. Moving on...──")
       next(keysToAdd[keysToAdd.indexOf(key) + 1])
     }
   })
