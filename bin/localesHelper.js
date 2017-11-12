@@ -89,7 +89,7 @@ let next = function(key) {
       })
     } else {
       console.log("Skipped. Moving on...")
-      next(keysToAdd.indexOf(key) + 1)
+      next(keysToAdd[keysToAdd.indexOf(key) + 1])
     }
   })
 }
