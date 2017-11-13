@@ -150,8 +150,10 @@ chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "
     }
 });
 
-document.body.addEventListener("click", function(){
-    chrome.tabs.create({
-        url: "https://darksky.net/"
-    });
+document.body.addEventListener("click", function(e) {
+    if (e.target.tagName.toLowerCase() !== "a") {
+        chrome.tabs.create({
+            url: "https://darksky.net/"
+        });
+    }
 });
