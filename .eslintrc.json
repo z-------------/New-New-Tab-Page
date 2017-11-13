@@ -13,6 +13,10 @@
         "semi": [ "warn", "never" ],
         "no-undef": [ "off" ],
         "no-console": [ "off" ],
-        "eqeqeq": ["error", "always"]
+        "eqeqeq": [ "error", "always" ],
+        "no-eval": "error",
+        "no-floating-decimal": "error",
+        "space-before-function-paren": [ "error", "never" ],
+        "space-before-blocks": [ "error", "always" ]
     }
 }

@@ -18,13 +18,13 @@ var settings
 xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
   settings = JSON.parse(res).default_settings
 
-  String.prototype.getDomain = function () {
+  String.prototype.getDomain = function() {
     var temp = document.createElement("a")
     temp.href = this
     return temp.protocol + "//" + temp.host
   }
 
-  String.prototype.getPureDomain = function () {
+  String.prototype.getPureDomain = function() {
     var temp = document.createElement("a")
     temp.href = this
 
@@ -34,7 +34,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     return val
   }
 
-  String.prototype.getHostname = function () {
+  String.prototype.getHostname = function() {
     var temp = document.createElement("a")
     temp.href = this
 
@@ -163,7 +163,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
   settings.apps = defaultSlots
 
-  storage.get(settingsKeys, function (r) {
+  storage.get(settingsKeys, function(r) {
     var rKeys = Object.keys(r)
     for (let i = 0, l = rKeys.length; i < l; i++) {
       settings[rKeys[i]] = r[rKeys[i]]
@@ -175,7 +175,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       // so i dont have to do settings.foo every time
     }
 
-    chrome.storage.local.get(["backgroundURL", "background"], function (lr) {
+    chrome.storage.local.get(["backgroundURL", "background"], function(lr) {
       if (lr.background !== undefined) {
         window.background = lr.background
       }
@@ -236,7 +236,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         } else {
           chrome.tabs.getCurrent(function(r) {
             var currentTabId = r && r.id ? r.id : null
-            white(element, function(){
+            white(element, function() {
               chrome.tabs.update(currentTabId, { url: url })
             })
           })
@@ -293,17 +293,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       thisApp.classList.add("app")
 
       //middle click moved from 'click' event to 'auxclick' event between chrome versions 52 and 55
-      thisApp.addEventListener("auxclick", function (e) {
-        if(e.button === 1){ //middle click only, not right click.
+      thisApp.addEventListener("auxclick", function(e) {
+        if(e.button === 1) { //middle click only, not right click.
           openIconURL([].slice.call(this.parentElement.children).indexOf(this), e)
         }
       })
 
-      thisApp.addEventListener("click", function (e) {
+      thisApp.addEventListener("click", function(e) {
         openIconURL([].slice.call(this.parentElement.children).indexOf(this), e)
       })
 
-      thisApp.addEventListener("mouseenter", function () {
+      thisApp.addEventListener("mouseenter", function() {
         colorWhite(this)
       })
 
@@ -326,7 +326,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     document.getElementById("title").innerHTML = titleText
 
-    window.openAppsEditor = function(){
+    window.openAppsEditor = function() {
       let editorElem = document.getElementById("apps-editor"),
         editorBtnsElem = document.getElementById("apps-editor-buttons")
       document.getElementById("apps-editor-container").classList.add("opened")
@@ -354,19 +354,19 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         if (presetMatchedId) {
           callback("/img/" + presetMatchedId + ".png")
         } else {
-          xhr(url, function(r){
+          xhr(url, function(r) {
             parser = new DOMParser()
             doc = parser.parseFromString(r, "text/html")
 
             var linkTags = doc.getElementsByTagName("link")
-            var icons = [].slice.call(linkTags).filter(function(tag){
+            var icons = [].slice.call(linkTags).filter(function(tag) {
               var attrRel = tag.getAttribute("rel")
               return attrRel === "apple-touch-icon-precomposed" || attrRel === "apple-touch-icon" || attrRel === "shortcut icon" || attrRel === "icon"
             })
 
             var sizePreference = ["57x57", "60x60", "72x72", "76x76", "96x96", "114x114", "120x120", "144x144", "152x152", "180x180", "192x192"]
 
-            icons.sort(function(a, b){
+            icons.sort(function(a, b) {
               var sizeA = a.getAttribute("sizes")
               var sizeB = b.getAttribute("sizes")
               if (sizePreference.indexOf(sizeA) > sizePreference.indexOf(sizeB)) return -1
@@ -396,7 +396,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
 
       function saveApps() {
-        [].slice.call(document.querySelectorAll(".app")).forEach(function(elem, i){
+        [].slice.call(document.querySelectorAll(".app")).forEach(function(elem, i) {
           var url = elem.dataset.url
 
           var bgImg = elem.style.backgroundImage
@@ -416,7 +416,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         storage.set({
           apps: apps,
           slotCount: slotCount
-        }, function(){
+        }, function() {
           location.reload()
         })
       }
@@ -465,7 +465,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
         var index = [].slice.call(appElems).indexOf(appElem)
 
-        ;[].slice.call(appElems).forEach(function(elem){
+        ;[].slice.call(appElems).forEach(function(elem) {
           if (elem !== appElem) elem.classList.remove("editing")
         })
 
@@ -474,17 +474,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var bgImg = appElem.style.backgroundImage
         iconInput.value = bgImg.substring(5, bgImg.length - 2)
 
-        urlInput.onchange = function(){
+        urlInput.onchange = function() {
           if (this.value.indexOf("://") === -1) this.value = "http://" + this.value
           updateApp(index, "url", this.value)
         }
 
-        iconInput.onchange = function(){
+        iconInput.onchange = function() {
           updateApp(index, "icon", this.value)
         }
 
-        fetchIconBtn.onclick = function(){
-          fetchIcon(urlInput.value, function(r){
+        fetchIconBtn.onclick = function() {
+          fetchIcon(urlInput.value, function(r) {
             if (r) {
               iconInput.value = r
               iconInput.dispatchEvent(new Event("change"))
@@ -499,14 +499,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
 
       function addControls() {
-        [].slice.call(document.querySelectorAll(".app")).forEach(function(elem){
-          elem.onclick = function(){
+        [].slice.call(document.querySelectorAll(".app")).forEach(function(elem) {
+          elem.onclick = function() {
             editApp(this)
           }
 
           elem.innerHTML = "<button class='editor-remove'></button><button class='editor-move'></button>"
 
-          elem.querySelector(".editor-remove").onclick = function(e){
+          elem.querySelector(".editor-remove").onclick = function(e) {
             e.stopPropagation()
 
             closeBtn.click()
@@ -523,21 +523,21 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       addControls()
 
       saveBtn.onclick = saveApps
-      cancelBtn.onclick = function(){
+      cancelBtn.onclick = function() {
         location.reload()
       }
 
-      closeBtn.onclick = function(){
+      closeBtn.onclick = function() {
         if (document.querySelector(".app.editing")) document.querySelector(".app.editing").classList.remove("editing")
         editorElem.style.display = "none"
       }
 
-      window.addEventListener("resize", function(){
+      window.addEventListener("resize", function() {
         positionEditor(document.querySelector(".app.editing"))
         positionEditorBtns()
       })
 
-      addAppBtn.onclick = function(){
+      addAppBtn.onclick = function() {
         var index = appElems.length
 
         var appElem = document.createElement("div")
@@ -562,8 +562,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       editApp(appElems[0])
 
-      chrome.topSites.get(function(res){
-        res.forEach(function(r){
+      chrome.topSites.get(function(res) {
+        res.forEach(function(r) {
           var url = r.url
           document.getElementById("top-sites-datalist").innerHTML += "<option>" + url + "</option>"
         })
@@ -578,7 +578,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           styleElem.href = "js/Awesomplete/awesomplete.css"
           document.head.appendChild(styleElem)
 
-          scriptElem.onload = function(){
+          scriptElem.onload = function() {
             new Awesomplete(urlInput, {
               list: "#top-sites-datalist",
               minChars: 1,
@@ -593,14 +593,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         scriptElem.src = "js/Sortable/Sortable.min.js"
         document.body.appendChild(scriptElem)
 
-        scriptElem.onload = function(){
+        scriptElem.onload = function() {
           Sortable.create(container, {
             draggable: ".app",
             handle: ".editor-move",
-            onStart: function(){
+            onStart: function() {
               closeBtn.click()
             },
-            onEnd: function(){
+            onEnd: function() {
               addControls()
             },
             animation: 150
@@ -614,19 +614,19 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         document.body.appendChild(urijsScriptElem)
       }
 
-      Object.keys(urlIconMap).forEach(function(url){
+      Object.keys(urlIconMap).forEach(function(url) {
         url = "http://" + url
         document.getElementById("top-sites-datalist").innerHTML += "<option>" + url + "</option>"
       })
 
-      urlInput.addEventListener("awesomplete-selectcomplete", function(){
+      urlInput.addEventListener("awesomplete-selectcomplete", function() {
         urlInput.dispatchEvent(new Event("change"))
       })
     }
 
     var searchFocusTimeout
 
-    document.getElementById("appbutton").onclick = function () {
+    document.getElementById("appbutton").onclick = function() {
       document.getElementById("drawer").style.top = "calc(100% - 70px)"
 
       this.style.opacity = "0"
@@ -637,12 +637,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       document.getElementById("bmarrow").style.opacity = "0"
       document.getElementById("search").value = ""
 
-      searchFocusTimeout = setTimeout(function () {
+      searchFocusTimeout = setTimeout(function() {
         document.getElementById("search").focus()
       }, 200)
     }
 
-    document.getElementById("close").onclick = function () {
+    document.getElementById("close").onclick = function() {
       clearTimeout(searchFocusTimeout)
 
       document.getElementById("drawer").style.top = null
@@ -655,16 +655,16 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       document.getElementById("bmarrow").style.opacity = null
     }
 
-    document.getElementById("search").onkeydown = function (e) {
+    document.getElementById("search").onkeydown = function(e) {
       if (e.which === 13) {
         window.location = "https://www.google.com/search?q=" + encodeURI(this.value) + "&btnI"
       }
     }
 
-    document.getElementById("optionbutton").onclick = function () {
+    document.getElementById("optionbutton").onclick = function() {
       if (!options.src) { // it's the first time
         options.src = "options/options.html#iframe"
-        options.contentWindow.onload = function () {
+        options.contentWindow.onload = function() {
           this.easterEgg() // this being the contentWindow
         }
       } else if (!optsopened && options.contentWindow.location.href.indexOf("options/options.html#iframe") !== -1) {
@@ -728,7 +728,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
       }
 
-      appsArray.sort(function (a, b) {
+      appsArray.sort(function(a, b) {
         if (a.clicks === b.clicks) {
           var aName = a.name.toLowerCase()
           var bName = b.name.toLowerCase()
@@ -752,7 +752,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         app.innerHTML = appsArray[i].name
         app.dataset.id = appsArray[i].id
 
-        app.addEventListener("click", function(){
+        app.addEventListener("click", function() {
           if (localStorage["app_clicks_" + this.dataset.id]) {
             localStorage["app_clicks_" + this.dataset.id] = Number(localStorage["app_clicks_" + this.dataset.id]) + 1
           } else {
@@ -777,7 +777,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       chrome.sessions.getRecentlyClosed(getRecentSites)
       chrome.management.getAll(getApps)
       document.getElementById("appsicon").style.display = "block"
-      document.getElementById("appsicon").onclick = function () {
+      document.getElementById("appsicon").onclick = function() {
         if (!appsopened) {
           document.getElementById("appdrawerframe").classList.add("opened")
           document.getElementById("actualdrawer").scrollTop = 0
@@ -795,17 +795,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       var appSearchBtn = document.getElementById("appsearchbtn")
       var appSearch = document.getElementById("appsearch")
 
-      appSearchBtn.onclick = function () {
+      appSearchBtn.onclick = function() {
         document.getElementById("actualdrawer").classList.toggle("appsearch")
 
         if (document.getElementById("actualdrawer").classList.contains("appsearch")) {
-          setTimeout(function () {
+          setTimeout(function() {
             appSearch.focus()
           }, 200)
         }
       }
 
-      appSearch.oninput = function () {
+      appSearch.oninput = function() {
         var appElems = document.querySelectorAll(".drawerapp")
         for (let i = 0, l = appElems.length; i < l; i++) {
           if (appElems[i].textContent.toLowerCase().indexOf(this.value.toLowerCase()) !== -1) {
@@ -847,7 +847,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     if (showBookmarks) {
       document.getElementById("bookmarks").style.display = "block"
-      document.getElementById("bookmarks").onclick = function () {
+      document.getElementById("bookmarks").onclick = function() {
         if (!bmopened) {
           document.getElementById("bmdrawerframe").classList.add("opened")
           document.getElementById("bmsearch").value = ""
@@ -860,7 +860,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             appsopened = 0
           }
 
-          setTimeout(function () {
+          setTimeout(function() {
             document.getElementById("bmsearch").focus()
           }, 200)
         } else if (bmopened) {
@@ -870,7 +870,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
       }
 
-      document.getElementById("bmsearch").onkeydown = function (e) {
+      document.getElementById("bmsearch").onkeydown = function(e) {
         if (document.getElementById("bmsearch").value.length >= 3 || e.which === 13) {
           document.getElementById("bookmarkslist").scrollTop = 0
           chrome.bookmarks.search(this.value, getBookmarks)
@@ -878,13 +878,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
 
       if (showAllBookmarks) {
-        setTimeout(function () {
+        setTimeout(function() {
           chrome.bookmarks.search("http", getAllBookmarks)
         }, 500)
       }
     }
 
-    setInterval(function () {
+    setInterval(function() {
       window.scrollTo(0, 0)
     }, 100)
 
@@ -913,7 +913,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         whiteElem.height = window.innerHeight
       }
 
-      setTimeout(function(){
+      setTimeout(function() {
         callback()
       }, /* transitionDuration */ 0)
     }
@@ -944,7 +944,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     var sidebarFirstTime = true
 
-    var sidebarOnFirstOpen = function(){
+    var sidebarOnFirstOpen = function() {
       /* weather */
       document.getElementById("weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>"
 
@@ -1045,7 +1045,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         var scriptElem = document.createElement("script")
         scriptElem.src = "js/Moment.js/moment.min.js"
         document.body.appendChild(scriptElem)
-        scriptElem.onload = function(){
+        scriptElem.onload = function() {
           var lastChecked = Number(localStorage.getItem("news_last_checked"))
 
           if (navigator.onLine) {
@@ -1126,7 +1126,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       /* facebook */
       if (showFBNotif) {
         addToSidebar("fb-notif", "")
-        document.querySelector("aside [data-target='fb-notif']").addEventListener("click", function(){
+        document.querySelector("aside [data-target='fb-notif']").addEventListener("click", function() {
           chrome.windows.create({
             url: "https://m.facebook.com/notifications",
             width: 350,
@@ -1139,7 +1139,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (showFB) {
         addToSidebar("fb-msg", "")
-        document.querySelector("aside [data-target='fb-msg']").addEventListener("click", function(){
+        document.querySelector("aside [data-target='fb-msg']").addEventListener("click", function() {
           chrome.windows.create({
             url: "https://m.facebook.com/messages",
             width: 350,
@@ -1153,17 +1153,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       /* init navigation */
       var sidebarNavElems = document.querySelectorAll("#sidebar nav a")
 
-      ;[].slice.call(sidebarNavElems).forEach(function(sidebarNavElem, i){
+      ;[].slice.call(sidebarNavElems).forEach(function(sidebarNavElem, i) {
         if (i === 0) {
           changeSidebarSection(sidebarNavElem.dataset.target)
         }
-        sidebarNavElem.addEventListener("click", function(){
+        sidebarNavElem.addEventListener("click", function() {
           changeSidebarSection(this.dataset.target)
         })
       })
     }
 
-    function toggleSidebar(direction){
+    function toggleSidebar(direction) {
       if (sidebarEnabled !== false) {
         if (direction === null || typeof direction === "undefined") {
           if (document.body.classList.contains("sidebar-opened")) {
@@ -1199,7 +1199,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       sidebar.appendChild(sectionElem)
     }
 
-    document.getElementById("sidebar-btn").addEventListener("click", function(){
+    document.getElementById("sidebar-btn").addEventListener("click", function() {
       toggleSidebar()
     })
     if (sidebarEnabled === false) {
@@ -1210,7 +1210,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       document.body.classList.add("noanimation")
     }
 
-    (function(){
+    (function() {
       var image = document.createElement("img")
 
       var bgURL = window.backgroundURL.substring(4, backgroundURL.lastIndexOf(")"))
@@ -1219,14 +1219,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
 
       image.src = bgURL
-      image.onload = function(){ // if we do this before the background is loaded user will see a flash of black
+      image.onload = function() { // if we do this before the background is loaded user will see a flash of black
         document.body.style.backgroundColor = "black"
       }
     })()
 
     /* sidebar navigation */
 
-    function changeSidebarSection(id){
+    function changeSidebarSection(id) {
       var targetSection = sidebar.querySelector("section[data-id='" + id + "']")
       var targetLink = sidebar.querySelector("nav [data-target='" + id + "']")
       var sections = sidebar.querySelectorAll("section[data-id]")
@@ -1242,11 +1242,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
 
     /* open sidebar when mouse on right edge */
-    window.addEventListener("mousemove", function(e){
+    window.addEventListener("mousemove", function(e) {
       clearInterval(sidebarMouseInterval)
       if (Math.abs(e.clientX - window.innerWidth) <= 5) {
         sidebarMouseTime = 0
-        sidebarMouseInterval = setInterval(function(){
+        sidebarMouseInterval = setInterval(function() {
           sidebarMouseTime += 1
           if (sidebarMouseTime >= 50) {
             toggleSidebar(1)
@@ -1255,7 +1255,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
     })
 
-    bgElem.addEventListener("click", function(){
+    bgElem.addEventListener("click", function() {
       toggleSidebar(0)
     })
   }
