@@ -36,8 +36,8 @@ fs.readdir(LOCALES_DIR, (err, existingLocales) => {
   })
   console.log(`${styles.BRIGHT}Existing locales${styles.RESET}: ${existingLocalesString.join(", ")}`)
 
-  rl.question(`\n${styles.UNDERSCORE}Work on {e}xisting locale, or start a {n}ew one?${styles.RESET} `, (mode) => {
-    if (mode === "e" || mode === "n") {
+  rl.question(`\n${styles.UNDERSCORE}Work on {e}xisting locale, start a {n}ew one, or {l}ist missing messages?${styles.RESET} `, (mode) => {
+    if (mode === "e" || mode === "n" || mode === "l") {
       rl.question(`\n${styles.UNDERSCORE}Locale code?${styles.RESET} `, (chosenLocale) => {
         if (mode === "n") {
           fs.mkdir(path.join(LOCALES_DIR, chosenLocale), (err) => {
@@ -51,6 +51,11 @@ fs.readdir(LOCALES_DIR, (err, existingLocales) => {
         if (mode === "e") {
           startEditing(chosenLocale)
         }
+        if (mode === "l") {
+          let missingKeys = getLocaleProgress(chosenLocale, true)[1]
+          console.log(`\n${styles.BRIGHT}Messages missing from locale ${chosenLocale}${styles.RESET}: \n${missingKeys.join(", ")}\n\nThat's all. Exiting.`)
+          process.exit(0)
+        }
       })
     } else {
       console.log(`\n${styles.BRIGHT}Error${styles.RESET}: mode must be 'e' or 'n'`)
@@ -59,10 +64,21 @@ fs.readdir(LOCALES_DIR, (err, existingLocales) => {
   })
 })
 
-let getLocaleProgress = function(localeToCheck) {
+let getLocaleProgress = function(localeToCheck, includeMissingKeys) {
   let fileContents = fs.readFileSync(path.join(LOCALES_DIR, localeToCheck, "messages.json"))
   let localeKeys = Object.keys(JSON.parse(fileContents))
-  return localeKeys.length / defaultLocaleKeys.length
+  let progress = localeKeys.length / defaultLocaleKeys.length
+  if (includeMissingKeys === true) {
+    var missingKeys = []
+    for (let i = 0, l = defaultLocaleKeys.length; i < l; i++) {
+      if (localeKeys.indexOf(defaultLocaleKeys[i]) === -1) {
+        missingKeys.push(defaultLocaleKeys[i])
+      }
+    }
+    return [progress, missingKeys]
+  } else {
+    return progress
+  }
 }
 
 let startEditing = function(chosenLocale) {
