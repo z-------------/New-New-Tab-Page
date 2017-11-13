@@ -1068,7 +1068,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                 var json = JSON.parse(res)
                 // console.log(json)
                 if (json.query && json.query.results && json.query.results.json) {
-                  console.log("using fresh news")
+                  // console.log("using fresh news")
 
                   var results = json.query.results.json
                   var items = results.map(function(result) {
@@ -1084,17 +1084,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                   localStorage.setItem("news_cache", JSON.stringify(items))
                   localStorage.setItem("news_last_checked", new Date().getTime().toString())
                 } else if (localStorage.getItem("news_cache")) {
-                  console.log("using cached news")
+                  // console.log("using cached news")
 
                   displayNews(JSON.parse(localStorage.getItem("news_cache")))
                 } else {
-                  console.log("gave up on news")
+                  // console.log("gave up on news")
 
                   document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>"
                   document.getElementById("newslist").classList.remove("loading")
                 }
               }, function() {
-                console.log("gave up on news")
+                // console.log("gave up on news")
 
                 document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>"
                 document.getElementById("newslist").classList.remove("loading")
@@ -1102,21 +1102,21 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
               document.getElementById("newslist").classList.add("loading")
             } else if (localStorage.getItem("news_cache")) {
-              console.log("using cached news")
+              // console.log("using cached news")
 
               displayNews(JSON.parse(localStorage.getItem("news_cache")))
             } else {
-              console.log("gave up on news")
+              // console.log("gave up on news")
 
               document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>"
               document.getElementById("newslist").classList.remove("loading")
             }
           } else if (localStorage.getItem("news_cache")) {
-            console.log("using cached news")
+            // console.log("using cached news")
 
             displayNews(JSON.parse(localStorage.getItem("news_cache")))
           } else {
-            console.log("client is offline")
+            // console.log("client is offline")
 
             document.getElementById("newslist").innerHTML = "<p class='error-msg error--offline'>You are offline.</p>"
           }

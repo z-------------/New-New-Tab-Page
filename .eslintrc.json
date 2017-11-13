@@ -12,7 +12,7 @@
         "quotes": [ "error", "double" ],
         "semi": [ "warn", "never" ],
         "no-undef": [ "off" ],
-        "no-console": [ "off" ],
+        "no-console": [ "warn" ],
         "eqeqeq": [ "error", "always" ],
         "no-eval": "error",
         "no-floating-decimal": "error",
