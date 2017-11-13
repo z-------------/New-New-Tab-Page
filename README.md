@@ -38,3 +38,5 @@ New New Tab Page should now be installed.
 Please feel free to submit pull requests or issues of any kind.
 
 Help with updating and completing the existing translations or starting new ones (in the `locales` directory) would also be greatly appreciated -- `bin/localesHelper.js` could be helpful for this.
+
+It would be good if contributed code passes `eslint`ing, but it's not a requirement.
