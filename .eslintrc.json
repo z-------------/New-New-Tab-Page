@@ -8,17 +8,11 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "warn",
-            "never"
-        ]
+        "indent": [ "error", 2 ],
+        "quotes": [ "error", "double" ],
+        "semi": [ "warn", "never" ],
+        "no-undef": [ "off" ],
+        "no-console": [ "off" ],
+        "eqeqeq": ["error", "always"]
     }
 }
