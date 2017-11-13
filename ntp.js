@@ -1286,6 +1286,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
   })
 
+  // eslint-disable-next-line no-console
   console.log(
     "\n\
 8b  8                     8b  8                     88888      8       888b.                 \n\
