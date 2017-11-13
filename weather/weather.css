@@ -80,6 +80,6 @@ footer {
     transition: opacity .3s;
 }
 
-footer span {
+footer span, footer span a {
 	color: inherit;
 }
