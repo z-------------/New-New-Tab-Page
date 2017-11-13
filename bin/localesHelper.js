@@ -107,9 +107,7 @@ let next = function(key) {
     let defaultMessage = defaultLocale[key].message
     let description = defaultLocale[key].description
     console.log(`\n┌─${styles.BRIGHT}${key}${styles.RESET}──\n│`)
-    if (description) {
-      console.log(`│ ${styles.BRIGHT}Description${styles.RESET}: ${description}`)
-    }
+    console.log(`│ ${styles.BRIGHT}Description${styles.RESET}: ${ description ? description : "[none]" }`)
     console.log(`│ ${styles.BRIGHT}Message in ${manifest.default_locale}${styles.RESET}: ${defaultMessage}`)
     rl.question(`│ ${styles.BRIGHT}${styles.UNDERSCORE}Translation for ${locale}${styles.RESET}: `, (newTranslation) => {
       if (newTranslation.length > 0) {
