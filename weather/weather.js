@@ -35,6 +35,12 @@ var avg = function(nums){
 
 /* start actual weather stuff */
 
+const availableLocales = [// as provided by Dark Sky's api
+    "ar", "az", "be", "bg", "bs", "ca", "cs", "de", "el", "en", "es", "et", "fr",
+    "hr", "hu", "id", "it", "is", "kw", "nb", "nl", "pl", "pt", "ru", "sk", "sl",
+    "sr", "sv", "tet", "tr", "uk", "zh"
+]; // and zh-tw, handled separately
+
 var codeIconMap = {
     "clear-day": "Sun",
     "clear-night": "Moon",
@@ -77,9 +83,16 @@ function displayWeather(data){
 var dontUseCache;
 
 function gotCoords() {
-    var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx";
+    var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx?foo=bar";
     if (overrideWxLocation) {
-        requestUrl += `?coords=${wxCoordsLat},${wxCoordsLong}`;
+        requestUrl += `&coords=${wxCoordsLat},${wxCoordsLong}`;
+    }
+
+    var chromeUILang = chrome.i18n.getUILanguage();
+    if (chromeUILang.toLowerCase() === "zh-tw") {
+        requestUrl += "&lang=zh-tw";
+    } else if (availableLocales.indexOf(chromeUILang.split("-")[0]) !== -1) {
+        requestUrl += `&lang=${chromeUILang.split("-")[0]}`;
     }
 
     if (dontUseCache) {
