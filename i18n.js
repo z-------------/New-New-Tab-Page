@@ -1,10 +1,11 @@
 let i18nElems = document.querySelectorAll("[data-msg-name]");
 for (let i = 0, l = i18nElems.length; i < l; i++) {
   let elem = i18nElems[i];
-  let message = chrome.i18n.getMessage(elem.dataset.msgName);
-  if (message && message.length > 0) {
-    elem.textContent = message;
-  }
+  // let message = chrome.i18n.getMessage(elem.dataset.msgName);
+  // if (message && message.length > 0) {
+  //   elem.textContent = message;
+  // }
+  elem.textContent = chrome.i18n.getMessage(elem.dataset.msgName);
 }
 
 let i18nTemplateElems = document.querySelectorAll("[data-msg-template]");
@@ -14,9 +15,8 @@ for (let i = 0, l = i18nTemplateElems.length; i < l; i++) {
   var finalString = elem.dataset.msgTemplate;
   for (let j = 0, m = messageKeys.length; j < m; j++) {
     let messageKey = messageKeys[j];
-    let message = chrome.i18n.getMessage(messageKey);
     let pattern = new RegExp("\\${" + messageKey + "}", "g");
-    finalString = finalString.replace(pattern, message);
+    finalString = finalString.replace(pattern, chrome.i18n.getMessage(messageKey));
   }
   elem.textContent = finalString;
 }
