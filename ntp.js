@@ -1043,9 +1043,18 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (!document.getElementById("momentjs-script")) {
         var scriptElem = document.createElement("script")
-        scriptElem.src = "js/Moment.js/moment.min.js"
+        scriptElem.src = "js/Moment.js/moment-with-locales.min.js"
+        scriptElem.setAttribute("id", "momentjs-script")
         document.body.appendChild(scriptElem)
         scriptElem.onload = function() {
+          let uiLang = chrome.i18n.getUILanguage().toLowerCase(),
+            uiLangTruncated = uiLang.split("-")[0]
+          if (moment.locales().indexOf(uiLang) !== -1) {
+            moment.locale(uiLang)
+          } else if (moment.locales().indexOf(uiLangTruncated) !== -1) {
+            moment.locale(uiLangTruncated)
+          }
+
           var lastChecked = Number(localStorage.getItem("news_last_checked"))
 
           if (navigator.onLine) {
