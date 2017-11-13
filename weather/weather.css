@@ -65,6 +65,10 @@ body.visible {
     font-weight: 100;
 }
 
+#condition {
+		line-height: 1.21;
+}
+
 footer {
 	color: rgba(255, 255, 255, .5);
 	position: relative;
