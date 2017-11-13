@@ -139,5 +139,36 @@
   "optionsTitle": {
     "message": "選項",
     "description": "Text shown in tab title on options page alongside extension name"
+  },
+  "appSearchPlaceholder": {
+    "message": "搜索",
+    "description": "Placeholder in Chrome Apps search bar, shown when empty"
+  },
+  "bookmarksSearchPlaceholder": {
+    "message": "搜索",
+    "description": "Placeholder in bookmarks search bar, shown when empty"
+  },
+  "findBarPlaceholder": {
+    "message": "找",
+    "description": "Placeholder in Find bar, shown when empty"
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "新標籤標題"
+  },
+  "importexportButtonBack": {
+    "message": "返回",
+    "description": "Button shown in Import/export options taking user back to options page"
+  },
+  "importexportHeadingExport": {
+    "message": "導出",
+    "description": "Heading shown above export data"
+  },
+  "importexportHeadingImport": {
+    "message": "導入",
+    "description": "Heading shown above import data input field"
+  },
+  "importexportButtonImport": {
+    "message": "導入",
+    "description": "Button to start import process"
   }
 }
