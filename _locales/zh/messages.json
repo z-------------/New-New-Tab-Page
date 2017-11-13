@@ -104,7 +104,7 @@
     "message": "天氣"
   },
   "optionsToggleWeatherGPS": {
-    "message": "如果可能，使用 GPS 位置"
+    "message": "使用 GPS 位置 (如果可能)"
   },
   "optionsToggleWeatherForceCoords": {
     "message": "強制坐標:"
