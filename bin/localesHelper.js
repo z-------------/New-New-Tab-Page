@@ -1,11 +1,9 @@
 #!/usr/bin/env node
 
-/* eslint-disable */
-
 const fs = require("fs")
 const path = require("path")
 
-const readline = require("readline");
+const readline = require("readline")
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -33,7 +31,7 @@ let defaultLocaleKeys = Object.keys(defaultLocale)
 fs.readdir(LOCALES_DIR, (err, existingLocales) => {
   console.log(`\n${styles.BRIGHT}Default locale${styles.RESET}  : ${manifest.default_locale}`)
 
-  existingLocalesString = existingLocales.map((localeName) => {
+  let existingLocalesString = existingLocales.map((localeName) => {
     return `${localeName} (${Math.floor(getLocaleProgress(localeName) * 100)}%)`
   })
   console.log(`${styles.BRIGHT}Existing locales${styles.RESET}: ${existingLocalesString.join(", ")}`)

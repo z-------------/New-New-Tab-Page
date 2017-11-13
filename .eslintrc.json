@@ -18,5 +18,13 @@
         "no-floating-decimal": "error",
         "space-before-function-paren": [ "error", "never" ],
         "space-before-blocks": [ "error", "always" ]
+    },
+    "overrides": {
+        "files": "bin/localesHelper.js",
+        "env": { "node": true },
+        "rules": {
+            "no-undef": "error",
+            "no-console": "off"
+        }
     }
 }
