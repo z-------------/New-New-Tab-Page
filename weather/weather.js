@@ -58,7 +58,6 @@ var useImperial = false
 var overrideWxLocation = false
 var wxCoordsLat = 0
 var wxCoordsLong = 0
-var wxUseGPS = false
 var lastChecked
 
 function displayWeather(data) {
@@ -134,7 +133,6 @@ chrome.storage.sync.get(["useFahrenheit", "overrideWxLocation", "wxCoordsLat", "
   }
 
   if (dontUseCache && r.wxUseGPS === true && overrideWxLocation === false) {
-    wxUseGPS = true
     navigator.geolocation.getCurrentPosition((r) => {
       overrideWxLocation = true
       wxCoordsLat = r.coords.latitude
