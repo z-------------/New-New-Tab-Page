@@ -47,6 +47,6 @@ It would be good if contributed code passes `eslint`ing, but it's not a requirem
 
 These are a couple of features and improvements I'm hoping to include in the nearish future:
 
-* Less hacky handling of bottom-right drawers
-* Ability to use local file for shortcut icons
-* Preview blur effect in options
+* [ ] Less hacky handling of bottom-right drawers
+* [ ] Ability to use local file for shortcut icons
+* [ ] Preview blur effect in options
