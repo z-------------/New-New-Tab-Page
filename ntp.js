@@ -626,7 +626,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
     var searchFocusTimeout
 
-    document.getElementById("appbutton").onclick = function() {
+    document.getElementById("findbutton").onclick = function() {
       document.getElementById("drawer").style.top = "calc(100% - 70px)"
 
       this.style.opacity = "0"
@@ -646,7 +646,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       clearTimeout(searchFocusTimeout)
 
       document.getElementById("drawer").style.top = null
-      document.getElementById("appbutton").style.opacity = null
+      document.getElementById("findbutton").style.opacity = null
       document.getElementById("bookmarks").style.opacity = null
       document.getElementById("appsicon").style.opacity = null
 
