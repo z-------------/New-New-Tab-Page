@@ -4,7 +4,7 @@ A minimal new tab page for Google Chrome
 
 ![NNTP screenshot](https://i.imgur.com/79L4EEW.png)
 
-[Features](#Features) • [Download](#Download) • [Contributing](#Contributing) • [To-do](#To-do)
+[Features](#features) • [Download](#download) • [Contributing](#contributing) • [To-do](#to-do)
 
 ## Features
 
