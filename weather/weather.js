@@ -96,7 +96,7 @@ function gotCoords() {
   }
 
   if (dontUseCache) {
-    console.log("getting fresh weather")
+    // console.log("getting fresh weather")
     xhr(requestUrl, function(data) {
       data = JSON.parse(data)
 
@@ -106,7 +106,7 @@ function gotCoords() {
       localStorage.setItem("last_weather", JSON.stringify(data))
     })
   } else if (localStorage.last_weather) {
-    console.log("using cached weather")
+    // console.log("using cached weather")
     displayWeather(JSON.parse(localStorage.getItem("last_weather")))
   }
 }
