@@ -8,7 +8,7 @@
   box-sizing: inherit;
 }
 
-@-webkit-keyframes weatherFlash {
+@keyframes weatherFlash {
 	0% { opacity: .5 }
 	50% { opacity: 1 }
 	100% { opacity: .5 }
@@ -241,7 +241,7 @@ button {
   text-align: center;
   padding-bottom: 10px;
   overflow: visible;
-  -webkit-user-select: none;
+  user-select: none;
   box-sizing: border-box;
 }
 
@@ -407,7 +407,7 @@ button {
   width: 100%;
 	overflow: hidden;
 	top: 0;
-  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 .customscrollbars #options::-webkit-scrollbar {
@@ -700,7 +700,7 @@ a {
   background-size: contain;
   margin: 7px;
   color: transparent;
-  -webkit-user-select: none;
+  user-select: none;
 }
 
 .apps-gridstyle .drawerapp > * {
@@ -864,12 +864,12 @@ body.optsopened, .optsopened #bg {
 
 .optsopened #options {
 	opacity: .8 !important;
-	-webkit-transform: translateY(0)
+	transform: translateY(0)
 }
 
 .optsopened #optionbutton {
 	opacity: .7 !important;
-	-webkit-transform: rotate(-60deg);
+	transform: rotate(-60deg);
 }
 
 /*.weatheropened .app {
