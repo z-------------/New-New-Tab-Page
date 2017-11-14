@@ -1,60 +1,60 @@
 * {
-	font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
-	color: #fff;
-	text-align: center;
-	font-weight: 300;
-	box-sizing: border-box;
-	text-align: inherit;
+  font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  box-sizing: border-box;
+  text-align: inherit;
 }
 
 html, body {
-	height: 100%;
-	width: 100%;
-	margin: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 body {
-	overflow: hidden;
+  overflow: hidden;
   cursor: pointer;
   background: transparent !important;
 
-	display: none;
+  display: none;
 }
 
 body.visible {
-	display: block;
+  display: block;
 }
 
 ::selection {
-	background: rgba(0, 0, 0, .3);
-	color: inherit;
+  background: rgba(0, 0, 0, .3);
+  color: inherit;
 }
 
 #weather {
-	width: 100%;
-	position: relative;
-	z-index: 3;
-	margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
 }
 
 #temp {
-	width: 100%;
+  width: 100%;
   padding-left: 175px;
-	text-align: left;
-	background-repeat: no-repeat;
+  text-align: left;
+  background-repeat: no-repeat;
   background-size: 200px;
   background-position: -15px -25px;
 }
 
 #temp h1 {
-	font-size: 100px;
+  font-size: 100px;
   font-weight: 400;
-	margin: 0;
+  margin: 0;
   letter-spacing: -5px;
 }
 
 #temp div {
-	font-size: 20px;
+  font-size: 20px;
   color: rgba(255, 255, 255, .8);
   margin-left: 5px;
   margin-top: -5px;
@@ -70,16 +70,16 @@ body.visible {
 }
 
 footer {
-	color: rgba(255, 255, 255, .5);
-	position: relative;
-	z-index: 3;
-	margin-top: 20px;
-	text-align: center;
-	font-size: 10px;
+  color: rgba(255, 255, 255, .5);
+  position: relative;
+  z-index: 3;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 10px;
 
   transition: opacity .3s;
 }
 
 footer span, footer span a {
-	color: inherit;
+  color: inherit;
 }
