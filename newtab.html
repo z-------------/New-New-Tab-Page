@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title data-msg-name="newTabPageTitle"></title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="fonts/roboto.css">
-    </head>
+  <head>
+    <title data-msg-name="newTabPageTitle"></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts/roboto.css">
+  </head>
 
-    <body>
-        <canvas id="white"></canvas>
-        <div id="bg"></div>
-        <div id="header">
-            <span id="title">New Tab</span>
+  <body>
+    <canvas id="white"></canvas>
+    <div id="bg"></div>
+    <div id="header">
+      <span id="title">New Tab</span>
+    </div>
+    <div id="apps-editor-container">
+      <div id="apps-editor">
+        <label>
+          <span data-msg-name="appsEditorURLLabel"></span>
+          <input type="text" placeholder="http://example.com" id="editor-url">
+        </label>
+        <label>
+          <span data-msg-name="appsEditorIconLabel"></span>
+          <input type="url" placeholder="http://example.com/icon.png" id="editor-icon">
+          <button id="editor-fetchicon" data-msg-name="appsEditorAutofindIconButton"></button>
+        </label>
+        <button id="editor-closeeditor">✕</button>
+      </div>
+      <div id="apps-editor-buttons">
+        <button id="editor-cancel" data-msg-name="appsEditorCancelButton"></button>
+        <button id="editor-save" data-msg-name="appsEditorSaveButton"></button>
+      </div>
+    </div>
+    <div id="container"></div>
+    <div id="appbutton"></div>
+    <div id="optionbutton"></div>
+    <div id="drawer">
+      <input type="text" id="search" autocomplete="off" name="q" data-msg-attr-map="placeholder:findBarPlaceholder" spellcheck="false">
+      <div id="close"></div>
+    </div>
+    <div id="topright">
+      <div id="sidebar-btn"></div>
+    </div>
+    <aside id="sidebar">
+      <nav>
+        <a data-target="nw"></a>
+      </nav>
+      <section data-id="nw">
+        <div id="weatherdiv"></div>
+        <ol id="newslist"></ol>
+      </section>
+    </aside>
+    <div id="appdrawerframe">
+      <div id="actualdrawer">
+        <div class="drawersection" id="recentsites">
+          <div class="drawerti" id="recmostvis" data-msg-name="drawerRecentlyClosedHeading"></div>
         </div>
-        <div id="apps-editor-container">
-            <div id="apps-editor">
-                <label>
-                    <span data-msg-name="appsEditorURLLabel"></span>
-                    <input type="text" placeholder="http://example.com" id="editor-url">
-                </label>
-                <label>
-                    <span data-msg-name="appsEditorIconLabel"></span>
-                    <input type="url" placeholder="http://example.com/icon.png" id="editor-icon">
-                    <button id="editor-fetchicon" data-msg-name="appsEditorAutofindIconButton"></button>
-                </label>
-                <button id="editor-closeeditor">✕</button>
+        <div class="drawersection" id="topsites">
+          <div class="drawerti" id="topmostvis" data-msg-name="drawerTopSitesHeading"></div>
+        </div>
+        <div class="drawersection" id="applist">
+          <div class="drawerti">
+            <span data-msg-name="drawerChromeAppsHeading"></span>
+            <div class="drawerbtns">
+              <a href="https://chrome.google.com/webstore">
+                <img src="img/cws2.svg">
+              </a>
+              <img src="img/search.svg" id="appsearchbtn">
             </div>
-            <div id="apps-editor-buttons">
-                <button id="editor-cancel" data-msg-name="appsEditorCancelButton"></button>
-                <button id="editor-save" data-msg-name="appsEditorSaveButton"></button>
-            </div>
-        </div>
-        <div id="container"></div>
-        <div id="appbutton"></div>
-        <div id="optionbutton"></div>
-        <div id="drawer">
-            <input type="text" id="search" autocomplete="off" name="q" data-msg-attr-map="placeholder:findBarPlaceholder" spellcheck="false">
-            <div id="close"></div>
-        </div>
-        <div id="topright">
-            <div id="sidebar-btn"></div>
-        </div>
-        <aside id="sidebar">
-            <nav>
-                <a data-target="nw"></a>
-            </nav>
-            <section data-id="nw">
-                <div id="weatherdiv"></div>
-                <ol id="newslist"></ol>
-            </section>
-        </aside>
-        <div id="appdrawerframe">
-            <div id="actualdrawer">
-                <div class="drawersection" id="recentsites">
-                    <div class="drawerti" id="recmostvis" data-msg-name="drawerRecentlyClosedHeading"></div>
-                </div>
-                <div class="drawersection" id="topsites">
-                    <div class="drawerti" id="topmostvis" data-msg-name="drawerTopSitesHeading"></div>
-                </div>
-                <div class="drawersection" id="applist">
-                    <div class="drawerti">
-                        <span data-msg-name="drawerChromeAppsHeading"></span>
-                        <div class="drawerbtns">
-                            <a href="https://chrome.google.com/webstore">
-                                <img src="img/cws2.svg">
-                            </a>
-                            <img src="img/search.svg" id="appsearchbtn">
-                        </div>
 
-                        <input type="text" id="appsearch" data-msg-attr-map="placeholder:appSearchPlaceholder">
-                    </div>
-                </div>
-            </div>
-            <div id="drawerarrow"></div>
+            <input type="text" id="appsearch" data-msg-attr-map="placeholder:appSearchPlaceholder">
+          </div>
         </div>
-        <div id="appsicon"></div>
-        <div id="bookmarks"></div>
-        <div id="bmdrawerframe">
-            <div id="bmdrawer">
-                <div class="drawerti" data-msg-name="bookmarksHeading"></div>
-                <div id="bookmarkslist">
-                    <div id="bmsearchtip" data-msg-name="bookmarksEmptyMessage"></div>
-                </div>
-                <input type="text" id="bmsearch" data-msg-attr-map="placeholder:bookmarksSearchPlaceholder">
-            </div>
-            <div id="bmarrow"></div>
+      </div>
+      <div id="drawerarrow"></div>
+    </div>
+    <div id="appsicon"></div>
+    <div id="bookmarks"></div>
+    <div id="bmdrawerframe">
+      <div id="bmdrawer">
+        <div class="drawerti" data-msg-name="bookmarksHeading"></div>
+        <div id="bookmarkslist">
+          <div id="bmsearchtip" data-msg-name="bookmarksEmptyMessage"></div>
         </div>
-        <iframe id="options"></iframe>
+        <input type="text" id="bmsearch" data-msg-attr-map="placeholder:bookmarksSearchPlaceholder">
+      </div>
+      <div id="bmarrow"></div>
+    </div>
+    <iframe id="options"></iframe>
 
-        <datalist id="top-sites-datalist"></datalist>
+    <datalist id="top-sites-datalist"></datalist>
 
-        <script src="ntp.js"></script>
-        <script src="i18n.js" async></script>
-    </body>
+    <script src="ntp.js"></script>
+    <script src="i18n.js" async></script>
+  </body>
 </html>
