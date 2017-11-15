@@ -775,7 +775,13 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     if (showAppsDrawer) {
       chrome.topSites.get(getTopSites)
       chrome.sessions.getRecentlyClosed(getRecentSites)
-      chrome.management.getAll(getApps)
+      
+      if (chrome.management.launchApp) {
+        chrome.management.getAll(getApps)
+      } else {
+        document.getElementById("applist").classList.add("hidden")
+      }
+
       document.getElementById("appsicon").style.display = "block"
       document.getElementById("appsicon").onclick = function() {
         if (!appsopened) {

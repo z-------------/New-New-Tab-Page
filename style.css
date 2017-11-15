@@ -686,6 +686,10 @@ a {
   text-align: center;
 }
 
+#applist.hidden {
+  display: none;
+}
+
 .drawerapp {
   display: block;
   margin: 0 15px 3px 15px;
