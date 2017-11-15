@@ -170,5 +170,16 @@
   "importexportButtonImport": {
     "message": "導入",
     "description": "Button to start import process"
+  },
+  "bookmarksNoResultsMessage": {
+    "message": "沒有搜索結果 :(",
+    "description": "Message shown when bookmarks search returned no results"
+  },
+  "bookmarksNoBookmarksMessage": {
+    "message": "沒有書籤 :(",
+    "description": "Message shown when user has no bookmarks"
+  },
+  "optionsButtonPrivacy": {
+    "message": "隱私政策"
   }
 }

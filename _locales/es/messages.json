@@ -182,5 +182,16 @@
   "importexportButtonImport": {
     "message": "Importar",
     "description": "Button to start import process"
+  },
+  "bookmarksNoResultsMessage": {
+    "message": "Búsqueda sin resultados :(",
+    "description": "Message shown when bookmarks search returned no results"
+  },
+  "bookmarksNoBookmarksMessage": {
+    "message": "No hay marcadores :(",
+    "description": "Message shown when user has no bookmarks"
+  },
+  "optionsButtonPrivacy": {
+    "message": "Política de privacidad"
   }
 }
