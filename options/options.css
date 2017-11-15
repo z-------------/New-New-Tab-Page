@@ -1,6 +1,6 @@
-*, input[type=file]::-webkit-file-upload-button {
-  font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
-  box-sizing: border-box;
+* {
+  font-family: inherit;
+  box-sizing: inherit;
 }
 
 :focus {
@@ -17,6 +17,8 @@ body, html {
 
 body {
   background-color: black;
+  font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  box-sizing: border-box;
 }
 
 a {
@@ -67,7 +69,6 @@ form {
   font-weight: 400;
   color: rgba(255, 255, 255, .7);
   margin-top: 100px;
-  width: 100%;
   padding: 0 16%;
   perspective: 1000;
 }
@@ -139,7 +140,7 @@ input[type=text], input[type=url], textarea {
   background-color: rgba(0, 0, 0, .2);
 }
 
-input, select, input[type=file]::-webkit-file-upload-button, button, textarea {
+input, select, button, textarea {
   height: 25px;
   border: none;
   background-color: rgba(255, 255, 255, .2);
@@ -148,11 +149,12 @@ input, select, input[type=file]::-webkit-file-upload-button, button, textarea {
   font-size: 12px;
   margin: 4px;
   -webkit-appearance: none;
+  -moz-appearance: none;
   border-radius: 4px;
   color: rgba(255, 255, 255, .6);
 }
 
-input:hover, select:hover, input:focus, input[type=file]::-webkit-file-upload-button:focus, button:hover, button:focus, textarea:focus {
+input:hover, select:hover, input:focus, button:hover, button:focus, textarea:focus {
   background-color: rgba(255, 255, 255, .3);
   color: rgba(255, 255, 255, .7);
 }
