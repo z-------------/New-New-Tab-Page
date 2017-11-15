@@ -7,9 +7,9 @@ chrome.storage.sync.get(null, function(r) {
 })
 
 importButton.onclick = function() {
-  if (confirm("Are you sure you want to overwrite your current options?")) {
+  if (confirm(chrome.i18n.getMessage("importexportOverwriteConfirmation"))) {
     chrome.storage.sync.set(JSON.parse(importBox.value), function() {
-      alert("Finished importing :D")
+      alert(chrome.i18n.getMessage("importexportSuccessMessage"))
       window.top.location.reload()
     })
   }

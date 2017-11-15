@@ -181,5 +181,13 @@
   },
   "optionsButtonPrivacy": {
     "message": "隱私政策"
+  },
+  "importexportOverwriteConfirmation": {
+    "message": "確定要覆蓋目前的選項嗎?",
+    "description": "Message in confirmation dialog asking user to confirm they want to overwrite old options"
+  },
+  "importexportSuccessMessage": {
+    "message": "完成導入 :D",
+    "description": "Message shown in alert dialog confirming success of options import"
   }
 }

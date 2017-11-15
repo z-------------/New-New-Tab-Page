@@ -218,5 +218,13 @@
   "importexportButtonImport": {
     "message": "Import",
     "description": "Button to start import process"
+  },
+  "importexportOverwriteConfirmation": {
+    "message": "Are you sure you want to overwrite your current options?",
+    "description": "Message in confirmation dialog asking user to confirm they want to overwrite old options"
+  },
+  "importexportSuccessMessage": {
+    "message": "Finished importing :D",
+    "description": "Message shown in alert dialog confirming success of options import"
   }
 }

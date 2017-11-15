@@ -193,5 +193,13 @@
   },
   "optionsButtonPrivacy": {
     "message": "Política de privacidad"
+  },
+  "importexportOverwriteConfirmation": {
+    "message": "¿Seguro que desea sobrescribir las opciones actuales?",
+    "description": "Message in confirmation dialog asking user to confirm they want to overwrite old options"
+  },
+  "importexportSuccessMessage": {
+    "message": "Importación terminada :D",
+    "description": "Message shown in alert dialog confirming success of options import"
   }
 }
