@@ -921,6 +921,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
         window.whiteContext = whiteElem.getContext("2d")
         window.whiteStartDate = new Date()
+        window.whiteDuration = 350
+        window.whiteRadius = (Math.max(window.innerWidth, window.innerHeight) + 45) * Math.sqrt(2)
         window.requestAnimationFrame(whiteStep)
 
         whiteElem.width = window.innerWidth
@@ -933,20 +935,18 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
 
     function whiteStep() {
-      var duration = 350
-      var progress = Math.pow((new Date() - whiteStartDate) / duration, 2)
-      var radius = (Math.max(window.innerWidth, window.innerHeight) + 45) * Math.sqrt(2)
+      var progress = Math.pow((new Date() - whiteStartDate) / whiteDuration, 2)
 
       // color circle
       whiteContext.fillStyle = whiteFillColor
       whiteContext.beginPath()
-      whiteContext.arc(whiteX, whiteY, progress * radius, 0, 2*Math.PI)
+      whiteContext.arc(whiteX, whiteY, progress * whiteRadius, 0, 2 * Math.PI)
       whiteContext.fill()
 
       // lightener circle
       whiteContext.fillStyle = "rgba(255, 255, 255, " + progress + ")"
       whiteContext.beginPath()
-      whiteContext.arc(whiteX, whiteY, progress * radius, 0, 2*Math.PI)
+      whiteContext.arc(whiteX, whiteY, progress * whiteRadius, 0, 2 * Math.PI)
       whiteContext.fill()
 
       if (progress < 1) {
