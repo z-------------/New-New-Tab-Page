@@ -1292,7 +1292,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     if (response) {
       response = JSON.parse(response)
       var lastDismissedTime = parseInt(localStorage.getItem("update_msg_last_dismissed_time"))
-      if (lastDismissedTime && lastDismissedTime > response.time) {
+      var msgMaxVer = response.max_version ? response.max_version.split(".").map(v => Number(v)) : [Infinity, Infinity, Infinity]
+      var currentVer = chrome.runtime.getManifest().version.split(".").map(v => Number(v))
+      if (
+        lastDismissedTime && lastDismissedTime > response.time ||
+        currentVer[0] > msgMaxVer[0] ||
+        currentVer[0] === msgMaxVer[0] && currentVer[1] > msgMaxVer[1] ||
+        currentVer[0] === msgMaxVer[0] && currentVer[1] === msgMaxVer[1] && currentVer[2] > msgMaxVer[2]
+      ) {
         // don't display update message
       } else {
         // display update message
