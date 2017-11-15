@@ -47,7 +47,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
   }
 
   // version label next to title
-  document.querySelector("#vno").innerHTML = "v" + chrome.app.getDetails().version
+  document.querySelector("#vno").innerHTML = "v" + chrome.runtime.getManifest().version
 
   // background preview
   bgPresetsSelect.oninput = bgPresetsSelect.onchange = function() {

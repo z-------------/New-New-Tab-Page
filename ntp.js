@@ -705,7 +705,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       if (topSiteCount >= 1) {
         let topSitesElem = document.getElementById("topsites")
         for (let i = 0; i < topSiteCount; i++) {
-          topSitesElem.innerHTML = topSitesElem.innerHTML + "<a href=" + res[i].url + "><div class=\"draweritem topsite\"id=l" + i + ">" + res[i].title + "</div></a>"
+          topSitesElem.innerHTML += `<a href="${res[i].url}"><div class="draweritem topsite" id="l${i}">${res[i].title || res[i].url}</div></a>`
           document.getElementById("l" + i).style.backgroundImage = "url(http://www.google.com/s2/favicons?domain=" + res[i].url.getDomain() + ")"
         }
       } else {
