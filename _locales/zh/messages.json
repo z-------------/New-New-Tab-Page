@@ -149,7 +149,7 @@
     "description": "Placeholder in bookmarks search bar, shown when empty"
   },
   "findBarPlaceholder": {
-    "message": "找",
+    "message": "尋找",
     "description": "Placeholder in Find bar, shown when empty"
   },
   "optionsLabelNewTabTitleText": {
