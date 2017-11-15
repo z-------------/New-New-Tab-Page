@@ -824,13 +824,17 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
 
     function getBookmarks(res) {
-      document.getElementById("bookmarkslist").innerHTML = ""
+      let bookmarksListElem = document.getElementById("bookmarkslist")
+      bookmarksListElem.innerHTML = ""
       if (document.getElementById("bmsearch").value === "") {
-        document.getElementById("bookmarkslist").innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksEmptyMessage")}</div>`
+        bookmarksListElem.innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksEmptyMessage")}</div>`
       } else if (res.length > 0) {
         for (let i = 0, l = res.length; i < l; i++) {
           if (res[i].url.indexOf("javascript:") === -1 && res[i].url.indexOf("chrome://") === -1) {
-            document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href=" + res[i].url + "><div class='bmsite' style='background-image:url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0, res[i].url.indexOf("/", 9)) + ")'>" + res[i].title + "</div></a>"
+            let aElem = document.createElement("a")
+            aElem.href = res[i].url
+            aElem.innerHTML = `<div class="bmsite" style="background-image: url(http://www.google.com/s2/favicons?domain=${res[i].url.substring(0, res[i].url.indexOf("/", 9))})">${res[i].title}</div>`
+            bookmarksListElem.appendChild(aElem)
           }
         }
       } else {
@@ -843,7 +847,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       if (res.length > 0) {
         for (let i = 0, l = res.length; i < l; i++) {
           if (res[i].url.indexOf("javascript:") === -1) {
-            document.getElementById("bookmarkslist").innerHTML = document.getElementById("bookmarkslist").innerHTML + "<a href=" + res[i].url + "><div class=bmsite style=background-image:url(http://www.google.com/s2/favicons?domain=" + res[i].url.substring(0, res[i].url.indexOf("/", 9)) + ")>" + res[i].title + "</div></a>"
+            let aElem = document.createElement("a")
+            aElem.href = res[i].url
+            aElem.innerHTML = `<div class="bmsite" style="background-image: url(http://www.google.com/s2/favicons?domain=${res[i].url.substring(0, res[i].url.indexOf("/", 9))})">${res[i].title}</div>`
           }
         }
       } else {
@@ -876,10 +882,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
       }
 
-      document.getElementById("bmsearch").onkeydown = function(e) {
+      document.getElementById("bmsearch").oninput = function(e) {
         if (document.getElementById("bmsearch").value.length >= 3 || e.which === 13) {
           document.getElementById("bookmarkslist").scrollTop = 0
           chrome.bookmarks.search(this.value, getBookmarks)
+        } else if (document.getElementById("bmsearch").value.length === 0) {
+          chrome.bookmarks.search("", getBookmarks)
         }
       }
 
