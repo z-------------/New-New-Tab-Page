@@ -22,11 +22,11 @@ A minimal new tab page for Google Chrome
 
 ## Download
 
-[**Chrome Web Store**](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc)
+[**Chrome Web Store**](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc) – quicker, easier, more convenient
 
-[**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip)
+[**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip) – latest features and improvements
 
-### Installing from source
+### Manual installation
 
 1. Download and unzip the zip file.
 2. Go to `chrome://extensions`.
@@ -39,9 +39,9 @@ New New Tab Page should now be installed.
 
 Please feel free to submit pull requests or issues of any kind.
 
-Help with updating and completing the existing translations or starting new ones (in the `locales` directory) would also be greatly appreciated -- `bin/localesHelper.js` could be helpful for this.
-
 It would be good if contributed code passes `eslint`ing, but it's not a requirement.
+
+Help with updating and completing the existing translations or starting new ones (in the `locales` directory) would also be greatly appreciated – `bin/localesHelper.js` could be helpful for this.
 
 ## To-do
 
