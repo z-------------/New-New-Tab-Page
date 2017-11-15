@@ -194,8 +194,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       })
 
       chrome.storage.local.get("background", function(result) {
-        var imageUri = result.background.images[0].uri || defaultSettings.background.images[0].uri
-        bgPreview.style.backgroundImage = "url(" + imageUri + ")"
+        var imageURI = result.background.images[0].uri || defaultSettings.background.images[0].uri
+        bgPreview.style.backgroundImage = "url(" + imageURI + ")"
+
+        let urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g
+        // ^ https://stackoverflow.com/a/3809435
+        if (imageURI.match(urlPattern)) {
+          document.getElementById("custombg").value = imageURI
+        }
       })
     })
   })
