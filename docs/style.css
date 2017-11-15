@@ -1,0 +1,49 @@
+body {
+  font-family: "Roboto", "Helvetica Neue", "Noto Sans", sans-serif;
+  background: #212121;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+  font-size: 16px;
+}
+
+p, h1 {
+  width: 500px;
+  text-align: left;
+}
+
+p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* p strong {
+  color: #ffffff;
+} */
+
+p.footer {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+a {
+  color: #448AFF;
+  text-decoration: none;
+}
+
+a:hover {
+  border-bottom: solid 1px #448AFF;
+}
+
+h1 {
+  font-weight: 500;
+  line-height: 1;
+}
+
+h1:before {
+  content: "New New Tab Page";
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.5em;
+  display: block;
+}

@@ -185,7 +185,10 @@
     "message": "Submit a GitHub issue"
   },
   "optionsButtonCredits": {
-    "message": "Credits"
+    "message": "Acknowledgements"
+  },
+  "optionsButtonPrivacy": {
+    "message": "Privacy policy"
   },
   "optionsButtonGitHubRepo": {
     "message": "View GitHub repo"
