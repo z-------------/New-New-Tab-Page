@@ -826,7 +826,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     function getBookmarks(res) {
       document.getElementById("bookmarkslist").innerHTML = ""
       if (document.getElementById("bmsearch").value === "") {
-        document.getElementById("bookmarkslist").innerHTML = "<div id='bmsearchtip'>Search for bookmarks and results will appear here</div>"
+        document.getElementById("bookmarkslist").innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksEmptyMessage")}</div>`
       } else if (res.length > 0) {
         for (let i = 0, l = res.length; i < l; i++) {
           if (res[i].url.indexOf("javascript:") === -1 && res[i].url.indexOf("chrome://") === -1) {
@@ -834,7 +834,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           }
         }
       } else {
-        document.getElementById("bookmarkslist").innerHTML = "<div id='bmsearchtip'>No search results :(</div>"
+        document.getElementById("bookmarkslist").innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksNoResultsMessage")}</div>`
       }
     }
 
@@ -847,7 +847,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           }
         }
       } else {
-        document.getElementById("bookmarkslist").innerHTML = "<div id='bmsearchtip'>No bookmarks :(</div>"
+        document.getElementById("bookmarkslist").innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksNoBookmarksMessage")}</div>`
       }
     }
 

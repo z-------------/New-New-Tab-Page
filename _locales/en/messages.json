@@ -47,6 +47,14 @@
     "message": "Search for bookmarks and results will appear here",
     "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
   },
+  "bookmarksNoResultsMessage": {
+    "message": "No search results :(",
+    "description": "Message shown when bookmarks search returned no results"
+  },
+  "bookmarksNoBookmarksMessage": {
+    "message": "No bookmarks :(",
+    "description": "Message shown when user has no bookmarks"
+  },
   "appSearchPlaceholder": {
     "message": "Search",
     "description": "Placeholder in Chrome Apps search bar, shown when empty"
