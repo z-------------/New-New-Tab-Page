@@ -20,7 +20,6 @@ if (location.hash === "#iframe") {
 }
 
 var settings = {}
-var easterEgg
 
 var defaultSettings
 xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
@@ -293,7 +292,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
   /* tell no-one */
 
   if (chrome.i18n.getUILanguage().split("-")[0] === "en") {
-    easterEgg = function() {
+    window.easterEgg = function() {
       let h1Elem = document.getElementsByTagName("h1")[0]
 
       if (window.eggIndex === undefined) {
@@ -322,7 +321,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
     }
   } else {
-    easterEgg = function() {}
+    window.easterEgg = function() {}
   }
 
   document.querySelector("form").addEventListener("submit", function(e) {
