@@ -49,4 +49,4 @@ These are a couple of features and improvements I'm hoping to include in the nea
 
 * [ ] Less hacky handling of bottom-right drawers
 * [ ] Ability to use local file for shortcut icons
-* [ ] Preview blur effect in options
+* [x] ~~Preview blur effect in options~~
