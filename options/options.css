@@ -235,14 +235,24 @@ option {
   background-color: #fff;
 }
 
+#bgpreview-container {
+  overflow: hidden;
+  margin: 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
 #bgpreview {
   height: 200px;
   width: 300px;
-  margin: 10px;
-  border-radius: 4px;
   background-color: rgba(255, 255, 255, .5);
   background-size: cover;
   background-position: center;
+}
+
+#bgpreview.blurred {
+  filter: blur(7px);
+  transform: scale(1.2);
 }
 
 input[type=file] {

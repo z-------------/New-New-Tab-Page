@@ -81,6 +81,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
   }
 
+  document.getElementById("bgblur").addEventListener("change", function() {
+    if (this.checked) {
+      bgPreview.classList.add("blurred")
+    } else {
+      bgPreview.classList.remove("blurred")
+    }
+  })
+
   // resize background preview to fit screen size
   function resizeBgPreview() {
     bgPreview.style.height = 300 * window.top.innerHeight / window.top.innerWidth + "px"
@@ -143,6 +151,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       })
       readOption("bgBlur", function(val) {
         document.getElementById("bgblur").checked = val
+        if (val) {
+          bgPreview.classList.add("blurred")
+        } else {
+          bgPreview.classList.remove("blurred")
+        }
       })
       readOption("useFahrenheit", function(val) {
         document.getElementById("usefahrenheit").checked = val
