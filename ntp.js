@@ -610,7 +610,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (!document.getElementById("URI-script")) {
         var urijsScriptElem = document.createElement("script")
-        urijsScriptElem.src = "js/URI.js/URI.js"
+        urijsScriptElem.src = "js/URI.js/URI.min.js"
         document.body.appendChild(urijsScriptElem)
       }
 
