@@ -32,7 +32,8 @@
     },
     "applications": {
         "gecko": {
-          "id": "New-New-Tab-Page@zacharyguard.co.nf"
+          "id": "New-New-Tab-Page@zacharyguard.co.nf",
+          "strict_min_version": "54.0"
         }
     }
 }
