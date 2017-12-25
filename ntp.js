@@ -775,7 +775,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     if (showAppsDrawer) {
       chrome.topSites.get(getTopSites)
       chrome.sessions.getRecentlyClosed(getRecentSites)
-      
+
       if (chrome.management.launchApp) {
         chrome.management.getAll(getApps)
       } else {
@@ -1077,7 +1077,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
               for (let i = 0, l = feedurls.length; i < l; i++) {
                 let url = feedurls[i]
                 var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=20"
-                var proxyURL = "https://jsonproxy.herokuapp.com/?url=" + baseURL
+                // var proxyURL = "https://jsonproxy.herokuapp.com/?url=" + baseURL
+                var proxyURL = "https://jsonp.afeld.me/?url=" + baseURL
                 feedlyURLs.push(proxyURL)
               }
 
