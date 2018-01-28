@@ -979,7 +979,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         let newsListElem = document.getElementById("newslist");
 
         for (let i = 0, l = items.length; i < l; i++) {
-          // TODO: update
           let publishedMoment = moment(items[i].published);
 
           let newsItemElem = document.createElement("a")
