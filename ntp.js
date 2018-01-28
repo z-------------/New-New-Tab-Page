@@ -963,96 +963,53 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       document.getElementById("weatherdiv").innerHTML = "<iframe id='weatherframe' src='weather/weather.html'></iframe>"
 
       /* news */
-      function displayNews(items) {
-        function stripTags(html) {
-          return html.replace(/(<([^>]+)>)/ig, "") // nifty regex by Chris Coyier of CSS-Tricks
-        }
+      function stripTags(html) {
+        return html.replace(/(<([^>]+)>)/ig, "") // nifty regex by Chris Coyier of CSS-Tricks
+      }
 
-        function truncate(str) {
-          if (str.length > 200) {
-            return str.substring(0, 200) + "..."
-          } else {
-            return str
-          }
+      function truncate(str) {
+        if (str.length > 200) {
+          return str.substring(0, 200) + "..."
+        } else {
+          return str
         }
+      }
+
+      function displayNews(items) {
+        let newsListElem = document.getElementById("newslist");
 
         for (let i = 0, l = items.length; i < l; i++) {
-          let item = items[i]
-          // console.log(item)
+          // TODO: update
+          let publishedMoment = moment(items[i].published);
 
-          var url
-          if (item.alternate && item.alternate.href) {
-            url = item.alternate.href
-          } else if (item.originId) {
-            url = item.originId
-          } else {
-            url = ""
-          }
+          let newsItemElem = document.createElement("a")
+          newsItemElem.href = items[i].url
+          newsItemElem.setAttribute("target", "_blank")
 
-          var description
-          if (item.summary && item.summary.content) {
-            description = truncate(stripTags(item.summary.content))
-          } else if (item.content && item.content.content) {
-            description = truncate(stripTags(item.content.content))
-          } else {
-            description = item.title
-          }
-
-          var source = {
-            title: item.origin.title,
-            url: item.origin.htmlUrl
-          }
-
-          var author
-          if (item.author) {
-            author = `<a target='_blank' href='${source.url}'>${source.title}</a> • by ${item.author}`
-          } else {
-            author = `<a target='_blank' href='${source.url}'>${source.title}</a>`
-          }
-
-          var publishedMoment = moment(Number(item.published))
-
-          var newsItem = document.createElement("a")
-          newsItem.href = url
-          newsItem.setAttribute("target", "_blank")
-
-          newsItem.innerHTML = "<li class='news'>\
+          newsItemElem.innerHTML = "<li class='news'>\
           <div class='news-content'>\
           <div class='news-header'>\
-          <h3 class='news-title'>" + item.title + "</h3>\
+          <h3 class='news-title'>" + items[i].title + "</h3>\
           <div class='news-time--short'>" + publishedMoment.fromNow(true) + "</div>\
           </div>\
           <div class='news-text'>\
-          <p>" + description  + "</p>\
+          <p>" + truncate(items[i].description) + "</p>\
           <div class='news-meta'>\
           <span>" + publishedMoment.fromNow() + "</span>\
            • \
-          <span>" + author + "</span>\
+          <span>" + items[i].author + "</span>\
           </div>\
           </div>\
           </div>\
           </li>"
 
-          var imageURL = null
-          if (item.visual && item.visual.url && item.visual.url !== "none" && item.visual.contentType.match(/image\/*/gi)) {
-            imageURL = item.visual.url
-          } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
-            imageURL = item.thumbnail[item.thumbnail.length - 1].url
-          } else if (item.content && item.content.content) {
-            let parser = new DOMParser()
-            let doc = parser.parseFromString(item.content.content, "text/html")
-            let imageElems = doc.getElementsByTagName("img")
-            if (imageElems[0] && imageElems[0].getAttribute("src")) {
-              imageURL = imageElems[0].src
-            }
-          }
-          if (imageURL) {
-            newsItem.querySelector("li.news").style.backgroundImage = "url(" + imageURL + ")"
+          if (items[i].imageURL) {
+            newsItemElem.querySelector("li.news").style.backgroundImage = "url(" + items[i].imageURL + ")"
           }
 
-          document.getElementById("newslist").appendChild(newsItem)
+          newsListElem.appendChild(newsItemElem)
         }
-        document.getElementById("newslist").classList.remove("loading")
+        newsListElem.classList.remove("loading")
       }
 
       if (!document.getElementById("momentjs-script")) {
@@ -1073,56 +1030,88 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
           if (navigator.onLine) {
             if (!lastChecked || !localStorage.getItem("news_cache") || (new Date().getTime() - lastChecked >= 3.6E+6)) {
-              var feedlyURLs = []
+              var doneCount = 0;
+              let items = [];
+
               for (let i = 0, l = feedurls.length; i < l; i++) {
-                let url = feedurls[i]
-                var baseURL = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(url) + "&count=20"
-                // var proxyURL = "https://jsonproxy.herokuapp.com/?url=" + baseURL
-                var proxyURL = "https://jsonp.afeld.me/?url=" + baseURL
-                feedlyURLs.push(proxyURL)
+                let url = "https://cloud.feedly.com/v3/mixes/contents?streamId=feed%2F" + encodeURIComponent(feedurls[i]) + "&count=20";
+                xhr(url, function(r) {
+                  if (r) {
+                    let body = JSON.parse(r);
+                    for (let j = 0, m = body.items.length; j < m; j++) {
+                      let item = body.items[j];
+
+                      var url
+                      if (item.alternate && item.alternate.href) {
+                        url = item.alternate.href
+                      } else if (item.originId) {
+                        url = item.originId
+                      } else {
+                        url = ""
+                      }
+
+                      var description
+                      if (item.summary && item.summary.content) {
+                        description = stripTags(item.summary.content).trim();
+                      } else if (item.content && item.content.content) {
+                        description = stripTags(item.content.content).trim();
+                      } else {
+                        description = item.title.trim();
+                      }
+
+                      var source = {
+                        title: item.origin.title.trim(),
+                        url: item.origin.htmlUrl
+                      }
+
+                      var author
+                      if (item.author) {
+                        author = `<a target='_blank' href='${source.url}'>${source.title}</a> • by ${item.author}`
+                      } else {
+                        author = `<a target='_blank' href='${source.url}'>${source.title}</a>`
+                      }
+
+                      var published = Number(item.published);
+
+                      var imageURL = null
+                      if (item.visual && item.visual.url && item.visual.url !== "none" && item.visual.contentType.match(/image\/*/gi)) {
+                        imageURL = item.visual.url
+                      } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
+                        imageURL = item.thumbnail[item.thumbnail.length - 1].url
+                      } else if (item.content && item.content.content) {
+                        let parser = new DOMParser()
+                        let doc = parser.parseFromString(item.content.content, "text/html")
+                        let imageElems = doc.getElementsByTagName("img")
+                        if (imageElems[0] && imageElems[0].getAttribute("src")) {
+                          imageURL = imageElems[0].src
+                        }
+                      }
+
+                      items.push({
+                        title: item.title.trim(),
+                        url: url,
+                        description: description,
+                        source: source,
+                        author: author,
+                        published: published,
+                        imageURL: imageURL
+                      })
+                    }
+                  }
+                  doneCount++;
+
+                  if (doneCount === feedurls.length) { // done fetching contents, move on
+                    items = items.sort(function(a, b) {
+                      if (a.published > b.published) return -1
+                      if (a.published < b.published) return 1
+                      return 0
+                    })
+                    displayNews(items)
+                    localStorage.setItem("news_cache", JSON.stringify(items))
+                    localStorage.setItem("news_last_checked", new Date().getTime().toString())
+                  }
+                })
               }
-
-              var yqlQuery = "select items from json where url in ('" + feedlyURLs.join("', '") + "')"
-              var yqlURL = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent(yqlQuery) + "&format=json&diagnostics=true"
-
-              // console.log(yqlQuery)
-              // console.log(yqlURL)
-
-              xhr(yqlURL, function(res) {
-                var json = JSON.parse(res)
-                // console.log(json)
-                if (json.query && json.query.results && json.query.results.json) {
-                  // console.log("using fresh news")
-
-                  var results = json.query.results.json
-                  var items = results.map(function(result) {
-                    return result.items
-                  }).sort(function(a, b) {
-                    var aPub = Number(a.published)
-                    var bPub = Number(b.published)
-                    if (aPub > bPub) return -1
-                    if (aPub < bPub) return 1
-                    return 0
-                  })
-                  displayNews(items)
-                  localStorage.setItem("news_cache", JSON.stringify(items))
-                  localStorage.setItem("news_last_checked", new Date().getTime().toString())
-                } else if (localStorage.getItem("news_cache")) {
-                  // console.log("using cached news")
-
-                  displayNews(JSON.parse(localStorage.getItem("news_cache")))
-                } else {
-                  // console.log("gave up on news")
-
-                  document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>"
-                  document.getElementById("newslist").classList.remove("loading")
-                }
-              }, function() {
-                // console.log("gave up on news")
-
-                document.getElementById("newslist").innerHTML = "<p class='error-msg'>Couldn't load news.</p>"
-                document.getElementById("newslist").classList.remove("loading")
-              })
 
               document.getElementById("newslist").classList.add("loading")
             } else if (localStorage.getItem("news_cache")) {
