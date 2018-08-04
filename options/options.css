@@ -238,7 +238,6 @@ option {
 #bgpreview-container {
   overflow: hidden;
   margin: 10px;
-  border-radius: 4px;
   display: block;
 }
 
@@ -248,6 +247,7 @@ option {
   background-color: rgba(255, 255, 255, .5);
   background-size: cover;
   background-position: center;
+  border-radius: 4px;
 }
 
 #bgpreview.blurred {
