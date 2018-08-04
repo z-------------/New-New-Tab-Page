@@ -201,7 +201,7 @@
     "description": "Text shown in tab title on options page alongside extension name"
   },
   "optionsHelpContact": {
-    "message": "The best way to reach me about issues, feedback, suggestions, or support is via the above two options 😊"
+    "message": "The best way to reach me about issues, feedback, suggestions, or support is via the above two options."
   },
   "importexportButtonBack": {
     "message": "Back",
