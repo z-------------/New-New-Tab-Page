@@ -146,7 +146,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     "plus.google.com": "gp",
     "youtube.com": "yt",
     "9gag.com": "ng",
-    "mail.google.com": "gmail",
+    "mail.google.com": "gm",
     "reddit.com": "rd",
     "google.com": "gg",
     "yahoo.com": "yh",
