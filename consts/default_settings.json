@@ -23,7 +23,7 @@
         "appsgridstyle": false,
         "feedurls": ["http://feeds.bbci.co.uk/news/world/rss.xml"],
         "customCSS": "",
-        "appIconBorderRadius": 7.5,
+        "appIconBorderRadius": 8,
         "background": {
             "images": [{
                 "type": "preset",
