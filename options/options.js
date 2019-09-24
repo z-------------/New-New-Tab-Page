@@ -328,8 +328,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     e.preventDefault()
   })
 
-  document.querySelector("#edit-apps-btn").addEventListener("click", function() {
-    window.top.document.querySelector("#optionbutton").click()
-    setTimeout(window.top.openAppsEditor, 300)
+  document.getElementById("edit-apps-btn").addEventListener("click", function(e) {
+    if (window.top === window) { // we are on standalone options page
+      alert("Please click the Options icon on the new tab page to edit shortcuts.")
+    } else {
+      window.top.document.querySelector("#optionbutton").click()
+      setTimeout(window.top.openAppsEditor, 300)
+    }
   })
 })
