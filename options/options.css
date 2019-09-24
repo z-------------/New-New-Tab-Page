@@ -94,7 +94,7 @@ input, button {
   margin-left: 10px;
 }
 
-button {
+button, #edit-apps-btn {
   cursor: pointer;
   text-align: center;
   padding: 1px 8px;
@@ -140,7 +140,7 @@ input[type=text], input[type=url], textarea {
   background-color: rgba(0, 0, 0, .2);
 }
 
-input, select, button, textarea {
+input, select, button, textarea, #edit-apps-btn {
   height: 25px;
   border: none;
   background-color: rgba(255, 255, 255, .2);
@@ -154,7 +154,7 @@ input, select, button, textarea {
   color: rgba(255, 255, 255, .6);
 }
 
-input:hover, select:hover, input:focus, button:hover, button:focus, textarea:focus {
+input:hover, select:hover, input:focus, button:hover, button:focus, textarea:focus, #edit-apps-btn:hover {
   background-color: rgba(255, 255, 255, .3);
   color: rgba(255, 255, 255, .7);
 }
