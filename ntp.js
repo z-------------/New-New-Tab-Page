@@ -232,12 +232,12 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       let element = container.children[index]
       if (!document.querySelector("#apps-editor-container").classList.contains("opened")) {
         if (e.button === 1 || e.ctrlKey === true || e.metaKey === true) {
-          chrome.tabs.create({ url: url , active: false })
+          chrome.tabs.create({ url, active: false })
         } else {
           chrome.tabs.getCurrent(function(r) {
             var currentTabId = r && r.id ? r.id : null
             white(element, function() {
-              chrome.tabs.update(currentTabId, { url: url })
+              chrome.tabs.update(currentTabId, { url })
             })
           })
         }
@@ -929,9 +929,10 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         whiteElem.height = window.innerHeight
       }
 
-      setTimeout(function() {
-        callback()
-      }, /* transitionDuration */ 0)
+      // setTimeout(callback, transitionDuration)
+      setTimeout(callback, 0)
+
+      document.body.classList.add("no-interact");
     }
 
     function whiteStep() {

@@ -48,6 +48,10 @@ body {
   font-size: 12px;
 }
 
+body.no-interact {
+  pointer-events: none;
+}
+
 iframe {
   border: none;
 }
