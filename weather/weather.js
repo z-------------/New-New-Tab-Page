@@ -63,16 +63,16 @@ var lastChecked
 function displayWeather(data) {
   var conditionData = data.weather.currently
 
-  var tempElem = document.querySelector("#temp")
-  var temperatureElem = document.querySelector("#temperature")
-  var conditionElem = document.querySelector("#condition")
+  var tempElem = document.getElementById("temp")
+  var temperatureElem = document.getElementById("temperature")
+  var conditionElem = document.getElementById("condition")
 
   var temperature = conditionData.temperature
   if (useImperial) {
     temperature = (temperature * 9 / 5) + 32
   }
 
-  tempElem.style.backgroundImage = "url(/img/weather/" + codeIconMap[conditionData.icon] + ".svg)"
+  tempElem.style.backgroundImage = `url(/img/weather/${codeIconMap[conditionData.icon]}.svg)`
   temperatureElem.textContent = Math.round(temperature).toString()
   conditionElem.textContent = conditionData.summary
 
@@ -82,7 +82,7 @@ function displayWeather(data) {
 var dontUseCache
 
 function gotCoords() {
-  var requestUrl = "http://php-nntp.193b.starter-ca-central-1.openshiftapps.com/wx?foo=bar"
+  var requestUrl = "https://nntp-server-redux.netlify.com/.netlify/functions/wx?foo=bar"
   if (overrideWxLocation) {
     requestUrl += `&coords=${wxCoordsLat},${wxCoordsLong}`
   }
