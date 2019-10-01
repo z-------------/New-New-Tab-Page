@@ -2,6 +2,10 @@ var exportBox = document.querySelector("#export textarea")
 var importBox = document.querySelector("#import textarea")
 var importButton = document.querySelector("#import button")
 
+if (window.top !== window) {
+  document.body.classList.add("iframe");
+}
+
 chrome.storage.sync.get(null, function(r) {
   exportBox.value = JSON.stringify(r)
 })

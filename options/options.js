@@ -15,8 +15,8 @@ var xhr = function(url, callback) {
   req.send()
 }
 
-if (location.hash === "#iframe") {
-  document.body.style.backgroundColor = "transparent"
+if (window.top !== window) {
+  document.body.classList.add("iframe");
 }
 
 var settings = {}

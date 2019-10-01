@@ -662,12 +662,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
 
     document.getElementById("optionbutton").onclick = function() {
+      const optionsUrl = "options/options.html"
+
       if (!options.src) { // it's the first time
-        options.src = "options/options.html#iframe"
+        options.src = optionsUrl
         options.contentWindow.onload = function() {
-          this.easterEgg() // this being the contentWindow
+          this.easterEgg() // `this` being the contentWindow
         }
-      } else if (!optsopened && options.contentWindow.location.href.indexOf("options/options.html#iframe") !== -1) {
+      } else if (!optsopened && options.contentWindow.location.href.indexOf(optionsUrl) !== -1) {
         options.contentWindow.easterEgg()
       }
 
@@ -676,6 +678,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         optsopened = 0
       } else {
         document.body.classList.add("optsopened")
+        if (options.contentWindow.location.href.indexOf(optionsUrl) === -1) {
+          options.contentWindow.location.href = optionsUrl
+        }
         options.contentWindow.scrollTo(0, 0)
         optsopened = 1
       }

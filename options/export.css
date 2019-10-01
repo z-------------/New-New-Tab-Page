@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-weight: 300;
+}
+
+:focus {
+  outline: none;
+}
+
+body {
+  background-color: #212121;
+}
+
+body.iframe {
+  background-color: transparent;
+}
+
+header, section {
+  padding: 20px;
+}
+
+section {
+  width: 50%;
+  float: left;
+}
+
+textarea {
+  background-color: rgba(255, 255, 255, .2);
+  border-radius: 4px;
+  border: none;
+  resize: vertical;
+  width: 100%;
+  min-height: 400px;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 15px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+textarea:focus {
+  border-color: white;
+}
+
+button {
+  border: none;
+  background: rgba(255, 255, 255, .3);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 15px;
+}

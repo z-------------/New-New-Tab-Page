@@ -16,9 +16,13 @@ body, html {
 }
 
 body {
-  background-color: black;
+  background-color: #212121;
   font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
   box-sizing: border-box;
+}
+
+body.iframe {
+  background-color: transparent;
 }
 
 a {
