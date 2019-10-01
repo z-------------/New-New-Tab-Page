@@ -155,3 +155,12 @@ document.body.addEventListener("click", function(e) {
     })
   }
 })
+
+// load and inject user's custom css
+chrome.storage.sync.get("customCSS", r => {
+  if (r.customCSS) {
+    let styleElem = document.createElement("style")
+    styleElem.textContent = r.customCSS
+    document.head.appendChild(styleElem);
+  }
+})
