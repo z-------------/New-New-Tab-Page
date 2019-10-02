@@ -423,6 +423,13 @@ button {
 
 #weatherdiv {
   margin-top: 20px;
+  opacity: 0;
+  min-height: 100px;
+  transition-property: opacity;
+}
+
+#weatherdiv.loaded {
+  opacity: 1;
 }
 
 #weatherdiv #weather {

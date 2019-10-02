@@ -1008,27 +1008,27 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           temperatureElem.textContent = Math.round(temperature).toString()
           conditionElem.textContent = conditionData.summary
 
-          // document.body.classList.add("visible")
+          weatherDivElem.classList.add("loaded")
         }
 
         var dontUseCache
 
         function gotCoords() {
-          var requestUrl = "https://nntp-server-redux.netlify.com/.netlify/functions/wx?foo=bar"
+          var requestUrl = new URL("https://nntp-server-redux.netlify.com/.netlify/functions/wx")
+
           if (overrideWxLocation) {
-            requestUrl += `&coords=${wxCoordsLat},${wxCoordsLong}`
+            requestUrl.searchParams.append("coords", `${wxCoordsLat},${wxCoordsLong}`)
           }
 
           var chromeUILang = chrome.i18n.getUILanguage()
           if (chromeUILang.toLowerCase() === "zh-tw") {
-            requestUrl += "&lang=zh-tw"
+            requestUrl.searchParams.append("lang", "zh-tw")
           } else if (availableLocales.indexOf(chromeUILang.split("-")[0]) !== -1) {
-            requestUrl += `&lang=${chromeUILang.split("-")[0]}`
+            requestUrl.searchParams.append("lang", `${chromeUILang.split("-")[0]}`)
           }
 
           if (dontUseCache) {
-            // console.log("getting fresh weather")
-            xhr(requestUrl, function(data) {
+            xhr(requestUrl.href, function(data) {
               data = JSON.parse(data)
 
               displayWeather(data)
@@ -1037,7 +1037,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
               localStorage.setItem("last_weather", JSON.stringify(data))
             })
           } else if (localStorage.last_weather) {
-            // console.log("using cached weather")
             displayWeather(JSON.parse(localStorage.getItem("last_weather")))
           }
         }
