@@ -723,6 +723,7 @@ a {
 
 #bookmarkslist {
   -webkit-mask-image: linear-gradient(transparent, black 7px, black calc(100% - 7px), transparent);
+  mask-image: linear-gradient(transparent, black 7px, black calc(100% - 7px), transparent);
 }
 
 #bmsearchtip {
