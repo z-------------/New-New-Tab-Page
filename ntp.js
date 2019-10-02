@@ -1192,6 +1192,15 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         newsListElem.classList.remove("loading")
       }
 
+      function lookForImage(html) {
+        let parser = new DOMParser()
+        const doc = parser.parseFromString(html, "text/html")
+        const imageElems = doc.getElementsByTagName("img")
+        if (imageElems[0] && imageElems[0].getAttribute("src")) {
+          return imageElems[0].src
+        }
+      }
+
       if (!document.getElementById("momentjs-script")) {
         var scriptElem = document.createElement("script")
         scriptElem.src = "js/Moment.js/moment-with-locales.min.js"
@@ -1251,13 +1260,9 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                         imageURL = item.visual.url
                       } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
                         imageURL = item.thumbnail[item.thumbnail.length - 1].url
-                      } else if (item.content && item.content.content) {
-                        let parser = new DOMParser()
-                        let doc = parser.parseFromString(item.content.content, "text/html")
-                        let imageElems = doc.getElementsByTagName("img")
-                        if (imageElems[0] && imageElems[0].getAttribute("src")) {
-                          imageURL = imageElems[0].src
-                        }
+                      } else if ((item.content && item.content.content) || (item.summary && item.summary.content)) {
+                        if (item.content && item.content.content) imageURL = lookForImage(item.content.content)
+                        if (!imageURL && item.summary && item.summary.content) imageURL = lookForImage(item.summary.content)
                       }
 
                       items.push({
