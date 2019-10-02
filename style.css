@@ -823,7 +823,7 @@ a {
   font-size: 1.3em;
 }
 
-.news:hover .news-title {
+.news-content:hover .news-title {
   color: var(--color-nntp-blue-lighter);
 }
 
