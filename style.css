@@ -432,6 +432,7 @@ button {
   opacity: 0;
   min-height: 100px;
   transition-property: opacity;
+  cursor: pointer;
 }
 
 #weatherdiv.loaded {
@@ -490,6 +491,10 @@ button {
 
 #weatherdiv footer span, #weatherdiv footer span a {
   color: inherit;
+}
+
+#weatherdiv footer:hover {
+  text-decoration: underline;
 }
 
 #topright {
