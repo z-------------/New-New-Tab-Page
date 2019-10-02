@@ -70,7 +70,7 @@ button {
   height: 100%;
   background-color: #333;
 
-  transition-property: left;
+  transition-property: transform;
   box-sizing: border-box;
 }
 
@@ -161,7 +161,7 @@ button {
 }*/
 
 .sidebar-opened #sidebar, .sidebar-opened #sidebar nav {
-  left: calc(100% - 350px);
+  transform: translateX(-350px);
 }
 
 .sidebar-opened #sidebar {
