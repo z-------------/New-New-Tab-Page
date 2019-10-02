@@ -829,18 +829,26 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
       }
     }
 
-    function getBookmarks(res) {
+    function makeBookmarksListItem(url, title) {
+      let elem = document.createElement("a")
+      elem.href = url
+      let inner = document.createElement("div");
+      inner.setAttribute("class", "bmsite")
+      inner.style.backgroundImage = `url(http://www.google.com/s2/favicons?domain=${url.substring(0, url.indexOf("/", 9))})`
+      inner.textContent = title
+      elem.appendChild(inner)
+      return elem
+    }
+
+    function getBookmarks(res, isAllBookmarks) {
       let bookmarksListElem = document.getElementById("bookmarkslist")
       bookmarksListElem.innerHTML = ""
-      if (document.getElementById("bmsearch").value === "") {
+      if (!isAllBookmarks && document.getElementById("bmsearch").value === "") {
         bookmarksListElem.innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksEmptyMessage")}</div>`
       } else if (res.length > 0) {
-        for (let i = 0, l = res.length; i < l; i++) {
-          if (res[i].url.indexOf("javascript:") === -1 && res[i].url.indexOf("chrome://") === -1) {
-            let aElem = document.createElement("a")
-            aElem.href = res[i].url
-            aElem.innerHTML = `<div class="bmsite" style="background-image: url(http://www.google.com/s2/favicons?domain=${res[i].url.substring(0, res[i].url.indexOf("/", 9))})">${res[i].title}</div>`
-            bookmarksListElem.appendChild(aElem)
+        for (let item of res) {
+          if (item.url.indexOf("javascript:") === -1) {
+            bookmarksListElem.appendChild(makeBookmarksListItem(item.url, item.title))
           }
         }
       } else {
@@ -849,17 +857,14 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
     }
 
     function getAllBookmarks(res) {
-      document.getElementById("bookmarkslist").innerHTML = ""
-      if (res.length > 0) {
-        for (let i = 0, l = res.length; i < l; i++) {
-          if (res[i].url.indexOf("javascript:") === -1) {
-            let aElem = document.createElement("a")
-            aElem.href = res[i].url
-            aElem.innerHTML = `<div class="bmsite" style="background-image: url(http://www.google.com/s2/favicons?domain=${res[i].url.substring(0, res[i].url.indexOf("/", 9))})">${res[i].title}</div>`
-          }
-        }
+      getBookmarks(res, true)
+    }
+
+    function resetBookmarksList() {
+      if (showAllBookmarks) {
+        chrome.bookmarks.search("http", getAllBookmarks)
       } else {
-        document.getElementById("bookmarkslist").innerHTML = `<div id='bmsearchtip'>${chrome.i18n.getMessage("bookmarksNoBookmarksMessage")}</div>`
+        chrome.bookmarks.search("", getBookmarks)
       }
     }
 
@@ -869,7 +874,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         if (!bmopened) {
           document.getElementById("bmdrawerframe").classList.add("opened")
           document.getElementById("bmsearch").value = ""
-          chrome.bookmarks.search("", getBookmarks)
 
           bmopened = 1
 
@@ -881,6 +885,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           setTimeout(function() {
             document.getElementById("bmsearch").focus()
           }, 200)
+
+          resetBookmarksList()
         } else if (bmopened) {
           document.getElementById("bmdrawerframe").classList.remove("opened")
 
@@ -893,14 +899,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           document.getElementById("bookmarkslist").scrollTop = 0
           chrome.bookmarks.search(this.value, getBookmarks)
         } else if (document.getElementById("bmsearch").value.length === 0) {
-          chrome.bookmarks.search("", getBookmarks)
+          resetBookmarksList()
         }
-      }
-
-      if (showAllBookmarks) {
-        setTimeout(function() {
-          chrome.bookmarks.search("http", getAllBookmarks)
-        }, 500)
       }
     }
 
