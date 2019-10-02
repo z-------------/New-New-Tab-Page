@@ -4,7 +4,7 @@ A minimal new tab page for Google Chrome
 
 ![NNTP screenshot](https://i.imgur.com/79L4EEW.png)
 
-[Features](#features) • [Download](#download) • [Contributing](#contributing) • [To-do](#to-do)
+[Features](#features) • [Install](#install) • [License](#license)
 
 ## Features
 
@@ -12,19 +12,19 @@ A minimal new tab page for Google Chrome
 
 + **Custom background**
 
-+ **Weather + News**
++ **Weather + RSS**
 
 + **App launcher**
 
-+ **Bookmarks, top sites and recently closed**
++ **Bookmarks, top sites, and recently closed**
 
-+ a few other things you might like
++ a few other nice things
 
-## Download
+## Install
 
-[**Chrome Web Store**](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc) – quicker, easier, more convenient
+[**Chrome Web Store**](https://chrome.google.com/webstore/detail/new-new-tab-page/nndegnhfodohkemfnmalamgebofbgjcc) – one-click installation, automatic updates
 
-[**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip) – latest features and improvements
+[**Source (.zip)**](https://github.com/z-------------/New-New-Tab-Page/archive/master.zip) – latest changes
 
 ### Manual installation
 
@@ -33,20 +33,28 @@ A minimal new tab page for Google Chrome
 3. Tick "Developer mode" and click "Load unpacked extension".
 4. Choose the directory you unzipped New New Tab Page into.
 
-New New Tab Page should now be installed.
+## License
 
-## Contributing
+```
+MIT License
 
-Please feel free to submit pull requests or issues of any kind.
+Copyright (c) 2013-2019 Zachary Guard
 
-It would be good if contributed code passes `eslint`ing, but it's not a requirement.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Help with updating and completing the existing translations or starting new ones (in the `locales` directory) would also be greatly appreciated – `bin/localesHelper.js` could be helpful for this.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## To-do
-
-These are a couple of features and improvements I'm hoping to include in the nearish future:
-
-* [ ] Less hacky handling of bottom-right drawers
-* [ ] Ability to use local file for shortcut icons
-* [x] ~~Preview blur effect in options~~
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
