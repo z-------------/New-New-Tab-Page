@@ -1260,9 +1260,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                         imageURL = item.visual.url
                       } else if (item.thumbnail && item.thumbnail[0] && item.thumbnail[0].url) {
                         imageURL = item.thumbnail[item.thumbnail.length - 1].url
-                      } else if ((item.content && item.content.content) || (item.summary && item.summary.content)) {
-                        if (item.content && item.content.content) imageURL = lookForImage(item.content.content)
-                        if (!imageURL && item.summary && item.summary.content) imageURL = lookForImage(item.summary.content)
+                      } else {
+                        const hasContent = item.content && item.content.content
+                        const hasSummary = item.summary && item.summary.content
+                        if (hasSummary) imageURL = lookForImage(item.summary.content)
+                        if (!imageURL && hasContent) imageURL = lookForImage(item.content.content)
                       }
 
                       items.push({
