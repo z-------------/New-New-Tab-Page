@@ -14,6 +14,39 @@ var xhr = function(url, callback, errCallback) {
   oReq.send()
 }
 
+/**
+ * Create an element with supplied attributes and contents and return it
+ * @param   {string}                 tagName
+ * @param   {Object}                 attributes
+ * @param   {string}                 attributes._text
+ * @param   {string}                 attributes._html
+ * @param   {Object<string, string>} attributes.style
+ * @param   {Node[]}                 attributes._children 
+ * @param   {string}                 attributes.*
+ * @returns {HTMLElement}
+ */
+const makeElem = (tagName, attributes) => {
+  let elem = document.createElement(tagName)
+  for (let attributeName in attributes) {
+    if (["_children", "_text", "_html", "style"].indexOf(attributeName) === -1) {
+      elem.setAttribute(attributeName, attributes[attributeName])
+    }
+  }
+  if (attributes._children) {
+    for (let child of attributes._children) elem.appendChild(child)
+  } else if (attributes._text) {
+    elem.textContent = attributes._text;
+  } else if (attributes._html) {
+    elem.innerHTML = attributes._html;
+  }
+  if (attributes.style) {
+    for (let property in attributes.style) {
+      elem.style[property] = attributes.style[property]
+    }
+  }
+  return elem
+}
+
 var settings
 
 xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
@@ -1101,38 +1134,64 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         }
       }
 
+      function makeNewsItemElem(item) {
+        const publishedMoment = moment(item.published)
+
+        let elem = makeElem("li", {
+          class: "news",
+          style: {
+            backgroundImage: item.imageURL ? `url(${item.imageURL})` : "transparent"
+          }
+        })
+
+        let aElem = makeElem("a", {
+          class: "news-content",
+          href: item.url,
+          target: "_blank"
+        })
+
+        let headerElem = makeElem("div", { class: "news-header" })
+        headerElem.appendChild(makeElem("h3", {
+          class: "news-title",
+          _text: item.title
+        }))
+        headerElem.appendChild(makeElem("div", {
+          class: "news-time--short",
+          _text: publishedMoment.fromNow(true)
+        }))
+        aElem.appendChild(headerElem)
+
+        let authorSectionChildren = [
+          makeElem("a", {
+            target: "_blank",
+            href: item.source.url,
+            _text: item.source.title
+          })
+        ]
+        if (item.author) {
+          authorSectionChildren.push(makeElem("span", { _text: ` • by ${item.author}` }))
+        }
+
+        let textElem = makeElem("div", { class: "news-text "})
+        textElem.appendChild(makeElem("p", { _text: truncate(item.description) }))
+        textElem.appendChild(makeElem("div", {
+          class: "news-meta",
+          _children: [
+            makeElem("span", { _text: publishedMoment.fromNow() }),
+            makeElem("span", { _text: " • "}),
+            makeElem("span", { _children: authorSectionChildren })
+          ]
+        }))
+        aElem.appendChild(textElem)
+
+        elem.appendChild(aElem)
+        return elem
+      }
+
       function displayNews(items) {
         let newsListElem = document.getElementById("newslist");
-
-        for (let i = 0, l = items.length; i < l; i++) {
-          let publishedMoment = moment(items[i].published);
-
-          let newsItemElem = document.createElement("a")
-          newsItemElem.href = items[i].url
-          newsItemElem.setAttribute("target", "_blank")
-
-          newsItemElem.innerHTML = "<li class='news'>\
-          <div class='news-content'>\
-          <div class='news-header'>\
-          <h3 class='news-title'>" + items[i].title + "</h3>\
-          <div class='news-time--short'>" + publishedMoment.fromNow(true) + "</div>\
-          </div>\
-          <div class='news-text'>\
-          <p>" + truncate(items[i].description) + "</p>\
-          <div class='news-meta'>\
-          <span>" + publishedMoment.fromNow() + "</span>\
-           • \
-          <span>" + items[i].author + "</span>\
-          </div>\
-          </div>\
-          </div>\
-          </li>"
-
-          if (items[i].imageURL) {
-            newsItemElem.querySelector("li.news").style.backgroundImage = "url(" + items[i].imageURL + ")"
-          }
-
-          newsListElem.appendChild(newsItemElem)
+        for (let item of items) {
+          newsListElem.appendChild(makeNewsItemElem(item))
         }
         newsListElem.classList.remove("loading")
       }
@@ -1189,13 +1248,6 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                         url: item.origin.htmlUrl
                       }
 
-                      var author
-                      if (item.author) {
-                        author = `<a target='_blank' href='${source.url}'>${source.title}</a> • by ${item.author}`
-                      } else {
-                        author = `<a target='_blank' href='${source.url}'>${source.title}</a>`
-                      }
-
                       var published = Number(item.published);
 
                       var imageURL = null
@@ -1217,7 +1269,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
                         url: url,
                         description: description,
                         source: source,
-                        author: author,
+                        author: item.author,
                         published: published,
                         imageURL: imageURL
                       })
