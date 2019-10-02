@@ -1,3 +1,9 @@
+:root {
+  --color-nntp-blue: #2eabe5;
+  --color-nntp-blue-lighter: #51b9e9;
+  --shadow-material: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 * {
   color: #fff;
   font-family: "Roboto", "Noto Sans", "Noto Sans CJK TC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
@@ -68,7 +74,7 @@ button {
 
   width: 350px;
   height: 100%;
-  background-color: #333;
+  background-color: #212121;
 
   transition-property: transform;
   box-sizing: border-box;
@@ -84,7 +90,7 @@ button {
   position: fixed;
   right: 0;
   top: 0;
-  box-shadow: inset 0 -2px #2EABE5;
+  box-shadow: inset 0 -2px var(--color-nntp-blue);
   background-color: inherit;
 
   display: flex;
@@ -106,7 +112,7 @@ button {
 }
 
 #sidebar nav a.current {
-  background-color: #2EABE5;
+  background-color: var(--color-nntp-blue);
 }
 
 #sidebar nav a[data-target="nw"] {
@@ -157,7 +163,7 @@ button {
   display: block;
   padding: 10px 20px;
   font-size: 2em;
-  background-color: #2EABE5;
+  background-color: var(--color-nntp-blue);
 }*/
 
 .sidebar-opened #sidebar, .sidebar-opened #sidebar nav {
@@ -262,7 +268,7 @@ button {
 
 .app {
   border-radius: 7.5%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
   cursor: pointer;
   display: inline-block;
   height: 130px;
@@ -281,11 +287,11 @@ button {
 }
 
 .app:active {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
 }
 
 .app.editing {
-  box-shadow: 0 0 0 7px #2EABE5;
+  box-shadow: 0 0 0 7px var(--color-nntp-blue);
 }
 
 .app.editing:before {
@@ -769,129 +775,67 @@ a {
   pointer-events: none;
 }
 
-.news {
-  box-sizing: border-box;
-  color: rgba(255, 255, 255, .7);
-  font-size: 15px;
-  text-align: left;
-  transition: all .2s;
-  display: block;
-  padding: 20px;
-  height: 175px;
-  margin: 20px;
-  border-radius: 4px;
-  overflow: hidden;
+/* news item */
 
+.news.has-image .news-image {
+  width: 100%;
+  height: 150px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-color: #2EABE5;
-
-  position: relative;
-}
-
-.news p {
-  margin: 0;
-  font-weight: 400;
-  color: rgba(255, 255, 255, .8);
+  background-color: #424242;
 }
 
 .news-content {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  padding: 0 20px;
-
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
+  background-color: #313131;
+  display: block;
+  margin: 15px;
+  margin-top: 0;
+  border-radius: 9px;
+  box-shadow: var(--shadow-material);
 }
 
-.news-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
+.news-snippet {
+  padding: 9px 15px;
+}
+
+.news-snippet > * {
+  margin: 9px 0;
+}
+
+.news-snippet > :first-child {
+  margin-top: 0;
+}
+
+.news-snippet > :last-child {
+  margin-bottom: 0;
+}
+
+.news-snippet p {
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .news-title {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.3em;
-  margin: 0;
-  text-shadow: 0 0.08em 0.2em rgba(0, 0, 0, 0.3);
-  padding-bottom: 0.1em;
 }
 
-.news-text {
-  position: absolute;
-  max-height: 200px;
-  margin: 20px;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transform: translateY(50px);
+.news:hover .news-title {
+  color: var(--color-nntp-blue-lighter);
 }
 
-.news:hover .news-header {
-  transform: translateY(-50px);
-  opacity: 0;
+.news-meta span, .news-meta span a {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.news:hover .news-text {
-  transform: translateY(0);
-  opacity: 1;
+.news-meta span a:hover {
+  text-decoration: underline;
 }
 
-.news:hover .news-content {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.news-thumb {
-  float: left;
-  margin-right: 15px;
-  margin-top: 7px;
-  width: 81px;
-  height: 81px;
-  background-size: cover;
-  background-position: center;
-}
-
-.news-meta {
-  color: rgba(255, 255, 255, .5);
-  font-size: .9em;
-  margin-top: 5px;
-}
-
-.news-meta * {
-  color: rgba(255, 255, 255, .5);
-}
-
-.news-meta a {
-  cursor: pointer;
-  transition: none;
-}
-
-.news-meta a:hover {
-  box-shadow: inset 0 -1px rgba(255, 255, 255, .5);
-}
-
-.news-time--short {
-  background-image: url(/img/clock.svg);
-  background-repeat: no-repeat;
-  background-size: 20px;
-  background-position: left center;
-  padding: 3px;
-  padding-left: 25px;
-
-  font-size: .9em;
-
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 12px;
-}
+/* end news item */
 
 #newslist {
   min-height: 100px;
@@ -1143,7 +1087,7 @@ input[type="text"], input[type="url"] {
   background-color: rgba(0, 0, 0, .9);
   padding: 10px 20px;
   border-radius: 4px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
   overflow: visible;
   transition: none;
   z-index: 3;
@@ -1170,7 +1114,7 @@ input[type="text"], input[type="url"] {
   padding: 10px 15px;
   margin-right: 10px;
   float: right;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
 }
 
 #editor-save {
@@ -1212,7 +1156,7 @@ input[type="text"], input[type="url"] {
   height: 50px;
   border-radius: 4px;
   background-color: rgba(127, 127, 127, 0.5);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
   font-weight: 700;
   font-size: 43px;
   position: absolute;
@@ -1223,7 +1167,7 @@ input[type="text"], input[type="url"] {
 }
 
 .editor-addapp:hover:after {
-  background-color: #2eabe5;
+  background-color: var(--color-nntp-blue);
 }
 
 .app button {
@@ -1236,7 +1180,7 @@ input[type="text"], input[type="url"] {
   border: none;
   background-color: #fff;
   cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+  box-shadow: var(--shadow-material);
   pointer-events: none;
   opacity: 0;
 

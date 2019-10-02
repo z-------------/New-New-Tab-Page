@@ -1126,22 +1126,11 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
         return html.replace(/(<([^>]+)>)/ig, "") // nifty regex by Chris Coyier of CSS-Tricks
       }
 
-      function truncate(str) {
-        if (str.length > 200) {
-          return str.substring(0, 200) + "..."
-        } else {
-          return str
-        }
-      }
-
       function makeNewsItemElem(item) {
         const publishedMoment = moment(item.published)
 
         let elem = makeElem("li", {
-          class: "news",
-          style: {
-            backgroundImage: item.imageURL ? `url(${item.imageURL})` : "transparent"
-          }
+          class: "news"
         })
 
         let aElem = makeElem("a", {
@@ -1150,16 +1139,15 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           target: "_blank"
         })
 
-        let headerElem = makeElem("div", { class: "news-header" })
-        headerElem.appendChild(makeElem("h3", {
-          class: "news-title",
-          _text: item.title
-        }))
-        headerElem.appendChild(makeElem("div", {
-          class: "news-time--short",
-          _text: publishedMoment.fromNow(true)
-        }))
-        aElem.appendChild(headerElem)
+        if (item.imageURL) {
+          aElem.appendChild(makeElem("div", {
+            class: "news-image",
+            style: {
+              backgroundImage: `url(${item.imageURL})`
+            }
+          }))
+          elem.classList.add("has-image")
+        }
 
         let authorSectionChildren = [
           makeElem("a", {
@@ -1172,17 +1160,25 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
           authorSectionChildren.push(makeElem("span", { _text: ` • by ${item.author}` }))
         }
 
-        let textElem = makeElem("div", { class: "news-text "})
-        textElem.appendChild(makeElem("p", { _text: truncate(item.description) }))
-        textElem.appendChild(makeElem("div", {
-          class: "news-meta",
+        let contentElem = makeElem("div", {
+          class: "news-snippet",
           _children: [
-            makeElem("span", { _text: publishedMoment.fromNow() }),
-            makeElem("span", { _text: " • "}),
-            makeElem("span", { _children: authorSectionChildren })
+            makeElem("h3", {
+              class: "news-title",
+              _text: item.title
+            }),
+            makeElem("p", { _text: item.description.substr(0, 500) }),
+            makeElem("div", {
+              class: "news-meta",
+              _children: [
+                makeElem("span", { _text: publishedMoment.fromNow() }),
+                makeElem("span", { _text: " • " }),
+                makeElem("span", { _children: authorSectionChildren })
+              ]
+            })
           ]
-        }))
-        aElem.appendChild(textElem)
+        })
+        aElem.appendChild(contentElem)
 
         elem.appendChild(aElem)
         return elem
@@ -1190,8 +1186,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       function displayNews(items) {
         let newsListElem = document.getElementById("newslist");
-        for (let item of items) {
-          newsListElem.appendChild(makeNewsItemElem(item))
+        for (let i = 0, l = Math.min(items.length, 25); i < l; ++i) {
+          newsListElem.appendChild(makeNewsItemElem(items[i]))
         }
         newsListElem.classList.remove("loading")
       }
