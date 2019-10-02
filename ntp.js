@@ -7,7 +7,8 @@ var xhr = function(url, callback, errCallback) {
     callback(response)
   }
   oReq.onerror = function(e) {
-    errCallback(e)
+    if (errCallback) errCallback(e)
+    else console.warn(`xhr error:`, e)
   }
   oReq.open("get", url, true)
   oReq.send()
