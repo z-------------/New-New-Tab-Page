@@ -20,8 +20,8 @@ var xhr = function(url, callback, errCallback) {
  * @param   {Object}                 attributes
  * @param   {string}                 attributes._text
  * @param   {string}                 attributes._html
- * @param   {Object<string, string>} attributes.style
  * @param   {Node[]}                 attributes._children 
+ * @param   {Object<string, string>} attributes.style
  * @param   {string}                 attributes.*
  * @returns {HTMLElement}
  */
