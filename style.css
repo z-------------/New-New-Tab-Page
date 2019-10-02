@@ -421,19 +421,62 @@ button {
   background: black;
 }
 
-/*.customscrollbars #weatherframe::-webkit-scrollbar {
-  background: #bbb;
+#weatherdiv {
+  margin-top: 20px;
 }
 
-#options::-webkit-scrollbar-thumb, #weatherframe::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, .3);
-}*/
-
-#weatherframe {
+#weatherdiv #weather {
   width: 100%;
-  height: 170px;
-  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+}
+
+#weatherdiv #temp {
+  width: 100%;
+  padding-left: 175px;
+  text-align: left;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: -15px -25px;
+}
+
+#weatherdiv #temp h1 {
+  font-size: 100px;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -5px;
+}
+
+#weatherdiv #temp div {
+  font-size: 20px;
+  color: rgba(255, 255, 255, .8);
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+#weatherdiv #temp h1:after {
+  content: "\0000b0";
+  font-weight: 100;
+}
+
+#weatherdiv #condition {
+  line-height: 1.21;
+}
+
+#weatherdiv footer {
+  color: rgba(255, 255, 255, .5);
+  position: relative;
+  z-index: 3;
   margin-top: 20px;
+  text-align: center;
+  font-size: 10px;
+
+  transition: opacity .3s;
+}
+
+#weatherdiv footer span, #weatherdiv footer span a {
+  color: inherit;
 }
 
 #topright {
