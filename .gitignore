@@ -5,3 +5,6 @@ js-unminified
 *~
 *.swp
 *.swo
+
+.web-extension-id
+web-ext-artifacts/
