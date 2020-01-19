@@ -1,0 +1,230 @@
+{
+  "extensionName": {
+    "message": "Nieuwe nieuwe tabbladpagina",
+    "description": "Name of the extension"
+  },
+  "newTabPageTitle": {
+    "message": "Nieuw tabblad",
+    "description": "Text to show in tab title on new tab page"
+  },
+  "appsEditorURLLabel": {
+    "message": "URL",
+    "description": "Label for URL field in shortcuts editor"
+  },
+  "appsEditorIconLabel": {
+    "message": "Pictogram",
+    "description": "Label for icon field in shortcuts editor"
+  },
+  "appsEditorAutofindIconButton": {
+    "message": "Automatisch",
+    "description": "Text for button for automatic icon-fetching in shortcuts editor"
+  },
+  "appsEditorCancelButton": {
+    "message": "Annuleren",
+    "description": "Text for cancel button in shortcuts editor"
+  },
+  "appsEditorSaveButton": {
+    "message": "Opslaan",
+    "description": "Text for save button in shortcuts editor"
+  },
+  "drawerRecentlyClosedHeading": {
+    "message": "Onlangs gesloten",
+    "description": "Heading for recently closed sites in drawer"
+  },
+  "drawerTopSitesHeading": {
+    "message": "Topsites",
+    "description": "Heading for most visited sites in drawer"
+  },
+  "drawerChromeAppsHeading": {
+    "message": "Chrome-apps",
+    "description": "Heading for Chrome Apps in drawer"
+  },
+  "bookmarksHeading": {
+    "message": "Bladwijzers",
+    "description": "Heading for bookmarks drawer"
+  },
+  "bookmarksEmptyMessage": {
+    "message": "Zoek naar bladwijzers; de resultaten worden hier getoond",
+    "description": "Message shown when bookmarks drawer is empty, asking user to type to search"
+  },
+  "bookmarksNoResultsMessage": {
+    "message": "Geen zoekresultaten :(",
+    "description": "Message shown when bookmarks search returned no results"
+  },
+  "bookmarksNoBookmarksMessage": {
+    "message": "Geen bladwijzers :(",
+    "description": "Message shown when user has no bookmarks"
+  },
+  "appSearchPlaceholder": {
+    "message": "Zoeken",
+    "description": "Placeholder in Chrome Apps search bar, shown when empty"
+  },
+  "bookmarksSearchPlaceholder": {
+    "message": "Zoeken",
+    "description": "Placeholder in bookmarks search bar, shown when empty"
+  },
+  "findBarPlaceholder": {
+    "message": "Zoeken",
+    "description": "Placeholder in Find bar, shown when empty"
+  },
+  "optionsHeadingShortcuts": {
+    "message": "Sneltoetsen"
+  },
+  "optionsButtonEditShortcuts": {
+    "message": "Sneltoetsen aanpassen"
+  },
+  "optionsLabelIconBorderRadius": {
+    "message": "Pictogramrand (in %):"
+  },
+  "optionsLabelFixedGridToggle": {
+    "message": "Rooster met vaste afmetingen gebruiken"
+  },
+  "optionsLabelGridColumns": {
+    "message": "kolommen,"
+  },
+  "optionsLabelGridRows": {
+    "message": "rijen"
+  },
+  "optionsHeadingBackground": {
+    "message": "Achtergrond"
+  },
+  "optionsLabelPresetBackgrounds": {
+    "message": "Meegeleverde achtergronden"
+  },
+  "optionsLabelBackgroundURL": {
+    "message": "URL"
+  },
+  "optionsLabelLocalBackground": {
+    "message": "Lokaal"
+  },
+  "optionsToggleBackgroundBlur": {
+    "message": "Vervagen"
+  },
+  "optionsHeadingDrawers": {
+    "message": "Bladwijzers en apps"
+  },
+  "optionsLabelRecentlyClosedSitesCount": {
+    "message": "Aantal onlangs gesloten tabbladen"
+  },
+  "optionsLabelTopSitesCount": {
+    "message": "Aantal topsites"
+  },
+  "optionsToggleAppsGrid": {
+    "message": "Apps op rooster tonen"
+  },
+  "optionsToggleCloseTabUponAppLaunch": {
+    "message": "Tabblad sluiten na openen van app"
+  },
+  "optionsToggleShowBookmarks": {
+    "message": "Bladwijzers tonen"
+  },
+  "optionsToggleListAllBookmarks": {
+    "message": "Alle bladwijzers tonen"
+  },
+  "optionsHeadingSidebar": {
+    "message": "Zijbalk en nieuws"
+  },
+  "optionsToggleEnabled": {
+    "message": "Ingeschakeld"
+  },
+  "optionsToggleFacebookMessages": {
+    "message": "Facebook-berichten"
+  },
+  "optionsToggleFacebookNotifications": {
+    "message": "Facebook-meldingen"
+  },
+  "optionsLabelNewsRSSURLs": {
+    "message": "URL's van nieuwsfeeds"
+  },
+  "optionsHelpNewsRSSURLs": {
+    "message": "Voer de volledige url's in van de RSS-feeds, één per regel."
+  },
+  "optionsHeadingWeather": {
+    "message": "Weer"
+  },
+  "optionsToggleWeatherGPS": {
+    "message": "GPS-locatie gebruiken (indien mogelijk)"
+  },
+  "optionsToggleWeatherForceCoords": {
+    "message": "Weercoördinaten opgeven:"
+  },
+  "optionsHelpWeatherLocationOverrides": {
+    "message": "Let op: de optie 'Weercoördinaten opgeven' wordt verkozen boven de GPS-locatie. Als geen van beiden is ingeschakeld, dan wordt je locatie ingeschat op basis van je ip-adres."
+  },
+  "optionsHeadingCustomCSS": {
+    "message": "Eigen CSS-regels"
+  },
+  "optionsHelpCustomCSS": {
+    "message": "Maak hier je eigen CSS-stijlblad."
+  },
+  "optionsHeadingOther": {
+    "message": "Overig"
+  },
+  "optionsLabelNewTabTitleText": {
+    "message": "Nieuw tabblad-label"
+  },
+  "optionsToggleDisableAnimations": {
+    "message": "Animaties uitschakelen"
+  },
+  "optionsToggleImperialUnits": {
+    "message": "Imperiale eenheden gebruiken"
+  },
+  "optionsButtonImportExport": {
+    "message": "Instellingen im-/exporteren"
+  },
+  "optionsButtonRestoreDefaults": {
+    "message": "Standaardwaarden"
+  },
+  "optionsButtonRestoreDefaultsConfirm": {
+    "message": "Klik nogmaals om te bevestigen"
+  },
+  "optionsButtonEmail": {
+    "message": "E-mail sturen aan de ontwikkelaar"
+  },
+  "optionsButtonGitHubIssue": {
+    "message": "Probleem/Idee delen op GitHub"
+  },
+  "optionsButtonCredits": {
+    "message": "Met dank aan"
+  },
+  "optionsButtonPrivacy": {
+    "message": "Privacybeleid"
+  },
+  "optionsButtonGitHubRepo": {
+    "message": "GitHub-repo bekijken"
+  },
+  "optionsButtonSave": {
+    "message": "Opslaan"
+  },
+  "optionsTitle": {
+    "message": "Instellingen",
+    "description": "Text shown in tab title on options page alongside extension name"
+  },
+  "optionsHelpContact": {
+    "message": "De beste manier om problemen, feedback en suggesties te delen, of ondersteuning te vragen is middels bovenstaande opties."
+  },
+  "importexportButtonBack": {
+    "message": "Terug",
+    "description": "Button shown in Import/export options taking user back to options page"
+  },
+  "importexportHeadingExport": {
+    "message": "Exporteren",
+    "description": "Heading shown above export data"
+  },
+  "importexportHeadingImport": {
+    "message": "Importeren",
+    "description": "Heading shown above import data input field"
+  },
+  "importexportButtonImport": {
+    "message": "Importeren",
+    "description": "Button to start import process"
+  },
+  "importexportOverwriteConfirmation": {
+    "message": "Weet je zeker dat je je huidige instellingen wilt overschrijven?",
+    "description": "Message in confirmation dialog asking user to confirm they want to overwrite old options"
+  },
+  "importexportSuccessMessage": {
+    "message": "Importeren voltooid :D",
+    "description": "Message shown in alert dialog confirming success of options import"
+  }
+}
