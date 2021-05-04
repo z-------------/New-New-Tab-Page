@@ -604,7 +604,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
         if (!document.getElementById("awesomplete-script")) {
           var scriptElem = document.createElement("script")
-          scriptElem.src = "js/Awesomplete/awesomplete.min.js"
+          scriptElem.src = "js/Awesomplete/awesomplete.js"
           document.body.appendChild(scriptElem)
 
           var styleElem = document.createElement("link")
@@ -624,7 +624,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (!document.getElementById("sortable-script")) {
         var scriptElem = document.createElement("script")
-        scriptElem.src = "js/Sortable/Sortable.min.js"
+        scriptElem.src = "js/Sortable/Sortable.js"
         document.body.appendChild(scriptElem)
 
         scriptElem.onload = function() {
@@ -644,7 +644,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (!document.getElementById("URI-script")) {
         var urijsScriptElem = document.createElement("script")
-        urijsScriptElem.src = "js/URI.js/URI.min.js"
+        urijsScriptElem.src = "js/URI.js/URI.js"
         document.body.appendChild(urijsScriptElem)
       }
 
@@ -1203,7 +1203,7 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
 
       if (!document.getElementById("momentjs-script")) {
         var scriptElem = document.createElement("script")
-        scriptElem.src = "js/Moment.js/moment-with-locales.min.js"
+        scriptElem.src = "js/Moment.js/moment-with-locales.js"
         scriptElem.setAttribute("id", "momentjs-script")
         document.body.appendChild(scriptElem)
         scriptElem.onload = function() {
