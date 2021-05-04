@@ -298,7 +298,7 @@ li {
   display: inline-block;
   margin: 0 25px;
   position: relative;
-  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 #appopts li:active {

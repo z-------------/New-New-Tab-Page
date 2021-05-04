@@ -1206,7 +1206,7 @@ input[type="text"], input[type="url"] {
   right: 0;
   margin-right: -5px;
   background-image: url(img/move.svg);
-  cursor: -webkit-grab !important;
+  cursor: grab !important;
 }
 
 .editor-remove {

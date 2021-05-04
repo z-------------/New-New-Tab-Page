@@ -637,7 +637,8 @@ xhr(chrome.extension.getURL("/consts/default_settings.json"), function(res) {
             onEnd: function() {
               addControls()
             },
-            animation: 150
+            animation: 150,
+            forceFallback: true,
           })
         }
       }
